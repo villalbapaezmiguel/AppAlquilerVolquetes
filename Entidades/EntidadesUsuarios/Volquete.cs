@@ -26,6 +26,9 @@ namespace Entidades
             this.diasDeArriendo = diasDeArriendo;
         }
 
+        /// <summary>
+        /// La cotizacion depende de la cantidad dias alquilados
+        /// </summary>
         public float CotizarVolquete
         {
             get

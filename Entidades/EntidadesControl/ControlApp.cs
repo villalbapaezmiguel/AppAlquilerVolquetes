@@ -14,6 +14,7 @@ namespace Entidades
         public static List<Volquete> listaVolquetes = new List<Volquete>();
         public static List<string> listaMarcas = new List<string>();
 
+        /*
         public static List<string> GetMarcasVolquetesCamion
         {
             get
@@ -24,9 +25,9 @@ namespace Entidades
                 }
                 return listaMarcas;
             }
-        }
+        }*/
 
-
+        /*
         public static void HarcadeoVolquetesCamion()
         {                                                   //altura        largo       ancho     Precio  Dias de arriendo      modelo   CRuedas cajaAbierta 
             listaVolquetes.Add(new VolqueteCamion("Volvo", (float)1.652, (float)4.425, (float)1.863 , (float)120000,10, "Volvo XC40",8,true));
@@ -35,7 +36,7 @@ namespace Entidades
             listaVolquetes.Add(new VolqueteCamion("Hitachi", (float)5, (float)8.40, (float)2.30 , (float)160000, 32,"Hitachi EH3500AC-3", 4,true));
             listaVolquetes.Add(new VolqueteCamion("Caterpillar", (float)25, (float)51, (float)22 ,(float)220000, 9 ,"82415 20", 8,true));
         }
-
+        */
         /// <summary>
         /// Agrega un objeto de tipo volquete a la lista de volquetes de la clase usuario
         /// </summary>
