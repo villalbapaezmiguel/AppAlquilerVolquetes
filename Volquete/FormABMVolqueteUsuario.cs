@@ -36,7 +36,7 @@ namespace Formulario
 
         private void CargarCmBoxVolqueteCamion()
         {
-            this.cmBox_Industrial.DataSource = ControlApp.GetMarcasVolquetesCamion;
+            //this.cmBox_Industrial.DataSource = ControlApp.GetMarcasVolquetesCamion;
         }
         private void CargarCmBoxVolqueteConteiner()
         {
