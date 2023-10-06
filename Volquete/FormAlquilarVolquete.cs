@@ -121,18 +121,20 @@ namespace Formulario
 
         private void CargarMarcaDeVolquetesCbox(List<Volquete> listaVolquetes)
         {
+            /*
             foreach (VolqueteCamion item in listaVolquetes)
             {
                 cbox_ListaVolquetes.Items.Add(item.Marca.ToString());
-            }
+            }*/
 
         }
         private void CargarModelosVolquetesCamion()
         {
+            /*
             foreach (VolqueteCamion item in ControlApp.listaVolquetes)
             {
                 this.cbox_ModeloVolquete.Items.Add(item.Modelo.ToString());
-            }
+            }*/
 
         }
 

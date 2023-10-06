@@ -13,7 +13,7 @@ namespace Formulario
         public FormMenu()
         {
             InitializeComponent();
-            ControlApp.HarcadeoVolquetesCamion();
+            //ControlApp.HarcadeoVolquetesCamion();
         }
         public FormMenu(Usuario usuario) : this()
         {
