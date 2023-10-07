@@ -9,29 +9,25 @@ namespace Entidades.EntidadesUsuarios
 {
     public class Usuario : Persona
     {
-        private string correo;
+        private string nombreUsuario;
         private string clave;
         private List<Volquete> listaVolquete;
-        private List<AlquilerVolquete> listaAlquilados;
-        private Usuario(string nombre, string apellido, int edad, DateTime fechaDeNacimiento)
-            : base(nombre, apellido, edad, fechaDeNacimiento)
-        {
-            listaVolquete = new List<Volquete>();
-            listaAlquilados = new List<AlquilerVolquete>();
-        }
+        private double telefono;
 
-        public Usuario(string correo, string clave, string nombre, string apellido, int edad, DateTime fechaDeNacimiento)
-            : this(nombre, apellido, edad, fechaDeNacimiento)
+        public Usuario(string nombreUsuario , string clave , double telefono, string nombre , string apellido, double dni)
+            :base(nombre,apellido,dni)
         {
-            this.correo = correo;
+            this.nombreUsuario = nombreUsuario;
             this.clave = clave;
+            this.telefono = telefono;
+            this.listaVolquete = new List<Volquete>();
         }
 
         public static bool operator ==(Usuario a, Usuario b)
         {
             if (a is not null && b is not null)
             {
-                return a.correo == b.correo && a.clave == b.clave;
+                return a.nombreUsuario == b.nombreUsuario && a.clave == b.clave;
             }
             return false;
         }
@@ -41,22 +37,19 @@ namespace Entidades.EntidadesUsuarios
             return !(a == b);
         }
 
-        public string Correo { get => correo; set => correo = value; }
+        public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
         public string Clave { get => clave; set => clave = value; }
         public List<Volquete> ListaVolquete { get => listaVolquete; set => listaVolquete = value; }
-        public List<AlquilerVolquete> ListaAlquilados { get => listaAlquilados; set => listaAlquilados = value; }
+        public double Telefono { get => telefono; set => telefono = value; }
 
-        public string Mostrar()
+        public override string ToString()
         {
-            StringBuilder informacion = new StringBuilder();
-            informacion.AppendLine($"Nombre : {Nombre}");
-            informacion.AppendLine($"Apellido : {Apellido}");
-            informacion.AppendLine($"Edad : {Edad}");
-            informacion.AppendLine($"Fecha de nacimiento : {FechaDeNacimiento}");
-            informacion.AppendLine($"Correo : {correo}");
+            StringBuilder infoUsuario = new StringBuilder();
+            infoUsuario.AppendLine(base.ToString());
+            infoUsuario.AppendLine($"Usuario {NombreUsuario}");
+            infoUsuario.AppendLine($"Telefono {Telefono}");
 
-
-            return informacion.ToString();
+            return infoUsuario.ToString();  
         }
 
 

@@ -6,43 +6,33 @@ using System.Threading.Tasks;
 
 namespace Entidades.EntidadesUsuarios
 {
-    public class Persona
+    public abstract class Persona
     {
         private string nombre;
         private string apellido;
-        private int edad;
-        private DateTime fechaDeNacimiento;
+        private double dni;
 
-        public Persona()
-        {
-
-        }
-        public Persona(string nombre)
+        public Persona(string nombre , string apellido , double dni )
         {
             this.nombre = nombre;
-        }
-        public Persona(string nombre, string apellido) : this(nombre)
-        {
             this.apellido = apellido;
+            this.dni = dni;
         }
-
-        public Persona(string nombre, string apellido, int edad) : this(nombre, apellido)
-        {
-            this.edad = edad;
-        }
-
-        public Persona(string nombre, string apellido, int edad, DateTime fechaDeNacimiento)
-            : this(nombre, apellido, edad)
-        {
-            this.fechaDeNacimiento = fechaDeNacimiento;
-        }
-
+        
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
-        public int Edad { get => edad; set => edad = value; }
-        public DateTime FechaDeNacimiento { get => fechaDeNacimiento; set => fechaDeNacimiento = value; }
+        public double Dni { get => dni; set => dni = value; }
 
 
+        public virtual string ToString()
+        {
+            StringBuilder informacion = new StringBuilder();
 
+            informacion.AppendLine($"Nombre {Nombre}");
+            informacion.AppendLine($"Apellido {Apellido}");
+            informacion.AppendLine($"DNI {Dni}");
+
+            return informacion.ToString();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 
 namespace Entidades
@@ -13,6 +14,7 @@ namespace Entidades
         public static List<Usuario> listaUsuarios = new List<Usuario>();
         public static List<Volquete> listaVolquetes = new List<Volquete>();
         public static List<string> listaMarcas = new List<string>();
+
 
         /*
         public static List<string> GetMarcasVolquetesCamion
@@ -102,16 +104,15 @@ namespace Entidades
             }
             return false;
         }
-        /// <summary>
-        /// Harcodeo la lista de usuarios 
-        /// </summary>
-        /// <returns></returns>
-        public static List<Usuario> IntanciarUsuarios()
-        {
-            listaUsuarios.Add(new Usuario("a", "a", "Miguel", "Villalba", 21, new DateTime(2001, 12, 10)));
 
-            return listaUsuarios;
+        public static void HarcodeoUsuarios()
+        {
+            UsuarioControl.AgregarUsuario(new Usuario("a", "a", 1234, "Miguel", "Villalba", 23451));
         }
+
+
+
+
         /// <summary>
         /// Agrega un Usuario a la lista de usuarios , retorna true si se puedo agregar , caso contrario false
         /// </summary>
@@ -163,7 +164,7 @@ namespace Entidades
         {
             foreach(Usuario item in listaUsuarios)
             {
-                if(item.Correo == correo && item.Clave == clave)
+                if(item.NombreUsuario == correo && item.Clave == clave)
                 {
                     return item;
                 }
