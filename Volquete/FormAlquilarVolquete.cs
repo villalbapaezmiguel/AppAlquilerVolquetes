@@ -165,6 +165,7 @@ namespace Formulario
 
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
+            /*
             string marca = "ninguna";
             string material = "x";
             string modelo = "x";
@@ -228,14 +229,15 @@ namespace Formulario
             AlquilerVolquete alquilerVolquete = new AlquilerVolquete(marca, material, modelo, diasDeArrienda, ETipoDePago.Tarjeta, precioTotal);
             this.auxUsuario.ListaAlquilados.Add(alquilerVolquete);
             Refrezcar();
-
+            */
         }
 
         private void Refrezcar()
         {
+            /*
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = this.auxUsuario.ListaAlquilados;
-            this.dtg_HistorialCompras.DataSource = bindingSource;
+            this.dtg_HistorialCompras.DataSource = bindingSource;*/
         }
         private void btn_Historial_Click(object sender, EventArgs e)
         {
