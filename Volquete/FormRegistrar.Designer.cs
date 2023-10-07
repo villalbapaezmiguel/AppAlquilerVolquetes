@@ -34,12 +34,12 @@
             btn_Registrar = new Button();
             txt_ClaveRepita = new TextBox();
             lbl_Titulo = new Label();
-            cal_FechaDeNacimiento = new MonthCalendar();
-            txt_Edad = new TextBox();
+            txt_DNI = new TextBox();
             txt_Apellido = new TextBox();
             txt_Nombre = new TextBox();
             txt_Clave = new TextBox();
-            txt_Correo = new TextBox();
+            txt_NombreUsuario = new TextBox();
+            txt_NumeroDeTelefono = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,16 +48,16 @@
             panel1.BackColor = Color.Gray;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Zoom;
+            panel1.Controls.Add(txt_NumeroDeTelefono);
             panel1.Controls.Add(btn_Cancelar);
             panel1.Controls.Add(btn_Registrar);
             panel1.Controls.Add(txt_ClaveRepita);
             panel1.Controls.Add(lbl_Titulo);
-            panel1.Controls.Add(cal_FechaDeNacimiento);
-            panel1.Controls.Add(txt_Edad);
+            panel1.Controls.Add(txt_DNI);
             panel1.Controls.Add(txt_Apellido);
             panel1.Controls.Add(txt_Nombre);
             panel1.Controls.Add(txt_Clave);
-            panel1.Controls.Add(txt_Correo);
+            panel1.Controls.Add(txt_NombreUsuario);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -120,22 +120,15 @@
             lbl_Titulo.TabIndex = 7;
             lbl_Titulo.Text = "Registrate";
             // 
-            // cal_FechaDeNacimiento
+            // txt_DNI
             // 
-            cal_FechaDeNacimiento.BackColor = SystemColors.Control;
-            cal_FechaDeNacimiento.Location = new Point(127, 174);
-            cal_FechaDeNacimiento.Name = "cal_FechaDeNacimiento";
-            cal_FechaDeNacimiento.TabIndex = 6;
-            // 
-            // txt_Edad
-            // 
-            txt_Edad.BackColor = SystemColors.ButtonHighlight;
-            txt_Edad.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_Edad.Location = new Point(21, 124);
-            txt_Edad.Name = "txt_Edad";
-            txt_Edad.PlaceholderText = "Ingrese Edad";
-            txt_Edad.Size = new Size(207, 22);
-            txt_Edad.TabIndex = 5;
+            txt_DNI.BackColor = SystemColors.ButtonHighlight;
+            txt_DNI.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_DNI.Location = new Point(21, 124);
+            txt_DNI.Name = "txt_DNI";
+            txt_DNI.PlaceholderText = "Ingrese su DNI";
+            txt_DNI.Size = new Size(207, 22);
+            txt_DNI.TabIndex = 5;
             // 
             // txt_Apellido
             // 
@@ -168,15 +161,25 @@
             txt_Clave.Size = new Size(207, 22);
             txt_Clave.TabIndex = 2;
             // 
-            // txt_Correo
+            // txt_NombreUsuario
             // 
-            txt_Correo.BackColor = SystemColors.ButtonHighlight;
-            txt_Correo.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_Correo.Location = new Point(262, 124);
-            txt_Correo.Name = "txt_Correo";
-            txt_Correo.PlaceholderText = "Ingrese su Correo";
-            txt_Correo.Size = new Size(207, 22);
-            txt_Correo.TabIndex = 1;
+            txt_NombreUsuario.BackColor = SystemColors.ButtonHighlight;
+            txt_NombreUsuario.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_NombreUsuario.Location = new Point(262, 124);
+            txt_NombreUsuario.Name = "txt_NombreUsuario";
+            txt_NombreUsuario.PlaceholderText = "Ingrese Nombre Usuario";
+            txt_NombreUsuario.Size = new Size(207, 22);
+            txt_NombreUsuario.TabIndex = 1;
+            // 
+            // txt_NumeroDeTelefono
+            // 
+            txt_NumeroDeTelefono.BackColor = SystemColors.ButtonHighlight;
+            txt_NumeroDeTelefono.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_NumeroDeTelefono.Location = new Point(21, 163);
+            txt_NumeroDeTelefono.Name = "txt_NumeroDeTelefono";
+            txt_NumeroDeTelefono.PlaceholderText = "Ingrese Telefono";
+            txt_NumeroDeTelefono.Size = new Size(207, 22);
+            txt_NumeroDeTelefono.TabIndex = 11;
             // 
             // FormRegistrar
             // 
@@ -196,15 +199,15 @@
         #endregion
 
         private Panel panel1;
-        private TextBox txt_Edad;
+        private TextBox txt_DNI;
         private TextBox txt_Apellido;
         private TextBox txt_Nombre;
         private TextBox txt_Clave;
-        private TextBox txt_Correo;
-        private MonthCalendar cal_FechaDeNacimiento;
+        private TextBox txt_NombreUsuario;
         private Label lbl_Titulo;
         private TextBox txt_ClaveRepita;
         private Button btn_Registrar;
         private Button btn_Cancelar;
+        private TextBox txt_NumeroDeTelefono;
     }
 }

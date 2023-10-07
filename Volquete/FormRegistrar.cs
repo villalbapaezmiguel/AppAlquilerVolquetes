@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,10 @@ namespace Formulario
     public partial class FormRegistrar : Form
     {
         private List<Usuario> listaUsuario;
-        public FormRegistrar(List<Usuario> listaUsuario)
+        public FormRegistrar()
         {
             InitializeComponent();
-            this.listaUsuario = listaUsuario;
+            this.listaUsuario = UsuarioControl.GetListaUsuarios;
         }
 
 
@@ -28,25 +29,27 @@ namespace Formulario
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
         }
-        
+
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
-            DateTime fecha = cal_FechaDeNacimiento.SelectionStart;
 
-            Usuario nuevo = new Usuario(txt_Correo.Text,
+
+
+            Usuario nuevo = new Usuario(txt_NombreUsuario.Text,
                 txt_Clave.Text,
-                txt_Nombre.Text,
+                double.Parse(txt_NumeroDeTelefono.Text),
                 txt_Apellido.Text,
-                int.Parse(txt_Edad.Text),
-                fecha);
+                txt_NombreUsuario.Text,
+                double.Parse(txt_DNI.Text));
 
-            if (!ControlApp.ExisteUsuario(nuevo))
+            if (!UsuarioControl.ExisteUsuario(txt_NombreUsuario.Text))
             {
-                if (ControlApp.AgregarUsuario(nuevo))
+                if (UsuarioControl.AgregarUsuario(nuevo))
                 {
                     MessageBox.Show("Se agrego corrctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UsuarioControl.SetUsuario = nuevo;
                     this.Close();
-                    FormLogin formLogin = new FormLogin(nuevo);
+                    FormLogin formLogin = new FormLogin();
                     formLogin.Show();
                 }
                 else
