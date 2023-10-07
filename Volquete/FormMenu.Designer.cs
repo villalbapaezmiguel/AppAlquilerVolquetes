@@ -41,6 +41,7 @@
             pic_Minizar = new PictureBox();
             pic_Menu = new PictureBox();
             panel_Contenedor = new Panel();
+            lbl_TituloSaludo = new Label();
             panel_MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_LogoMarca).BeginInit();
             panel_Titulo.SuspendLayout();
@@ -129,6 +130,7 @@
             // panel_Titulo
             // 
             panel_Titulo.BackColor = SystemColors.HotTrack;
+            panel_Titulo.Controls.Add(lbl_TituloSaludo);
             panel_Titulo.Controls.Add(pic_Agrandar);
             panel_Titulo.Controls.Add(pic_Cerrar);
             panel_Titulo.Controls.Add(pic_Restaurar);
@@ -220,6 +222,16 @@
             panel_Contenedor.Size = new Size(690, 400);
             panel_Contenedor.TabIndex = 2;
             // 
+            // lbl_TituloSaludo
+            // 
+            lbl_TituloSaludo.Anchor = AnchorStyles.Top;
+            lbl_TituloSaludo.AutoSize = true;
+            lbl_TituloSaludo.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TituloSaludo.Location = new Point(159, 9);
+            lbl_TituloSaludo.Name = "lbl_TituloSaludo";
+            lbl_TituloSaludo.Size = new Size(0, 22);
+            lbl_TituloSaludo.TabIndex = 4;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -235,6 +247,7 @@
             panel_MenuVertical.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pic_LogoMarca).EndInit();
             panel_Titulo.ResumeLayout(false);
+            panel_Titulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pic_Agrandar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_Cerrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_Restaurar).EndInit();
@@ -257,5 +270,6 @@
         private Button btn_AlquilarVolquete;
         private Button btn_TiposVolquetes;
         private Button btn_Perfil;
+        private Label lbl_TituloSaludo;
     }
 }

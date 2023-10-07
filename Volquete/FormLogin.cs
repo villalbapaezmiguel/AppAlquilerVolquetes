@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
@@ -14,19 +15,12 @@ namespace Formulario
 {
     public partial class FormLogin : Form
     {
-        List<Usuario> listaUsuarios;
-        public Usuario usuario;
+        List<Usuario> listaUsuarios; 
         public FormLogin()
         {
             InitializeComponent();
-        }
-        public FormLogin(Usuario usuario) : this()
-        {
-            this.usuario = usuario;
-        }
-        public FormLogin(List<Usuario> lista) : this()
-        {
-            this.listaUsuarios = lista;
+            ControlApp.HarcodeoUsuarios();
+            this.listaUsuarios = UsuarioControl.GetListaUsuarios;
         }
 
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
@@ -58,22 +52,13 @@ namespace Formulario
             }
 
 
-            Usuario? auxUsuario = ControlApp.EncontrarUsuarioPorCorreoYClave(txt_Correo.Text, txt_Clave.Text);
+            Usuario? auxUsuario = UsuarioControl.BuscarUsuarioPorClaveYNombreUsuario(txt_Correo.Text, txt_Clave.Text);
             if (auxUsuario is not null)
             {
-                if (ControlApp.ExisteUsuario(auxUsuario))
-                {
-                    MessageBox.Show($"Bienvenido {auxUsuario.Nombre} {auxUsuario.Apellido}", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FormMenu formMenu = new FormMenu(auxUsuario);
-                    formMenu.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("No se encontro el usuario");
-                    this.txt_Correo.Focus();
-                    VaciarTxtLogin();
-                }
+                MessageBox.Show($"Bienvenido {auxUsuario.Nombre} {auxUsuario.Apellido}", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormMenu formMenu = new FormMenu(auxUsuario);
+                formMenu.Show();
+                this.Hide();
             }
             else
             {
@@ -92,7 +77,7 @@ namespace Formulario
 
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
-            FormRegistrar formRegistrar = new FormRegistrar(ControlApp.IntanciarUsuarios());
+            FormRegistrar formRegistrar = new FormRegistrar();
             formRegistrar.Show();
             this.Hide();
         }
@@ -100,10 +85,7 @@ namespace Formulario
         private void btn_Admin_Click(object sender, EventArgs e)
         {
 
-            /*            FormAdministrador formAdministrador = new FormAdministrador();
-                        formAdministrador.Show();
-                        this.Hide();
-            */
+
         }
     }
 }

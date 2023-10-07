@@ -35,9 +35,7 @@ namespace Formulario
         {
             lbl_Nombre.Text += $" {usuario.Nombre}";
             lbl_Apellido.Text += $" {usuario.Apellido}";
-            lbl_Edad.Text += $" {usuario.Edad}";
-            lbl_FechaDeNacimiento.Text += $" {usuario.FechaDeNacimiento.Date}";
-            lbl_Correo.Text += $" {usuario.Correo}";
+            lbl_Correo.Text += $" {usuario.NombreUsuario}";
 
             //this.dtg_ListaVolquetes.DataSource = usuario.ListaAlquilados;
 

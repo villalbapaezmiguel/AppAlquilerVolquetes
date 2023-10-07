@@ -1,4 +1,5 @@
 using Entidades;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace Formulario
         public FormMenu()
         {
             InitializeComponent();
-            //ControlApp.HarcadeoVolquetesCamion();
+
         }
         public FormMenu(Usuario usuario) : this()
         {
@@ -23,18 +24,10 @@ namespace Formulario
         private void pic_Menu_Click(object sender, EventArgs e)
         {
             AgrandarYAchicarMenu();
+            //lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
+
         }
-        private void AgrandarMenu()
-        {
-            this.panel_MenuVertical.Width = 180;
-        }
-        private void MinimizarMenu()
-        {
-            if (this.panel_MenuVertical.Width == 180)
-            {
-                this.panel_MenuVertical.Width = 70;
-            }
-        }
+
         private void AgrandarYAchicarMenu()
         {
             if (this.panel_MenuVertical.Width == 180)
@@ -52,7 +45,7 @@ namespace Formulario
             if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 this.Close();
-                FormLogin formLogin = new FormLogin(ControlApp.listaUsuarios);
+                FormLogin formLogin = new FormLogin();
                 formLogin.ShowDialog();
             }
         }
@@ -102,19 +95,19 @@ namespace Formulario
         private void btn_Usuario_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanelContenedor(new FormAlquilarVolquete(ControlApp.listaVolquetes, usuario));
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanelContenedor(new FormPerfilUsuario(this.usuario));
-           
+
         }
 
         private void btn_Alquilar_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(usuario));
-           
+
         }
     }
 }
