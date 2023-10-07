@@ -63,7 +63,7 @@
             // 
             // btn_Ingresar
             // 
-            btn_Ingresar.BackColor = Color.DarkGray;
+            btn_Ingresar.BackColor = SystemColors.ActiveCaption;
             btn_Ingresar.Cursor = Cursors.Hand;
             btn_Ingresar.FlatAppearance.BorderSize = 0;
             btn_Ingresar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
@@ -81,6 +81,7 @@
             // 
             // panel_Login
             // 
+            panel_Login.BackColor = SystemColors.Highlight;
             panel_Login.BackgroundImage = (Image)resources.GetObject("panel_Login.BackgroundImage");
             panel_Login.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Login.Controls.Add(btn_Admin);
@@ -97,6 +98,7 @@
             // 
             // btn_Admin
             // 
+            btn_Admin.BackColor = SystemColors.ActiveCaption;
             btn_Admin.Cursor = Cursors.Hand;
             btn_Admin.FlatAppearance.BorderSize = 0;
             btn_Admin.FlatAppearance.MouseOverBackColor = Color.DarkGray;
@@ -109,11 +111,12 @@
             btn_Admin.Size = new Size(79, 30);
             btn_Admin.TabIndex = 6;
             btn_Admin.Text = "Admin";
-            btn_Admin.UseVisualStyleBackColor = true;
+            btn_Admin.UseVisualStyleBackColor = false;
             btn_Admin.Click += btn_Admin_Click;
             // 
             // btn_Registrar
             // 
+            btn_Registrar.BackColor = SystemColors.ActiveCaption;
             btn_Registrar.Cursor = Cursors.Hand;
             btn_Registrar.FlatAppearance.BorderSize = 0;
             btn_Registrar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
@@ -126,7 +129,7 @@
             btn_Registrar.Size = new Size(79, 30);
             btn_Registrar.TabIndex = 5;
             btn_Registrar.Text = "Registrar";
-            btn_Registrar.UseVisualStyleBackColor = true;
+            btn_Registrar.UseVisualStyleBackColor = false;
             btn_Registrar.Click += btn_Registrar_Click;
             // 
             // pic_CerrarFormulario

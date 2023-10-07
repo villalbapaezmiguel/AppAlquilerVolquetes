@@ -34,89 +34,27 @@ namespace Formulario
 
         private void FormAlquilarVolquete_Load(object sender, EventArgs e)
         {
-            lbl_Fecha.Text += DateTime.Today.Date.ToString("d");
-            lbl_PrecioDelProducto.Text = (0).ToString("C");
+            //lbl_Fecha.Text += DateTime.Today.Date.ToString("d");
+            //lbl_PrecioDelProducto.Text = (0).ToString("C");
             CargarMarcaDeVolquetesCbox(ControlApp.listaVolquetes);
             CargarMaterialesCbox();
             CargarMedioDePago();
             CargarModelosVolquetesCamion();
         }
 
-        private void cbox_ListaVolquetes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Volquete? aux = null;
-            string tipo = cbox_ListaVolquetes.Text;
-            switch (tipo)
-            {
-                case "Volvo":
-                    aux = ControlApp.EncontrarVolquetePorMarca(tipo);
-                    if (aux is not null)
-                    {
-                        lbl_PrecioDelProducto.Text = aux.CotizarVolquete.ToString();
-                        if (rdl_Camion.Checked)
-                        {
-                            numUD_Cantidad.Value = 7;
-                        }
-                    }
-                    break;
-                case "Komatsu":
-                    aux = ControlApp.EncontrarVolquetePorMarca(tipo);
-                    if (aux is not null)
-                    {
-                        lbl_PrecioDelProducto.Text = aux.CotizarVolquete.ToString();
-                        if (rdl_Camion.Checked)
-                        {
-                            numUD_Cantidad.Value = 7;
-                        }
-                    }
-                    break;
-                case "Mack":
-                    aux = ControlApp.EncontrarVolquetePorMarca(tipo);
-                    if (aux is not null)
-                    {
-                        lbl_PrecioDelProducto.Text = aux.CotizarVolquete.ToString();
-                        if (rdl_Camion.Checked)
-                        {
-                            numUD_Cantidad.Value = 7;
-                        }
-                    }
-                    break;
-                case "hitachi":
-                    aux = ControlApp.EncontrarVolquetePorMarca(tipo);
-                    if (aux is not null)
-                    {
-                        lbl_PrecioDelProducto.Text = aux.CotizarVolquete.ToString();
-                        if (rdl_Camion.Checked)
-                        {
-                            numUD_Cantidad.Value = 7;
-                        }
-                    }
-                    break;
-                case "Caterpillar":
-                    aux = ControlApp.EncontrarVolquetePorMarca(tipo);
-                    if (aux is not null)
-                    {
-                        lbl_PrecioDelProducto.Text = aux.CotizarVolquete.ToString();
-                        if (rdl_Camion.Checked)
-                        {
-                            numUD_Cantidad.Value = 7;
-                        }
-                    }
-                    break;
-            }
-
-        }
 
         private void CargarMedioDePago()
         {
+            /*
             this.cbox_TipoDePago.Items.Add("Tarjeta");
-            this.cbox_TipoDePago.Items.Add("Efectivo");
+            this.cbox_TipoDePago.Items.Add("Efectivo");*/
         }
 
         private void CargarMaterialesCbox()
         {
+            /*
             this.cbox_Material.Items.Add(EMaterial.plasticoResistente.ToString());
-            this.cbox_Material.Items.Add(EMaterial.acero.ToString());
+            this.cbox_Material.Items.Add(EMaterial.acero.ToString());*/
         }
 
         private void CargarMarcaDeVolquetesCbox(List<Volquete> listaVolquetes)
@@ -139,29 +77,6 @@ namespace Formulario
         }
 
 
-        private void rdl_Contendor_Click(object sender, EventArgs e)
-        {
-            if (rdl_Contendor.Checked)
-            {
-                this.cbox_Material.Visible = true;
-                this.lbl_MaterialContenedor.Visible = true;
-                this.cbox_ModeloVolquete.Visible = false;
-                this.lbl_ModeloCamion.Visible = false;
-                if (cbox_ListaVolquetes.SelectedIndex != -1)
-                {
-                    this.numUD_Cantidad.Value = 2;
-                }
-
-
-            }
-            else if (rdl_Camion.Checked)
-            {
-                this.cbox_Material.Visible = false;
-                this.lbl_MaterialContenedor.Visible = false;
-                this.cbox_ModeloVolquete.Visible = true;
-                this.lbl_ModeloCamion.Visible = true;
-            }
-        }
 
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
@@ -239,20 +154,6 @@ namespace Formulario
             bindingSource.DataSource = this.auxUsuario.ListaAlquilados;
             this.dtg_HistorialCompras.DataSource = bindingSource;*/
         }
-        private void btn_Historial_Click(object sender, EventArgs e)
-        {
-            this.panel_RegistrosCompras.Visible = true;
 
-        }
-
-        private void btn_Volver_Click(object sender, EventArgs e)
-        {
-            this.panel_RegistrosCompras.Visible = false;
-        }
-
-        private void btn_Imprimir_Click(object sender, EventArgs e)
-        {
-            //Lo imprimimos en un archivo
-        }
     }
 }

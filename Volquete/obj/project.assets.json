@@ -32,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\villa\\Desktop\\PracticaLaboDos\\AppAlquilerVolquetes\\Volquete\\Volquete.csproj",
-      "projectName": "Volquete",
-      "projectPath": "C:\\Users\\villa\\Desktop\\PracticaLaboDos\\AppAlquilerVolquetes\\Volquete\\Volquete.csproj",
+      "projectUniqueName": "C:\\Users\\villa\\Desktop\\PracticaLaboDos\\AppAlquilerVolquetes\\Volquete\\Vista.csproj",
+      "projectName": "Vista",
+      "projectPath": "C:\\Users\\villa\\Desktop\\PracticaLaboDos\\AppAlquilerVolquetes\\Volquete\\Vista.csproj",
       "packagesPath": "C:\\Users\\villa\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\villa\\Desktop\\PracticaLaboDos\\AppAlquilerVolquetes\\Volquete\\obj\\",
       "projectStyle": "PackageReference",

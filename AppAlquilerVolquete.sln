@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volquete", "Volquete\Volquete.csproj", "{CB73EECB-5024-4093-B8F0-EDC79A60D2CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vista", "Volquete\Vista.csproj", "{CB73EECB-5024-4093-B8F0-EDC79A60D2CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{64397EAC-0E8B-487A-8CFC-70B12E75B17B}"
 EndProject

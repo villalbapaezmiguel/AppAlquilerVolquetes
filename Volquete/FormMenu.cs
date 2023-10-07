@@ -24,7 +24,6 @@ namespace Formulario
         private void pic_Menu_Click(object sender, EventArgs e)
         {
             AgrandarYAchicarMenu();
-            //lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
 
         }
 
@@ -108,6 +107,11 @@ namespace Formulario
         {
             AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(usuario));
 
+        }
+
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+            lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
         }
     }
 }

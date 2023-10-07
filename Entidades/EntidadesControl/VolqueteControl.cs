@@ -12,6 +12,8 @@ namespace Entidades.EntidadesControl
         private static List<Volquete> listaVolquetes = new List<Volquete>();
 
 
+
+
         public static bool AgregarVolquete(Volquete volquete)
         {
             if(volquete is not null)

@@ -50,7 +50,7 @@ namespace Entidades
         public float Precio { get => precio; set => precio = value; }
         public int DiasDeArriendo { get => diasDeArriendo; set => diasDeArriendo = value; }
 
-        public string Mostrar()
+        public override string ToString()
         {
             StringBuilder informacion = new StringBuilder();
             informacion.AppendLine($"Marca : {Marca}");
@@ -58,7 +58,6 @@ namespace Entidades
             informacion.AppendLine($"Largo : {Largo}");
             informacion.AppendLine($"Ancho : {Ancho}");
             informacion.AppendLine($"Precio : {Precio}");
-            informacion.AppendLine($"Dias de arriendo : {DiasDeArriendo}");
             informacion.AppendLine($"Metros cubicos : {MetrosCubicos}");
 
             return informacion.ToString();

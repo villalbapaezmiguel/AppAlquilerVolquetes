@@ -35,13 +35,13 @@
             btn_AlquilarVolquete = new Button();
             pic_LogoMarca = new PictureBox();
             panel_Titulo = new Panel();
+            lbl_TituloSaludo = new Label();
             pic_Agrandar = new PictureBox();
             pic_Cerrar = new PictureBox();
             pic_Restaurar = new PictureBox();
             pic_Minizar = new PictureBox();
             pic_Menu = new PictureBox();
             panel_Contenedor = new Panel();
-            lbl_TituloSaludo = new Label();
             panel_MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_LogoMarca).BeginInit();
             panel_Titulo.SuspendLayout();
@@ -68,7 +68,7 @@
             // btn_Perfil
             // 
             btn_Perfil.FlatAppearance.BorderSize = 0;
-            btn_Perfil.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btn_Perfil.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
             btn_Perfil.FlatStyle = FlatStyle.Flat;
             btn_Perfil.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Perfil.ForeColor = Color.Black;
@@ -85,7 +85,7 @@
             // btn_TiposVolquetes
             // 
             btn_TiposVolquetes.FlatAppearance.BorderSize = 0;
-            btn_TiposVolquetes.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btn_TiposVolquetes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
             btn_TiposVolquetes.FlatStyle = FlatStyle.Flat;
             btn_TiposVolquetes.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_TiposVolquetes.ForeColor = Color.Black;
@@ -95,14 +95,14 @@
             btn_TiposVolquetes.Name = "btn_TiposVolquetes";
             btn_TiposVolquetes.Size = new Size(180, 30);
             btn_TiposVolquetes.TabIndex = 1;
-            btn_TiposVolquetes.Text = "Tipos de Volquetes";
+            btn_TiposVolquetes.Text = "Precios y Capacidades";
             btn_TiposVolquetes.UseVisualStyleBackColor = true;
             btn_TiposVolquetes.Click += btn_Alquilar_Click;
             // 
             // btn_AlquilarVolquete
             // 
             btn_AlquilarVolquete.FlatAppearance.BorderSize = 0;
-            btn_AlquilarVolquete.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btn_AlquilarVolquete.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
             btn_AlquilarVolquete.FlatStyle = FlatStyle.Flat;
             btn_AlquilarVolquete.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_AlquilarVolquete.ForeColor = Color.Black;
@@ -112,7 +112,7 @@
             btn_AlquilarVolquete.Name = "btn_AlquilarVolquete";
             btn_AlquilarVolquete.Size = new Size(180, 30);
             btn_AlquilarVolquete.TabIndex = 0;
-            btn_AlquilarVolquete.Text = "Alquilar Volquete";
+            btn_AlquilarVolquete.Text = "Solicitud de Volquete";
             btn_AlquilarVolquete.UseVisualStyleBackColor = true;
             btn_AlquilarVolquete.Click += btn_Usuario_Click;
             // 
@@ -141,6 +141,16 @@
             panel_Titulo.Name = "panel_Titulo";
             panel_Titulo.Size = new Size(690, 40);
             panel_Titulo.TabIndex = 1;
+            // 
+            // lbl_TituloSaludo
+            // 
+            lbl_TituloSaludo.Anchor = AnchorStyles.Top;
+            lbl_TituloSaludo.AutoSize = true;
+            lbl_TituloSaludo.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TituloSaludo.Location = new Point(159, 9);
+            lbl_TituloSaludo.Name = "lbl_TituloSaludo";
+            lbl_TituloSaludo.Size = new Size(0, 22);
+            lbl_TituloSaludo.TabIndex = 4;
             // 
             // pic_Agrandar
             // 
@@ -213,7 +223,7 @@
             // 
             // panel_Contenedor
             // 
-            panel_Contenedor.BackColor = Color.FromArgb(64, 64, 64);
+            panel_Contenedor.BackColor = SystemColors.Highlight;
             panel_Contenedor.BackgroundImage = (Image)resources.GetObject("panel_Contenedor.BackgroundImage");
             panel_Contenedor.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Contenedor.Dock = DockStyle.Fill;
@@ -221,16 +231,6 @@
             panel_Contenedor.Name = "panel_Contenedor";
             panel_Contenedor.Size = new Size(690, 400);
             panel_Contenedor.TabIndex = 2;
-            // 
-            // lbl_TituloSaludo
-            // 
-            lbl_TituloSaludo.Anchor = AnchorStyles.Top;
-            lbl_TituloSaludo.AutoSize = true;
-            lbl_TituloSaludo.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_TituloSaludo.Location = new Point(159, 9);
-            lbl_TituloSaludo.Name = "lbl_TituloSaludo";
-            lbl_TituloSaludo.Size = new Size(0, 22);
-            lbl_TituloSaludo.TabIndex = 4;
             // 
             // FormMenu
             // 
@@ -244,6 +244,7 @@
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += FormMenu_Load;
             panel_MenuVertical.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pic_LogoMarca).EndInit();
             panel_Titulo.ResumeLayout(false);

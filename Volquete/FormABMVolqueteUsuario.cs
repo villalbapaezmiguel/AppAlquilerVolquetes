@@ -54,17 +54,8 @@ namespace Formulario
             CargarCmBoxVolqueteCamion();
             CargarCmBoxVolqueteConteiner();
 
-            if (this.rdb_Industrial.Checked == true)
-            {
-                this.cmBox_Particular.Visible = false;
-                this.cmBox_Industrial.Visible = true;
-            }
-            else if (this.rdb_Particular.Checked == true)
-            {
-                this.cmBox_Industrial.Visible = false;
-                this.cmBox_Particular.Visible = true;
 
-            }
         }
+
     }
 }

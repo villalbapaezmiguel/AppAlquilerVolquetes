@@ -15,7 +15,7 @@ namespace Formulario
 {
     public partial class FormLogin : Form
     {
-        List<Usuario> listaUsuarios; 
+        List<Usuario> listaUsuarios;
         public FormLogin()
         {
             InitializeComponent();
@@ -33,19 +33,19 @@ namespace Formulario
 
         private void btn_Ingresar_Click(object sender, EventArgs e)
         {
-            if(txt_Correo.Text == string.Empty && txt_Clave.Text == string.Empty)
+            if (txt_Correo.Text == string.Empty && txt_Clave.Text == string.Empty)
             {
                 txt_Correo.Focus();
                 txt_Clave.Focus();
                 MessageBox.Show("Falto rellenar el correo y la clave", "Advertencia", MessageBoxButtons.OK);
 
             }
-            else if(txt_Clave.Text == string.Empty)
+            else if (txt_Clave.Text == string.Empty)
             {
                 txt_Clave.Focus();
                 MessageBox.Show("Falto rellenar la clave", "Advertencia", MessageBoxButtons.OK);
             }
-            else if(txt_Correo.Text == string.Empty)
+            else if (txt_Correo.Text == string.Empty)
             {
                 txt_Correo.Focus();
                 MessageBox.Show("Falto rellenar el correo", "Advertencia", MessageBoxButtons.OK);
@@ -56,6 +56,7 @@ namespace Formulario
             if (auxUsuario is not null)
             {
                 MessageBox.Show($"Bienvenido {auxUsuario.Nombre} {auxUsuario.Apellido}", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UsuarioControl.SetUsuario = auxUsuario;
                 FormMenu formMenu = new FormMenu(auxUsuario);
                 formMenu.Show();
                 this.Hide();

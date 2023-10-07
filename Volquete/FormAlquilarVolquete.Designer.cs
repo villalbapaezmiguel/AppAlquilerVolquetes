@@ -32,35 +32,26 @@
             lbl_Titulo = new Label();
             pic_CerrarFormulario = new PictureBox();
             panel_Titulo = new Panel();
-            lbl_Fecha = new Label();
-            cbox_ListaVolquetes = new ComboBox();
-            grpBox_Comboboxs = new GroupBox();
-            btn_Registrar = new Button();
-            rdl_Contendor = new RadioButton();
-            rdl_Camion = new RadioButton();
-            btn_Cancelar = new Button();
-            lbl_MaterialContenedor = new Label();
-            cbox_Material = new ComboBox();
-            lbl_ModeloCamion = new Label();
-            cbox_ModeloVolquete = new ComboBox();
-            lbl_PrecioDelProducto = new Label();
-            lbl_precio = new Label();
-            lbl_DiasDeArriendo = new Label();
-            numUD_Cantidad = new NumericUpDown();
-            label2 = new Label();
             label1 = new Label();
-            cbox_TipoDePago = new ComboBox();
-            btn_Historial = new Button();
-            panel_RegistrosCompras = new Panel();
-            btn_Volver = new Button();
-            dtg_HistorialCompras = new DataGridView();
-            btn_Imprimir = new Button();
+            cmBox_TiposVolquetes = new ComboBox();
+            label2 = new Label();
+            numUD_CantidadVolquetes = new NumericUpDown();
+            numUD_CantidadDias = new NumericUpDown();
+            label3 = new Label();
+            gpb_SolicitarVolquete = new GroupBox();
+            txt_Direccion = new TextBox();
+            txt_FechaDeEntrega = new TextBox();
+            cmBox_HoraDeEntrega = new ComboBox();
+            pic_Calendario = new PictureBox();
+            lbl_TituloCalendario = new Label();
+            lbl_TituloHoraEntrega = new Label();
+            lbl_TituloDireccionEntrega = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
             panel_Titulo.SuspendLayout();
-            grpBox_Comboboxs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numUD_Cantidad).BeginInit();
-            panel_RegistrosCompras.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtg_HistorialCompras).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numUD_CantidadVolquetes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numUD_CantidadDias).BeginInit();
+            gpb_SolicitarVolquete.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pic_Calendario).BeginInit();
             SuspendLayout();
             // 
             // lbl_Titulo
@@ -68,11 +59,11 @@
             lbl_Titulo.Anchor = AnchorStyles.Top;
             lbl_Titulo.AutoSize = true;
             lbl_Titulo.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Titulo.Location = new Point(155, 9);
+            lbl_Titulo.Location = new Point(251, 9);
             lbl_Titulo.Name = "lbl_Titulo";
-            lbl_Titulo.Size = new Size(372, 22);
+            lbl_Titulo.Size = new Size(165, 22);
             lbl_Titulo.TabIndex = 2;
-            lbl_Titulo.Text = "Alquilar Volquetes Camion/Contenedores";
+            lbl_Titulo.Text = "Solicitar Volquete";
             // 
             // pic_CerrarFormulario
             // 
@@ -90,8 +81,7 @@
             // 
             // panel_Titulo
             // 
-            panel_Titulo.BackColor = Color.DimGray;
-            panel_Titulo.Controls.Add(lbl_Fecha);
+            panel_Titulo.BackColor = SystemColors.MenuHighlight;
             panel_Titulo.Controls.Add(pic_CerrarFormulario);
             panel_Titulo.Controls.Add(lbl_Titulo);
             panel_Titulo.Dock = DockStyle.Top;
@@ -100,286 +90,149 @@
             panel_Titulo.Size = new Size(680, 37);
             panel_Titulo.TabIndex = 4;
             // 
-            // lbl_Fecha
+            // label1
             // 
-            lbl_Fecha.AutoSize = true;
-            lbl_Fecha.Location = new Point(12, 12);
-            lbl_Fecha.Name = "lbl_Fecha";
-            lbl_Fecha.Size = new Size(84, 15);
-            lbl_Fecha.TabIndex = 8;
-            lbl_Fecha.Text = "Fecha Actual : ";
+            label1.AutoSize = true;
+            label1.Location = new Point(65, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 15);
+            label1.TabIndex = 5;
+            label1.Text = "Tipo de Volqueta";
             // 
-            // cbox_ListaVolquetes
+            // cmBox_TiposVolquetes
             // 
-            cbox_ListaVolquetes.FormattingEnabled = true;
-            cbox_ListaVolquetes.Location = new Point(6, 37);
-            cbox_ListaVolquetes.Name = "cbox_ListaVolquetes";
-            cbox_ListaVolquetes.Size = new Size(201, 23);
-            cbox_ListaVolquetes.TabIndex = 5;
-            cbox_ListaVolquetes.SelectedIndexChanged += cbox_ListaVolquetes_SelectedIndexChanged;
-            // 
-            // grpBox_Comboboxs
-            // 
-            grpBox_Comboboxs.BackColor = Color.Transparent;
-            grpBox_Comboboxs.Controls.Add(btn_Registrar);
-            grpBox_Comboboxs.Controls.Add(rdl_Contendor);
-            grpBox_Comboboxs.Controls.Add(rdl_Camion);
-            grpBox_Comboboxs.Controls.Add(btn_Cancelar);
-            grpBox_Comboboxs.Controls.Add(lbl_MaterialContenedor);
-            grpBox_Comboboxs.Controls.Add(cbox_Material);
-            grpBox_Comboboxs.Controls.Add(lbl_ModeloCamion);
-            grpBox_Comboboxs.Controls.Add(cbox_ModeloVolquete);
-            grpBox_Comboboxs.Controls.Add(lbl_PrecioDelProducto);
-            grpBox_Comboboxs.Controls.Add(lbl_precio);
-            grpBox_Comboboxs.Controls.Add(lbl_DiasDeArriendo);
-            grpBox_Comboboxs.Controls.Add(numUD_Cantidad);
-            grpBox_Comboboxs.Controls.Add(label2);
-            grpBox_Comboboxs.Controls.Add(label1);
-            grpBox_Comboboxs.Controls.Add(cbox_TipoDePago);
-            grpBox_Comboboxs.Controls.Add(cbox_ListaVolquetes);
-            grpBox_Comboboxs.Location = new Point(3, 43);
-            grpBox_Comboboxs.Name = "grpBox_Comboboxs";
-            grpBox_Comboboxs.Size = new Size(674, 242);
-            grpBox_Comboboxs.TabIndex = 6;
-            grpBox_Comboboxs.TabStop = false;
-            grpBox_Comboboxs.Text = "Area de compra";
-            // 
-            // btn_Registrar
-            // 
-            btn_Registrar.BackColor = Color.Silver;
-            btn_Registrar.FlatAppearance.BorderSize = 0;
-            btn_Registrar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_Registrar.FlatStyle = FlatStyle.Flat;
-            btn_Registrar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Registrar.ForeColor = Color.Black;
-            btn_Registrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Registrar.Location = new Point(353, 194);
-            btn_Registrar.Name = "btn_Registrar";
-            btn_Registrar.Size = new Size(88, 30);
-            btn_Registrar.TabIndex = 10;
-            btn_Registrar.Text = "Registrar";
-            btn_Registrar.UseVisualStyleBackColor = false;
-            btn_Registrar.Click += btn_Registrar_Click;
-            // 
-            // rdl_Contendor
-            // 
-            rdl_Contendor.AutoSize = true;
-            rdl_Contendor.Location = new Point(274, 86);
-            rdl_Contendor.Name = "rdl_Contendor";
-            rdl_Contendor.Size = new Size(88, 19);
-            rdl_Contendor.TabIndex = 20;
-            rdl_Contendor.TabStop = true;
-            rdl_Contendor.Text = "Contenedor";
-            rdl_Contendor.UseVisualStyleBackColor = true;
-            rdl_Contendor.Click += rdl_Contendor_Click;
-            // 
-            // rdl_Camion
-            // 
-            rdl_Camion.AutoSize = true;
-            rdl_Camion.Checked = true;
-            rdl_Camion.Location = new Point(274, 61);
-            rdl_Camion.Name = "rdl_Camion";
-            rdl_Camion.Size = new Size(67, 19);
-            rdl_Camion.TabIndex = 19;
-            rdl_Camion.TabStop = true;
-            rdl_Camion.Text = "Camion";
-            rdl_Camion.UseVisualStyleBackColor = true;
-            rdl_Camion.Click += rdl_Contendor_Click;
-            // 
-            // btn_Cancelar
-            // 
-            btn_Cancelar.BackColor = Color.Silver;
-            btn_Cancelar.FlatAppearance.BorderSize = 0;
-            btn_Cancelar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_Cancelar.FlatStyle = FlatStyle.Flat;
-            btn_Cancelar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Cancelar.ForeColor = Color.Black;
-            btn_Cancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Cancelar.Location = new Point(239, 194);
-            btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(88, 30);
-            btn_Cancelar.TabIndex = 9;
-            btn_Cancelar.Text = "Cancelar";
-            btn_Cancelar.UseVisualStyleBackColor = false;
-            // 
-            // lbl_MaterialContenedor
-            // 
-            lbl_MaterialContenedor.Anchor = AnchorStyles.Top;
-            lbl_MaterialContenedor.AutoSize = true;
-            lbl_MaterialContenedor.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_MaterialContenedor.Location = new Point(9, 74);
-            lbl_MaterialContenedor.Name = "lbl_MaterialContenedor";
-            lbl_MaterialContenedor.Size = new Size(139, 15);
-            lbl_MaterialContenedor.TabIndex = 18;
-            lbl_MaterialContenedor.Text = "Seleccione el material";
-            lbl_MaterialContenedor.Visible = false;
-            // 
-            // cbox_Material
-            // 
-            cbox_Material.FormattingEnabled = true;
-            cbox_Material.Location = new Point(6, 92);
-            cbox_Material.Name = "cbox_Material";
-            cbox_Material.Size = new Size(201, 23);
-            cbox_Material.TabIndex = 16;
-            cbox_Material.Visible = false;
-            // 
-            // lbl_ModeloCamion
-            // 
-            lbl_ModeloCamion.Anchor = AnchorStyles.Top;
-            lbl_ModeloCamion.AutoSize = true;
-            lbl_ModeloCamion.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_ModeloCamion.Location = new Point(11, 74);
-            lbl_ModeloCamion.Name = "lbl_ModeloCamion";
-            lbl_ModeloCamion.Size = new Size(133, 15);
-            lbl_ModeloCamion.TabIndex = 15;
-            lbl_ModeloCamion.Text = "Seleccione El modelo";
-            // 
-            // cbox_ModeloVolquete
-            // 
-            cbox_ModeloVolquete.FormattingEnabled = true;
-            cbox_ModeloVolquete.Location = new Point(6, 92);
-            cbox_ModeloVolquete.Name = "cbox_ModeloVolquete";
-            cbox_ModeloVolquete.Size = new Size(201, 23);
-            cbox_ModeloVolquete.TabIndex = 14;
-            // 
-            // lbl_PrecioDelProducto
-            // 
-            lbl_PrecioDelProducto.BackColor = Color.DarkGray;
-            lbl_PrecioDelProducto.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_PrecioDelProducto.Location = new Point(464, 61);
-            lbl_PrecioDelProducto.Name = "lbl_PrecioDelProducto";
-            lbl_PrecioDelProducto.Size = new Size(135, 44);
-            lbl_PrecioDelProducto.TabIndex = 13;
-            lbl_PrecioDelProducto.Text = "lbl_Precio";
-            lbl_PrecioDelProducto.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lbl_precio
-            // 
-            lbl_precio.Anchor = AnchorStyles.Top;
-            lbl_precio.AutoSize = true;
-            lbl_precio.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_precio.Location = new Point(469, 37);
-            lbl_precio.Name = "lbl_precio";
-            lbl_precio.Size = new Size(135, 15);
-            lbl_precio.TabIndex = 12;
-            lbl_precio.Text = "Precio del producto : ";
-            // 
-            // lbl_DiasDeArriendo
-            // 
-            lbl_DiasDeArriendo.Anchor = AnchorStyles.Top;
-            lbl_DiasDeArriendo.AutoSize = true;
-            lbl_DiasDeArriendo.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_DiasDeArriendo.Location = new Point(6, 176);
-            lbl_DiasDeArriendo.Name = "lbl_DiasDeArriendo";
-            lbl_DiasDeArriendo.Size = new Size(107, 15);
-            lbl_DiasDeArriendo.TabIndex = 11;
-            lbl_DiasDeArriendo.Text = "Dias de arriendo";
-            // 
-            // numUD_Cantidad
-            // 
-            numUD_Cantidad.Location = new Point(6, 194);
-            numUD_Cantidad.Name = "numUD_Cantidad";
-            numUD_Cantidad.Size = new Size(102, 23);
-            numUD_Cantidad.TabIndex = 10;
+            cmBox_TiposVolquetes.FormattingEnabled = true;
+            cmBox_TiposVolquetes.Location = new Point(65, 56);
+            cmBox_TiposVolquetes.Name = "cmBox_TiposVolquetes";
+            cmBox_TiposVolquetes.Size = new Size(121, 23);
+            cmBox_TiposVolquetes.TabIndex = 36;
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
-            label2.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(11, 127);
+            label2.Location = new Point(276, 26);
             label2.Name = "label2";
-            label2.Size = new Size(147, 15);
-            label2.TabIndex = 9;
-            label2.Text = "Seleccione tipo de pago";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 37;
+            label2.Text = "Cantidad";
             // 
-            // label1
+            // numUD_CantidadVolquetes
             // 
-            label1.Anchor = AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(11, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 15);
-            label1.TabIndex = 8;
-            label1.Text = "Seleccione la Marca";
+            numUD_CantidadVolquetes.Location = new Point(248, 56);
+            numUD_CantidadVolquetes.Name = "numUD_CantidadVolquetes";
+            numUD_CantidadVolquetes.Size = new Size(120, 23);
+            numUD_CantidadVolquetes.TabIndex = 38;
             // 
-            // cbox_TipoDePago
+            // numUD_CantidadDias
             // 
-            cbox_TipoDePago.FormattingEnabled = true;
-            cbox_TipoDePago.Location = new Point(6, 145);
-            cbox_TipoDePago.Name = "cbox_TipoDePago";
-            cbox_TipoDePago.Size = new Size(201, 23);
-            cbox_TipoDePago.TabIndex = 6;
+            numUD_CantidadDias.Location = new Point(435, 56);
+            numUD_CantidadDias.Name = "numUD_CantidadDias";
+            numUD_CantidadDias.Size = new Size(120, 23);
+            numUD_CantidadDias.TabIndex = 39;
             // 
-            // btn_Historial
+            // label3
             // 
-            btn_Historial.BackColor = Color.Silver;
-            btn_Historial.FlatAppearance.BorderSize = 0;
-            btn_Historial.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_Historial.FlatStyle = FlatStyle.Flat;
-            btn_Historial.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Historial.ForeColor = Color.Black;
-            btn_Historial.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Historial.Location = new Point(580, 339);
-            btn_Historial.Name = "btn_Historial";
-            btn_Historial.Size = new Size(88, 30);
-            btn_Historial.TabIndex = 11;
-            btn_Historial.Text = "Historial ";
-            btn_Historial.UseVisualStyleBackColor = false;
-            btn_Historial.Click += btn_Historial_Click;
+            label3.AutoSize = true;
+            label3.Location = new Point(449, 26);
+            label3.Name = "label3";
+            label3.Size = new Size(80, 15);
+            label3.TabIndex = 40;
+            label3.Text = "Cantidad Dias";
             // 
-            // panel_RegistrosCompras
+            // gpb_SolicitarVolquete
             // 
-            panel_RegistrosCompras.Controls.Add(btn_Imprimir);
-            panel_RegistrosCompras.Controls.Add(btn_Volver);
-            panel_RegistrosCompras.Controls.Add(dtg_HistorialCompras);
-            panel_RegistrosCompras.Dock = DockStyle.Fill;
-            panel_RegistrosCompras.Location = new Point(0, 37);
-            panel_RegistrosCompras.Name = "panel_RegistrosCompras";
-            panel_RegistrosCompras.Size = new Size(680, 344);
-            panel_RegistrosCompras.TabIndex = 21;
-            panel_RegistrosCompras.Visible = false;
+            gpb_SolicitarVolquete.Controls.Add(numUD_CantidadDias);
+            gpb_SolicitarVolquete.Controls.Add(label3);
+            gpb_SolicitarVolquete.Controls.Add(label1);
+            gpb_SolicitarVolquete.Controls.Add(cmBox_TiposVolquetes);
+            gpb_SolicitarVolquete.Controls.Add(numUD_CantidadVolquetes);
+            gpb_SolicitarVolquete.Controls.Add(label2);
+            gpb_SolicitarVolquete.Location = new Point(12, 43);
+            gpb_SolicitarVolquete.Name = "gpb_SolicitarVolquete";
+            gpb_SolicitarVolquete.Size = new Size(656, 100);
+            gpb_SolicitarVolquete.TabIndex = 41;
+            gpb_SolicitarVolquete.TabStop = false;
             // 
-            // btn_Volver
+            // txt_Direccion
             // 
-            btn_Volver.Location = new Point(21, 302);
-            btn_Volver.Name = "btn_Volver";
-            btn_Volver.Size = new Size(75, 23);
-            btn_Volver.TabIndex = 1;
-            btn_Volver.Text = "Volver";
-            btn_Volver.UseVisualStyleBackColor = true;
-            btn_Volver.Click += btn_Volver_Click;
+            txt_Direccion.Location = new Point(432, 177);
+            txt_Direccion.Name = "txt_Direccion";
+            txt_Direccion.PlaceholderText = "Direccion";
+            txt_Direccion.Size = new Size(162, 23);
+            txt_Direccion.TabIndex = 44;
             // 
-            // dtg_HistorialCompras
+            // txt_FechaDeEntrega
             // 
-            dtg_HistorialCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_HistorialCompras.Location = new Point(38, 28);
-            dtg_HistorialCompras.Name = "dtg_HistorialCompras";
-            dtg_HistorialCompras.RowTemplate.Height = 25;
-            dtg_HistorialCompras.Size = new Size(592, 249);
-            dtg_HistorialCompras.TabIndex = 0;
+            txt_FechaDeEntrega.Location = new Point(54, 177);
+            txt_FechaDeEntrega.Name = "txt_FechaDeEntrega";
+            txt_FechaDeEntrega.PlaceholderText = " DD/MM/AAAA";
+            txt_FechaDeEntrega.ReadOnly = true;
+            txt_FechaDeEntrega.Size = new Size(121, 23);
+            txt_FechaDeEntrega.TabIndex = 42;
             // 
-            // btn_Imprimir
+            // cmBox_HoraDeEntrega
             // 
-            btn_Imprimir.Location = new Point(555, 302);
-            btn_Imprimir.Name = "btn_Imprimir";
-            btn_Imprimir.Size = new Size(75, 23);
-            btn_Imprimir.TabIndex = 2;
-            btn_Imprimir.Text = "Imprimir";
-            btn_Imprimir.UseVisualStyleBackColor = true;
-            btn_Imprimir.Click += btn_Imprimir_Click;
+            cmBox_HoraDeEntrega.FormattingEnabled = true;
+            cmBox_HoraDeEntrega.Location = new Point(239, 177);
+            cmBox_HoraDeEntrega.Name = "cmBox_HoraDeEntrega";
+            cmBox_HoraDeEntrega.Size = new Size(162, 23);
+            cmBox_HoraDeEntrega.TabIndex = 45;
+            // 
+            // pic_Calendario
+            // 
+            pic_Calendario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pic_Calendario.BackgroundImage = Vista.Properties.Resources.Volvo;
+            pic_Calendario.BackgroundImageLayout = ImageLayout.Zoom;
+            pic_Calendario.Cursor = Cursors.Hand;
+            pic_Calendario.Location = new Point(181, 175);
+            pic_Calendario.Name = "pic_Calendario";
+            pic_Calendario.Size = new Size(25, 25);
+            pic_Calendario.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_Calendario.TabIndex = 46;
+            pic_Calendario.TabStop = false;
+            // 
+            // lbl_TituloCalendario
+            // 
+            lbl_TituloCalendario.AutoSize = true;
+            lbl_TituloCalendario.Location = new Point(68, 159);
+            lbl_TituloCalendario.Name = "lbl_TituloCalendario";
+            lbl_TituloCalendario.Size = new Size(97, 15);
+            lbl_TituloCalendario.TabIndex = 47;
+            lbl_TituloCalendario.Text = "Fecha de entrega";
+            // 
+            // lbl_TituloHoraEntrega
+            // 
+            lbl_TituloHoraEntrega.AutoSize = true;
+            lbl_TituloHoraEntrega.Location = new Point(255, 159);
+            lbl_TituloHoraEntrega.Name = "lbl_TituloHoraEntrega";
+            lbl_TituloHoraEntrega.Size = new Size(125, 15);
+            lbl_TituloHoraEntrega.TabIndex = 48;
+            lbl_TituloHoraEntrega.Text = "Hora de entrega aprox";
+            // 
+            // lbl_TituloDireccionEntrega
+            // 
+            lbl_TituloDireccionEntrega.AutoSize = true;
+            lbl_TituloDireccionEntrega.Location = new Point(442, 159);
+            lbl_TituloDireccionEntrega.Name = "lbl_TituloDireccionEntrega";
+            lbl_TituloDireccionEntrega.Size = new Size(116, 15);
+            lbl_TituloDireccionEntrega.TabIndex = 49;
+            lbl_TituloDireccionEntrega.Text = "Direccion de entrega";
             // 
             // FormAlquilarVolquete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gray;
+            BackColor = Color.DodgerBlue;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(680, 381);
-            Controls.Add(panel_RegistrosCompras);
-            Controls.Add(btn_Historial);
-            Controls.Add(grpBox_Comboboxs);
+            Controls.Add(lbl_TituloDireccionEntrega);
+            Controls.Add(lbl_TituloHoraEntrega);
+            Controls.Add(lbl_TituloCalendario);
+            Controls.Add(pic_Calendario);
+            Controls.Add(cmBox_HoraDeEntrega);
+            Controls.Add(txt_Direccion);
+            Controls.Add(txt_FechaDeEntrega);
+            Controls.Add(gpb_SolicitarVolquete);
             Controls.Add(panel_Titulo);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -390,40 +243,32 @@
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
             panel_Titulo.ResumeLayout(false);
             panel_Titulo.PerformLayout();
-            grpBox_Comboboxs.ResumeLayout(false);
-            grpBox_Comboboxs.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numUD_Cantidad).EndInit();
-            panel_RegistrosCompras.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtg_HistorialCompras).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numUD_CantidadVolquetes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numUD_CantidadDias).EndInit();
+            gpb_SolicitarVolquete.ResumeLayout(false);
+            gpb_SolicitarVolquete.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pic_Calendario).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Label lbl_Titulo;
         private PictureBox pic_CerrarFormulario;
         private Panel panel_Titulo;
-        private ComboBox cbox_ListaVolquetes;
-        private GroupBox grpBox_Comboboxs;
-        private ComboBox cbox_TipoDePago;
-        private Label lbl_Fecha;
         private Label label1;
+        private ComboBox cmBox_TiposVolquetes;
         private Label label2;
-        private NumericUpDown numUD_Cantidad;
-        private Label lbl_DiasDeArriendo;
-        private Label lbl_precio;
-        private Label lbl_PrecioDelProducto;
-        private Button btn_Cancelar;
-        private Button btn_Registrar;
-        private Label lbl_ModeloCamion;
-        private ComboBox cbox_ModeloVolquete;
-        private ComboBox cbox_Material;
-        private Label lbl_MaterialContenedor;
-        private RadioButton rdl_Contendor;
-        private RadioButton rdl_Camion;
-        private Button btn_Historial;
-        private Panel panel_RegistrosCompras;
-        private Button btn_Volver;
-        private DataGridView dtg_HistorialCompras;
-        private Button btn_Imprimir;
+        private NumericUpDown numUD_CantidadVolquetes;
+        private NumericUpDown numUD_CantidadDias;
+        private Label label3;
+        private GroupBox gpb_SolicitarVolquete;
+        private TextBox txt_Direccion;
+        private TextBox txt_FechaDeEntrega;
+        private ComboBox cmBox_HoraDeEntrega;
+        private PictureBox pic_Calendario;
+        private Label lbl_TituloCalendario;
+        private Label lbl_TituloHoraEntrega;
+        private Label lbl_TituloDireccionEntrega;
     }
 }

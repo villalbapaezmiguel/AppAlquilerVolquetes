@@ -11,19 +11,22 @@ namespace Entidades
         plasticoResistente,
         acero
     }
-    public enum EMarcas
-    {
-        Volvo,
-        Komastsu,
-        Hitachi,
-        Caterpillar
-    }
-
+   
     public enum ETipoDePago
     {
         Tarjeta,
         Efectivo
     }
+
+    public enum ETipoVolquete
+    {
+        Pequeña,
+        Mediana,
+        Estandar,
+        Grande,
+        SuperGrande
+    }
+
 
 
 
