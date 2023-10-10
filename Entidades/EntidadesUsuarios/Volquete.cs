@@ -5,60 +5,37 @@ namespace Entidades
 {
     public class Volquete
     {
-        private string marca;
-        private float altura;
-        private float largo;
-        private float ancho;
         private float precio;
-        private int diasDeArriendo;
+        private string tipoVolquete;
+        private float capacidad;
+        private string observacion;
 
         private Volquete()
         {
 
         }
-        public Volquete(string marca, float altura , float largo , float ancho, float precio , int diasDeArriendo):this()
+
+        public Volquete(string tipoVolquete , float precio , float capacidad , string observacion):this()
         {
-            this.marca = marca;
-            this.altura = altura;
-            this.largo = largo;
-            this.ancho = ancho;
+            this.tipoVolquete = tipoVolquete;
             this.precio = precio;
-            this.diasDeArriendo = diasDeArriendo;
+            this.capacidad = capacidad;
+            this.observacion = observacion;
         }
 
-        /// <summary>
-        /// La cotizacion depende de la cantidad dias alquilados
-        /// </summary>
-        public float CotizarVolquete
-        {
-            get
-            {
-                return (float)this.precio * this.diasDeArriendo;
-            }
-        }
-        public float MetrosCubicos 
-        {
-            get
-            {
-                return (float)this.largo * this.ancho * this.altura;
-            }
-        }
-        public string Marca { get => marca; set => marca = value; }
-        public float Altura { get => altura; set => altura = value; }
-        public float Largo { get => largo; set => largo = value; }
-        public float Ancho { get => ancho; set => ancho = value; }
         public float Precio { get => precio; set => precio = value; }
-        public int DiasDeArriendo { get => diasDeArriendo; set => diasDeArriendo = value; }
+        public string TipoVolquete { get => tipoVolquete; set => tipoVolquete = value; }
+        public float Capacidad { get => capacidad; set => capacidad = value; }
+        public string Observacion { get => observacion; set => observacion = value; }
 
         public override string ToString()
         {
             StringBuilder informacion = new StringBuilder();
-            informacion.AppendLine($"Marca : {Marca}");
-            informacion.AppendLine($"Altura : {Altura}");
-            informacion.AppendLine($"Largo : {Largo}");
-            informacion.AppendLine($"Ancho : {Ancho}");
+
+            informacion.AppendLine($"Tipo de Volquete : {TipoVolquete}");
             informacion.AppendLine($"Precio : {Precio}");
-            informacion.AppendLine($"Metros cubicos : {MetrosCubicos}");
+            informacion.AppendLine($"Capacidad : {Capacidad}");
+            informacion.AppendLine($"Observacion : {Observacion}");
 
             return informacion.ToString();
         }

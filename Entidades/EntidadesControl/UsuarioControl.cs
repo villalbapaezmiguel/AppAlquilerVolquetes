@@ -11,6 +11,7 @@ namespace Entidades.EntidadesControl
     {
         private static List<Usuario> listaUsuarios = new List<Usuario>();
         private static Usuario usuarioActual;
+        private static List<Compra> listaDeCompras = new List<Compra>();
         
         public static bool AgregarUsuario(Usuario nuevoUsurio)
         {
@@ -46,7 +47,6 @@ namespace Entidades.EntidadesControl
             }
         }
 
-
         public static List<Usuario> GetListaUsuarios
         {
             get
@@ -60,6 +60,31 @@ namespace Entidades.EntidadesControl
                 return nuevaLista;
             }
         }
+
+        public static List<Compra> GetListaComprasUsuario
+        {
+            get
+            {
+                List<Compra> nuevaLista = new();
+                foreach (Compra item in listaDeCompras)
+                {
+                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio);
+                    nuevaLista.Add(AuxUsuario);
+                }
+                return nuevaLista;
+            }
+        }
+
+        public static bool AgregarCompra(Compra compra)
+        {
+            if(compra is not null)
+            {
+                listaDeCompras.Add(compra);
+                return true;
+            }
+            return false;
+        }
+
 
 
         public static Usuario? BuscarUsuarioPorClaveYNombreUsuario(string nombreUsuario,  string clave)

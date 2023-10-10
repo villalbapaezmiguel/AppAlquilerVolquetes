@@ -18,15 +18,6 @@ namespace Entidades
         Efectivo
     }
 
-    public enum ETipoVolquete
-    {
-        Pequeña,
-        Mediana,
-        Estandar,
-        Grande,
-        SuperGrande
-    }
-
 
 
 
