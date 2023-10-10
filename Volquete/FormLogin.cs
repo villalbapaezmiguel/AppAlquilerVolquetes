@@ -19,7 +19,7 @@ namespace Formulario
         public FormLogin()
         {
             InitializeComponent();
-            ControlApp.HarcodeoUsuarios();
+            ControlApp.HarcodeoUsuariosYVolquetes();
             this.listaUsuarios = UsuarioControl.GetListaUsuarios;
         }
 

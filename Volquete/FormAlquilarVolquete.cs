@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,11 @@ namespace Formulario
     {
         List<Volquete>? listaVolquetes = null;
         Usuario auxUsuario = null;
-
+        private float precioActual = 0;
         public FormAlquilarVolquete()
         {
             InitializeComponent();
+
         }
         public FormAlquilarVolquete(List<Volquete> volquetes, Usuario auxUsuario) : this()
         {
@@ -35,125 +37,116 @@ namespace Formulario
         private void FormAlquilarVolquete_Load(object sender, EventArgs e)
         {
             //lbl_Fecha.Text += DateTime.Today.Date.ToString("d");
-            //lbl_PrecioDelProducto.Text = (0).ToString("C");
-            CargarMarcaDeVolquetesCbox(ControlApp.listaVolquetes);
-            CargarMaterialesCbox();
-            CargarMedioDePago();
-            CargarModelosVolquetesCamion();
+            this.lbl_PrecioDelProducto.Text = (0).ToString("C");
+
+            //
+            CargarCmBoxTiposDeVolquetes();
+            CargarCmBoxHorariosDeEntrega();
+
+
         }
 
-
-        private void CargarMedioDePago()
+        private void CargarCmBoxTiposDeVolquetes()
         {
-            /*
-            this.cbox_TipoDePago.Items.Add("Tarjeta");
-            this.cbox_TipoDePago.Items.Add("Efectivo");*/
+            foreach (Volquete item in VolqueteControl.GetListaVolquetes)
+            {
+                this.cmBox_TiposVolquetes.Items.Add(item.TipoVolquete);
+            }
         }
 
-        private void CargarMaterialesCbox()
+        private void CargarCmBoxHorariosDeEntrega()
         {
-            /*
-            this.cbox_Material.Items.Add(EMaterial.plasticoResistente.ToString());
-            this.cbox_Material.Items.Add(EMaterial.acero.ToString());*/
-        }
-
-        private void CargarMarcaDeVolquetesCbox(List<Volquete> listaVolquetes)
-        {
-            /*
-            foreach (VolqueteCamion item in listaVolquetes)
+            foreach (string horario in VolqueteControl.GetHorarios)
             {
-                cbox_ListaVolquetes.Items.Add(item.Marca.ToString());
-            }*/
-
-        }
-        private void CargarModelosVolquetesCamion()
-        {
-            /*
-            foreach (VolqueteCamion item in ControlApp.listaVolquetes)
-            {
-                this.cbox_ModeloVolquete.Items.Add(item.Modelo.ToString());
-            }*/
-
+                this.cmBox_HoraDeEntrega.Items.Add(horario);
+            }
         }
 
 
-
-        private void btn_Registrar_Click(object sender, EventArgs e)
-        {
-            /*
-            string marca = "ninguna";
-            string material = "x";
-            string modelo = "x";
-            int diasDeArrienda = 0;
-            string tipoDePago = "ninguna";
-            float precioTotal = float.Parse(lbl_PrecioDelProducto.Text);
-
-
-            if (cbox_ListaVolquetes.SelectedIndex != -1)
-            {
-                marca = this.cbox_ListaVolquetes.SelectedIndex.ToString();
-            }
-            else
-            {
-                this.cbox_ListaVolquetes.Focus();
-                MessageBox.Show("Le falto seleccionar una marca de volquete");
-            }
-
-            if (rdl_Contendor.Checked == true && this.cbox_Material.Visible == true)
-            {
-                if (cbox_Material.SelectedIndex != -1)
-                {
-                    material = this.cbox_Material.Text;
-                }
-                else
-                {
-                    MessageBox.Show("Le falto seleccionar El material del volquete");
-                }
-            }
-
-            if (rdl_Camion.Checked == true && this.cbox_ModeloVolquete.Visible == true)
-            {
-                if (this.cbox_ModeloVolquete.SelectedIndex != -1)
-                {
-                    modelo = this.cbox_ModeloVolquete.Text;
-                }
-                else
-                {
-                    MessageBox.Show("Le falto seleccionar El Modelo del volquete");
-                }
-            }
-
-            if (this.numUD_Cantidad.Value >= 5)
-            {
-                diasDeArrienda = (int)this.numUD_Cantidad.Value;
-            }
-            else
-            {
-                MessageBox.Show("Son 5 dias como minimo");
-            }
-
-            if (this.cbox_TipoDePago.SelectedIndex != -1)
-            {
-                tipoDePago = this.cbox_TipoDePago.Text;
-            }
-            else
-            {
-                this.cbox_TipoDePago.Focus();
-                MessageBox.Show("Seleccione un medio de pago");
-            }
-            AlquilerVolquete alquilerVolquete = new AlquilerVolquete(marca, material, modelo, diasDeArrienda, ETipoDePago.Tarjeta, precioTotal);
-            this.auxUsuario.ListaAlquilados.Add(alquilerVolquete);
-            Refrezcar();
-            */
-        }
 
         private void Refrezcar()
         {
-            /*
+
             BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = this.auxUsuario.ListaAlquilados;
-            this.dtg_HistorialCompras.DataSource = bindingSource;*/
+            bindingSource.DataSource = UsuarioControl.GetListaComprasUsuario;
+            this.dtg_ListaDeVolquetes.DataSource = bindingSource;
         }
 
+        private void btn_AgregarALaLista_Click(object sender, EventArgs e)
+        {
+            string? horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
+            int cantidadDias = (int)numUD_CantidadDias.Value;
+            int cantidadVolquetes = (int)numUD_CantidadVolquetes.Value;
+            string direccion = txt_Direccion.Text;
+            string? tipoVolquete = this.cmBox_TiposVolquetes.SelectedItem.ToString();
+            float precioActual = (float)this.precioActual;
+
+            //validar horaDeEntrega , tipoVolquete
+
+            Compra nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, new DateTime(10, 12, 2), horaDeEntrega, direccion, precioActual);
+            if (CompraControl.AgregarCompra(ref nuevaCompra))
+            {
+                bool compraExitosa = UsuarioControl.AgregarCompra(nuevaCompra);
+                if(compraExitosa) 
+                {
+                    MessageBox.Show("La compra fue un exitooo");
+                    
+                    this.cmBox_TiposVolquetes.SelectedIndex = -1;
+                    this.cmBox_HoraDeEntrega.SelectedIndex = -1;
+                    this.numUD_CantidadDias.Value = 1;
+                    this.numUD_CantidadVolquetes.Value = 1;
+                    this.txt_Direccion.Text = string.Empty;
+                    this.dtg_ListaDeVolquetes.DataSource = CompraControl.GetListaCompras;
+                    Refrezcar();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrio un error en la compra");
+                }
+            }
+            else
+            {
+                MessageBox.Show("ocurio un error");
+            }
+
+
+        }
+
+        private void btn_HacerCompra_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void pic_Calendario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void cmBox_TiposVolquetes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Volquete? auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(this.cmBox_TiposVolquetes.Text);
+            if (auxVolquete is not null)
+            {
+                this.lbl_PrecioDelProducto.Text = $"{(float)auxVolquete.Precio}";
+                this.precioActual = (float)auxVolquete.Precio;
+            }
+            //aca hay un error
+        }
+
+
+        private float ActulizarPrecioActual(float precioActual, int cantidadDias)
+        {
+            return (float)precioActual * cantidadDias;
+        }
+
+        private void numUD_CantidadDias_ValueChanged(object sender, EventArgs e)
+        {
+            if ((int)numUD_CantidadDias.Value > 1)
+            {
+                this.lbl_PrecioDelProducto.Text = $"{ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadDias.Value)}";
+            }
+        }
     }
 }
