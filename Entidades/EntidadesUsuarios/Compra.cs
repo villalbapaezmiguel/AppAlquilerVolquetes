@@ -17,12 +17,12 @@ namespace Entidades.EntidadesUsuarios
         private string horaDeEntrega;
         private string direccion;
         private float precio;
-        private  int idCompra = 0;
+        private int idCompra ;
         public Compra()
         {
 
         }
-        public Compra(string volquete, string nombreDeUsuario, int cantidadVolquetes, int cantidadDias, DateTime fechaDeEntraga, string horaDeEntrega, string direccion, float precio) : this()
+        public Compra(string volquete, string nombreDeUsuario, int cantidadVolquetes, int cantidadDias, DateTime fechaDeEntraga, string horaDeEntrega, string direccion, float precio, int id) : this()
         {
             this.tipoVolquete = volquete;
             this.nombreDeUsuario = nombreDeUsuario;
@@ -32,6 +32,7 @@ namespace Entidades.EntidadesUsuarios
             this.horaDeEntrega = horaDeEntrega;
             this.direccion = direccion;
             this.precio = precio;
+            this.idCompra = id;
         }
 
         public string NombreDeUsuario { get => nombreDeUsuario; set => nombreDeUsuario = value; }
@@ -42,7 +43,7 @@ namespace Entidades.EntidadesUsuarios
         public string Direccion { get => direccion; set => direccion = value; }
         public float Precio { get => precio; set => precio = value; }
         public string TipoVolquete { get => tipoVolquete; set => tipoVolquete = value; }
-        public int IdCompra { get => idCompra; set => idCompra = value; }
+        public int IdCompra { get => idCompra; private set => idCompra = value; }
 
 
 

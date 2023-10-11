@@ -11,20 +11,13 @@ namespace Entidades.EntidadesControl
     public sealed class CompraControl
     {
         private static List<Compra> listaCompras = new List<Compra>();
-        private static int id = 0;
-
-        private static int NuevoId()
-        {
-            return id ++;
-        }
         public static bool AgregarCompra(ref Compra compra)
         {
             if (compra is not null)
             {
-                if (!ExisteCompra(compra.IdCompra))//problemas con los id , hay que solucionarlo
+                if (!ExisteCompra(compra.IdCompra))
                 {
                     listaCompras.Add(compra);
-                    compra.IdCompra = NuevoId();
                     return true;
                 }
             }
@@ -33,8 +26,17 @@ namespace Entidades.EntidadesControl
 
         public static bool ExisteCompra(int idCompra)
         {
+            foreach (Compra item in listaCompras)
+            {
+                if(item.IdCompra == idCompra)
+                {
+                    return true;
+                }
+            }
+            return false;
+            /*
             bool existe = listaCompras.Any(compra => compra.IdCompra == idCompra);
-            return existe;
+            return existe;*/
         }
         public static List<Compra> GetListaCompras
         {
@@ -44,7 +46,7 @@ namespace Entidades.EntidadesControl
               
                 foreach (Compra item in listaCompras)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete , item.NombreDeUsuario,item.CantidadVolquetes,item.CantidadDias,item.FechaDeEntraga,item.HoraDeEntrega,item.Direccion,item.Precio);
+                    Compra AuxUsuario = new(item.TipoVolquete , item.NombreDeUsuario,item.CantidadVolquetes,item.CantidadDias,item.FechaDeEntraga,item.HoraDeEntrega,item.Direccion,item.Precio, item.IdCompra);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;

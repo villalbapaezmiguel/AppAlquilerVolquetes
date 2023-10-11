@@ -13,9 +13,13 @@ namespace Entidades
     {
         public static List<Usuario> listaUsuarios = new List<Usuario>();
         public static List<Volquete> listaVolquetes = new List<Volquete>();
-        
+        private static int id = 0;
 
 
+        public static int NuevoId()
+        {
+            return id++;
+        }
         public static void HarcodeoUsuariosYVolquetes()
         {
             UsuarioControl.AgregarUsuario(new Usuario("a", "a", 1234, "Miguel", "Villalba", 23451));

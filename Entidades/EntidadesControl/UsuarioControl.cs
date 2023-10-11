@@ -28,6 +28,9 @@ namespace Entidades.EntidadesControl
 
         public static bool ExisteUsuario( string nombreUsuario)
         {
+            
+
+
             bool exite = listaUsuarios.Any(usuario => usuario.NombreUsuario == nombreUsuario);
             return exite;
         }
@@ -68,14 +71,14 @@ namespace Entidades.EntidadesControl
                 List<Compra> nuevaLista = new();
                 foreach (Compra item in listaDeCompras)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio);
+                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
             }
         }
 
-        public static bool AgregarCompra(Compra compra)
+        public static bool AgregarCompra(ref Compra compra)
         {
             if(compra is not null)
             {
