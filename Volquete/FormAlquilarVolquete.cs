@@ -18,6 +18,7 @@ namespace Formulario
         Usuario auxUsuario = null;
         private float precioActual = 0;
         private DateTime fecha;
+        private int posicionDTG;
         public FormAlquilarVolquete()
         {
             InitializeComponent();
@@ -28,13 +29,6 @@ namespace Formulario
             this.listaVolquetes = volquetes;
             this.auxUsuario = auxUsuario;
         }
-
-        private void pic_CerrarFormulario_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            DialogResult = DialogResult.OK;
-        }
-
         private void FormAlquilarVolquete_Load(object sender, EventArgs e)
         {
             //lbl_Fecha.Text += DateTime.Today.Date.ToString("d");
@@ -43,9 +37,17 @@ namespace Formulario
             //
             CargarCmBoxTiposDeVolquetes();
             CargarCmBoxHorariosDeEntrega();
+            this.btn_Eliminar.Enabled = false;
 
 
         }
+
+        private void pic_CerrarFormulario_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            DialogResult = DialogResult.OK;
+        }
+
 
         private void CargarCmBoxTiposDeVolquetes()
         {
@@ -64,32 +66,34 @@ namespace Formulario
         }
 
 
-
-        private void Refrezcar()
+        private void RestablecerFormularioAlquiler()
         {
+            this.cmBox_TiposVolquetes.SelectedIndex = -1;
+            this.cmBox_HoraDeEntrega.SelectedIndex = -1;
+            this.numUD_CantidadDias.Value = 1;
+            this.numUD_CantidadVolquetes.Value = 1;
+            this.txt_Direccion.Text = string.Empty;
+            this.lbl_PrecioDelProducto.Text = (0).ToString("C");
+            this.txt_FechaDeEntrega.Text = "Año/Mes/Dia";
+            this.btn_Eliminar.Enabled = true;
 
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = UsuarioControl.GetListaComprasUsuario;
-            this.dtg_ListaDeVolquetes.DataSource = bindingSource;
         }
 
-        private bool ValidarInputs(string? horaDeEntrega ,string direccion, string? tipoVolquete )
+        private bool CargarDTGV(Compra nuevaCompra)
         {
-            if( horaDeEntrega is not null  && direccion is not null && tipoVolquete is not null ) 
+            if (nuevaCompra is not null)
             {
-                if(horaDeEntrega == string.Empty && direccion == string.Empty && tipoVolquete == string.Empty)
-                {
-                    MessageBox.Show("Error , varios campos sin vacios");
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Error , Varios campos nulos");
+                int posicionParaAgregar = this.dtg_ListaDeVolquetes.Rows.Add();
+
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[0].Value = nuevaCompra.TipoVolquete.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.Precio.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[2].Value = nuevaCompra.CantidadDias.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[3].Value = nuevaCompra.CantidadVolquetes.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[4].Value = nuevaCompra.FechaDeEntraga.ToString("d");
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[5].Value = nuevaCompra.HoraDeEntrega.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[6].Value = nuevaCompra.Direccion.ToString();
+
+                return true;
             }
             return false;
         }
@@ -97,56 +101,48 @@ namespace Formulario
 
         private void btn_AgregarALaLista_Click(object sender, EventArgs e)
         {
-            string? horaDeEntrega = "Vacio";
-            string direccion = "Vacio";
-            string? tipoVolquete = "Vacio";
-            int cantidadDias = (int)numUD_CantidadDias.Value;
-            int cantidadVolquetes = (int)numUD_CantidadVolquetes.Value;
-            float precioActual = ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value);
-
-            try//validar los inputs
-
+            try
             {
-                
-                ValidarInputs(this.cmBox_HoraDeEntrega.SelectedItem.ToString(), txt_Direccion.Text,
-                this.cmBox_TiposVolquetes.SelectedItem.ToString());
+
+                Compra? nuevaCompra = null;
+                string? horaDeEntrega;
+                string direccion;
+                string? tipoVolquete;
+                int cantidadDias = (int)numUD_CantidadDias.Value;
+                int cantidadVolquetes = (int)numUD_CantidadVolquetes.Value;
+                float precioActual = ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value);
 
 
-                horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
-                direccion = txt_Direccion.Text;
-                tipoVolquete = this.cmBox_TiposVolquetes.SelectedItem.ToString();
-
-                Compra nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precioActual, ControlApp.NuevoId());
-                if (CompraControl.AgregarCompra(ref nuevaCompra))
+                if (this.cmBox_HoraDeEntrega.SelectedIndex != -1 && txt_Direccion.Text != string.Empty && this.cmBox_TiposVolquetes.SelectedIndex != -1)
                 {
-                    bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
-                    if (compraExitosa)
+                    horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
+                    direccion = txt_Direccion.Text;
+                    tipoVolquete = this.cmBox_TiposVolquetes.SelectedItem.ToString();
+
+                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precioActual, ControlApp.NuevoId());
+                    if (CompraControl.AgregarCompra(ref nuevaCompra))
                     {
-                        MessageBox.Show("La compra fue un exitooo");
+                        bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
+                        if (compraExitosa && CargarDTGV(nuevaCompra))
+                        {
+                            MessageBox.Show("La compra fue un exitooo");
+                            RestablecerFormularioAlquiler();
 
-                        this.cmBox_TiposVolquetes.SelectedIndex = -1;
-                        this.cmBox_HoraDeEntrega.SelectedIndex = -1;
-                        this.numUD_CantidadDias.Value = 1;
-                        this.numUD_CantidadVolquetes.Value = 1;
-                        this.txt_Direccion.Text = string.Empty;
-                        this.lbl_PrecioDelProducto.Text = (0).ToString("C");
-                        this.txt_FechaDeEntrega.PlaceholderText = "Año/Mes/Dia";
-                        this.dtg_ListaDeVolquetes.DataSource = CompraControl.GetListaCompras;
-
-                        Refrezcar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error, no se pudo agregar la compra al usuario");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrio un error en la compra");
+                        MessageBox.Show("Error, no se pudo agregar la compra");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("ocurio un error");
+                    MessageBox.Show("ocurio un error, hay campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -158,7 +154,7 @@ namespace Formulario
 
         private void btn_HacerCompra_Click(object sender, EventArgs e)
         {
-
+            //generar un ticket , json y XML
 
         }
 
@@ -193,6 +189,8 @@ namespace Formulario
             this.pic_FechaDeEntrega.Visible = false;
             this.lbl_Titulo.Text = "Seleccione una fecha";
             this.pic_CerrarFormulario.Visible = false;
+            this.btn_Eliminar.Visible = false;
+            this.dtg_ListaDeVolquetes.Visible = false;
         }
 
         private void btn_FechaSeleccionada_Click_1(object sender, EventArgs e)
@@ -206,7 +204,62 @@ namespace Formulario
             this.pic_CerrarFormulario.Visible = true;
             this.pic_FechaDeEntrega.Visible = true;
             this.txt_FechaDeEntrega.Text = fecha.ToString("d");
+            this.btn_Eliminar.Visible = true;
+            this.dtg_ListaDeVolquetes.Visible = true;
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error : " + ex);
+            }
+        }
+
+
+        private void dtg_ListaDeVolquetes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.posicionDTG = e.RowIndex;
+
+                if (this.posicionDTG != -1)
+                {
+                    /*
+                     * TipoVolquete
+                        Precio
+                        .CantidadDias
+                        CantidadVolquetes
+                        FechaDeEntraga
+                        HoraDeEntrega
+                        Direccion
+                     */
+                    this.cmBox_TiposVolquetes.SelectedText = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[0].Value;
+                    this.lbl_PrecioDelProducto.Text = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
+
+
+
+
+
+                }
+
+
+            }
+            catch
+            {
+
+            }
+
+
 
         }
+
     }
 }

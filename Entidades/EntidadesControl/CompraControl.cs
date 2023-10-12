@@ -38,6 +38,23 @@ namespace Entidades.EntidadesControl
             bool existe = listaCompras.Any(compra => compra.IdCompra == idCompra);
             return existe;*/
         }
+
+        public static Compra? EncontrarCompraPorID(int idCompraPorID)
+        {
+            if (idCompraPorID != -1)
+            {
+                foreach (Compra item in GetListaCompras)
+                {
+                    if (item.IdCompra == idCompraPorID)
+                    {
+                        return item;
+                    }
+                }
+            }
+            return null;
+        }
+
+
         public static List<Compra> GetListaCompras
         {
             get

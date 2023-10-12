@@ -50,10 +50,18 @@
             btn_AgregarALaLista = new Button();
             btn_HacerCompra = new Button();
             dtg_ListaDeVolquetes = new DataGridView();
+            TipoProducto = new DataGridViewTextBoxColumn();
+            PrecioVolquete = new DataGridViewTextBoxColumn();
+            CantidadDias = new DataGridViewTextBoxColumn();
+            CantidadVolquete = new DataGridViewTextBoxColumn();
+            FechaDeEntraga = new DataGridViewTextBoxColumn();
+            HorarioDeEntrga = new DataGridViewTextBoxColumn();
+            DireccionUsuario = new DataGridViewTextBoxColumn();
             panel_Fecha = new Panel();
             btn_FechaSeleccionada = new Button();
             mth_Canlendario = new MonthCalendar();
             pic_FechaDeEntrega = new PictureBox();
+            btn_Eliminar = new Button();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
             panel_Titulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numUD_CantidadVolquetes).BeginInit();
@@ -197,7 +205,7 @@
             // 
             // txt_Direccion
             // 
-            txt_Direccion.Location = new Point(406, 166);
+            txt_Direccion.Location = new Point(400, 166);
             txt_Direccion.Name = "txt_Direccion";
             txt_Direccion.PlaceholderText = "Direccion";
             txt_Direccion.Size = new Size(162, 23);
@@ -257,11 +265,11 @@
             btn_AgregarALaLista.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_AgregarALaLista.ForeColor = Color.Black;
             btn_AgregarALaLista.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_AgregarALaLista.Location = new Point(77, 206);
+            btn_AgregarALaLista.Location = new Point(59, 205);
             btn_AgregarALaLista.Name = "btn_AgregarALaLista";
-            btn_AgregarALaLista.Size = new Size(154, 30);
+            btn_AgregarALaLista.Size = new Size(128, 30);
             btn_AgregarALaLista.TabIndex = 50;
-            btn_AgregarALaLista.Text = "Agregar a la Lista";
+            btn_AgregarALaLista.Text = "Agregar";
             btn_AgregarALaLista.UseVisualStyleBackColor = false;
             btn_AgregarALaLista.Click += btn_AgregarALaLista_Click;
             // 
@@ -275,7 +283,7 @@
             btn_HacerCompra.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_HacerCompra.ForeColor = Color.Black;
             btn_HacerCompra.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_HacerCompra.Location = new Point(414, 206);
+            btn_HacerCompra.Location = new Point(416, 205);
             btn_HacerCompra.Name = "btn_HacerCompra";
             btn_HacerCompra.Size = new Size(118, 30);
             btn_HacerCompra.TabIndex = 51;
@@ -285,14 +293,59 @@
             // 
             // dtg_ListaDeVolquetes
             // 
-            dtg_ListaDeVolquetes.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtg_ListaDeVolquetes.BackgroundColor = SystemColors.ActiveCaption;
             dtg_ListaDeVolquetes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_ListaDeVolquetes.Location = new Point(2, 241);
+            dtg_ListaDeVolquetes.Columns.AddRange(new DataGridViewColumn[] { TipoProducto, PrecioVolquete, CantidadDias, CantidadVolquete, FechaDeEntraga, HorarioDeEntrga, DireccionUsuario });
+            dtg_ListaDeVolquetes.Dock = DockStyle.Bottom;
+            dtg_ListaDeVolquetes.Location = new Point(0, 246);
             dtg_ListaDeVolquetes.Name = "dtg_ListaDeVolquetes";
+            dtg_ListaDeVolquetes.ReadOnly = true;
             dtg_ListaDeVolquetes.RowTemplate.Height = 25;
-            dtg_ListaDeVolquetes.Size = new Size(675, 135);
+            dtg_ListaDeVolquetes.Size = new Size(680, 135);
             dtg_ListaDeVolquetes.TabIndex = 52;
+            dtg_ListaDeVolquetes.CellClick += dtg_ListaDeVolquetes_CellClick;
+            // 
+            // TipoProducto
+            // 
+            TipoProducto.HeaderText = "Tipo";
+            TipoProducto.Name = "TipoProducto";
+            TipoProducto.ReadOnly = true;
+            // 
+            // PrecioVolquete
+            // 
+            PrecioVolquete.HeaderText = "Precio";
+            PrecioVolquete.Name = "PrecioVolquete";
+            PrecioVolquete.ReadOnly = true;
+            // 
+            // CantidadDias
+            // 
+            CantidadDias.HeaderText = "Dias";
+            CantidadDias.Name = "CantidadDias";
+            CantidadDias.ReadOnly = true;
+            // 
+            // CantidadVolquete
+            // 
+            CantidadVolquete.HeaderText = "Cantidad";
+            CantidadVolquete.Name = "CantidadVolquete";
+            CantidadVolquete.ReadOnly = true;
+            // 
+            // FechaDeEntraga
+            // 
+            FechaDeEntraga.HeaderText = "Entrega";
+            FechaDeEntraga.Name = "FechaDeEntraga";
+            FechaDeEntraga.ReadOnly = true;
+            // 
+            // HorarioDeEntrga
+            // 
+            HorarioDeEntrga.HeaderText = "Horario";
+            HorarioDeEntrga.Name = "HorarioDeEntrga";
+            HorarioDeEntrga.ReadOnly = true;
+            // 
+            // DireccionUsuario
+            // 
+            DireccionUsuario.HeaderText = "Direccion";
+            DireccionUsuario.Name = "DireccionUsuario";
+            DireccionUsuario.ReadOnly = true;
             // 
             // panel_Fecha
             // 
@@ -301,7 +354,7 @@
             panel_Fecha.Dock = DockStyle.Fill;
             panel_Fecha.Location = new Point(0, 37);
             panel_Fecha.Name = "panel_Fecha";
-            panel_Fecha.Size = new Size(680, 344);
+            panel_Fecha.Size = new Size(680, 209);
             panel_Fecha.TabIndex = 53;
             panel_Fecha.Visible = false;
             // 
@@ -346,6 +399,24 @@
             pic_FechaDeEntrega.TabStop = false;
             pic_FechaDeEntrega.Click += pic_FechaDeEntrega_Click;
             // 
+            // btn_Eliminar
+            // 
+            btn_Eliminar.BackColor = Color.RosyBrown;
+            btn_Eliminar.Cursor = Cursors.Hand;
+            btn_Eliminar.FlatAppearance.BorderSize = 0;
+            btn_Eliminar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btn_Eliminar.FlatStyle = FlatStyle.Flat;
+            btn_Eliminar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Eliminar.ForeColor = Color.Black;
+            btn_Eliminar.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Eliminar.Location = new Point(241, 205);
+            btn_Eliminar.Name = "btn_Eliminar";
+            btn_Eliminar.Size = new Size(128, 30);
+            btn_Eliminar.TabIndex = 56;
+            btn_Eliminar.Text = "Eliminar";
+            btn_Eliminar.UseVisualStyleBackColor = false;
+            btn_Eliminar.Click += btn_Eliminar_Click;
+            // 
             // FormAlquilarVolquete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -353,6 +424,7 @@
             BackColor = Color.DodgerBlue;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(680, 381);
+            Controls.Add(btn_Eliminar);
             Controls.Add(pic_FechaDeEntrega);
             Controls.Add(panel_Fecha);
             Controls.Add(dtg_ListaDeVolquetes);
@@ -412,5 +484,13 @@
         private Button btn_FechaSeleccionada;
         private MonthCalendar mth_Canlendario;
         private PictureBox pic_FechaDeEntrega;
+        private Button btn_Eliminar;
+        private DataGridViewTextBoxColumn TipoProducto;
+        private DataGridViewTextBoxColumn PrecioVolquete;
+        private DataGridViewTextBoxColumn CantidadDias;
+        private DataGridViewTextBoxColumn CantidadVolquete;
+        private DataGridViewTextBoxColumn FechaDeEntraga;
+        private DataGridViewTextBoxColumn HorarioDeEntrga;
+        private DataGridViewTextBoxColumn DireccionUsuario;
     }
 }
