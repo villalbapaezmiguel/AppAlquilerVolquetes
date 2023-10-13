@@ -32,9 +32,6 @@ namespace Formulario
 
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
-
-
-
             Usuario nuevo = new Usuario(txt_NombreUsuario.Text,
                 txt_Clave.Text,
                 double.Parse(txt_NumeroDeTelefono.Text),
@@ -47,7 +44,7 @@ namespace Formulario
                 if (UsuarioControl.AgregarUsuario(nuevo))
                 {
                     MessageBox.Show("Se agrego corrctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    UsuarioControl.SetUsuario = nuevo;
+                    //UsuarioControl.SetUsuario = nuevo;
                     this.Close();
                     FormLogin formLogin = new FormLogin();
                     formLogin.Show();

@@ -12,7 +12,7 @@ namespace Entidades.EntidadesControl
         private static List<Usuario> listaUsuarios = new List<Usuario>();
         private static Usuario usuarioActual;
         private static List<Compra> listaCompras = new List<Compra>();
-
+        
 
         public static bool ExisteCompra(int idCompra)
         {

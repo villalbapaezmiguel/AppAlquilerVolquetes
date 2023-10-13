@@ -32,6 +32,9 @@
             lbl_Titulo = new Label();
             pic_CerrarFormulario = new PictureBox();
             panel_Titulo = new Panel();
+            panel_Fecha = new Panel();
+            btn_FechaSeleccionada = new Button();
+            mth_Canlendario = new MonthCalendar();
             label1 = new Label();
             cmBox_TiposVolquetes = new ComboBox();
             label2 = new Label();
@@ -58,9 +61,6 @@
             FechaDeEntraga = new DataGridViewTextBoxColumn();
             HorarioDeEntrga = new DataGridViewTextBoxColumn();
             DireccionUsuario = new DataGridViewTextBoxColumn();
-            panel_Fecha = new Panel();
-            btn_FechaSeleccionada = new Button();
-            mth_Canlendario = new MonthCalendar();
             pic_FechaDeEntrega = new PictureBox();
             btn_Eliminar = new Button();
             btn_Modificar = new Button();
@@ -68,11 +68,11 @@
             lbl_IdCompra = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
             panel_Titulo.SuspendLayout();
+            panel_Fecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numUD_CantidadVolquetes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numUD_CantidadDias).BeginInit();
             gpb_SolicitarVolquete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_ListaDeVolquetes).BeginInit();
-            panel_Fecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_FechaDeEntrega).BeginInit();
             SuspendLayout();
             // 
@@ -113,8 +113,47 @@
             panel_Titulo.Size = new Size(680, 37);
             panel_Titulo.TabIndex = 4;
             // 
+            // panel_Fecha
+            // 
+            panel_Fecha.Controls.Add(btn_FechaSeleccionada);
+            panel_Fecha.Controls.Add(mth_Canlendario);
+            panel_Fecha.Dock = DockStyle.Fill;
+            panel_Fecha.Location = new Point(0, 37);
+            panel_Fecha.Name = "panel_Fecha";
+            panel_Fecha.Size = new Size(680, 209);
+            panel_Fecha.TabIndex = 53;
+            panel_Fecha.Visible = false;
+            // 
+            // btn_FechaSeleccionada
+            // 
+            btn_FechaSeleccionada.BackColor = SystemColors.ActiveCaption;
+            btn_FechaSeleccionada.Cursor = Cursors.Hand;
+            btn_FechaSeleccionada.FlatAppearance.BorderSize = 0;
+            btn_FechaSeleccionada.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btn_FechaSeleccionada.FlatStyle = FlatStyle.Flat;
+            btn_FechaSeleccionada.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_FechaSeleccionada.ForeColor = Color.Black;
+            btn_FechaSeleccionada.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_FechaSeleccionada.Location = new Point(262, 221);
+            btn_FechaSeleccionada.Name = "btn_FechaSeleccionada";
+            btn_FechaSeleccionada.Size = new Size(154, 30);
+            btn_FechaSeleccionada.TabIndex = 51;
+            btn_FechaSeleccionada.Text = "Fecha Seleccionada";
+            btn_FechaSeleccionada.UseVisualStyleBackColor = false;
+            btn_FechaSeleccionada.Click += btn_FechaSeleccionada_Click_1;
+            // 
+            // mth_Canlendario
+            // 
+            mth_Canlendario.Location = new Point(213, 47);
+            mth_Canlendario.MaxDate = new DateTime(2024, 12, 19, 0, 0, 0, 0);
+            mth_Canlendario.MaxSelectionCount = 1;
+            mth_Canlendario.MinDate = new DateTime(2023, 10, 10, 0, 0, 0, 0);
+            mth_Canlendario.Name = "mth_Canlendario";
+            mth_Canlendario.TabIndex = 0;
+            // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(18, 24);
             label1.Name = "label1";
@@ -134,6 +173,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(229, 24);
             label2.Name = "label2";
@@ -143,7 +183,8 @@
             // 
             // numUD_CantidadVolquetes
             // 
-            numUD_CantidadVolquetes.Location = new Point(201, 54);
+            numUD_CantidadVolquetes.Anchor = AnchorStyles.Top;
+            numUD_CantidadVolquetes.Location = new Point(193, 54);
             numUD_CantidadVolquetes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadVolquetes.Name = "numUD_CantidadVolquetes";
             numUD_CantidadVolquetes.Size = new Size(120, 23);
@@ -153,8 +194,9 @@
             // 
             // numUD_CantidadDias
             // 
+            numUD_CantidadDias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numUD_CantidadDias.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            numUD_CantidadDias.Location = new Point(388, 54);
+            numUD_CantidadDias.Location = new Point(373, 54);
             numUD_CantidadDias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadDias.Name = "numUD_CantidadDias";
             numUD_CantidadDias.Size = new Size(120, 23);
@@ -164,6 +206,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Location = new Point(402, 24);
             label3.Name = "label3";
@@ -173,6 +216,7 @@
             // 
             // gpb_SolicitarVolquete
             // 
+            gpb_SolicitarVolquete.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             gpb_SolicitarVolquete.Controls.Add(lbl_PrecioDelProducto);
             gpb_SolicitarVolquete.Controls.Add(lbl_TituloPrecio);
             gpb_SolicitarVolquete.Controls.Add(numUD_CantidadDias);
@@ -181,27 +225,27 @@
             gpb_SolicitarVolquete.Controls.Add(cmBox_TiposVolquetes);
             gpb_SolicitarVolquete.Controls.Add(numUD_CantidadVolquetes);
             gpb_SolicitarVolquete.Controls.Add(label2);
-            gpb_SolicitarVolquete.Location = new Point(12, 43);
+            gpb_SolicitarVolquete.Location = new Point(3, 37);
             gpb_SolicitarVolquete.Name = "gpb_SolicitarVolquete";
-            gpb_SolicitarVolquete.Size = new Size(656, 100);
+            gpb_SolicitarVolquete.Size = new Size(665, 100);
             gpb_SolicitarVolquete.TabIndex = 41;
             gpb_SolicitarVolquete.TabStop = false;
             // 
             // lbl_PrecioDelProducto
             // 
-            lbl_PrecioDelProducto.Anchor = AnchorStyles.Top;
+            lbl_PrecioDelProducto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_PrecioDelProducto.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_PrecioDelProducto.Location = new Point(547, 54);
+            lbl_PrecioDelProducto.Location = new Point(544, 54);
             lbl_PrecioDelProducto.Name = "lbl_PrecioDelProducto";
             lbl_PrecioDelProducto.Size = new Size(67, 22);
             lbl_PrecioDelProducto.TabIndex = 42;
             // 
             // lbl_TituloPrecio
             // 
-            lbl_TituloPrecio.Anchor = AnchorStyles.Top;
+            lbl_TituloPrecio.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_TituloPrecio.AutoSize = true;
             lbl_TituloPrecio.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_TituloPrecio.Location = new Point(547, 24);
+            lbl_TituloPrecio.Location = new Point(544, 24);
             lbl_TituloPrecio.Name = "lbl_TituloPrecio";
             lbl_TituloPrecio.Size = new Size(67, 22);
             lbl_TituloPrecio.TabIndex = 41;
@@ -209,6 +253,7 @@
             // 
             // txt_Direccion
             // 
+            txt_Direccion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txt_Direccion.Location = new Point(400, 166);
             txt_Direccion.Name = "txt_Direccion";
             txt_Direccion.PlaceholderText = "Direccion";
@@ -226,6 +271,7 @@
             // 
             // cmBox_HoraDeEntrega
             // 
+            cmBox_HoraDeEntrega.Anchor = AnchorStyles.Top;
             cmBox_HoraDeEntrega.FormattingEnabled = true;
             cmBox_HoraDeEntrega.Location = new Point(213, 166);
             cmBox_HoraDeEntrega.Name = "cmBox_HoraDeEntrega";
@@ -243,6 +289,7 @@
             // 
             // lbl_TituloHoraEntrega
             // 
+            lbl_TituloHoraEntrega.Anchor = AnchorStyles.Top;
             lbl_TituloHoraEntrega.AutoSize = true;
             lbl_TituloHoraEntrega.Location = new Point(229, 148);
             lbl_TituloHoraEntrega.Name = "lbl_TituloHoraEntrega";
@@ -252,6 +299,7 @@
             // 
             // lbl_TituloDireccionEntrega
             // 
+            lbl_TituloDireccionEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_TituloDireccionEntrega.AutoSize = true;
             lbl_TituloDireccionEntrega.Location = new Point(416, 148);
             lbl_TituloDireccionEntrega.Name = "lbl_TituloDireccionEntrega";
@@ -261,6 +309,7 @@
             // 
             // btn_AgregarALaLista
             // 
+            btn_AgregarALaLista.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btn_AgregarALaLista.BackColor = SystemColors.ActiveCaption;
             btn_AgregarALaLista.Cursor = Cursors.Hand;
             btn_AgregarALaLista.FlatAppearance.BorderSize = 0;
@@ -279,6 +328,7 @@
             // 
             // btn_HacerCompra
             // 
+            btn_HacerCompra.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btn_HacerCompra.BackColor = Color.LightGreen;
             btn_HacerCompra.Cursor = Cursors.Hand;
             btn_HacerCompra.FlatAppearance.BorderSize = 0;
@@ -357,47 +407,9 @@
             DireccionUsuario.Name = "DireccionUsuario";
             DireccionUsuario.ReadOnly = true;
             // 
-            // panel_Fecha
-            // 
-            panel_Fecha.Controls.Add(btn_FechaSeleccionada);
-            panel_Fecha.Controls.Add(mth_Canlendario);
-            panel_Fecha.Dock = DockStyle.Fill;
-            panel_Fecha.Location = new Point(0, 37);
-            panel_Fecha.Name = "panel_Fecha";
-            panel_Fecha.Size = new Size(680, 209);
-            panel_Fecha.TabIndex = 53;
-            panel_Fecha.Visible = false;
-            // 
-            // btn_FechaSeleccionada
-            // 
-            btn_FechaSeleccionada.BackColor = SystemColors.ActiveCaption;
-            btn_FechaSeleccionada.Cursor = Cursors.Hand;
-            btn_FechaSeleccionada.FlatAppearance.BorderSize = 0;
-            btn_FechaSeleccionada.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_FechaSeleccionada.FlatStyle = FlatStyle.Flat;
-            btn_FechaSeleccionada.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_FechaSeleccionada.ForeColor = Color.Black;
-            btn_FechaSeleccionada.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_FechaSeleccionada.Location = new Point(262, 221);
-            btn_FechaSeleccionada.Name = "btn_FechaSeleccionada";
-            btn_FechaSeleccionada.Size = new Size(154, 30);
-            btn_FechaSeleccionada.TabIndex = 51;
-            btn_FechaSeleccionada.Text = "Fecha Seleccionada";
-            btn_FechaSeleccionada.UseVisualStyleBackColor = false;
-            btn_FechaSeleccionada.Click += btn_FechaSeleccionada_Click_1;
-            // 
-            // mth_Canlendario
-            // 
-            mth_Canlendario.Location = new Point(213, 47);
-            mth_Canlendario.MaxDate = new DateTime(2024, 12, 19, 0, 0, 0, 0);
-            mth_Canlendario.MaxSelectionCount = 1;
-            mth_Canlendario.MinDate = new DateTime(2023, 10, 10, 0, 0, 0, 0);
-            mth_Canlendario.Name = "mth_Canlendario";
-            mth_Canlendario.TabIndex = 0;
-            // 
             // pic_FechaDeEntrega
             // 
-            pic_FechaDeEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pic_FechaDeEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pic_FechaDeEntrega.BackgroundImage = (Image)resources.GetObject("pic_FechaDeEntrega.BackgroundImage");
             pic_FechaDeEntrega.BackgroundImageLayout = ImageLayout.Zoom;
             pic_FechaDeEntrega.Cursor = Cursors.Hand;
@@ -411,6 +423,7 @@
             // 
             // btn_Eliminar
             // 
+            btn_Eliminar.Anchor = AnchorStyles.Bottom;
             btn_Eliminar.BackColor = Color.RosyBrown;
             btn_Eliminar.Cursor = Cursors.Hand;
             btn_Eliminar.FlatAppearance.BorderSize = 0;
@@ -429,6 +442,7 @@
             // 
             // btn_Modificar
             // 
+            btn_Modificar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btn_Modificar.BackColor = Color.Olive;
             btn_Modificar.Cursor = Cursors.Hand;
             btn_Modificar.FlatAppearance.BorderSize = 0;
@@ -448,6 +462,7 @@
             // 
             // lblId
             // 
+            lblId.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblId.AutoSize = true;
             lblId.Location = new Point(604, 148);
             lblId.Name = "lblId";
@@ -457,7 +472,7 @@
             // 
             // lbl_IdCompra
             // 
-            lbl_IdCompra.Anchor = AnchorStyles.Top;
+            lbl_IdCompra.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_IdCompra.AutoSize = true;
             lbl_IdCompra.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_IdCompra.Location = new Point(602, 163);
@@ -475,10 +490,10 @@
             ClientSize = new Size(680, 381);
             Controls.Add(lbl_IdCompra);
             Controls.Add(lblId);
+            Controls.Add(panel_Fecha);
             Controls.Add(btn_Modificar);
             Controls.Add(btn_Eliminar);
             Controls.Add(pic_FechaDeEntrega);
-            Controls.Add(panel_Fecha);
             Controls.Add(dtg_ListaDeVolquetes);
             Controls.Add(btn_HacerCompra);
             Controls.Add(btn_AgregarALaLista);
@@ -499,12 +514,12 @@
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
             panel_Titulo.ResumeLayout(false);
             panel_Titulo.PerformLayout();
+            panel_Fecha.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)numUD_CantidadVolquetes).EndInit();
             ((System.ComponentModel.ISupportInitialize)numUD_CantidadDias).EndInit();
             gpb_SolicitarVolquete.ResumeLayout(false);
             gpb_SolicitarVolquete.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_ListaDeVolquetes).EndInit();
-            panel_Fecha.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pic_FechaDeEntrega).EndInit();
             ResumeLayout(false);
             PerformLayout();

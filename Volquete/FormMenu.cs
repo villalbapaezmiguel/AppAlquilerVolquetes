@@ -9,7 +9,7 @@ namespace Formulario
     {
         int posicionX;
         int posicionY;
-        private Usuario usuario;
+        //private Usuario usuario;
 
         public FormMenu()
         {
@@ -18,7 +18,7 @@ namespace Formulario
         }
         public FormMenu(Usuario usuario) : this()
         {
-            this.usuario = usuario;
+            //this.usuario = usuario;
         }
 
         private void pic_Menu_Click(object sender, EventArgs e)
@@ -43,6 +43,8 @@ namespace Formulario
         {
             if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                //UsuarioControl.GetUsuario.ListaDeCompra = UsuarioControl.GetListaComprasUsuario;
+                //UsuarioControl.GetListaComprasUsuario.Clear();
                 this.Close();
                 FormLogin formLogin = new FormLogin();
                 formLogin.ShowDialog();
@@ -93,20 +95,20 @@ namespace Formulario
 
         private void btn_Usuario_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormAlquilarVolquete(ControlApp.listaVolquetes, usuario));
-
+            AbrirFormEnPanelContenedor(new FormAlquilarVolquete(ControlApp.listaVolquetes, UsuarioControl.GetUsuario));
+            //cambie usuario
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormPerfilUsuario(this.usuario));
-
+            AbrirFormEnPanelContenedor(new FormPerfilUsuario(UsuarioControl.GetUsuario));
+            //cambie usuario
         }
 
         private void btn_Alquilar_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(usuario));
-
+            AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(UsuarioControl.GetUsuario));
+            //cambie usuario
         }
 
         private void FormMenu_Load(object sender, EventArgs e)

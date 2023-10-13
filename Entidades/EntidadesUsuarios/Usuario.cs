@@ -11,7 +11,7 @@ namespace Entidades.EntidadesUsuarios
     {
         private string nombreUsuario;
         private string clave;
-        private List<Volquete> listaVolquete;
+        private List<Compra> listaDeCompra;
         private double telefono;
 
         public Usuario(string nombreUsuario , string clave , double telefono, string nombre , string apellido, double dni)
@@ -20,7 +20,7 @@ namespace Entidades.EntidadesUsuarios
             this.nombreUsuario = nombreUsuario;
             this.clave = clave;
             this.telefono = telefono;
-            this.listaVolquete = new List<Volquete>();
+            this.listaDeCompra = new List<Compra>();
         }
 
         public static bool operator ==(Usuario a, Usuario b)
@@ -39,7 +39,7 @@ namespace Entidades.EntidadesUsuarios
 
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
         public string Clave { get => clave; set => clave = value; }
-        public List<Volquete> ListaVolquete { get => listaVolquete; set => listaVolquete = value; }
+        public List<Compra> ListaDeCompra { get => listaDeCompra; set => listaDeCompra = value; }
         public double Telefono { get => telefono; set => telefono = value; }
 
         public override string ToString()

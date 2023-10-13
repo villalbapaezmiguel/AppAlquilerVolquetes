@@ -15,7 +15,7 @@ namespace Formulario
     public partial class FormAlquilarVolquete : Form
     {
         List<Volquete>? listaVolquetes = null;
-        Usuario auxUsuario = null;
+        //Usuario auxUsuario = null;
         private float precioActual = 0;
         private DateTime fecha;
         private int posicionDTG;
@@ -23,12 +23,13 @@ namespace Formulario
         public FormAlquilarVolquete()
         {
             InitializeComponent();
+            CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
 
         }
         public FormAlquilarVolquete(List<Volquete> volquetes, Usuario auxUsuario) : this()
         {
             this.listaVolquetes = volquetes;
-            this.auxUsuario = auxUsuario;
+            //this.auxUsuario = auxUsuario;
         }
         private void FormAlquilarVolquete_Load(object sender, EventArgs e)
         {
@@ -39,7 +40,6 @@ namespace Formulario
             CargarCmBoxTiposDeVolquetes();
             CargarCmBoxHorariosDeEntrega();
             this.btn_Eliminar.Enabled = false;
-            CargarDTGListaCompra(UsuarioControl.GetListaComprasUsuario);
 
 
         }
@@ -83,9 +83,9 @@ namespace Formulario
 
         private void CargarDTGListaCompra(List<Compra> listaCompra)
         {
-            if(listaCompra.Count >= 1)
+            if (listaCompra.Count >= 1)
             {
-                foreach(Compra item in listaCompra)
+                foreach (Compra item in listaCompra)
                 {
                     int posicion = this.dtg_ListaDeVolquetes.Rows.Add();
 
@@ -146,9 +146,10 @@ namespace Formulario
                     if (CompraControl.AgregarCompra(ref nuevaCompra))
                     {
                         bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
-                        if (compraExitosa )
+                        if (compraExitosa)
                         {
-                            CargarDTGListaCompra(UsuarioControl.GetListaComprasUsuario);
+                            CargarDTGV(nuevaCompra);
+                            //this.dtg_ListaDeVolquetes.Refresh();
                             MessageBox.Show("La compra fue un exitooo");
                             LimpiarFormularioAlquiler();
 
@@ -196,12 +197,12 @@ namespace Formulario
 
         private float ActulizarPrecioActual(float precioActual, int cantidadVolquetes, int cantidadDias)
         {
-            return (float)precioActual * cantidadDias * cantidadVolquetes;
+            return (float)(precioActual * cantidadDias * cantidadVolquetes);
         }
 
         private void numUD_CantidadVolquetes_Click(object sender, EventArgs e)
         {
-            if ((int)numUD_CantidadDias.Value > 1 || (int)numUD_CantidadVolquetes.Value > 1)
+            if ((int)numUD_CantidadDias.Value >= 1 || (int)numUD_CantidadVolquetes.Value >= 1)
             {
                 this.lbl_PrecioDelProducto.Text = $"{ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value)}";
             }
@@ -275,7 +276,7 @@ namespace Formulario
                     this.cmBox_HoraDeEntrega.Text = horaDeEntrega;
                     this.txt_Direccion.Text = direccion;
                     this.lbl_IdCompra.Text = id;
-                    
+
 
 
                 }
@@ -304,17 +305,15 @@ namespace Formulario
                 string fechaDeEntrega = this.txt_FechaDeEntrega.Text;
                 string? horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
                 string direccion = this.txt_Direccion.Text;
-                
-
-
                 string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[7].Value;
 
                 int encontrarId = int.Parse(id);
                 this.auxCompra = CompraControl.EncontrarCompraPorID(encontrarId);
+                this.auxCompra = new Compra(tipo, UsuarioControl.GetUsuario.ToString(), int.Parse(cantidad), int.Parse(dias), new DateTime(2001, 3, 4), horaDeEntrega, direccion, int.Parse(precio), encontrarId);
 
-                if(this.auxCompra is not null)
+                if (this.auxCompra is not null)
                 {
-                    if(CompraControl.ModificarPorId(auxCompra) && UsuarioControl.ModificarPorId(auxCompra))
+                    if (CompraControl.ModificarPorId(auxCompra) && UsuarioControl.ModificarPorId(auxCompra))
                     {
                         //CargarDTGListaCompra(UsuarioControl.GetListaComprasUsuario);
 
@@ -343,10 +342,11 @@ namespace Formulario
             {
                 MessageBox.Show("NO selecciono un campo");
             }
-           
 
 
-                LimpiarFormularioAlquiler();
+
+            LimpiarFormularioAlquiler();
         }
+
     }
 }
