@@ -51,6 +51,7 @@
             btn_HacerCompra = new Button();
             dtg_ListaDeVolquetes = new DataGridView();
             TipoProducto = new DataGridViewTextBoxColumn();
+            IdCompra = new DataGridViewTextBoxColumn();
             PrecioVolquete = new DataGridViewTextBoxColumn();
             CantidadDias = new DataGridViewTextBoxColumn();
             CantidadVolquete = new DataGridViewTextBoxColumn();
@@ -62,6 +63,9 @@
             mth_Canlendario = new MonthCalendar();
             pic_FechaDeEntrega = new PictureBox();
             btn_Eliminar = new Button();
+            btn_Modificar = new Button();
+            lblId = new Label();
+            lbl_IdCompra = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
             panel_Titulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numUD_CantidadVolquetes).BeginInit();
@@ -295,7 +299,7 @@
             // 
             dtg_ListaDeVolquetes.BackgroundColor = SystemColors.ActiveCaption;
             dtg_ListaDeVolquetes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtg_ListaDeVolquetes.Columns.AddRange(new DataGridViewColumn[] { TipoProducto, PrecioVolquete, CantidadDias, CantidadVolquete, FechaDeEntraga, HorarioDeEntrga, DireccionUsuario });
+            dtg_ListaDeVolquetes.Columns.AddRange(new DataGridViewColumn[] { TipoProducto, IdCompra, PrecioVolquete, CantidadDias, CantidadVolquete, FechaDeEntraga, HorarioDeEntrga, DireccionUsuario });
             dtg_ListaDeVolquetes.Dock = DockStyle.Bottom;
             dtg_ListaDeVolquetes.Location = new Point(0, 246);
             dtg_ListaDeVolquetes.Name = "dtg_ListaDeVolquetes";
@@ -310,6 +314,12 @@
             TipoProducto.HeaderText = "Tipo";
             TipoProducto.Name = "TipoProducto";
             TipoProducto.ReadOnly = true;
+            // 
+            // IdCompra
+            // 
+            IdCompra.HeaderText = "Id";
+            IdCompra.Name = "IdCompra";
+            IdCompra.ReadOnly = true;
             // 
             // PrecioVolquete
             // 
@@ -417,6 +427,45 @@
             btn_Eliminar.UseVisualStyleBackColor = false;
             btn_Eliminar.Click += btn_Eliminar_Click;
             // 
+            // btn_Modificar
+            // 
+            btn_Modificar.BackColor = Color.Olive;
+            btn_Modificar.Cursor = Cursors.Hand;
+            btn_Modificar.FlatAppearance.BorderSize = 0;
+            btn_Modificar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
+            btn_Modificar.FlatStyle = FlatStyle.Flat;
+            btn_Modificar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Modificar.ForeColor = Color.Black;
+            btn_Modificar.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Modificar.Location = new Point(59, 205);
+            btn_Modificar.Name = "btn_Modificar";
+            btn_Modificar.Size = new Size(128, 30);
+            btn_Modificar.TabIndex = 57;
+            btn_Modificar.Text = "Modificar";
+            btn_Modificar.UseVisualStyleBackColor = false;
+            btn_Modificar.Visible = false;
+            btn_Modificar.Click += btn_Modificar_Click;
+            // 
+            // lblId
+            // 
+            lblId.AutoSize = true;
+            lblId.Location = new Point(604, 148);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(18, 15);
+            lblId.TabIndex = 58;
+            lblId.Text = "ID";
+            // 
+            // lbl_IdCompra
+            // 
+            lbl_IdCompra.Anchor = AnchorStyles.Top;
+            lbl_IdCompra.AutoSize = true;
+            lbl_IdCompra.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_IdCompra.Location = new Point(602, 163);
+            lbl_IdCompra.Name = "lbl_IdCompra";
+            lbl_IdCompra.Size = new Size(24, 22);
+            lbl_IdCompra.TabIndex = 43;
+            lbl_IdCompra.Text = "__";
+            // 
             // FormAlquilarVolquete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -424,6 +473,9 @@
             BackColor = Color.DodgerBlue;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(680, 381);
+            Controls.Add(lbl_IdCompra);
+            Controls.Add(lblId);
+            Controls.Add(btn_Modificar);
             Controls.Add(btn_Eliminar);
             Controls.Add(pic_FechaDeEntrega);
             Controls.Add(panel_Fecha);
@@ -485,12 +537,16 @@
         private MonthCalendar mth_Canlendario;
         private PictureBox pic_FechaDeEntrega;
         private Button btn_Eliminar;
+        private Button btn_Modificar;
         private DataGridViewTextBoxColumn TipoProducto;
+        private DataGridViewTextBoxColumn IdCompra;
         private DataGridViewTextBoxColumn PrecioVolquete;
         private DataGridViewTextBoxColumn CantidadDias;
         private DataGridViewTextBoxColumn CantidadVolquete;
         private DataGridViewTextBoxColumn FechaDeEntraga;
         private DataGridViewTextBoxColumn HorarioDeEntrga;
         private DataGridViewTextBoxColumn DireccionUsuario;
+        private Label lblId;
+        private Label lbl_IdCompra;
     }
 }

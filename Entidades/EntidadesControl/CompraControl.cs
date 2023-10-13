@@ -38,6 +38,47 @@ namespace Entidades.EntidadesControl
             bool existe = listaCompras.Any(compra => compra.IdCompra == idCompra);
             return existe;*/
         }
+        /// <summary>
+        /// Retorna la posicion del id en la lista , caso contrario retorna -1
+        /// </summary>
+        /// <param name="idCompra"></param>
+        /// <returns></returns>
+        public static int BuscarPorId(int idCompra)
+        {
+            if(idCompra != -1)
+            {
+                if(ExisteCompra(idCompra))
+                {
+                    for (int i = 0; i < listaCompras.Count; i++) 
+                    {
+                        if(idCompra == listaCompras[i].IdCompra)
+                        {
+                            return i;
+                        }
+                    }
+                }
+            }
+            return -1;
+        }
+
+
+        public static bool ModificarPorId(Compra? compra) 
+        {
+            int posicion;
+            if(compra is not null )
+            {
+                posicion = BuscarPorId(compra.IdCompra);
+                if(posicion != -1)
+                {
+                    listaCompras[posicion] = compra;
+                    return true;
+                }
+
+            }        
+            return false;
+        }
+
+
 
         public static Compra? EncontrarCompraPorID(int idCompraPorID)
         {
