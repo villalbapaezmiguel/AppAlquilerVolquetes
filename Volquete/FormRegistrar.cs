@@ -37,7 +37,8 @@ namespace Formulario
                 double.Parse(txt_NumeroDeTelefono.Text),
                 txt_Apellido.Text,
                 txt_NombreUsuario.Text,
-                double.Parse(txt_DNI.Text));
+                double.Parse(txt_DNI.Text),
+                ControlApp.NuevoIdUsuario());
 
             if (!UsuarioControl.ExisteUsuario(txt_NombreUsuario.Text))
             {

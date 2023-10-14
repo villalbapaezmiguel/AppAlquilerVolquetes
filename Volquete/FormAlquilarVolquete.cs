@@ -14,7 +14,7 @@ namespace Formulario
 {
     public partial class FormAlquilarVolquete : Form
     {
-        List<Volquete>? listaVolquetes = null;
+        //List<Volquete>? listaVolquetes = null;
         //Usuario auxUsuario = null;
         private float precioActual = 0;
         private DateTime fecha;
@@ -25,11 +25,6 @@ namespace Formulario
             InitializeComponent();
             CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
 
-        }
-        public FormAlquilarVolquete(List<Volquete> volquetes, Usuario auxUsuario) : this()
-        {
-            this.listaVolquetes = volquetes;
-            //this.auxUsuario = auxUsuario;
         }
         private void FormAlquilarVolquete_Load(object sender, EventArgs e)
         {
@@ -142,14 +137,13 @@ namespace Formulario
                     direccion = txt_Direccion.Text;
                     tipoVolquete = this.cmBox_TiposVolquetes.SelectedItem.ToString();
 
-                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precioActual, ControlApp.NuevoId());
+                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precioActual, ControlApp.NuevoIdCompra());
                     if (CompraControl.AgregarCompra(ref nuevaCompra))
                     {
                         bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
                         if (compraExitosa)
                         {
                             CargarDTGV(nuevaCompra);
-                            //this.dtg_ListaDeVolquetes.Refresh();
                             MessageBox.Show("La compra fue un exitooo");
                             LimpiarFormularioAlquiler();
 
@@ -285,9 +279,6 @@ namespace Formulario
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
         }
 
         private void btn_Modificar_Click(object sender, EventArgs e)

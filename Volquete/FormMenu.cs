@@ -9,22 +9,15 @@ namespace Formulario
     {
         int posicionX;
         int posicionY;
-        //private Usuario usuario;
 
         public FormMenu()
         {
             InitializeComponent();
-
-        }
-        public FormMenu(Usuario usuario) : this()
-        {
-            //this.usuario = usuario;
         }
 
         private void pic_Menu_Click(object sender, EventArgs e)
         {
             AgrandarYAchicarMenu();
-
         }
 
         private void AgrandarYAchicarMenu()
@@ -43,8 +36,15 @@ namespace Formulario
         {
             if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                //UsuarioControl.GetUsuario.ListaDeCompra = UsuarioControl.GetListaComprasUsuario;
-                //UsuarioControl.GetListaComprasUsuario.Clear();
+                if(ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
+                {
+                    MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente","Exitoso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show($"Error al guardar datos del Usuario {UsuarioControl.GetUsuario.NombreUsuario}....", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 this.Close();
                 FormLogin formLogin = new FormLogin();
                 formLogin.ShowDialog();
@@ -53,7 +53,6 @@ namespace Formulario
 
         private void pic_Agrandar_Click(object sender, EventArgs e)
         {
-            //this.WindowState = FormWindowState.Maximized;
             posicionX = this.Location.X;
             posicionY = this.Location.Y;
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
@@ -69,7 +68,6 @@ namespace Formulario
 
         private void pic_Restaurar_Click(object sender, EventArgs e)
         {
-            //this.WindowState = FormWindowState.Normal;
             this.Size = new Size(870, 440);
             this.Location = new Point(posicionX, posicionY);
             this.pic_Agrandar.Visible = true;
@@ -95,7 +93,7 @@ namespace Formulario
 
         private void btn_Usuario_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormAlquilarVolquete(ControlApp.listaVolquetes, UsuarioControl.GetUsuario));
+            AbrirFormEnPanelContenedor(new FormAlquilarVolquete());
             //cambie usuario
         }
 

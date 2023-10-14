@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,14 +10,11 @@ namespace Entidades.EntidadesControl
 {
     public sealed class UsuarioControl 
     {
-        private static List<Usuario> listaUsuarios = new List<Usuario>();
-        private static Usuario usuarioActual;
-        private static List<Compra> listaCompras = new List<Compra>();
-        
+        private static Usuario usuarioActual;       
 
         public static bool ExisteCompra(int idCompra)
         {
-            foreach (Compra item in listaCompras)
+            foreach (Compra item in usuarioActual.ListaDeCompra)
             {
                 if (item.IdCompra == idCompra)
                 {
@@ -24,9 +22,6 @@ namespace Entidades.EntidadesControl
                 }
             }
             return false;
-            /*
-            bool existe = listaCompras.Any(compra => compra.IdCompra == idCompra);
-            return existe;*/
         }
 
         /// <summary>
@@ -34,15 +29,15 @@ namespace Entidades.EntidadesControl
         /// </summary>
         /// <param name="idCompra"></param>
         /// <returns></returns>
-        public static int BuscarPorId(int idCompra)
+        public static int BuscarPorIdUsuarioCompra(int idCompra)
         {
             if (idCompra != -1)
             {
                 if (ExisteCompra(idCompra))
                 {
-                    for (int i = 0; i < listaCompras.Count; i++)
+                    for (int i = 0; i < usuarioActual.ListaDeCompra.Count; i++)
                     {
-                        if (idCompra == listaCompras[i].IdCompra)
+                        if (idCompra == usuarioActual.ListaDeCompra[i].IdCompra)
                         {
                             return i;
                         }
@@ -57,10 +52,10 @@ namespace Entidades.EntidadesControl
             int posicion;
             if (compra is not null)
             {
-                posicion = BuscarPorId(compra.IdCompra);
+                posicion = BuscarPorIdUsuarioCompra(compra.IdCompra);
                 if (posicion != -1)
                 {
-                    listaCompras[posicion] = compra;
+                    usuarioActual.ListaDeCompra[posicion] = compra;
                     return true;
                 }
 
@@ -68,14 +63,14 @@ namespace Entidades.EntidadesControl
             return false;
         }
 
-
-        public static bool AgregarUsuario(Usuario nuevoUsurio)
+        //
+        public static bool AgregarUsuario(Usuario nuevoUsuario)
         {
-            if(nuevoUsurio is not null)
+            if(nuevoUsuario is not null)
             {
-                if(!ExisteUsuario(nuevoUsurio.NombreUsuario))
+                if(!ExisteUsuario(nuevoUsuario.NombreUsuario))
                 {
-                    listaUsuarios.Add(nuevoUsurio);
+                    ControlApp.ControlAgregarUsuario(nuevoUsuario);
                     return true;
                 }
             }
@@ -83,11 +78,8 @@ namespace Entidades.EntidadesControl
         }
 
         public static bool ExisteUsuario( string nombreUsuario)
-        {
-            
-
-
-            bool exite = listaUsuarios.Any(usuario => usuario.NombreUsuario == nombreUsuario);
+        {            
+            bool exite = ControlApp.GetListaUsuarios.Any(usuario => usuario.NombreUsuario == nombreUsuario);
             return exite;
         }
 
@@ -111,9 +103,9 @@ namespace Entidades.EntidadesControl
             get
             {
                 List<Usuario> nuevaLista = new();
-                foreach(Usuario usuario in listaUsuarios) 
+                foreach(Usuario usuario in ControlApp.GetListaUsuarios) 
                 {
-                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni);
+                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
@@ -125,7 +117,7 @@ namespace Entidades.EntidadesControl
             get
             {
                 List<Compra> nuevaLista = new();
-                foreach (Compra item in listaCompras)
+                foreach (Compra item in usuarioActual.ListaDeCompra)
                 {
                     Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra);
                     nuevaLista.Add(AuxUsuario);
@@ -138,7 +130,7 @@ namespace Entidades.EntidadesControl
         {
             if(compra is not null)
             {
-                listaCompras.Add(compra);
+                usuarioActual.ListaDeCompra.Add(compra);
                 return true;
             }
             return false;
@@ -152,7 +144,7 @@ namespace Entidades.EntidadesControl
             {
                 if(ExisteUsuario(nombreUsuario)) 
                 {
-                    foreach(Usuario auxItem in GetListaUsuarios)
+                    foreach(Usuario auxItem in ControlApp.GetListaUsuarios)
                     {
                         if(auxItem.NombreUsuario == nombreUsuario && auxItem.Clave == clave) 
                         {

@@ -15,12 +15,9 @@ namespace Formulario
 {
     public partial class FormLogin : Form
     {
-        List<Usuario> listaUsuarios;
         public FormLogin()
         {
-            InitializeComponent();
-            ControlApp.HarcodeoUsuariosYVolquetes();
-            this.listaUsuarios = UsuarioControl.GetListaUsuarios;
+            InitializeComponent();            
         }
 
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
@@ -57,7 +54,7 @@ namespace Formulario
             {
                 MessageBox.Show($"Bienvenido {auxUsuario.Nombre} {auxUsuario.Apellido}", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UsuarioControl.SetUsuario = auxUsuario;
-                FormMenu formMenu = new FormMenu(auxUsuario);
+                FormMenu formMenu = new FormMenu();
                 formMenu.Show();
                 this.Hide();
             }
