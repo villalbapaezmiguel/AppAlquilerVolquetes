@@ -53,6 +53,14 @@ namespace Entidades
                 foreach (Usuario usuario in listaUsuarios)
                 {
                     Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni,usuario.IdUsuario);
+                    List<Compra> comprasAux = new List<Compra>();
+
+                    foreach (Compra itemCompra in usuario.ListaDeCompra)
+                    {
+                        Compra compraAux = new Compra(itemCompra.TipoVolquete, itemCompra.NombreDeUsuario, itemCompra.CantidadVolquetes, itemCompra.CantidadDias, itemCompra.FechaDeEntraga, itemCompra.HoraDeEntrega, itemCompra.Direccion, itemCompra.Precio,itemCompra.IdCompra);
+                        comprasAux.Add(compraAux);
+                    }
+                    AuxUsuario.ListaDeCompra = comprasAux;
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
@@ -82,6 +90,7 @@ namespace Entidades
                 {
                     if (listaUsuarios[i] == usuario)
                     {
+                        //Usuario auxNuevo = new Usuario(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario);
                         listaUsuarios[i] = usuario;
                         return true;
                     }
