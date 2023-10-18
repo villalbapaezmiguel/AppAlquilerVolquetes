@@ -3,6 +3,7 @@ using System.Text;
 
 namespace Entidades
 {
+    [Serializable]
     public class Volquete
     {
         private float precio;

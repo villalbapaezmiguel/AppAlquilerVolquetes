@@ -35,7 +35,10 @@ namespace Formulario
             CargarCmBoxTiposDeVolquetes();
             CargarCmBoxHorariosDeEntrega();
             this.btn_Eliminar.Enabled = false;
-
+            this.cmBox_TiposVolquetes.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmBox_HoraDeEntrega.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.txt_FechaDeEntrega.ReadOnly = true;
+            this.txt_FechaDeEntrega.Enabled = false;
 
         }
 
@@ -85,13 +88,13 @@ namespace Formulario
                     int posicion = this.dtg_ListaDeVolquetes.Rows.Add();
 
                     this.dtg_ListaDeVolquetes.Rows[posicion].Cells[0].Value = item.TipoVolquete.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[1].Value = item.Precio.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[2].Value = item.CantidadDias.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[3].Value = item.CantidadVolquetes.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[4].Value = item.FechaDeEntraga.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[5].Value = item.HoraDeEntrega.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[6].Value = item.Direccion.ToString();
-                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[7].Value = item.IdCompra.ToString();
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[1].Value = item.IdCompra.ToString();
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[2].Value = item.Precio.ToString();
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[3].Value = item.CantidadDias.ToString();
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[4].Value = item.CantidadVolquetes.ToString();
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[5].Value = item.FechaDeEntraga.ToString("d");
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[6].Value = item.HoraDeEntrega.ToString();
+                    this.dtg_ListaDeVolquetes.Rows[posicion].Cells[7].Value = item.Direccion.ToString();
 
                 }
             }
@@ -105,13 +108,13 @@ namespace Formulario
                 int posicionParaAgregar = this.dtg_ListaDeVolquetes.Rows.Add();
 
                 this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[0].Value = nuevaCompra.TipoVolquete.ToString();
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.Precio.ToString();
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[2].Value = nuevaCompra.CantidadDias.ToString();
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[3].Value = nuevaCompra.CantidadVolquetes.ToString();
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[4].Value = nuevaCompra.FechaDeEntraga.ToString("d");
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[5].Value = nuevaCompra.HoraDeEntrega.ToString();
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[6].Value = nuevaCompra.Direccion.ToString();
-                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[7].Value = nuevaCompra.IdCompra.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.IdCompra.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[2].Value = nuevaCompra.Precio.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[3].Value = nuevaCompra.CantidadDias.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[4].Value = nuevaCompra.CantidadVolquetes.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[5].Value = nuevaCompra.FechaDeEntraga.ToString("d");
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[6].Value = nuevaCompra.HoraDeEntrega.ToString();
+                this.dtg_ListaDeVolquetes.Rows[posicionParaAgregar].Cells[7].Value = nuevaCompra.Direccion.ToString();
                 return true;
             }
             return false;
@@ -174,6 +177,19 @@ namespace Formulario
         private void btn_HacerCompra_Click(object sender, EventArgs e)
         {
             //generar un ticket , json y XML
+            string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\XML\";
+            string nombre = @"\Compras.xml";
+            string path = rutaCarpeta + nombre;
+            try
+            {
+                Serializar.EscribirXMLCompras(path, ControlApp.GetListaComprasUsuario);
+                MessageBox.Show("Compra exitosa");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}");
+            }
 
         }
 
@@ -253,14 +269,15 @@ namespace Formulario
                 {
                     this.btn_Modificar.Visible = true;
                     this.btn_AgregarALaLista.Visible = false;
+
                     string tipo = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[0].Value;
-                    string precio = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
-                    string dias = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[2].Value;
-                    string cantidad = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[3].Value;
-                    string fechaDeEntrega = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[4].Value;
-                    string horaDeEntrega = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[5].Value;
-                    string direccion = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[6].Value;
-                    string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[7].Value;
+                    string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
+                    string precio = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[2].Value;
+                    string dias = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[3].Value;
+                    string cantidad = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[4].Value;
+                    string fechaDeEntrega = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[5].Value;
+                    string horaDeEntrega = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[6].Value;
+                    string direccion = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[7].Value;
 
                     this.cmBox_TiposVolquetes.Text = tipo;
                     this.lbl_PrecioDelProducto.Text = precio;
@@ -288,44 +305,52 @@ namespace Formulario
             {
                 this.btn_Modificar.Visible = false;
                 this.btn_AgregarALaLista.Visible = true;
-
-                string? tipo = this.cmBox_TiposVolquetes.SelectedItem.ToString();
-                string precio = this.lbl_PrecioDelProducto.Text;
-                string dias = this.numUD_CantidadDias.Value.ToString();
-                string cantidad = this.numUD_CantidadVolquetes.Value.ToString();
-                string fechaDeEntrega = this.txt_FechaDeEntrega.Text;
-                string? horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
-                string direccion = this.txt_Direccion.Text;
-                string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[7].Value;
-
-                int encontrarId = int.Parse(id);
-                this.auxCompra = CompraControl.EncontrarCompraPorID(encontrarId);
-                this.auxCompra = new Compra(tipo, UsuarioControl.GetUsuario.ToString(), int.Parse(cantidad), int.Parse(dias), new DateTime(2001, 3, 4), horaDeEntrega, direccion, int.Parse(precio), encontrarId);
-
-                if (this.auxCompra is not null)
+                try
                 {
-                    if (CompraControl.ModificarPorId(auxCompra) && UsuarioControl.ModificarPorId(auxCompra))
+                    if(this.cmBox_TiposVolquetes.SelectedIndex != -1 &&
+                        this.numUD_CantidadDias.Value >= 1 &&
+                        this.numUD_CantidadVolquetes.Value >= 1 &&
+                        this.txt_FechaDeEntrega.Text != string.Empty &&
+                        this.cmBox_HoraDeEntrega.SelectedIndex != -1 &&
+                        this.txt_Direccion.Text != string.Empty)
                     {
-                        //CargarDTGListaCompra(UsuarioControl.GetListaComprasUsuario);
 
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[0].Value = tipo;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value = precio;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[2].Value = dias;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[3].Value = cantidad;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[4].Value = fechaDeEntrega;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[5].Value = horaDeEntrega;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[6].Value = direccion;
-                        this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[7].Value = id;
-                        MessageBox.Show("Se modifico con exito");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se encontro el id del la compra ");
+                        string? tipo = this.cmBox_TiposVolquetes.SelectedItem.ToString();
+                        string precio = this.lbl_PrecioDelProducto.Text;
+                        string dias = this.numUD_CantidadDias.Value.ToString();
+                        string cantidad = this.numUD_CantidadVolquetes.Value.ToString();
+                        string fechaDeEntrega = this.txt_FechaDeEntrega.Text;
+                        string? horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
+                        string direccion = this.txt_Direccion.Text;
+                        string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
+
+                        int encontrarId = int.Parse(id);
+                        this.auxCompra = CompraControl.EncontrarCompraPorID(encontrarId);
+                        this.auxCompra = new Compra(tipo, UsuarioControl.GetUsuario.ToString(), int.Parse(cantidad), int.Parse(dias), new DateTime(2001, 3, 4), horaDeEntrega, direccion, int.Parse(precio), encontrarId);
+
+                        if (this.auxCompra is not null)
+                        {
+                            if (CompraControl.ModificarPorId(auxCompra) && UsuarioControl.ModificarPorId(auxCompra))
+                            {
+                                CargarListaModificadaDTGV(this.posicionDTG, this.auxCompra);
+                                LimpiarFormularioAlquiler();
+                                MessageBox.Show("Se modifico con exito","Operacion exitosa !!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se encontro el id del la compra ");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El objeto es null");
+                        }
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("El objeto es null");
+
+                    MessageBox.Show($"{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -333,11 +358,22 @@ namespace Formulario
             {
                 MessageBox.Show("NO selecciono un campo");
             }
-
-
-
-            LimpiarFormularioAlquiler();
         }
+
+        private void CargarListaModificadaDTGV(int posicionDTGV , Compra auxCompra)
+        {
+
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[0].Value = auxCompra.TipoVolquete;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[1].Value = auxCompra.IdCompra;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[2].Value = auxCompra.Precio;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[3].Value = auxCompra.CantidadDias;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[4].Value = auxCompra.CantidadVolquetes;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[5].Value = auxCompra.FechaDeEntraga;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[6].Value = auxCompra.HoraDeEntrega;
+            this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[7].Value = auxCompra.Direccion;
+
+        }
+
 
     }
 }

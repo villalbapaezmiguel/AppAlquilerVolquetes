@@ -52,8 +52,8 @@ namespace Formulario
             Usuario? auxUsuario = UsuarioControl.BuscarUsuarioPorClaveYNombreUsuario(txt_Correo.Text, txt_Clave.Text);
             if (auxUsuario is not null)
             {
-                MessageBox.Show($"Bienvenido {auxUsuario.Nombre} {auxUsuario.Apellido}", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UsuarioControl.SetUsuario = auxUsuario;
+                MessageBox.Show($"Bienvenido {UsuarioControl.GetUsuario.Nombre} ", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 FormMenu formMenu = new FormMenu();
                 formMenu.Show();
                 this.Hide();

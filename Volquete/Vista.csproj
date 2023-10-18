@@ -27,4 +27,9 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Archivos\Usuarios\" />
+    <Folder Include="Archivos\XML\" />
+  </ItemGroup>
+
 </Project>

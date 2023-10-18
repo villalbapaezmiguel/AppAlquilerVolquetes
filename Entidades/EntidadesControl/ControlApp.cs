@@ -52,7 +52,7 @@ namespace Entidades
                 List<Usuario> nuevaLista = new();
                 foreach (Usuario usuario in listaUsuarios)
                 {
-                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni,usuario.IdUsuario);
+                    Usuario AuxUsuario = new (usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni,usuario.IdUsuario);
                     List<Compra> comprasAux = new List<Compra>();
 
                     foreach (Compra itemCompra in usuario.ListaDeCompra)

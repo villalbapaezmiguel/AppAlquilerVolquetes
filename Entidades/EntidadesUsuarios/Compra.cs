@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.EntidadesUsuarios
 {
+    [Serializable]//es  serializable
     public class Compra
     {
         private string tipoVolquete;
@@ -43,7 +44,7 @@ namespace Entidades.EntidadesUsuarios
         public string Direccion { get => direccion; set => direccion = value; }
         public float Precio { get => precio; set => precio = value; }
         public string TipoVolquete { get => tipoVolquete; set => tipoVolquete = value; }
-        public int IdCompra { get => idCompra; private set => idCompra = value; }
+        public int IdCompra { get => idCompra; set => idCompra = value; }
 
 
 

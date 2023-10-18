@@ -96,6 +96,7 @@
             btn_TiposVolquetes.Size = new Size(180, 30);
             btn_TiposVolquetes.TabIndex = 1;
             btn_TiposVolquetes.Text = "Precios y Capacidades";
+            btn_TiposVolquetes.TextAlign = ContentAlignment.MiddleRight;
             btn_TiposVolquetes.UseVisualStyleBackColor = true;
             btn_TiposVolquetes.Click += btn_Alquilar_Click;
             // 
@@ -113,6 +114,7 @@
             btn_AlquilarVolquete.Size = new Size(180, 30);
             btn_AlquilarVolquete.TabIndex = 0;
             btn_AlquilarVolquete.Text = "Solicitud de Volquete";
+            btn_AlquilarVolquete.TextAlign = ContentAlignment.MiddleRight;
             btn_AlquilarVolquete.UseVisualStyleBackColor = true;
             btn_AlquilarVolquete.Click += btn_Usuario_Click;
             // 

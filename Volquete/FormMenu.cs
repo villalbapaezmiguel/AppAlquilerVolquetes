@@ -36,9 +36,9 @@ namespace Formulario
         {
             if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                if(ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
+                if (ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
                 {
-                    MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente","Exitoso",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {

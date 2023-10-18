@@ -1,4 +1,5 @@
-﻿using Entidades.EntidadesUsuarios;
+﻿using Entidades.EntidadesControl;
+using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,13 +32,36 @@ namespace Formulario
             this.Close();
         }
 
+        private void CargarDTGListaCompra(List<Compra> listaCompra)
+        {
+            if (listaCompra.Count >= 1)
+            {
+                foreach (Compra item in listaCompra)
+                {
+                    int posicion = this.dtgv_ListasCompras.Rows.Add();
+
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[0].Value = item.TipoVolquete.ToString();
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[1].Value = item.IdCompra.ToString();
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[2].Value = item.Precio.ToString();
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[3].Value = item.CantidadDias.ToString();
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[4].Value = item.CantidadVolquetes.ToString();
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[5].Value = item.FechaDeEntraga.ToString("d");
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[6].Value = item.HoraDeEntrega.ToString();
+                    this.dtgv_ListasCompras.Rows[posicion].Cells[7].Value = item.Direccion.ToString();
+
+                }
+            }
+        }
         private void FormPerfilUsuario_Load(object sender, EventArgs e)
         {
-            lbl_Nombre.Text += $" {usuario.Nombre}";
-            lbl_Apellido.Text += $" {usuario.Apellido}";
-            lbl_Correo.Text += $" {usuario.NombreUsuario}";
+            this.lbl_Nombre.Text += $"{UsuarioControl.GetUsuario.Nombre}";
+            this.lbl_Apellido.Text += $"{UsuarioControl.GetUsuario.Apellido}";
+            this.lbl_Telefono.Text += $"{UsuarioControl.GetUsuario.Telefono}";
+            this.lbl_Usuario.Text += $"{UsuarioControl.GetUsuario.NombreUsuario}";
+            this.lbl_Id.Text += $"{UsuarioControl.GetUsuario.IdUsuario}";
 
-            //this.dtg_ListaVolquetes.DataSource = usuario.ListaAlquilados;
+            CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
+
 
         }
     }

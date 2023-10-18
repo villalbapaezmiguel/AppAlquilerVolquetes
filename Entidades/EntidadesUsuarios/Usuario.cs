@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.EntidadesUsuarios
 {
+    [Serializable]
     public class Usuario : Persona
     {
         private string nombreUsuario;

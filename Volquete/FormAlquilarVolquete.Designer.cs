@@ -155,16 +155,17 @@
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(18, 24);
+            label1.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(17, 23);
             label1.Name = "label1";
-            label1.Size = new Size(95, 15);
+            label1.Size = new Size(125, 15);
             label1.TabIndex = 5;
-            label1.Text = "Tipo de Volqueta";
+            label1.Text = "TIPO DE VOLQUETA";
             // 
             // cmBox_TiposVolquetes
             // 
             cmBox_TiposVolquetes.FormattingEnabled = true;
-            cmBox_TiposVolquetes.Location = new Point(18, 54);
+            cmBox_TiposVolquetes.Location = new Point(17, 42);
             cmBox_TiposVolquetes.Name = "cmBox_TiposVolquetes";
             cmBox_TiposVolquetes.Size = new Size(121, 23);
             cmBox_TiposVolquetes.TabIndex = 36;
@@ -175,19 +176,20 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(229, 24);
+            label2.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(180, 17);
             label2.Name = "label2";
-            label2.Size = new Size(55, 15);
+            label2.Size = new Size(93, 17);
             label2.TabIndex = 37;
-            label2.Text = "Cantidad";
+            label2.Text = "CANTIDAD : ";
             // 
             // numUD_CantidadVolquetes
             // 
             numUD_CantidadVolquetes.Anchor = AnchorStyles.Top;
-            numUD_CantidadVolquetes.Location = new Point(193, 54);
+            numUD_CantidadVolquetes.Location = new Point(306, 15);
             numUD_CantidadVolquetes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadVolquetes.Name = "numUD_CantidadVolquetes";
-            numUD_CantidadVolquetes.Size = new Size(120, 23);
+            numUD_CantidadVolquetes.Size = new Size(48, 23);
             numUD_CantidadVolquetes.TabIndex = 38;
             numUD_CantidadVolquetes.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadVolquetes.Click += numUD_CantidadVolquetes_Click;
@@ -196,10 +198,10 @@
             // 
             numUD_CantidadDias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numUD_CantidadDias.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            numUD_CantidadDias.Location = new Point(373, 54);
+            numUD_CantidadDias.Location = new Point(306, 52);
             numUD_CantidadDias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadDias.Name = "numUD_CantidadDias";
-            numUD_CantidadDias.Size = new Size(120, 23);
+            numUD_CantidadDias.Size = new Size(48, 23);
             numUD_CantidadDias.TabIndex = 39;
             numUD_CantidadDias.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadDias.Click += numUD_CantidadVolquetes_Click;
@@ -208,11 +210,12 @@
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Location = new Point(402, 24);
+            label3.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(175, 58);
             label3.Name = "label3";
-            label3.Size = new Size(80, 15);
+            label3.Size = new Size(130, 17);
             label3.TabIndex = 40;
-            label3.Text = "Cantidad Dias";
+            label3.Text = "CANTIDAD DIAS : ";
             // 
             // gpb_SolicitarVolquete
             // 
@@ -225,9 +228,9 @@
             gpb_SolicitarVolquete.Controls.Add(cmBox_TiposVolquetes);
             gpb_SolicitarVolquete.Controls.Add(numUD_CantidadVolquetes);
             gpb_SolicitarVolquete.Controls.Add(label2);
-            gpb_SolicitarVolquete.Location = new Point(3, 37);
+            gpb_SolicitarVolquete.Location = new Point(12, 43);
             gpb_SolicitarVolquete.Name = "gpb_SolicitarVolquete";
-            gpb_SolicitarVolquete.Size = new Size(665, 100);
+            gpb_SolicitarVolquete.Size = new Size(663, 100);
             gpb_SolicitarVolquete.TabIndex = 41;
             gpb_SolicitarVolquete.TabStop = false;
             // 
@@ -235,7 +238,7 @@
             // 
             lbl_PrecioDelProducto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_PrecioDelProducto.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_PrecioDelProducto.Location = new Point(544, 54);
+            lbl_PrecioDelProducto.Location = new Point(388, 43);
             lbl_PrecioDelProducto.Name = "lbl_PrecioDelProducto";
             lbl_PrecioDelProducto.Size = new Size(67, 22);
             lbl_PrecioDelProducto.TabIndex = 42;
@@ -245,7 +248,7 @@
             lbl_TituloPrecio.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_TituloPrecio.AutoSize = true;
             lbl_TituloPrecio.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_TituloPrecio.Location = new Point(544, 24);
+            lbl_TituloPrecio.Location = new Point(388, 17);
             lbl_TituloPrecio.Name = "lbl_TituloPrecio";
             lbl_TituloPrecio.Size = new Size(67, 22);
             lbl_TituloPrecio.TabIndex = 41;
@@ -281,31 +284,34 @@
             // lbl_TituloCalendario
             // 
             lbl_TituloCalendario.AutoSize = true;
+            lbl_TituloCalendario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_TituloCalendario.Location = new Point(42, 148);
             lbl_TituloCalendario.Name = "lbl_TituloCalendario";
-            lbl_TituloCalendario.Size = new Size(97, 15);
+            lbl_TituloCalendario.Size = new Size(127, 15);
             lbl_TituloCalendario.TabIndex = 47;
-            lbl_TituloCalendario.Text = "Fecha de entrega";
+            lbl_TituloCalendario.Text = "FECHA DE ENTREGA";
             // 
             // lbl_TituloHoraEntrega
             // 
             lbl_TituloHoraEntrega.Anchor = AnchorStyles.Top;
             lbl_TituloHoraEntrega.AutoSize = true;
-            lbl_TituloHoraEntrega.Location = new Point(229, 148);
+            lbl_TituloHoraEntrega.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TituloHoraEntrega.Location = new Point(223, 149);
             lbl_TituloHoraEntrega.Name = "lbl_TituloHoraEntrega";
-            lbl_TituloHoraEntrega.Size = new Size(125, 15);
+            lbl_TituloHoraEntrega.Size = new Size(146, 15);
             lbl_TituloHoraEntrega.TabIndex = 48;
-            lbl_TituloHoraEntrega.Text = "Hora de entrega aprox";
+            lbl_TituloHoraEntrega.Text = "HORARIO DE ENTREGA";
             // 
             // lbl_TituloDireccionEntrega
             // 
             lbl_TituloDireccionEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_TituloDireccionEntrega.AutoSize = true;
-            lbl_TituloDireccionEntrega.Location = new Point(416, 148);
+            lbl_TituloDireccionEntrega.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TituloDireccionEntrega.Location = new Point(441, 146);
             lbl_TituloDireccionEntrega.Name = "lbl_TituloDireccionEntrega";
-            lbl_TituloDireccionEntrega.Size = new Size(116, 15);
+            lbl_TituloDireccionEntrega.Size = new Size(75, 15);
             lbl_TituloDireccionEntrega.TabIndex = 49;
-            lbl_TituloDireccionEntrega.Text = "Direccion de entrega";
+            lbl_TituloDireccionEntrega.Text = "DIRECCION";
             // 
             // btn_AgregarALaLista
             // 
@@ -341,7 +347,7 @@
             btn_HacerCompra.Name = "btn_HacerCompra";
             btn_HacerCompra.Size = new Size(118, 30);
             btn_HacerCompra.TabIndex = 51;
-            btn_HacerCompra.Text = "Hacer Compra";
+            btn_HacerCompra.Text = "COMPRAR";
             btn_HacerCompra.UseVisualStyleBackColor = false;
             btn_HacerCompra.Click += btn_HacerCompra_Click;
             // 
@@ -413,7 +419,7 @@
             pic_FechaDeEntrega.BackgroundImage = (Image)resources.GetObject("pic_FechaDeEntrega.BackgroundImage");
             pic_FechaDeEntrega.BackgroundImageLayout = ImageLayout.Zoom;
             pic_FechaDeEntrega.Cursor = Cursors.Hand;
-            pic_FechaDeEntrega.Location = new Point(162, 164);
+            pic_FechaDeEntrega.Location = new Point(168, 164);
             pic_FechaDeEntrega.Name = "pic_FechaDeEntrega";
             pic_FechaDeEntrega.Size = new Size(25, 25);
             pic_FechaDeEntrega.SizeMode = PictureBoxSizeMode.Zoom;
@@ -436,7 +442,7 @@
             btn_Eliminar.Name = "btn_Eliminar";
             btn_Eliminar.Size = new Size(128, 30);
             btn_Eliminar.TabIndex = 56;
-            btn_Eliminar.Text = "Eliminar";
+            btn_Eliminar.Text = "ELIMINAR";
             btn_Eliminar.UseVisualStyleBackColor = false;
             btn_Eliminar.Click += btn_Eliminar_Click;
             // 
@@ -455,7 +461,7 @@
             btn_Modificar.Name = "btn_Modificar";
             btn_Modificar.Size = new Size(128, 30);
             btn_Modificar.TabIndex = 57;
-            btn_Modificar.Text = "Modificar";
+            btn_Modificar.Text = "MODIFICAR";
             btn_Modificar.UseVisualStyleBackColor = false;
             btn_Modificar.Visible = false;
             btn_Modificar.Click += btn_Modificar_Click;
@@ -464,9 +470,10 @@
             // 
             lblId.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblId.AutoSize = true;
-            lblId.Location = new Point(604, 148);
+            lblId.Font = new Font("Cambria", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblId.Location = new Point(601, 149);
             lblId.Name = "lblId";
-            lblId.Size = new Size(18, 15);
+            lblId.Size = new Size(17, 12);
             lblId.TabIndex = 58;
             lblId.Text = "ID";
             // 
@@ -474,10 +481,10 @@
             // 
             lbl_IdCompra.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_IdCompra.AutoSize = true;
-            lbl_IdCompra.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_IdCompra.Location = new Point(602, 163);
+            lbl_IdCompra.Font = new Font("Cambria", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_IdCompra.Location = new Point(599, 164);
             lbl_IdCompra.Name = "lbl_IdCompra";
-            lbl_IdCompra.Size = new Size(24, 22);
+            lbl_IdCompra.Size = new Size(20, 17);
             lbl_IdCompra.TabIndex = 43;
             lbl_IdCompra.Text = "__";
             // 

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Entidades.EntidadesUsuarios
 {
+    [Serializable]
+    [XmlInclude(typeof(Compra))]
+    [XmlInclude(typeof(Usuario))]
+    [XmlInclude(typeof(Volquete))]
     public abstract class Persona
     {
         private string nombre;
