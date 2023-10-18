@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 
 namespace Formulario
@@ -27,35 +28,60 @@ namespace Formulario
 
         }
 
+        private void FormABMVolqueteUsuario_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarComboBoxVolquete();
+                this.cmBox_Volquete.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
             this.Close();
 
         }
 
-
-        private void CargarCmBoxVolqueteCamion()
+        private void CargarComboBoxVolquete()
         {
-            //this.cmBox_Industrial.DataSource = ControlApp.GetMarcasVolquetesCamion;
-        }
-        private void CargarCmBoxVolqueteConteiner()
-        {
-            //this.cmBox_Particular.DataSource = ControlApp.listaVolquetes;
-        }
+            try
+            {
+                foreach (Volquete item in VolqueteControl.GetListaVolquetes)
+                {
+                    this.cmBox_Volquete.Items.Add(item.TipoVolquete);
+                }
 
-        private void panel_ContenedorVolquetes_Paint(object sender, PaintEventArgs e)
-        {
-
-
-        }
-
-        private void FormABMVolqueteUsuario_Load(object sender, EventArgs e)
-        {
-            CargarCmBoxVolqueteCamion();
-            CargarCmBoxVolqueteConteiner();
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+
+        private void cmBox_TiposVolquetes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //this.panel_ContenedorVolquetes.BackgroundImage = new System.Drawing.Image()
+            string tipo;
+            if (this.cmBox_Volquete.SelectedIndex != -1)
+            {
+                tipo = this.cmBox_Volquete.SelectedItem.ToString();
+                Volquete? aux = VolqueteControl.EncontrarVolquetePorTipo(tipo);
+                if (aux is not null)
+                {
+                    this.lbl_Capacidad.Text = aux.Capacidad.ToString() + " m3";
+                    this.lbl_Obeservaciones.Text = aux.Observacion.ToString();
+                    this.lbl_Precio.Text = aux.Precio.ToString("C");
+                }
+            }
+
+
+
+        }
     }
 }

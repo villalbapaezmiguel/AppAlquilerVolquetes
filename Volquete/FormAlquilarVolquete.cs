@@ -51,18 +51,37 @@ namespace Formulario
 
         private void CargarCmBoxTiposDeVolquetes()
         {
-            foreach (Volquete item in VolqueteControl.GetListaVolquetes)
+            try
             {
-                this.cmBox_TiposVolquetes.Items.Add(item.TipoVolquete);
+                foreach (Volquete item in VolqueteControl.GetListaVolquetes)
+                {
+                    this.cmBox_TiposVolquetes.Items.Add(item.TipoVolquete);
+                }
+
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void CargarCmBoxHorariosDeEntrega()
         {
-            foreach (string horario in VolqueteControl.GetHorarios)
+            try
             {
-                this.cmBox_HoraDeEntrega.Items.Add(horario);
+                foreach (string horario in VolqueteControl.GetHorarios)
+                {
+                    this.cmBox_HoraDeEntrega.Items.Add(horario);
+                }
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
 
@@ -131,7 +150,7 @@ namespace Formulario
                 string? tipoVolquete;
                 int cantidadDias = (int)numUD_CantidadDias.Value;
                 int cantidadVolquetes = (int)numUD_CantidadVolquetes.Value;
-                float precioActual = ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value);
+                float precio = ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value);
 
 
                 if (this.cmBox_HoraDeEntrega.SelectedIndex != -1 && txt_Direccion.Text != string.Empty && this.cmBox_TiposVolquetes.SelectedIndex != -1)
@@ -140,14 +159,14 @@ namespace Formulario
                     direccion = txt_Direccion.Text;
                     tipoVolquete = this.cmBox_TiposVolquetes.SelectedItem.ToString();
 
-                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precioActual, ControlApp.NuevoIdCompra());
+                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra());
                     if (CompraControl.AgregarCompra(ref nuevaCompra))
                     {
                         bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
                         if (compraExitosa)
                         {
                             CargarDTGV(nuevaCompra);
-                            MessageBox.Show("La compra fue un exitooo");
+                            MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                             LimpiarFormularioAlquiler();
 
                         }
@@ -198,7 +217,7 @@ namespace Formulario
             Volquete? auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(this.cmBox_TiposVolquetes.Text);
             if (auxVolquete is not null)
             {
-                this.lbl_PrecioDelProducto.Text = $"{(float)auxVolquete.Precio}";
+                this.lbl_PrecioDelProducto.Text = auxVolquete.Precio.ToString("C");
                 this.precioActual = (float)auxVolquete.Precio;
             }
             //aca hay un error
@@ -212,9 +231,11 @@ namespace Formulario
 
         private void numUD_CantidadVolquetes_Click(object sender, EventArgs e)
         {
+            float precio;
             if ((int)numUD_CantidadDias.Value >= 1 || (int)numUD_CantidadVolquetes.Value >= 1)
             {
-                this.lbl_PrecioDelProducto.Text = $"{ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value)}";
+                precio = ActulizarPrecioActual(this.precioActual, (int)numUD_CantidadVolquetes.Value, (int)numUD_CantidadDias.Value);
+                this.lbl_PrecioDelProducto.Text = precio.ToString("C");
             }
         }
 
@@ -226,6 +247,8 @@ namespace Formulario
             this.pic_CerrarFormulario.Visible = false;
             this.btn_Eliminar.Visible = false;
             this.dtg_ListaDeVolquetes.Visible = false;
+            this.lbl_IdCompra.Visible = false;
+            this.lblId.Visible = false;
         }
 
         private void btn_FechaSeleccionada_Click_1(object sender, EventArgs e)
@@ -241,13 +264,15 @@ namespace Formulario
             this.txt_FechaDeEntrega.Text = fecha.ToString("d");
             this.btn_Eliminar.Visible = true;
             this.dtg_ListaDeVolquetes.Visible = true;
+            this.lbl_IdCompra.Visible = true;
+            this.lblId.Visible = true;
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             try
-            {
-
+            {   
+                //falta completar
 
 
             }
@@ -307,7 +332,7 @@ namespace Formulario
                 this.btn_AgregarALaLista.Visible = true;
                 try
                 {
-                    if(this.cmBox_TiposVolquetes.SelectedIndex != -1 &&
+                    if (this.cmBox_TiposVolquetes.SelectedIndex != -1 &&
                         this.numUD_CantidadDias.Value >= 1 &&
                         this.numUD_CantidadVolquetes.Value >= 1 &&
                         this.txt_FechaDeEntrega.Text != string.Empty &&
@@ -334,7 +359,7 @@ namespace Formulario
                             {
                                 CargarListaModificadaDTGV(this.posicionDTG, this.auxCompra);
                                 LimpiarFormularioAlquiler();
-                                MessageBox.Show("Se modifico con exito","Operacion exitosa !!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                                MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -360,7 +385,7 @@ namespace Formulario
             }
         }
 
-        private void CargarListaModificadaDTGV(int posicionDTGV , Compra auxCompra)
+        private void CargarListaModificadaDTGV(int posicionDTGV, Compra auxCompra)
         {
 
             this.dtg_ListaDeVolquetes.Rows[posicionDTGV].Cells[0].Value = auxCompra.TipoVolquete;

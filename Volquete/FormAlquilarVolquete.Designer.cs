@@ -237,10 +237,11 @@
             // lbl_PrecioDelProducto
             // 
             lbl_PrecioDelProducto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lbl_PrecioDelProducto.AutoSize = true;
             lbl_PrecioDelProducto.Font = new Font("Cambria", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_PrecioDelProducto.Location = new Point(388, 43);
             lbl_PrecioDelProducto.Name = "lbl_PrecioDelProducto";
-            lbl_PrecioDelProducto.Size = new Size(67, 22);
+            lbl_PrecioDelProducto.Size = new Size(0, 22);
             lbl_PrecioDelProducto.TabIndex = 42;
             // 
             // lbl_TituloPrecio

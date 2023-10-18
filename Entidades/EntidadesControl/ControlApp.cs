@@ -29,11 +29,11 @@ namespace Entidades
         public static void HarcodeoUsuariosYVolquetes()
         {
             ControlAgregarUsuario(new Usuario("a", "a", 1234, "Miguel", "Villalba", 23451, ControlApp.NuevoIdUsuario()));
-            VolqueteControl.AgregarVolquete(new Volquete("Pequeño",10000,(float)1.5,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Mediano",15000, (float)3,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Estandar",25000, (float)6,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Grande",30000, (float)10,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Super Grande",40000, (float)12,"Todo tipo de materiales"));
+            VolqueteControl.AgregarVolquete(new Volquete("Pequeño",(float)1700,(float)1.5,"Todo tipo de materiales"));
+            VolqueteControl.AgregarVolquete(new Volquete("Mediano",(float)2000, (float)3,"Todo tipo de materiales"));
+            VolqueteControl.AgregarVolquete(new Volquete("Estandar", (float)2500, (float)6,"Todo tipo de materiales"));
+            VolqueteControl.AgregarVolquete(new Volquete("Grande", (float)3100, (float)10,"Todo tipo de materiales"));
+            VolqueteControl.AgregarVolquete(new Volquete("Super Grande", (float)3900, (float)12,"Todo tipo de materiales"));
         }
 
 
