@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,11 @@ namespace Formulario
 {
     public partial class FormAlquilarVolquete : Form
     {
-        //List<Volquete>? listaVolquetes = null;
-        //Usuario auxUsuario = null;
         private float precioActual = 0;
         private DateTime fecha;
         private int posicionDTG;
         private Compra auxCompra = null;
+
         public FormAlquilarVolquete()
         {
             InitializeComponent();
@@ -35,6 +35,7 @@ namespace Formulario
             CargarCmBoxTiposDeVolquetes();
             CargarCmBoxHorariosDeEntrega();
             this.btn_Eliminar.Enabled = false;
+            this.btn_Modificar.Enabled = false;
             this.cmBox_TiposVolquetes.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cmBox_HoraDeEntrega.DropDownStyle = ComboBoxStyle.DropDownList;
             this.txt_FechaDeEntrega.ReadOnly = true;
@@ -94,7 +95,8 @@ namespace Formulario
             this.txt_Direccion.Text = string.Empty;
             this.lbl_PrecioDelProducto.Text = (0).ToString("C");
             this.txt_FechaDeEntrega.Text = "Año/Mes/Dia";
-            this.btn_Eliminar.Enabled = true;
+            this.btn_Eliminar.Visible = true;
+            this.btn_Modificar.Visible = true;
 
         }
 
@@ -249,6 +251,7 @@ namespace Formulario
             this.dtg_ListaDeVolquetes.Visible = false;
             this.lbl_IdCompra.Visible = false;
             this.lblId.Visible = false;
+            this.btn_Modificar.Visible = false;
         }
 
         private void btn_FechaSeleccionada_Click_1(object sender, EventArgs e)
@@ -266,15 +269,26 @@ namespace Formulario
             this.dtg_ListaDeVolquetes.Visible = true;
             this.lbl_IdCompra.Visible = true;
             this.lblId.Visible = true;
+            this.btn_Modificar.Visible = true;
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             try
-            {   
-                //falta completar
+            {
+                int posicionCompra;
+                this.dtg_ListaDeVolquetes.Rows.RemoveAt(this.posicionDTG);
+                LimpiarFormularioAlquiler();
+                posicionCompra = int.Parse(lbl_IdCompra.Text);
+                if (UsuarioControl.EliminarCompra(posicionCompra))
+                {
+                    MessageBox.Show("Se elimino con exito!!!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("NO se pudo eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
+                }
             }
             catch (Exception ex)
             {
@@ -292,8 +306,10 @@ namespace Formulario
 
                 if (this.posicionDTG != -1)
                 {
-                    this.btn_Modificar.Visible = true;
-                    this.btn_AgregarALaLista.Visible = false;
+                    this.btn_Modificar.Enabled = true;
+                    this.btn_Eliminar.Enabled = true;
+                    this.btn_AgregarALaLista.Enabled = false;
+                    this.btn_HacerCompra.Enabled = false;
 
                     string tipo = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[0].Value;
                     string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
@@ -314,7 +330,6 @@ namespace Formulario
                     this.lbl_IdCompra.Text = id;
 
 
-
                 }
             }
             catch (Exception ex)
@@ -328,8 +343,10 @@ namespace Formulario
 
             if (this.posicionDTG != -1)
             {
-                this.btn_Modificar.Visible = false;
-                this.btn_AgregarALaLista.Visible = true;
+                this.btn_Modificar.Enabled = false;
+                this.btn_AgregarALaLista.Enabled = true;
+                this.btn_HacerCompra.Enabled = true;
+                this.btn_Eliminar.Enabled = false;
                 try
                 {
                     if (this.cmBox_TiposVolquetes.SelectedIndex != -1 &&
@@ -340,24 +357,61 @@ namespace Formulario
                         this.txt_Direccion.Text != string.Empty)
                     {
 
-                        string? tipo = this.cmBox_TiposVolquetes.SelectedItem.ToString();
-                        string precio = this.lbl_PrecioDelProducto.Text;
-                        string dias = this.numUD_CantidadDias.Value.ToString();
-                        string cantidad = this.numUD_CantidadVolquetes.Value.ToString();
-                        string fechaDeEntrega = this.txt_FechaDeEntrega.Text;
-                        string? horaDeEntrega = this.cmBox_HoraDeEntrega.SelectedItem.ToString();
-                        string direccion = this.txt_Direccion.Text;
-                        string id = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
+                        string cadenaTipo = this.cmBox_TiposVolquetes.Text;
+                        string cadenaPrecio = this.lbl_PrecioDelProducto.Text;
+                        string cadenaDias = this.numUD_CantidadDias.Value.ToString();
+                        string cadenaCantidad = this.numUD_CantidadVolquetes.Value.ToString();
+                        string cadenaFechaDeEntrega = this.txt_FechaDeEntrega.Text;
+                        string cadenaHoraDeEntrega = this.cmBox_HoraDeEntrega.Text;
+                        string cadenaDireccion = this.txt_Direccion.Text;
+                        string cadenaId = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
 
-                        int encontrarId = int.Parse(id);
-                        this.auxCompra = CompraControl.EncontrarCompraPorID(encontrarId);
-                        this.auxCompra = new Compra(tipo, UsuarioControl.GetUsuario.ToString(), int.Parse(cantidad), int.Parse(dias), new DateTime(2001, 3, 4), horaDeEntrega, direccion, int.Parse(precio), encontrarId);
+                        ///int encontrarId = int.Parse(id);
+                        //this.auxCompra = CompraControl.EncontrarCompraPorID(encontrarId);
 
-                        if (this.auxCompra is not null)
+
+                        /*
+                        this.auxCompra.TipoVolquete = tipo;
+                        //this.auxCompra.Precio = float.Parse(precio);//aca hoy un error
+                        //this.auxCompra.CantidadDias = int.Parse(dias);
+                        this.auxCompra.FechaDeEntraga = Convert.ToDateTime(fechaDeEntrega, CultureInfo.InvariantCulture);
+                        this.auxCompra.Direccion = direccion;
+                        this.auxCompra.IdCompra = int.Parse(id);
+                        */
+                        string formato = "dd/MM/yyyy";
+                        DateTime nuevaFecha = DateTime.ParseExact(cadenaFechaDeEntrega, formato, CultureInfo.InvariantCulture);
+                        Compra nuevaCompra = null;
+                        try
                         {
-                            if (CompraControl.ModificarPorId(auxCompra) && UsuarioControl.ModificarPorId(auxCompra))
+                            int cantidad = int.Parse(cadenaCantidad);
+                            int dias = int.Parse(cadenaDias);
+                            cadenaPrecio = cadenaPrecio.Replace("$", "");
+                            float precio;//el problema esta aca , no se parsea bien 
+
+                            if (float.TryParse(cadenaPrecio, out precio))
                             {
-                                CargarListaModificadaDTGV(this.posicionDTG, this.auxCompra);
+                                
+                            }
+
+                            int idCompra = int.Parse(cadenaId);
+
+                            nuevaCompra = new(cadenaTipo, UsuarioControl.GetUsuario.Nombre, cantidad, dias,
+                                nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra);
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error con el objeto : " +ex.Message);       
+    
+                        }
+
+
+                        if (nuevaCompra is not null)
+                        {
+                            if (CompraControl.ModificarPorId(nuevaCompra) && UsuarioControl.ModificarPorId(nuevaCompra))
+                            {
+                                CargarListaModificadaDTGV(this.posicionDTG, nuevaCompra);
                                 LimpiarFormularioAlquiler();
                                 MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -375,7 +429,7 @@ namespace Formulario
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show($"{ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

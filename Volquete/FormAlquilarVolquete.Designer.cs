@@ -325,7 +325,7 @@
             btn_AgregarALaLista.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_AgregarALaLista.ForeColor = Color.Black;
             btn_AgregarALaLista.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_AgregarALaLista.Location = new Point(59, 205);
+            btn_AgregarALaLista.Location = new Point(41, 205);
             btn_AgregarALaLista.Name = "btn_AgregarALaLista";
             btn_AgregarALaLista.Size = new Size(128, 30);
             btn_AgregarALaLista.TabIndex = 50;
@@ -344,7 +344,7 @@
             btn_HacerCompra.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_HacerCompra.ForeColor = Color.Black;
             btn_HacerCompra.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_HacerCompra.Location = new Point(416, 205);
+            btn_HacerCompra.Location = new Point(501, 205);
             btn_HacerCompra.Name = "btn_HacerCompra";
             btn_HacerCompra.Size = new Size(118, 30);
             btn_HacerCompra.TabIndex = 51;
@@ -439,7 +439,7 @@
             btn_Eliminar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Eliminar.ForeColor = Color.Black;
             btn_Eliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Eliminar.Location = new Point(241, 205);
+            btn_Eliminar.Location = new Point(339, 205);
             btn_Eliminar.Name = "btn_Eliminar";
             btn_Eliminar.Size = new Size(128, 30);
             btn_Eliminar.TabIndex = 56;
@@ -458,13 +458,12 @@
             btn_Modificar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Modificar.ForeColor = Color.Black;
             btn_Modificar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Modificar.Location = new Point(59, 205);
+            btn_Modificar.Location = new Point(193, 205);
             btn_Modificar.Name = "btn_Modificar";
             btn_Modificar.Size = new Size(128, 30);
             btn_Modificar.TabIndex = 57;
             btn_Modificar.Text = "MODIFICAR";
             btn_Modificar.UseVisualStyleBackColor = false;
-            btn_Modificar.Visible = false;
             btn_Modificar.Click += btn_Modificar_Click;
             // 
             // lblId

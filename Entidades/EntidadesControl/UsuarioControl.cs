@@ -136,6 +136,22 @@ namespace Entidades.EntidadesControl
             return false;
         }
 
+        public static bool EliminarCompra(int idCompra)
+        {
+            int posicion;
+            if(idCompra != -1)
+            {
+                posicion = BuscarPorIdUsuarioCompra(idCompra);
+                if(posicion != -1)
+                {
+                    usuarioActual.ListaDeCompra.RemoveAt(posicion);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
 
 
         public static Usuario? BuscarUsuarioPorClaveYNombreUsuario(string nombreUsuario,  string clave)
