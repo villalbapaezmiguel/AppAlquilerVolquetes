@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCompra xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Compra>
-    <NombreDeUsuario>Miguel</NombreDeUsuario>
-    <CantidadVolquetes>3</CantidadVolquetes>
-    <CantidadDias>2</CantidadDias>
-    <FechaDeEntraga>2023-10-23T00:00:00</FechaDeEntraga>
-    <HoraDeEntrega>10:00</HoraDeEntrega>
-    <Direccion>ddd</Direccion>
-    <Precio>150000</Precio>
+    <NombreDeUsuario>Lopez</NombreDeUsuario>
+    <CantidadVolquetes>1</CantidadVolquetes>
+    <CantidadDias>1</CantidadDias>
+    <FechaDeEntraga>2023-10-30T00:00:00</FechaDeEntraga>
+    <HoraDeEntrega>12:00</HoraDeEntrega>
+    <Direccion>aaaa</Direccion>
+    <Precio>2500</Precio>
     <TipoVolquete>Estandar</TipoVolquete>
-    <IdCompra>0</IdCompra>
+    <IdCompra>3</IdCompra>
   </Compra>
 </ArrayOfCompra>

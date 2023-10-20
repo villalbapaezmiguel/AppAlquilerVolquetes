@@ -16,7 +16,7 @@ namespace Formulario
     public partial class FormABMVolqueteUsuario : Form
     {
         public Usuario usuarioAuxiliar;
-        private string tipoVolquete = "ninguna";
+        
         public FormABMVolqueteUsuario()
         {
             InitializeComponent();
@@ -66,7 +66,6 @@ namespace Formulario
 
         private void cmBox_TiposVolquetes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //this.panel_ContenedorVolquetes.BackgroundImage = new System.Drawing.Image()
             string tipo;
             if (this.cmBox_Volquete.SelectedIndex != -1)
             {

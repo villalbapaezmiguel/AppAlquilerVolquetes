@@ -195,21 +195,82 @@ namespace Formulario
 
         }
 
+        private string ObtenerListaDeCompras(List<Compra> listaCompras)
+        {
+            StringBuilder informacionCompra = new  StringBuilder();
+            try
+            {
+                foreach(Compra compra in listaCompras)
+                {
+                    informacionCompra.AppendLine(compra.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"ERRO : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return informacionCompra.ToString();
+
+        }
+
         private void btn_HacerCompra_Click(object sender, EventArgs e)
         {
             //generar un ticket , json y XML
             string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\XML\";
-            string nombre = @"\Compras.xml";
-            string path = rutaCarpeta + nombre;
+            //string nombre = @"\Compras.xml";
+            string path = rutaCarpeta + UsuarioControl.GetUsuario.NombreUsuario;
+
+            string informacion;
+                    informacion = ObtenerListaDeCompras(UsuarioControl.GetUsuario.ListaDeCompra);
+                    path += @"\"+UsuarioControl.GetUsuario.NombreUsuario +".txt";
+            /*error a la hora de crear archivos y de directorios*/
             try
             {
+                if(Serializar.CrearDirectorioParaUsuario(path))
+                {
+                    if (Serializar.CrearArchivo(path, informacion))
+                    {
+                        MessageBox.Show("Archivo creado con exito");
+                        Serializar.EscribirXMLCompras(path, UsuarioControl.GetUsuario.ListaDeCompra);
+                    }
+                    else
+                    {
+                        if(Serializar.EscribirArchivo(path, informacion))
+                        {
+                            Serializar.EscribirXMLCompras(path, UsuarioControl.GetUsuario.ListaDeCompra);
+                            MessageBox.Show($"Se escribio con exito el archivo ya existe");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Error , No se pudo escribir en el archivo existente");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Error , ese directorio ya existe");
+                    if (Serializar.EscribirArchivo(path, informacion))
+                    {
+                        Serializar.EscribirXMLCompras(path, UsuarioControl.GetUsuario.ListaDeCompra);
+                        MessageBox.Show($"Se escribio con exito el archivo ya existe");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error , No se pudo escribir en el archivo existente");
+                    }
+                }
+
+                /*
                 Serializar.EscribirXMLCompras(path, ControlApp.GetListaComprasUsuario);
-                MessageBox.Show("Compra exitosa");
+                MessageBox.Show("Compra exitosa");*/
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show($"Error : {ex.Message}");
+                
             }
 
         }
@@ -366,18 +427,7 @@ namespace Formulario
                         string cadenaDireccion = this.txt_Direccion.Text;
                         string cadenaId = (string)this.dtg_ListaDeVolquetes.Rows[this.posicionDTG].Cells[1].Value;
 
-                        ///int encontrarId = int.Parse(id);
-                        //this.auxCompra = CompraControl.EncontrarCompraPorID(encontrarId);
 
-
-                        /*
-                        this.auxCompra.TipoVolquete = tipo;
-                        //this.auxCompra.Precio = float.Parse(precio);//aca hoy un error
-                        //this.auxCompra.CantidadDias = int.Parse(dias);
-                        this.auxCompra.FechaDeEntraga = Convert.ToDateTime(fechaDeEntrega, CultureInfo.InvariantCulture);
-                        this.auxCompra.Direccion = direccion;
-                        this.auxCompra.IdCompra = int.Parse(id);
-                        */
                         string formato = "dd/MM/yyyy";
                         DateTime nuevaFecha = DateTime.ParseExact(cadenaFechaDeEntrega, formato, CultureInfo.InvariantCulture);
                         Compra nuevaCompra = null;

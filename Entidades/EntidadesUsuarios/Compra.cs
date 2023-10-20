@@ -46,6 +46,22 @@ namespace Entidades.EntidadesUsuarios
         public string TipoVolquete { get => tipoVolquete; set => tipoVolquete = value; }
         public int IdCompra { get => idCompra; set => idCompra = value; }
 
+        public override string ToString()
+        {
+            StringBuilder informacionCompra = new StringBuilder();
+
+            informacionCompra.AppendLine($"Nombre de Usuario : {NombreDeUsuario}");
+            informacionCompra.AppendLine($"Tipo del volquete : {TipoVolquete}");
+            informacionCompra.AppendLine($"Fecha de entrega : {FechaDeEntraga}");
+            informacionCompra.AppendLine($"Cantidad : {CantidadVolquetes}");
+            informacionCompra.AppendLine($"Dias alquilados : {CantidadDias}");
+            informacionCompra.AppendLine($"Horario de entrega : {HoraDeEntrega}");
+            informacionCompra.AppendLine($"Direccion  : {Direccion}");
+            informacionCompra.AppendLine($"Precio : {Precio}");
+            informacionCompra.AppendLine($"ID : {IdCompra}");
+
+            return informacionCompra.ToString();
+        }
 
 
     }

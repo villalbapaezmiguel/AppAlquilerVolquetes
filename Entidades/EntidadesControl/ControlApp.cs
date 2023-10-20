@@ -32,8 +32,8 @@ namespace Entidades
             VolqueteControl.AgregarVolquete(new Volquete("Pequeño",(float)1700,(float)1.5,"Todo tipo de materiales"));
             VolqueteControl.AgregarVolquete(new Volquete("Mediano",(float)2000, (float)3,"Todo tipo de materiales"));
             VolqueteControl.AgregarVolquete(new Volquete("Estandar", (float)2500, (float)6,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Grande", (float)3100, (float)10,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Super Grande", (float)3900, (float)12,"Todo tipo de materiales"));
+            VolqueteControl.AgregarVolquete(new Volquete("Grande", (float)3100, (float)10, "Solo materiales livianos"));
+            VolqueteControl.AgregarVolquete(new Volquete("Super Grande", (float)3900, (float)12,"Solo materiales livianos"));
         }
 
 
@@ -90,7 +90,6 @@ namespace Entidades
                 {
                     if (listaUsuarios[i] == usuario)
                     {
-                        //Usuario auxNuevo = new Usuario(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario);
                         listaUsuarios[i] = usuario;
                         return true;
                     }

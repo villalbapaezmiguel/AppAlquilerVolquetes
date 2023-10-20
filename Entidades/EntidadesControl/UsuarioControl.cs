@@ -58,7 +58,6 @@ namespace Entidades.EntidadesControl
                     usuarioActual.ListaDeCompra[posicion] = compra;
                     return true;
                 }
-
             }
             return false;
         }
