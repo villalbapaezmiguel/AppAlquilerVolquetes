@@ -13,6 +13,7 @@ namespace Entidades
     {
         public static List<Usuario> listaUsuarios = new List<Usuario>();
         public static List<Volquete> listaVolquetes = new List<Volquete>();
+        public static List<Compra> listaDeCompras = new List<Compra>();//cada vez que el usuaurio termine de usar la app guardar todas sus compras aca
         private static int idCompra = 0;
         private static int idUsuario = 0;
         
@@ -45,6 +46,17 @@ namespace Entidades
             }
         }
 
+        public static void ControlAgregarVolquete(Volquete volquete)
+        {
+            if(volquete is not null)
+            {
+                listaVolquetes.Add(volquete);
+            }
+        }
+
+
+
+
         public static List<Usuario> GetListaUsuarios
         {
             get
@@ -66,21 +78,6 @@ namespace Entidades
                 return nuevaLista;
             }
         }
-
-        public static List<Compra> GetListaComprasUsuario
-        {
-            get
-            {
-                List<Compra> nuevaLista = new();
-                foreach (Compra item in UsuarioControl.GetListaComprasUsuario)
-                {
-                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra);
-                    nuevaLista.Add(AuxUsuario);
-                }
-                return nuevaLista;
-            }
-        }
-
 
         public static bool ControlGuardarDatosUsuaurio(Usuario usuario)
         {

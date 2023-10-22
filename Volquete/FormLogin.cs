@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista;
 
 namespace Formulario
 {
@@ -82,7 +83,9 @@ namespace Formulario
 
         private void btn_Admin_Click(object sender, EventArgs e)
         {
-
+            FormAdmin formAdmin = new FormAdmin();
+            formAdmin.Show();
+            this.Hide();
 
         }
     }

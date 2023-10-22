@@ -32,11 +32,7 @@ namespace Entidades.EntidadesUsuarios
         public virtual string ToString()
         {
             StringBuilder informacion = new StringBuilder();
-
-            informacion.AppendLine($"Nombre {Nombre}");
-            informacion.AppendLine($"Apellido {Apellido}");
-            informacion.AppendLine($"DNI {Dni}");
-
+            informacion.Append($"Nombre {Nombre} | Apellido {Apellido} | DNI {Dni}");
             return informacion.ToString();
         }
     }

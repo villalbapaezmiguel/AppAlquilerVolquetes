@@ -4,6 +4,9 @@
     <Compile Update="FormABMVolqueteUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>

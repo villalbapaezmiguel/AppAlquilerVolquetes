@@ -46,12 +46,27 @@ namespace Entidades.EntidadesUsuarios
         public double Telefono { get => telefono; set => telefono = value; }
         public int IdUsuario { get => idUsuario; private set => idUsuario = value; }
 
+        private string ComprasHechas()
+        {
+            StringBuilder informacionCompra = new StringBuilder();
+            foreach(Compra item in listaDeCompra)
+            {
+                informacionCompra.AppendLine(item.ToString());
+            }
+
+            return informacionCompra.ToString();
+        }
+
+
         public override string ToString()
         {
             StringBuilder infoUsuario = new StringBuilder();
             infoUsuario.AppendLine(base.ToString());
-            infoUsuario.AppendLine($"Usuario {NombreUsuario}");
-            infoUsuario.AppendLine($"Telefono {Telefono}");
+            infoUsuario.AppendLine($"Usuario {NombreUsuario} | Id {IdUsuario} | Telefono {Telefono}");
+            infoUsuario.Append("Lista de compra : ");
+            infoUsuario.AppendLine($"{ComprasHechas()}");
+            infoUsuario.AppendLine("-----------------------------------");
+
 
             return infoUsuario.ToString();  
         }

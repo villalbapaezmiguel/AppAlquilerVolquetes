@@ -218,14 +218,14 @@ namespace Formulario
         private void btn_HacerCompra_Click(object sender, EventArgs e)
         {
             //generar un ticket , json y XML
-            string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\XML\";
-            //string nombre = @"\Compras.xml";
-            string path = rutaCarpeta + UsuarioControl.GetUsuario.NombreUsuario;
+            string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+            string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
+            string path = rutaCarpeta + nombreDeCarpeta;
 
-            string informacion;
-                    informacion = ObtenerListaDeCompras(UsuarioControl.GetUsuario.ListaDeCompra);
-                    path += @"\"+UsuarioControl.GetUsuario.NombreUsuario +".txt";
-            /*error a la hora de crear archivos y de directorios*/
+            Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}"+".txt" , UsuarioControl.GetUsuario.ToString());
+
+            
+            /* 
             try
             {
                 if(Serializar.CrearDirectorioParaUsuario(path))
@@ -262,16 +262,16 @@ namespace Formulario
                     }
                 }
 
-                /*
-                Serializar.EscribirXMLCompras(path, ControlApp.GetListaComprasUsuario);
-                MessageBox.Show("Compra exitosa");*/
+                
+                //Serializar.EscribirXMLCompras(path, ControlApp.GetListaComprasUsuario);
+                //MessageBox.Show("Compra exitosa");
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show($"Error : {ex.Message}");
                 
-            }
+            }*/
 
         }
 

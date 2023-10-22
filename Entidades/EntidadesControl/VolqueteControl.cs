@@ -48,6 +48,7 @@ namespace Entidades.EntidadesControl
                 if(!ExistePorTipoDeVolquete(volquete.TipoVolquete))
                 {
                     listaVolquetes.Add(volquete);
+                    ControlApp.ControlAgregarVolquete(volquete);
                     return true;
                 }
             }
