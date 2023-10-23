@@ -67,7 +67,6 @@ namespace Entidades.EntidadesUsuarios
             infoUsuario.AppendLine($"{ComprasHechas()}");
             infoUsuario.AppendLine("-----------------------------------");
 
-
             return infoUsuario.ToString();  
         }
 
