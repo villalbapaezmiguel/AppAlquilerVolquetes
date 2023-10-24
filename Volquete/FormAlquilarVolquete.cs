@@ -197,10 +197,10 @@ namespace Formulario
 
         private string ObtenerListaDeCompras(List<Compra> listaCompras)
         {
-            StringBuilder informacionCompra = new  StringBuilder();
+            StringBuilder informacionCompra = new StringBuilder();
             try
             {
-                foreach(Compra compra in listaCompras)
+                foreach (Compra compra in listaCompras)
                 {
                     informacionCompra.AppendLine(compra.ToString());
                 }
@@ -222,7 +222,7 @@ namespace Formulario
             string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
             string path = rutaCarpeta + nombreDeCarpeta;
 
-            Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}"+".txt" , UsuarioControl.GetUsuario.ToString());
+            Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
             AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
 
             /* 
@@ -440,7 +440,7 @@ namespace Formulario
 
                             if (float.TryParse(cadenaPrecio, out precio))
                             {
-                                
+
                             }
 
                             int idCompra = int.Parse(cadenaId);
@@ -452,8 +452,8 @@ namespace Formulario
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Error con el objeto : " +ex.Message);       
-    
+                            MessageBox.Show("Error con el objeto : " + ex.Message);
+
                         }
 
 

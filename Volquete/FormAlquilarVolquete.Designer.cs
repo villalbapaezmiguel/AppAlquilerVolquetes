@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlquilarVolquete));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lbl_Titulo = new Label();
             pic_CerrarFormulario = new PictureBox();
             panel_Titulo = new Panel();
@@ -164,12 +167,16 @@
             // 
             // cmBox_TiposVolquetes
             // 
+            cmBox_TiposVolquetes.BackColor = Color.FromArgb(45, 66, 91);
+            cmBox_TiposVolquetes.Cursor = Cursors.Hand;
+            cmBox_TiposVolquetes.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmBox_TiposVolquetes.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            cmBox_TiposVolquetes.ForeColor = Color.White;
             cmBox_TiposVolquetes.FormattingEnabled = true;
             cmBox_TiposVolquetes.Location = new Point(17, 42);
             cmBox_TiposVolquetes.Name = "cmBox_TiposVolquetes";
             cmBox_TiposVolquetes.Size = new Size(121, 23);
             cmBox_TiposVolquetes.TabIndex = 36;
-            cmBox_TiposVolquetes.Text = "Seleccione Volquete";
             cmBox_TiposVolquetes.SelectedIndexChanged += cmBox_TiposVolquetes_SelectedIndexChanged;
             // 
             // label2
@@ -186,6 +193,11 @@
             // numUD_CantidadVolquetes
             // 
             numUD_CantidadVolquetes.Anchor = AnchorStyles.Top;
+            numUD_CantidadVolquetes.BackColor = Color.FromArgb(45, 66, 91);
+            numUD_CantidadVolquetes.BorderStyle = BorderStyle.FixedSingle;
+            numUD_CantidadVolquetes.Cursor = Cursors.Hand;
+            numUD_CantidadVolquetes.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            numUD_CantidadVolquetes.ForeColor = Color.White;
             numUD_CantidadVolquetes.Location = new Point(306, 15);
             numUD_CantidadVolquetes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadVolquetes.Name = "numUD_CantidadVolquetes";
@@ -197,7 +209,10 @@
             // numUD_CantidadDias
             // 
             numUD_CantidadDias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            numUD_CantidadDias.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            numUD_CantidadDias.BackColor = Color.FromArgb(45, 66, 91);
+            numUD_CantidadDias.Cursor = Cursors.Hand;
+            numUD_CantidadDias.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            numUD_CantidadDias.ForeColor = Color.White;
             numUD_CantidadDias.Location = new Point(306, 52);
             numUD_CantidadDias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_CantidadDias.Name = "numUD_CantidadDias";
@@ -258,6 +273,11 @@
             // txt_Direccion
             // 
             txt_Direccion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            txt_Direccion.BackColor = Color.FromArgb(45, 66, 91);
+            txt_Direccion.BorderStyle = BorderStyle.FixedSingle;
+            txt_Direccion.Cursor = Cursors.Hand;
+            txt_Direccion.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_Direccion.ForeColor = Color.White;
             txt_Direccion.Location = new Point(400, 166);
             txt_Direccion.Name = "txt_Direccion";
             txt_Direccion.PlaceholderText = "Direccion";
@@ -266,6 +286,10 @@
             // 
             // txt_FechaDeEntrega
             // 
+            txt_FechaDeEntrega.BackColor = Color.FromArgb(45, 66, 91);
+            txt_FechaDeEntrega.BorderStyle = BorderStyle.FixedSingle;
+            txt_FechaDeEntrega.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_FechaDeEntrega.ForeColor = Color.White;
             txt_FechaDeEntrega.Location = new Point(23, 166);
             txt_FechaDeEntrega.Name = "txt_FechaDeEntrega";
             txt_FechaDeEntrega.PlaceholderText = " DD/MM/AAAA";
@@ -276,6 +300,10 @@
             // cmBox_HoraDeEntrega
             // 
             cmBox_HoraDeEntrega.Anchor = AnchorStyles.Top;
+            cmBox_HoraDeEntrega.BackColor = Color.FromArgb(45, 66, 91);
+            cmBox_HoraDeEntrega.Cursor = Cursors.Hand;
+            cmBox_HoraDeEntrega.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmBox_HoraDeEntrega.ForeColor = Color.White;
             cmBox_HoraDeEntrega.FormattingEnabled = true;
             cmBox_HoraDeEntrega.Location = new Point(213, 166);
             cmBox_HoraDeEntrega.Name = "cmBox_HoraDeEntrega";
@@ -286,7 +314,7 @@
             // 
             lbl_TituloCalendario.AutoSize = true;
             lbl_TituloCalendario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_TituloCalendario.Location = new Point(42, 148);
+            lbl_TituloCalendario.Location = new Point(29, 148);
             lbl_TituloCalendario.Name = "lbl_TituloCalendario";
             lbl_TituloCalendario.Size = new Size(127, 15);
             lbl_TituloCalendario.TabIndex = 47;
@@ -317,11 +345,11 @@
             // btn_AgregarALaLista
             // 
             btn_AgregarALaLista.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btn_AgregarALaLista.BackColor = SystemColors.ActiveCaption;
+            btn_AgregarALaLista.BackColor = Color.SteelBlue;
             btn_AgregarALaLista.Cursor = Cursors.Hand;
             btn_AgregarALaLista.FlatAppearance.BorderSize = 0;
-            btn_AgregarALaLista.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_AgregarALaLista.FlatStyle = FlatStyle.Flat;
+            btn_AgregarALaLista.FlatAppearance.MouseOverBackColor = Color.MediumSeaGreen;
+            btn_AgregarALaLista.FlatStyle = FlatStyle.Popup;
             btn_AgregarALaLista.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_AgregarALaLista.ForeColor = Color.Black;
             btn_AgregarALaLista.ImageAlign = ContentAlignment.MiddleLeft;
@@ -354,13 +382,42 @@
             // 
             // dtg_ListaDeVolquetes
             // 
-            dtg_ListaDeVolquetes.BackgroundColor = SystemColors.ActiveCaption;
-            dtg_ListaDeVolquetes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtg_ListaDeVolquetes.BackgroundColor = Color.FromArgb(45, 66, 91);
+            dtg_ListaDeVolquetes.BorderStyle = BorderStyle.None;
+            dtg_ListaDeVolquetes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtg_ListaDeVolquetes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtg_ListaDeVolquetes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtg_ListaDeVolquetes.ColumnHeadersHeight = 30;
+            dtg_ListaDeVolquetes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtg_ListaDeVolquetes.Columns.AddRange(new DataGridViewColumn[] { TipoProducto, IdCompra, PrecioVolquete, CantidadDias, CantidadVolquete, FechaDeEntraga, HorarioDeEntrga, DireccionUsuario });
             dtg_ListaDeVolquetes.Dock = DockStyle.Bottom;
+            dtg_ListaDeVolquetes.EnableHeadersVisualStyles = false;
+            dtg_ListaDeVolquetes.GridColor = Color.SteelBlue;
             dtg_ListaDeVolquetes.Location = new Point(0, 246);
             dtg_ListaDeVolquetes.Name = "dtg_ListaDeVolquetes";
             dtg_ListaDeVolquetes.ReadOnly = true;
+            dtg_ListaDeVolquetes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtg_ListaDeVolquetes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle3.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dtg_ListaDeVolquetes.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dtg_ListaDeVolquetes.RowTemplate.Height = 25;
             dtg_ListaDeVolquetes.Size = new Size(680, 135);
             dtg_ListaDeVolquetes.TabIndex = 52;
@@ -492,7 +549,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DodgerBlue;
+            BackColor = SystemColors.HotTrack;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(680, 381);
             Controls.Add(lbl_IdCompra);
