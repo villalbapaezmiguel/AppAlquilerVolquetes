@@ -14,6 +14,8 @@ namespace Entidades
         public static List<Usuario> listaUsuarios = new List<Usuario>();
         public static List<Volquete> listaVolquetes = new List<Volquete>();
         public static List<Compra> listaDeCompras = new List<Compra>();//cada vez que el usuaurio termine de usar la app guardar todas sus compras aca
+        public static List<Admin> listaAdministradores = new List<Admin>();
+        
         private static int idCompra = 0;
         private static int idUsuario = 0;
         
@@ -30,6 +32,8 @@ namespace Entidades
         public static void HarcodeoUsuariosYVolquetes()
         {
             ControlAgregarUsuario(new Usuario("a", "a", 1234, "Miguel", "Villalba", 23451, ControlApp.NuevoIdUsuario()));
+            AdminControl.AgregarAdministrador(new Admin("Migue", "Villalba", (double)1234,"a"));
+            
             VolqueteControl.AgregarVolquete(new Volquete("Pequeño",(float)1700,(float)1.5,"Todo tipo de materiales"));
             VolqueteControl.AgregarVolquete(new Volquete("Mediano",(float)2000, (float)3,"Todo tipo de materiales"));
             VolqueteControl.AgregarVolquete(new Volquete("Estandar", (float)2500, (float)6,"Todo tipo de materiales"));
@@ -38,11 +42,12 @@ namespace Entidades
         }
 
 
-        public static void ControlAgregarUsuario(Usuario nuevoUsurio)
+        public static void ControlAgregarUsuario(Usuario nuevoUsuario)
         {
-            if (nuevoUsurio is not null)
+            if (nuevoUsuario is not null)
             {
-                listaUsuarios.Add(nuevoUsurio);
+                listaUsuarios.Add(nuevoUsuario);
+                AdminControl.AgrergarUsuario(nuevoUsuario);  
             }
         }
 
@@ -88,6 +93,8 @@ namespace Entidades
                     if (listaUsuarios[i] == usuario)
                     {
                         listaUsuarios[i] = usuario;
+                        //AdminControl.AgregarListaDeCompraUsuario(listaUsuarios[i].ListaDeCompra);    
+                        AdminControl.GuardarDatosUsuario(listaUsuarios[i]);
                         return true;
                     }
                 }

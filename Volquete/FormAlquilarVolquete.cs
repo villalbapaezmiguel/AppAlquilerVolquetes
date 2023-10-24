@@ -223,8 +223,8 @@ namespace Formulario
             string path = rutaCarpeta + nombreDeCarpeta;
 
             Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}"+".txt" , UsuarioControl.GetUsuario.ToString());
+            AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
 
-            
             /* 
             try
             {

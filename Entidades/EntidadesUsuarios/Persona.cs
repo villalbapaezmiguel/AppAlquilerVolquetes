@@ -11,12 +11,17 @@ namespace Entidades.EntidadesUsuarios
     [XmlInclude(typeof(Compra))]
     [XmlInclude(typeof(Usuario))]
     [XmlInclude(typeof(Volquete))]
+    [XmlInclude(typeof(Admin))]
     public abstract class Persona
     {
         private string nombre;
         private string apellido;
         private double dni;
 
+        public Persona()
+        {
+
+        }
         public Persona(string nombre , string apellido , double dni )
         {
             this.nombre = nombre;

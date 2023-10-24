@@ -144,6 +144,7 @@ namespace Entidades.EntidadesControl
                 if(posicion != -1)
                 {
                     usuarioActual.ListaDeCompra.RemoveAt(posicion);
+                   
                     return true;
                 }
             }

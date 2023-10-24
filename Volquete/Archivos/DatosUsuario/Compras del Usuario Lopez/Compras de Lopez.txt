@@ -1,0 +1,15 @@
+Nombre Lopez | Apellido German | DNI 12345
+Usuario german | Id 1 | Telefono 1222222
+Lista de compra : Nombre de Usuario : Lopez
+Tipo del volquete : Super Grande
+Fecha de entrega : 23/10/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 12:00
+Direccion  : asssasasas
+Precio : 3900
+ID : 2
+
+
+-----------------------------------
+

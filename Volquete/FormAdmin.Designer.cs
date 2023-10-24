@@ -65,6 +65,7 @@
             btn_Usuarios = new Button();
             btn_Volquetes = new Button();
             pic_Cerrar = new PictureBox();
+            txt_CompraHorario = new TextBox();
             panel_InformacionDatos.SuspendLayout();
             panel_Compra.SuspendLayout();
             panel_Volquete.SuspendLayout();
@@ -98,6 +99,7 @@
             panel_Compra.BackgroundImage = (Image)resources.GetObject("panel_Compra.BackgroundImage");
             panel_Compra.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Compra.BorderStyle = BorderStyle.FixedSingle;
+            panel_Compra.Controls.Add(txt_CompraHorario);
             panel_Compra.Controls.Add(txt_CompraVolquete);
             panel_Compra.Controls.Add(txt_CompraIdCompra);
             panel_Compra.Controls.Add(txt_CompraCantidad);
@@ -115,7 +117,7 @@
             // txt_CompraVolquete
             // 
             txt_CompraVolquete.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraVolquete.Location = new Point(28, 26);
+            txt_CompraVolquete.Location = new Point(28, 9);
             txt_CompraVolquete.Name = "txt_CompraVolquete";
             txt_CompraVolquete.PlaceholderText = "VOLQUETE";
             txt_CompraVolquete.Size = new Size(239, 23);
@@ -124,7 +126,7 @@
             // txt_CompraIdCompra
             // 
             txt_CompraIdCompra.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraIdCompra.Location = new Point(28, 231);
+            txt_CompraIdCompra.Location = new Point(28, 214);
             txt_CompraIdCompra.Name = "txt_CompraIdCompra";
             txt_CompraIdCompra.PlaceholderText = "ID COMPRA";
             txt_CompraIdCompra.Size = new Size(239, 23);
@@ -133,7 +135,7 @@
             // txt_CompraCantidad
             // 
             txt_CompraCantidad.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraCantidad.Location = new Point(28, 86);
+            txt_CompraCantidad.Location = new Point(28, 69);
             txt_CompraCantidad.Name = "txt_CompraCantidad";
             txt_CompraCantidad.PlaceholderText = "CANTIDAD ";
             txt_CompraCantidad.Size = new Size(239, 23);
@@ -142,7 +144,7 @@
             // txt_CompraFechaDeEntrga
             // 
             txt_CompraFechaDeEntrga.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraFechaDeEntrga.Location = new Point(28, 144);
+            txt_CompraFechaDeEntrga.Location = new Point(28, 127);
             txt_CompraFechaDeEntrga.Name = "txt_CompraFechaDeEntrga";
             txt_CompraFechaDeEntrga.PlaceholderText = "FECHA DE ENTRAGA";
             txt_CompraFechaDeEntrga.Size = new Size(239, 23);
@@ -151,7 +153,7 @@
             // txt_CompraDIreccion
             // 
             txt_CompraDIreccion.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraDIreccion.Location = new Point(28, 173);
+            txt_CompraDIreccion.Location = new Point(28, 156);
             txt_CompraDIreccion.Name = "txt_CompraDIreccion";
             txt_CompraDIreccion.PlaceholderText = "DIRECCION";
             txt_CompraDIreccion.Size = new Size(239, 23);
@@ -160,7 +162,7 @@
             // txt_CompraUsuario
             // 
             txt_CompraUsuario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraUsuario.Location = new Point(28, 55);
+            txt_CompraUsuario.Location = new Point(28, 38);
             txt_CompraUsuario.Name = "txt_CompraUsuario";
             txt_CompraUsuario.PlaceholderText = "USUARIO";
             txt_CompraUsuario.Size = new Size(239, 23);
@@ -169,7 +171,7 @@
             // txt_CompraPrecioCompra
             // 
             txt_CompraPrecioCompra.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraPrecioCompra.Location = new Point(28, 202);
+            txt_CompraPrecioCompra.Location = new Point(28, 185);
             txt_CompraPrecioCompra.Name = "txt_CompraPrecioCompra";
             txt_CompraPrecioCompra.PlaceholderText = "PRECIO";
             txt_CompraPrecioCompra.Size = new Size(239, 23);
@@ -178,7 +180,7 @@
             // txt_CompraDias
             // 
             txt_CompraDias.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraDias.Location = new Point(28, 115);
+            txt_CompraDias.Location = new Point(28, 98);
             txt_CompraDias.Name = "txt_CompraDias";
             txt_CompraDias.PlaceholderText = "DIAS";
             txt_CompraDias.Size = new Size(239, 23);
@@ -478,6 +480,15 @@
             pic_Cerrar.TabStop = false;
             pic_Cerrar.Click += pic_Cerrar_Click;
             // 
+            // txt_CompraHorario
+            // 
+            txt_CompraHorario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_CompraHorario.Location = new Point(29, 243);
+            txt_CompraHorario.Name = "txt_CompraHorario";
+            txt_CompraHorario.PlaceholderText = "HORARIO DE ENTRGA";
+            txt_CompraHorario.Size = new Size(239, 23);
+            txt_CompraHorario.TabIndex = 25;
+            // 
             // FormAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -537,5 +548,6 @@
         private Panel panel_Usuario;
         private Panel panel_Compra;
         private Panel panel_Volquete;
+        private TextBox txt_CompraHorario;
     }
 }
