@@ -195,26 +195,6 @@ namespace Formulario
 
         }
 
-        private string ObtenerListaDeCompras(List<Compra> listaCompras)
-        {
-            StringBuilder informacionCompra = new StringBuilder();
-            try
-            {
-                foreach (Compra compra in listaCompras)
-                {
-                    informacionCompra.AppendLine(compra.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show($"ERRO : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return informacionCompra.ToString();
-
-        }
-
         private void btn_HacerCompra_Click(object sender, EventArgs e)
         {
             //generar un ticket , json y XML

@@ -25,3 +25,4 @@ C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\n
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Vista.genruntimeconfig.cache
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\ref\Vista.dll
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Vista.FormAdmin.resources
+C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Vista.FormAlquilerVolquete.resources

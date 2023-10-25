@@ -2,6 +2,7 @@ using Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System.Text;
+using Vista;
 
 namespace Formulario
 {
@@ -93,7 +94,8 @@ namespace Formulario
 
         private void btn_Usuario_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormAlquilarVolquete());
+            AbrirFormEnPanelContenedor(new FormAlquilerVolquete());
+            //AbrirFormEnPanelContenedor(new FormAlquilarVolquete());
             //cambie usuario
         }
 
@@ -105,6 +107,7 @@ namespace Formulario
 
         private void btn_Alquilar_Click(object sender, EventArgs e)
         {
+
             AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(UsuarioControl.GetUsuario));
             //cambie usuario
         }

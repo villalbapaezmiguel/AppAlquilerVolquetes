@@ -10,6 +10,20 @@ namespace Entidades.EntidadesControl
     public sealed class VolqueteControl
     {
         private static List<Volquete> listaVolquetes = new List<Volquete>();
+
+        private static string[] listaSemanasMes = new string[]
+        {
+            "1:Semanas",
+            "2:Semanas",
+            "3:Semanas",
+            "1:Mes",
+            "2:Mes",
+            "3:Mes",
+            "4:Mes",
+            "5:Mes"
+        };
+
+
         private static string[] listaHorarios = new string[]
         {
             "08:00",
@@ -92,7 +106,18 @@ namespace Entidades.EntidadesControl
                 return nuevo;
             }
         }
-
+        public static string[] GetSemanaMes
+        {
+            get
+            {
+                string[] nuevo = new string[listaSemanasMes.Length];
+                for (int i = 0; i < listaSemanasMes.Length; i++)
+                {
+                    nuevo[i] = listaSemanasMes[i];
+                }
+                return nuevo;
+            }
+        }
 
 
     }
