@@ -1,0 +1,15 @@
+Nombre german | Apellido lopez | DNI 1233
+Usuario pepito | Id 12 | Telefono 1212
+Lista de compra : Nombre de Usuario : german
+Tipo del volquete : Grande
+Fecha de entrega : 25/10/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 12:00
+Direccion  : asasas
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+

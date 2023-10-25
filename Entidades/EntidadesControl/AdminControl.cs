@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,7 +51,7 @@ namespace Entidades.EntidadesControl
             if(nuevoUsuario is not null)
             {
                 adminActual.ListaUsuarios.Add(nuevoUsuario);
-
+                ControlApp.listaUsuarios.Add(nuevoUsuario);
             }
         }
 
@@ -110,12 +111,27 @@ namespace Entidades.EntidadesControl
             return false;
         }
 
+        public static List<Usuario> GetListaUsuario
+        {
+            get
+            {
+                return adminActual.ListaUsuarios;
+            }
+        }
+        public static List<Usuario> SetUsuario
+        {
+            set
+            {
+                adminActual.ListaUsuarios = value;
+            }
+        }
+
+
+
         public static List<Compra> GetListaComprasUsuario
         {
             get
             {
-
-
                 return adminActual.ListaCompra;
 
                 /*

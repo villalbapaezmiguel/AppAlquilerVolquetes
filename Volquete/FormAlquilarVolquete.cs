@@ -306,7 +306,6 @@ namespace Formulario
         {
             this.panel_Fecha.Visible = true;
             this.pic_FechaDeEntrega.Visible = false;
-            this.lbl_Titulo.Text = "Seleccione una fecha";
             this.pic_CerrarFormulario.Visible = false;
             this.btn_Eliminar.Visible = false;
             this.dtg_ListaDeVolquetes.Visible = false;
@@ -322,7 +321,6 @@ namespace Formulario
             int mes = (int)this.mth_Canlendario.SelectionStart.Month;
             int anio = (int)this.mth_Canlendario.SelectionStart.Year;
             this.fecha = new DateTime(anio, mes, dia);
-            this.lbl_Titulo.Text = "Solicitar Volquete";
             this.pic_CerrarFormulario.Visible = true;
             this.pic_FechaDeEntrega.Visible = true;
             this.txt_FechaDeEntrega.Text = fecha.ToString("d");

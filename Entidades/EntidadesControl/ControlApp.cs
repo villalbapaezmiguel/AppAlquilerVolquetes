@@ -93,8 +93,6 @@ namespace Entidades
                     if (listaUsuarios[i] == usuario)
                     {
                         listaUsuarios[i] = usuario;
-                        //AdminControl.AgregarListaDeCompraUsuario(listaUsuarios[i].ListaDeCompra);    
-                        AdminControl.GuardarDatosUsuario(listaUsuarios[i]);
                         return true;
                     }
                 }

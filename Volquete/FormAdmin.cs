@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using Entidades.EntidadesControl;
+using Entidades.EntidadesUsuarios;
 using Formulario;
 using System;
 using System.Collections.Generic;
@@ -42,11 +43,12 @@ namespace Vista
 
         private void btn_Usuarios_Click(object sender, EventArgs e)
         {
-            this.dtgv_Datos.DataSource = ControlApp.GetListaUsuarios;
+            this.dtgv_Datos.DataSource = AdminControl.GetListaUsuario;//cambiar por admin
             this.panel_Volquete.Visible = false;
             this.panel_Compra.Visible = false;
             this.panel_Usuario.Visible = true;
             this.botonSeleccionado = "Usuario";
+
         }
 
         private void btn_Compras_Click(object sender, EventArgs e)
@@ -58,20 +60,22 @@ namespace Vista
             this.dtgv_Datos.DataSource = AdminControl.GetListaComprasUsuario;
 
 
+
         }
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
+
         }
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
 
         }
-
         private void FormAdmin_Load(object sender, EventArgs e)
         {
-
+            this.btn_Editar.Enabled = false;
+            this.btn_Eliminar.Enabled = false;
         }
 
         private void CargarTexbox(string seleccion, int posicionDTG)
@@ -159,6 +163,46 @@ namespace Vista
             {
                 MessageBox.Show($"Error {ex.Message} ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LimpiarTexboxUsuario()
+        {
+            this.txt_UsuarioNombreUsuario.Text = string.Empty;
+            this.txt_UsuarioClave.Text = string.Empty;
+            this.txt_UsuarioTelefono.Text = string.Empty;
+            this.txt_UsuarioNombre.Text = string.Empty;
+            this.txt_UsuarioApellido.Text = string.Empty;
+            this.txt_UsuarioDni.Text = string.Empty;
+            this.txt_UsuarioId.Text = string.Empty;
+
+        }
+        private void btn_Agregar_Click(object sender, EventArgs e)
+        {
+            string nombreUsuario = this.txt_UsuarioNombreUsuario.Text;
+            string clave = this.txt_UsuarioClave.Text;
+            string cadenaTelefono = this.txt_UsuarioTelefono.Text;
+            string nombre = this.txt_UsuarioNombre.Text;
+            string apellido = this.txt_UsuarioApellido.Text;
+            string cadenaDni = this.txt_UsuarioDni.Text;
+            string cadenaId = this.txt_UsuarioId.Text;
+
+            if (double.TryParse(cadenaTelefono,out double telefono) && 
+                double.TryParse(cadenaDni,out double dni) &&
+                int.TryParse(cadenaId,out int id))
+            {
+
+                AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                LimpiarTexboxUsuario();
+            }
+            else
+            {
+                MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
+
         }
     }
 }

@@ -54,7 +54,7 @@
             // 
             // panel_MenuVertical
             // 
-            panel_MenuVertical.BackColor = SystemColors.HotTrack;
+            panel_MenuVertical.BackColor = Color.FromArgb(40, 116, 166);
             panel_MenuVertical.Controls.Add(btn_Perfil);
             panel_MenuVertical.Controls.Add(btn_TiposVolquetes);
             panel_MenuVertical.Controls.Add(btn_AlquilarVolquete);
@@ -67,8 +67,9 @@
             // 
             // btn_Perfil
             // 
+            btn_Perfil.Cursor = Cursors.Hand;
             btn_Perfil.FlatAppearance.BorderSize = 0;
-            btn_Perfil.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+            btn_Perfil.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 102, 85);
             btn_Perfil.FlatStyle = FlatStyle.Flat;
             btn_Perfil.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Perfil.ForeColor = Color.Black;
@@ -84,8 +85,9 @@
             // 
             // btn_TiposVolquetes
             // 
+            btn_TiposVolquetes.Cursor = Cursors.Hand;
             btn_TiposVolquetes.FlatAppearance.BorderSize = 0;
-            btn_TiposVolquetes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+            btn_TiposVolquetes.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 102, 85);
             btn_TiposVolquetes.FlatStyle = FlatStyle.Flat;
             btn_TiposVolquetes.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_TiposVolquetes.ForeColor = Color.Black;
@@ -102,8 +104,9 @@
             // 
             // btn_AlquilarVolquete
             // 
+            btn_AlquilarVolquete.Cursor = Cursors.Hand;
             btn_AlquilarVolquete.FlatAppearance.BorderSize = 0;
-            btn_AlquilarVolquete.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+            btn_AlquilarVolquete.FlatAppearance.MouseOverBackColor = Color.FromArgb(14, 102, 85);
             btn_AlquilarVolquete.FlatStyle = FlatStyle.Flat;
             btn_AlquilarVolquete.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_AlquilarVolquete.ForeColor = Color.Black;
@@ -131,7 +134,7 @@
             // 
             // panel_Titulo
             // 
-            panel_Titulo.BackColor = SystemColors.HotTrack;
+            panel_Titulo.BackColor = Color.FromArgb(40, 116, 166);
             panel_Titulo.Controls.Add(lbl_TituloSaludo);
             panel_Titulo.Controls.Add(pic_Agrandar);
             panel_Titulo.Controls.Add(pic_Cerrar);
@@ -225,7 +228,7 @@
             // 
             // panel_Contenedor
             // 
-            panel_Contenedor.BackColor = SystemColors.Highlight;
+            panel_Contenedor.BackColor = Color.FromArgb(31, 97, 141);
             panel_Contenedor.BackgroundImage = (Image)resources.GetObject("panel_Contenedor.BackgroundImage");
             panel_Contenedor.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Contenedor.Dock = DockStyle.Fill;
