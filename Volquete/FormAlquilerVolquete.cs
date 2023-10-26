@@ -17,6 +17,7 @@ namespace Vista
     public partial class FormAlquilerVolquete : Form
     {
         private int posicionDTG;
+        private float precioActual = 0;
         public FormAlquilerVolquete()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Vista
         {
             CargarCmBoxTiposDeVolquetes();
             CargarCmBoxHorariosDeEntrega();
-            CargarCmboxSemanaMes();
+            this.lbl_Precio.Text = precioActual.ToString("C");
         }
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
@@ -91,22 +92,6 @@ namespace Vista
 
         }
 
-        private void CargarCmboxSemanaMes()
-        {
-            try
-            {
-                foreach (string horario in VolqueteControl.GetSemanaMes)
-                {
-                    this.cmbox_Semanas.Items.Add(horario);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
 
         private void CargarCmBoxTiposDeVolquetes()
         {
@@ -128,6 +113,8 @@ namespace Vista
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+
+
 
         }
 
@@ -179,6 +166,35 @@ namespace Vista
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void pic_FechaDeEntrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private float ActulizarPrecioActual(float precioActual, int cantidadVolquetes, int cantidadDias)
+        {
+            return (float)(precioActual * cantidadDias * cantidadVolquetes);
+        }
+        private void numUD_Dias_Click(object sender, EventArgs e)
+        {
+            float precio;
+            if ((int)numUD_Cantidad.Value >= 1 || (int)numUD_Dias.Value >= 1)
+            {
+                precio = ActulizarPrecioActual(this.precioActual, (int)numUD_Cantidad.Value, (int)numUD_Dias.Value);
+                this.lbl_Precio.Text = precio.ToString("C");
+            }
+        }
+
+        private void cmbox_Tipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Volquete? auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(this.cmbox_Tipo.Text);
+            if (auxVolquete is not null)
+            {
+                this.lbl_Precio.Text = auxVolquete.Precio.ToString("C");
+                this.precioActual = (float)auxVolquete.Precio;
             }
         }
     }

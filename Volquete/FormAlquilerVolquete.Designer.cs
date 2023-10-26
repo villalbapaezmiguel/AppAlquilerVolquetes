@@ -36,6 +36,11 @@
             btn_Agregar = new Button();
             dtgv_Compra = new DataGridView();
             panel_Datos = new Panel();
+            pic_FechaDeEntrega = new PictureBox();
+            numUD_Dias = new NumericUpDown();
+            lbl_Id = new Label();
+            label7 = new Label();
+            txt_Direccion = new TextBox();
             label3 = new Label();
             txt_FechaDeEntrga = new TextBox();
             lbl_Precio = new Label();
@@ -43,18 +48,16 @@
             numUD_Cantidad = new NumericUpDown();
             label4 = new Label();
             label2 = new Label();
-            cmbox_Semanas = new ComboBox();
             label1 = new Label();
             cmbox_Horario = new ComboBox();
             lbl_Tipo = new Label();
             cmbox_Tipo = new ComboBox();
-            txt_Direccion = new TextBox();
-            lbl_Id = new Label();
-            label7 = new Label();
             panel_Contenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
             panel_Datos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pic_FechaDeEntrega).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numUD_Dias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numUD_Cantidad).BeginInit();
             SuspendLayout();
             // 
@@ -93,7 +96,7 @@
             btn_Eliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(146, 43, 33);
             btn_Eliminar.FlatStyle = FlatStyle.Flat;
             btn_Eliminar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Eliminar.Location = new Point(392, 226);
+            btn_Eliminar.Location = new Point(408, 226);
             btn_Eliminar.Name = "btn_Eliminar";
             btn_Eliminar.Size = new Size(93, 23);
             btn_Eliminar.TabIndex = 5;
@@ -107,7 +110,7 @@
             btn_Modificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
             btn_Modificar.FlatStyle = FlatStyle.Flat;
             btn_Modificar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Modificar.Location = new Point(293, 226);
+            btn_Modificar.Location = new Point(309, 226);
             btn_Modificar.Name = "btn_Modificar";
             btn_Modificar.Size = new Size(93, 23);
             btn_Modificar.TabIndex = 4;
@@ -121,7 +124,7 @@
             btn_Agregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
             btn_Agregar.FlatStyle = FlatStyle.Flat;
             btn_Agregar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Agregar.Location = new Point(188, 226);
+            btn_Agregar.Location = new Point(204, 226);
             btn_Agregar.Name = "btn_Agregar";
             btn_Agregar.Size = new Size(93, 23);
             btn_Agregar.TabIndex = 3;
@@ -143,6 +146,8 @@
             // panel_Datos
             // 
             panel_Datos.BackColor = Color.FromArgb(26, 82, 118);
+            panel_Datos.Controls.Add(pic_FechaDeEntrega);
+            panel_Datos.Controls.Add(numUD_Dias);
             panel_Datos.Controls.Add(lbl_Id);
             panel_Datos.Controls.Add(label7);
             panel_Datos.Controls.Add(txt_Direccion);
@@ -153,7 +158,6 @@
             panel_Datos.Controls.Add(numUD_Cantidad);
             panel_Datos.Controls.Add(label4);
             panel_Datos.Controls.Add(label2);
-            panel_Datos.Controls.Add(cmbox_Semanas);
             panel_Datos.Controls.Add(label1);
             panel_Datos.Controls.Add(cmbox_Horario);
             panel_Datos.Controls.Add(lbl_Tipo);
@@ -163,6 +167,63 @@
             panel_Datos.Name = "panel_Datos";
             panel_Datos.Size = new Size(188, 381);
             panel_Datos.TabIndex = 1;
+            // 
+            // pic_FechaDeEntrega
+            // 
+            pic_FechaDeEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pic_FechaDeEntrega.BackgroundImage = (Image)resources.GetObject("pic_FechaDeEntrega.BackgroundImage");
+            pic_FechaDeEntrega.BackgroundImageLayout = ImageLayout.Zoom;
+            pic_FechaDeEntrega.Cursor = Cursors.Hand;
+            pic_FechaDeEntrega.Location = new Point(147, 240);
+            pic_FechaDeEntrega.Name = "pic_FechaDeEntrega";
+            pic_FechaDeEntrega.Size = new Size(25, 25);
+            pic_FechaDeEntrega.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_FechaDeEntrega.TabIndex = 55;
+            pic_FechaDeEntrega.TabStop = false;
+            pic_FechaDeEntrega.Click += pic_FechaDeEntrega_Click;
+            // 
+            // numUD_Dias
+            // 
+            numUD_Dias.BorderStyle = BorderStyle.None;
+            numUD_Dias.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            numUD_Dias.Location = new Point(62, 129);
+            numUD_Dias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numUD_Dias.Name = "numUD_Dias";
+            numUD_Dias.Size = new Size(40, 19);
+            numUD_Dias.TabIndex = 15;
+            numUD_Dias.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numUD_Dias.Click += numUD_Dias_Click;
+            // 
+            // lbl_Id
+            // 
+            lbl_Id.AutoSize = true;
+            lbl_Id.Font = new Font("Candara", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Id.Location = new Point(109, 312);
+            lbl_Id.Name = "lbl_Id";
+            lbl_Id.Size = new Size(25, 23);
+            lbl_Id.TabIndex = 14;
+            lbl_Id.Text = "...";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(39, 320);
+            label7.Name = "label7";
+            label7.Size = new Size(28, 15);
+            label7.TabIndex = 13;
+            label7.Text = "ID : ";
+            // 
+            // txt_Direccion
+            // 
+            txt_Direccion.BorderStyle = BorderStyle.None;
+            txt_Direccion.Cursor = Cursors.Hand;
+            txt_Direccion.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_Direccion.Location = new Point(18, 290);
+            txt_Direccion.Name = "txt_Direccion";
+            txt_Direccion.PlaceholderText = "Direccion";
+            txt_Direccion.Size = new Size(124, 19);
+            txt_Direccion.TabIndex = 12;
             // 
             // label3
             // 
@@ -178,7 +239,7 @@
             // 
             txt_FechaDeEntrga.BorderStyle = BorderStyle.None;
             txt_FechaDeEntrga.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_FechaDeEntrga.Location = new Point(41, 242);
+            txt_FechaDeEntrga.Location = new Point(18, 242);
             txt_FechaDeEntrga.Name = "txt_FechaDeEntrga";
             txt_FechaDeEntrga.PlaceholderText = "DD/MM/AAAA";
             txt_FechaDeEntrga.ReadOnly = true;
@@ -210,9 +271,12 @@
             numUD_Cantidad.BorderStyle = BorderStyle.None;
             numUD_Cantidad.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             numUD_Cantidad.Location = new Point(62, 187);
+            numUD_Cantidad.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numUD_Cantidad.Name = "numUD_Cantidad";
             numUD_Cantidad.Size = new Size(40, 19);
             numUD_Cantidad.TabIndex = 8;
+            numUD_Cantidad.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numUD_Cantidad.Click += numUD_Dias_Click;
             // 
             // label4
             // 
@@ -227,21 +291,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(39, 111);
+            label2.Font = new Font("Candara", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(62, 111);
             label2.Name = "label2";
-            label2.Size = new Size(98, 15);
+            label2.Size = new Size(35, 18);
             label2.TabIndex = 6;
-            label2.Text = "SEMANAS / MES";
-            // 
-            // cmbox_Semanas
-            // 
-            cmbox_Semanas.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbox_Semanas.FormattingEnabled = true;
-            cmbox_Semanas.Location = new Point(12, 129);
-            cmbox_Semanas.Name = "cmbox_Semanas";
-            cmbox_Semanas.Size = new Size(153, 23);
-            cmbox_Semanas.TabIndex = 5;
+            label2.Text = "Dias";
             // 
             // label1
             // 
@@ -280,37 +335,7 @@
             cmbox_Tipo.Name = "cmbox_Tipo";
             cmbox_Tipo.Size = new Size(153, 23);
             cmbox_Tipo.TabIndex = 2;
-            // 
-            // txt_Direccion
-            // 
-            txt_Direccion.BorderStyle = BorderStyle.None;
-            txt_Direccion.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_Direccion.Location = new Point(29, 283);
-            txt_Direccion.Name = "txt_Direccion";
-            txt_Direccion.PlaceholderText = "Direccion";
-            txt_Direccion.ReadOnly = true;
-            txt_Direccion.Size = new Size(124, 19);
-            txt_Direccion.TabIndex = 12;
-            // 
-            // lbl_Id
-            // 
-            lbl_Id.AutoSize = true;
-            lbl_Id.Font = new Font("Candara", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Id.Location = new Point(109, 312);
-            lbl_Id.Name = "lbl_Id";
-            lbl_Id.Size = new Size(25, 23);
-            lbl_Id.TabIndex = 14;
-            lbl_Id.Text = "...";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(39, 320);
-            label7.Name = "label7";
-            label7.Size = new Size(28, 15);
-            label7.TabIndex = 13;
-            label7.Text = "ID : ";
+            cmbox_Tipo.SelectedIndexChanged += cmbox_Tipo_SelectedIndexChanged;
             // 
             // FormAlquilerVolquete
             // 
@@ -328,6 +353,8 @@
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).EndInit();
             panel_Datos.ResumeLayout(false);
             panel_Datos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pic_FechaDeEntrega).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numUD_Dias).EndInit();
             ((System.ComponentModel.ISupportInitialize)numUD_Cantidad).EndInit();
             ResumeLayout(false);
         }
@@ -347,7 +374,6 @@
         private NumericUpDown numUD_Cantidad;
         private Label label4;
         private Label label2;
-        private ComboBox cmbox_Semanas;
         private Label label1;
         private ComboBox cmbox_Horario;
         private Label lbl_Tipo;
@@ -356,5 +382,7 @@
         private TextBox txt_Direccion;
         private Label lbl_Id;
         private Label label7;
+        private NumericUpDown numUD_Dias;
+        private PictureBox pic_FechaDeEntrega;
     }
 }
