@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,8 +121,8 @@ namespace Vista
         {
             this.cmbox_Tipo.SelectedIndex = -1;
             this.cmbox_Horario.SelectedIndex = -1;
-            this.numUD_Dias.Text = string.Empty;
-            this.numUD_Cantidad.Text = string.Empty;
+            this.numUD_Dias.Text = (1).ToString();
+            this.numUD_Cantidad.Text = (1).ToString();
             this.txt_Direccion.Text = string.Empty;
             this.lbl_Precio.Text = (0).ToString("C");
             this.txt_FechaDeEntrga.Text = string.Empty;
@@ -183,9 +184,111 @@ namespace Vista
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if(this.posicionDTG != -1)
+                {
+                    this.btn_Agregar.Enabled = true;
+                    this.btn_Comprar.Enabled = true;
+                    this.btn_Eliminar.Enabled = true;
+
+                    try
+                    {
+                        if (this.cmbox_Tipo.SelectedIndex != -1 &&
+                            this.numUD_Dias.Value >= 1 &&
+                            this.numUD_Cantidad.Value >= 1 &&
+                            this.txt_FechaDeEntrga.Text != string.Empty &&
+                            this.cmbox_Horario.SelectedIndex != -1 &&
+                            this.txt_Direccion.Text != string.Empty)
+                        {
+
+                            string cadenaTipo = this.cmbox_Tipo.Text;
+                            string cadenaPrecio = this.lbl_Precio.Text;
+                            string cadenaDias = this.numUD_Dias.Value.ToString();
+                            string cadenaCantidad = this.numUD_Cantidad.Value.ToString();
+                            string cadenaFechaDeEntrega = this.txt_FechaDeEntrga.Text;
+                            string cadenaHoraDeEntrega = this.cmbox_Horario.Text;
+                            string cadenaDireccion = this.txt_Direccion.Text;
+                            string cadenaId = this.dtgv_Compra.Rows[this.posicionDTG].Cells[8].Value.ToString();
+
+
+                            string formato = "dd/MM/yyyy";
+                            DateTime nuevaFecha = DateTime.ParseExact(cadenaFechaDeEntrega, formato, CultureInfo.InvariantCulture);
+                            Compra nuevaCompra = null;
+                            try
+                            {
+                                int cantidad = int.Parse(cadenaCantidad);
+                                int dias = int.Parse(cadenaDias);
+                                cadenaPrecio = cadenaPrecio.Replace("$", "");
+                                float precio;//el problema esta aca , no se parsea bien 
+
+                                if (float.TryParse(cadenaPrecio, out precio))
+                                {
+
+                                }
+
+                                int idCompra = int.Parse(cadenaId);
+
+                                nuevaCompra = new(cadenaTipo, UsuarioControl.GetUsuario.Nombre, cantidad, dias,
+                                    nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra);
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Error con el objeto : " + ex.Message);
+
+                            }
+
+
+                            if (nuevaCompra is not null)
+                            {
+                                if (CompraControl.ModificarPorId(nuevaCompra) && UsuarioControl.ModificarPorId(nuevaCompra))
+                                {
+                                    CargarListaModificadaDTGV(this.posicionDTG, nuevaCompra);
+                                    LimpiarFormularioAlquiler();
+                                    MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se encontro el id del la compra ");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("El objeto es null");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show($"Error : {ex.Message}","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
 
         }
+        private void CargarListaModificadaDTGV(int posicionDTGV, Compra auxCompra)
+        {
 
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[1].Value = auxCompra.CantidadVolquetes;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[2].Value = auxCompra.CantidadDias;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[3].Value = auxCompra.FechaDeEntraga;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[4].Value = auxCompra.HoraDeEntrega;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[5].Value = auxCompra.Direccion;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[6].Value = auxCompra.Precio;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[7].Value = auxCompra.TipoVolquete;
+            this.dtgv_Compra.Rows[posicionDTGV].Cells[8].Value = auxCompra.IdCompra;
+        }
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
 
@@ -203,25 +306,25 @@ namespace Vista
                     this.btn_Modificar.Enabled = true;
                     this.btn_Eliminar.Enabled = true;
                     this.btn_Agregar.Enabled = false;
-                    //this.btn_HacerCompra.Enabled = false;
+                    this.btn_Comprar.Enabled = false;
 
-                    string tipo = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[0].Value;
-                    string id = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[1].Value;
-                    string precio = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[2].Value;
-                    string dias = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[3].Value;
-                    string cantidad = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[4].Value;
-                    string fechaDeEntrega = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[5].Value;
-                    string horaDeEntrega = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[6].Value;
-                    string direccion = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[7].Value;
+                    int cantidad = (int)this.dtgv_Compra.Rows[this.posicionDTG].Cells[1].Value;
+                    int dias = (int)this.dtgv_Compra.Rows[this.posicionDTG].Cells[2].Value;
+                    DateTime fechaDeEntrega = (DateTime)this.dtgv_Compra.Rows[this.posicionDTG].Cells[3].Value;
+                    string horaDeEntrega = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[4].Value;
+                    string direccion = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[5].Value;
+                    float precio = (float)this.dtgv_Compra.Rows[this.posicionDTG].Cells[6].Value;
+                    string tipo = (string)this.dtgv_Compra.Rows[this.posicionDTG].Cells[7].Value;
+                    int id = (int)this.dtgv_Compra.Rows[this.posicionDTG].Cells[8].Value;
 
                     this.cmbox_Tipo.Text = tipo;
-                    this.lbl_Precio.Text = precio;
-                    this.txt_FechaDeEntrga.Text = dias;
-                    this.numUD_Cantidad.Text = cantidad;
-                    this.txt_FechaDeEntrga.Text = fechaDeEntrega;
+                    this.lbl_Precio.Text = precio.ToString();
+                    this.txt_FechaDeEntrga.Text = dias.ToString();
+                    this.numUD_Cantidad.Text = cantidad.ToString();
+                    this.txt_FechaDeEntrga.Text = fechaDeEntrega.ToString("d");
                     this.cmbox_Horario.Text = horaDeEntrega;
                     this.txt_Direccion.Text = direccion;
-                    this.lbl_Id.Text = id;
+                    this.lbl_Id.Text = id.ToString();
 
 
                 }

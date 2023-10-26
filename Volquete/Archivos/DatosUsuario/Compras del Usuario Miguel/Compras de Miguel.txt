@@ -133,3 +133,33 @@ ID : 0
 
 -----------------------------------
 
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Mediano
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 3
+Dias alquilados : 3
+Horario de entrega : 10:00
+Direccion  : copihue
+Precio : 18000
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Estandar
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 11:00
+Direccion  : zzzzz
+Precio : 2500
+ID : 0
+
+
+-----------------------------------
+
