@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlquilerVolquete));
-            panel_Contenedor = new Panel();
-            pic_CerrarFormulario = new PictureBox();
-            btn_Eliminar = new Button();
-            btn_Modificar = new Button();
-            btn_Agregar = new Button();
-            dtgv_Compra = new DataGridView();
             panel_Datos = new Panel();
-            pic_FechaDeEntrega = new PictureBox();
+            label6 = new Label();
             numUD_Dias = new NumericUpDown();
             lbl_Id = new Label();
             label7 = new Label();
@@ -52,101 +49,27 @@
             cmbox_Horario = new ComboBox();
             lbl_Tipo = new Label();
             cmbox_Tipo = new ComboBox();
-            panel_Contenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
+            dtgv_Compra = new DataGridView();
+            btn_Agregar = new Button();
+            btn_Modificar = new Button();
+            btn_Eliminar = new Button();
+            pic_CerrarFormulario = new PictureBox();
+            panel_Contenedor = new Panel();
+            btn_Comprar = new Button();
+            btn_SeleccionarFecha = new Button();
+            mthCalendar_FechaDeEntrega = new MonthCalendar();
             panel_Datos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pic_FechaDeEntrega).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numUD_Dias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numUD_Cantidad).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
+            panel_Contenedor.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel_Contenedor
-            // 
-            panel_Contenedor.BackColor = Color.FromArgb(31, 97, 141);
-            panel_Contenedor.Controls.Add(pic_CerrarFormulario);
-            panel_Contenedor.Controls.Add(btn_Eliminar);
-            panel_Contenedor.Controls.Add(btn_Modificar);
-            panel_Contenedor.Controls.Add(btn_Agregar);
-            panel_Contenedor.Controls.Add(dtgv_Compra);
-            panel_Contenedor.Controls.Add(panel_Datos);
-            panel_Contenedor.Dock = DockStyle.Fill;
-            panel_Contenedor.Location = new Point(0, 0);
-            panel_Contenedor.Name = "panel_Contenedor";
-            panel_Contenedor.Size = new Size(680, 381);
-            panel_Contenedor.TabIndex = 1;
-            // 
-            // pic_CerrarFormulario
-            // 
-            pic_CerrarFormulario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pic_CerrarFormulario.BackgroundImage = (Image)resources.GetObject("pic_CerrarFormulario.BackgroundImage");
-            pic_CerrarFormulario.BackgroundImageLayout = ImageLayout.Zoom;
-            pic_CerrarFormulario.Cursor = Cursors.Hand;
-            pic_CerrarFormulario.Location = new Point(654, 0);
-            pic_CerrarFormulario.Name = "pic_CerrarFormulario";
-            pic_CerrarFormulario.Size = new Size(25, 25);
-            pic_CerrarFormulario.SizeMode = PictureBoxSizeMode.Zoom;
-            pic_CerrarFormulario.TabIndex = 6;
-            pic_CerrarFormulario.TabStop = false;
-            pic_CerrarFormulario.Click += pic_CerrarFormulario_Click;
-            // 
-            // btn_Eliminar
-            // 
-            btn_Eliminar.Cursor = Cursors.Hand;
-            btn_Eliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(146, 43, 33);
-            btn_Eliminar.FlatStyle = FlatStyle.Flat;
-            btn_Eliminar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Eliminar.Location = new Point(408, 226);
-            btn_Eliminar.Name = "btn_Eliminar";
-            btn_Eliminar.Size = new Size(93, 23);
-            btn_Eliminar.TabIndex = 5;
-            btn_Eliminar.Text = "ELIMINAR";
-            btn_Eliminar.UseVisualStyleBackColor = true;
-            btn_Eliminar.Click += btn_Eliminar_Click;
-            // 
-            // btn_Modificar
-            // 
-            btn_Modificar.Cursor = Cursors.Hand;
-            btn_Modificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
-            btn_Modificar.FlatStyle = FlatStyle.Flat;
-            btn_Modificar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Modificar.Location = new Point(309, 226);
-            btn_Modificar.Name = "btn_Modificar";
-            btn_Modificar.Size = new Size(93, 23);
-            btn_Modificar.TabIndex = 4;
-            btn_Modificar.Text = "MODIFICAR";
-            btn_Modificar.UseVisualStyleBackColor = true;
-            btn_Modificar.Click += btn_Modificar_Click;
-            // 
-            // btn_Agregar
-            // 
-            btn_Agregar.Cursor = Cursors.Hand;
-            btn_Agregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
-            btn_Agregar.FlatStyle = FlatStyle.Flat;
-            btn_Agregar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Agregar.Location = new Point(204, 226);
-            btn_Agregar.Name = "btn_Agregar";
-            btn_Agregar.Size = new Size(93, 23);
-            btn_Agregar.TabIndex = 3;
-            btn_Agregar.Text = "AGREGAR";
-            btn_Agregar.UseVisualStyleBackColor = true;
-            btn_Agregar.Click += btn_Agregar_Click;
-            // 
-            // dtgv_Compra
-            // 
-            dtgv_Compra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgv_Compra.Dock = DockStyle.Bottom;
-            dtgv_Compra.Location = new Point(188, 255);
-            dtgv_Compra.Name = "dtgv_Compra";
-            dtgv_Compra.RowTemplate.Height = 25;
-            dtgv_Compra.Size = new Size(492, 126);
-            dtgv_Compra.TabIndex = 2;
-            dtgv_Compra.CellClick += dtgv_Compra_CellClick;
             // 
             // panel_Datos
             // 
             panel_Datos.BackColor = Color.FromArgb(26, 82, 118);
-            panel_Datos.Controls.Add(pic_FechaDeEntrega);
+            panel_Datos.Controls.Add(label6);
             panel_Datos.Controls.Add(numUD_Dias);
             panel_Datos.Controls.Add(lbl_Id);
             panel_Datos.Controls.Add(label7);
@@ -168,19 +91,15 @@
             panel_Datos.Size = new Size(188, 381);
             panel_Datos.TabIndex = 1;
             // 
-            // pic_FechaDeEntrega
+            // label6
             // 
-            pic_FechaDeEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            pic_FechaDeEntrega.BackgroundImage = (Image)resources.GetObject("pic_FechaDeEntrega.BackgroundImage");
-            pic_FechaDeEntrega.BackgroundImageLayout = ImageLayout.Zoom;
-            pic_FechaDeEntrega.Cursor = Cursors.Hand;
-            pic_FechaDeEntrega.Location = new Point(147, 240);
-            pic_FechaDeEntrega.Name = "pic_FechaDeEntrega";
-            pic_FechaDeEntrega.Size = new Size(25, 25);
-            pic_FechaDeEntrega.SizeMode = PictureBoxSizeMode.Zoom;
-            pic_FechaDeEntrega.TabIndex = 55;
-            pic_FechaDeEntrega.TabStop = false;
-            pic_FechaDeEntrega.Click += pic_FechaDeEntrega_Click;
+            label6.AutoSize = true;
+            label6.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(18, 272);
+            label6.Name = "label6";
+            label6.Size = new Size(70, 15);
+            label6.TabIndex = 16;
+            label6.Text = "DIRECCION";
             // 
             // numUD_Dias
             // 
@@ -198,7 +117,7 @@
             // 
             lbl_Id.AutoSize = true;
             lbl_Id.Font = new Font("Candara", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Id.Location = new Point(109, 312);
+            lbl_Id.Location = new Point(99, 319);
             lbl_Id.Name = "lbl_Id";
             lbl_Id.Size = new Size(25, 23);
             lbl_Id.TabIndex = 14;
@@ -208,7 +127,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(39, 320);
+            label7.Location = new Point(29, 327);
             label7.Name = "label7";
             label7.Size = new Size(28, 15);
             label7.TabIndex = 13;
@@ -229,7 +148,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(29, 224);
+            label3.Location = new Point(18, 224);
             label3.Name = "label3";
             label3.Size = new Size(119, 15);
             label3.TabIndex = 11;
@@ -249,10 +168,10 @@
             // lbl_Precio
             // 
             lbl_Precio.AutoSize = true;
-            lbl_Precio.Font = new Font("Candara", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Precio.Location = new Point(99, 349);
+            lbl_Precio.Font = new Font("Cambria", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Precio.Location = new Point(86, 354);
             lbl_Precio.Name = "lbl_Precio";
-            lbl_Precio.Size = new Size(43, 23);
+            lbl_Precio.Size = new Size(38, 19);
             lbl_Precio.TabIndex = 10;
             lbl_Precio.Text = "$0.0";
             // 
@@ -260,7 +179,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(29, 357);
+            label5.Location = new Point(18, 357);
             label5.Name = "label5";
             label5.Size = new Size(58, 15);
             label5.TabIndex = 6;
@@ -337,6 +256,161 @@
             cmbox_Tipo.TabIndex = 2;
             cmbox_Tipo.SelectedIndexChanged += cmbox_Tipo_SelectedIndexChanged;
             // 
+            // dtgv_Compra
+            // 
+            dtgv_Compra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgv_Compra.BackgroundColor = Color.FromArgb(31, 97, 141);
+            dtgv_Compra.BorderStyle = BorderStyle.None;
+            dtgv_Compra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtgv_Compra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgv_Compra.ColumnHeadersHeight = 30;
+            dtgv_Compra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dtgv_Compra.Dock = DockStyle.Bottom;
+            dtgv_Compra.EnableHeadersVisualStyles = false;
+            dtgv_Compra.GridColor = Color.SteelBlue;
+            dtgv_Compra.Location = new Point(188, 255);
+            dtgv_Compra.Name = "dtgv_Compra";
+            dtgv_Compra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
+            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dtgv_Compra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dtgv_Compra.RowTemplate.Height = 25;
+            dtgv_Compra.Size = new Size(492, 126);
+            dtgv_Compra.TabIndex = 2;
+            dtgv_Compra.CellClick += dtgv_Compra_CellClick;
+            // 
+            // btn_Agregar
+            // 
+            btn_Agregar.Cursor = Cursors.Hand;
+            btn_Agregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
+            btn_Agregar.FlatStyle = FlatStyle.Flat;
+            btn_Agregar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Agregar.Location = new Point(215, 226);
+            btn_Agregar.Name = "btn_Agregar";
+            btn_Agregar.Size = new Size(93, 23);
+            btn_Agregar.TabIndex = 3;
+            btn_Agregar.Text = "AGREGAR";
+            btn_Agregar.UseVisualStyleBackColor = true;
+            btn_Agregar.Click += btn_Agregar_Click;
+            // 
+            // btn_Modificar
+            // 
+            btn_Modificar.Cursor = Cursors.Hand;
+            btn_Modificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
+            btn_Modificar.FlatStyle = FlatStyle.Flat;
+            btn_Modificar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Modificar.Location = new Point(320, 226);
+            btn_Modificar.Name = "btn_Modificar";
+            btn_Modificar.Size = new Size(93, 23);
+            btn_Modificar.TabIndex = 4;
+            btn_Modificar.Text = "MODIFICAR";
+            btn_Modificar.UseVisualStyleBackColor = true;
+            btn_Modificar.Click += btn_Modificar_Click;
+            // 
+            // btn_Eliminar
+            // 
+            btn_Eliminar.Cursor = Cursors.Hand;
+            btn_Eliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(146, 43, 33);
+            btn_Eliminar.FlatStyle = FlatStyle.Flat;
+            btn_Eliminar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Eliminar.Location = new Point(419, 226);
+            btn_Eliminar.Name = "btn_Eliminar";
+            btn_Eliminar.Size = new Size(93, 23);
+            btn_Eliminar.TabIndex = 5;
+            btn_Eliminar.Text = "ELIMINAR";
+            btn_Eliminar.UseVisualStyleBackColor = true;
+            btn_Eliminar.Click += btn_Eliminar_Click;
+            // 
+            // pic_CerrarFormulario
+            // 
+            pic_CerrarFormulario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pic_CerrarFormulario.BackgroundImage = (Image)resources.GetObject("pic_CerrarFormulario.BackgroundImage");
+            pic_CerrarFormulario.BackgroundImageLayout = ImageLayout.Zoom;
+            pic_CerrarFormulario.Cursor = Cursors.Hand;
+            pic_CerrarFormulario.Location = new Point(654, 0);
+            pic_CerrarFormulario.Name = "pic_CerrarFormulario";
+            pic_CerrarFormulario.Size = new Size(25, 25);
+            pic_CerrarFormulario.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_CerrarFormulario.TabIndex = 6;
+            pic_CerrarFormulario.TabStop = false;
+            pic_CerrarFormulario.Click += pic_CerrarFormulario_Click;
+            // 
+            // panel_Contenedor
+            // 
+            panel_Contenedor.BackColor = Color.FromArgb(31, 97, 141);
+            panel_Contenedor.Controls.Add(btn_Comprar);
+            panel_Contenedor.Controls.Add(btn_SeleccionarFecha);
+            panel_Contenedor.Controls.Add(mthCalendar_FechaDeEntrega);
+            panel_Contenedor.Controls.Add(pic_CerrarFormulario);
+            panel_Contenedor.Controls.Add(btn_Eliminar);
+            panel_Contenedor.Controls.Add(btn_Modificar);
+            panel_Contenedor.Controls.Add(btn_Agregar);
+            panel_Contenedor.Controls.Add(dtgv_Compra);
+            panel_Contenedor.Controls.Add(panel_Datos);
+            panel_Contenedor.Dock = DockStyle.Fill;
+            panel_Contenedor.Location = new Point(0, 0);
+            panel_Contenedor.Name = "panel_Contenedor";
+            panel_Contenedor.Size = new Size(680, 381);
+            panel_Contenedor.TabIndex = 1;
+            // 
+            // btn_Comprar
+            // 
+            btn_Comprar.Cursor = Cursors.Hand;
+            btn_Comprar.FlatAppearance.MouseOverBackColor = Color.FromArgb(146, 43, 33);
+            btn_Comprar.FlatStyle = FlatStyle.Flat;
+            btn_Comprar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Comprar.Location = new Point(575, 224);
+            btn_Comprar.Name = "btn_Comprar";
+            btn_Comprar.Size = new Size(93, 23);
+            btn_Comprar.TabIndex = 9;
+            btn_Comprar.Text = "COMPRAR";
+            btn_Comprar.UseVisualStyleBackColor = true;
+            btn_Comprar.Click += btn_Comprar_Click;
+            // 
+            // btn_SeleccionarFecha
+            // 
+            btn_SeleccionarFecha.Cursor = Cursors.Hand;
+            btn_SeleccionarFecha.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
+            btn_SeleccionarFecha.FlatStyle = FlatStyle.Flat;
+            btn_SeleccionarFecha.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_SeleccionarFecha.Location = new Point(268, 182);
+            btn_SeleccionarFecha.Name = "btn_SeleccionarFecha";
+            btn_SeleccionarFecha.Size = new Size(135, 23);
+            btn_SeleccionarFecha.TabIndex = 8;
+            btn_SeleccionarFecha.Text = "Seleccionar Fecha";
+            btn_SeleccionarFecha.UseVisualStyleBackColor = true;
+            btn_SeleccionarFecha.Click += btn_SeleccionarFecha_Click;
+            // 
+            // mthCalendar_FechaDeEntrega
+            // 
+            mthCalendar_FechaDeEntrega.BackColor = Color.Teal;
+            mthCalendar_FechaDeEntrega.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            mthCalendar_FechaDeEntrega.Location = new Point(223, 9);
+            mthCalendar_FechaDeEntrega.MaxDate = new DateTime(2025, 12, 25, 0, 0, 0, 0);
+            mthCalendar_FechaDeEntrega.MaxSelectionCount = 1;
+            mthCalendar_FechaDeEntrega.MinDate = new DateTime(2023, 12, 25, 23, 59, 59, 0);
+            mthCalendar_FechaDeEntrega.Name = "mthCalendar_FechaDeEntrega";
+            mthCalendar_FechaDeEntrega.TabIndex = 1;
+            // 
             // FormAlquilerVolquete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -348,25 +422,23 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAlquiler";
             Load += FormAlquilerVolquete_Load;
-            panel_Contenedor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtgv_Compra).EndInit();
             panel_Datos.ResumeLayout(false);
             panel_Datos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pic_FechaDeEntrega).EndInit();
             ((System.ComponentModel.ISupportInitialize)numUD_Dias).EndInit();
             ((System.ComponentModel.ISupportInitialize)numUD_Cantidad).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgv_Compra).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
+            panel_Contenedor.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel_Contenedor;
-        private Button btn_Eliminar;
-        private Button btn_Modificar;
-        private Button btn_Agregar;
-        private DataGridView dtgv_Compra;
         private Panel panel_Datos;
+        private NumericUpDown numUD_Dias;
+        private Label lbl_Id;
+        private Label label7;
+        private TextBox txt_Direccion;
         private Label label3;
         private TextBox txt_FechaDeEntrga;
         private Label lbl_Precio;
@@ -378,11 +450,15 @@
         private ComboBox cmbox_Horario;
         private Label lbl_Tipo;
         private ComboBox cmbox_Tipo;
+        private DataGridView dtgv_Compra;
+        private Button btn_Agregar;
+        private Button btn_Modificar;
+        private Button btn_Eliminar;
         private PictureBox pic_CerrarFormulario;
-        private TextBox txt_Direccion;
-        private Label lbl_Id;
-        private Label label7;
-        private NumericUpDown numUD_Dias;
-        private PictureBox pic_FechaDeEntrega;
+        private Panel panel_Contenedor;
+        private Button btn_SeleccionarFecha;
+        private MonthCalendar mthCalendar_FechaDeEntrega;
+        private Label label6;
+        private Button btn_Comprar;
     }
 }

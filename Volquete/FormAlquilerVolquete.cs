@@ -18,6 +18,7 @@ namespace Vista
     {
         private int posicionDTG;
         private float precioActual = 0;
+        private DateTime fecha;
         public FormAlquilerVolquete()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Vista
             CargarCmBoxTiposDeVolquetes();
             CargarCmBoxHorariosDeEntrega();
             this.lbl_Precio.Text = precioActual.ToString("C");
+
         }
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
@@ -39,9 +41,12 @@ namespace Vista
         {
             if (listaCompra.Count >= 1)
             {
+                this.dtgv_Compra.DataSource = listaCompra;
+                /*
                 foreach (Compra item in listaCompra)
                 {
                     int posicion = this.dtgv_Compra.Rows.Add();
+
 
                     this.dtgv_Compra.Rows[posicion].Cells[0].Value = item.TipoVolquete.ToString();
                     this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.IdCompra.ToString();
@@ -52,7 +57,7 @@ namespace Vista
                     this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.HoraDeEntrega.ToString();
                     this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.Direccion.ToString();
 
-                }
+                }*/
             }
         }
 
@@ -61,6 +66,7 @@ namespace Vista
             if (nuevaCompra is not null)
             {
                 int posicionParaAgregar = this.dtgv_Compra.Rows.Add();
+
 
                 this.dtgv_Compra.Rows[posicionParaAgregar].Cells[0].Value = nuevaCompra.TipoVolquete.ToString();
                 this.dtgv_Compra.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.IdCompra.ToString();
@@ -110,10 +116,67 @@ namespace Vista
             }
 
         }
-
+        private void LimpiarFormularioAlquiler()
+        {
+            this.cmbox_Tipo.SelectedIndex = -1;
+            this.cmbox_Horario.SelectedIndex = -1;
+            this.numUD_Dias.Text = string.Empty;
+            this.numUD_Cantidad.Text = string.Empty;
+            this.txt_Direccion.Text = string.Empty;
+            this.lbl_Precio.Text = (0).ToString("C");
+            this.txt_FechaDeEntrga.Text = string.Empty;
+        }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Compra? nuevaCompra = null;
+                string? horaDeEntrega;
+                string direccion;
+                string? tipoVolquete;
+                int cantidadDias = (int)numUD_Dias.Value;
+                int cantidadVolquetes = (int)numUD_Cantidad.Value;
+                float precio = ActulizarPrecioActual(this.precioActual, (int)numUD_Cantidad.Value, (int)numUD_Dias.Value);
 
+
+                if (this.cmbox_Horario.SelectedIndex != -1 && txt_Direccion.Text != string.Empty && this.cmbox_Tipo.SelectedIndex != -1)
+                {
+                    horaDeEntrega = this.cmbox_Horario.SelectedItem.ToString();
+                    direccion = txt_Direccion.Text;
+                    tipoVolquete = this.cmbox_Tipo.SelectedItem.ToString();
+
+                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra());
+                    if (CompraControl.AgregarCompra(ref nuevaCompra))
+                    {
+                        bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
+                        if (compraExitosa)
+                        {
+                            this.dtgv_Compra.DataSource = UsuarioControl.GetListaComprasUsuario;
+                            //CargarDTGV(nuevaCompra);
+                            MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
+                            LimpiarFormularioAlquiler();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error, no se pudo agregar la compra al usuario");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error, no se pudo agregar la compra");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ocurio un error, hay campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
 
 
         }
@@ -196,6 +259,27 @@ namespace Vista
                 this.lbl_Precio.Text = auxVolquete.Precio.ToString("C");
                 this.precioActual = (float)auxVolquete.Precio;
             }
+        }
+
+        private void btn_SeleccionarFecha_Click(object sender, EventArgs e)
+        {
+            int dia = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Day;
+            int mes = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Month;
+            int anio = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Year;
+            this.fecha = new DateTime(anio, mes, dia);
+
+            this.txt_FechaDeEntrga.Text = this.fecha.ToString("d");
+        }
+
+        private void btn_Comprar_Click(object sender, EventArgs e)
+        {
+            //generar un ticket , json y XML
+            string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+            string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
+            string path = rutaCarpeta + nombreDeCarpeta;
+
+            Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
+            AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
         }
     }
 }
