@@ -43,7 +43,7 @@ namespace Vista
         {
             try
             {
-                this.dtgv_Datos.DataSource = ControlApp.listaVolquetes;
+                this.dtgv_Datos.DataSource = AdminControl.GetListaVolquete;
                 this.panel_Volquete.Visible = true;
                 this.panel_Compra.Visible = false;
                 this.panel_Usuario.Visible = false;
@@ -100,6 +100,8 @@ namespace Vista
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
+
+
 
         }
         private void FormAdmin_Load(object sender, EventArgs e)
@@ -222,6 +224,22 @@ namespace Vista
             }
 
         }
+        private void LimpiarTexboxVolquete()
+        {
+            try
+            {
+                this.txt_VolqueteTipoVolquete.Text = string.Empty;
+                this.txt_VolqueteCapacidad.Text = string.Empty;
+                this.txt_VolqueteId.Text = string.Empty;
+                this.txt_VolquetePrecio.Text = string.Empty;
+                this.txt_VolqueteObservacion.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
 
@@ -235,28 +253,87 @@ namespace Vista
                 string cadenaDni = this.txt_UsuarioDni.Text;
                 string cadenaId = this.txt_UsuarioId.Text;
 
-                if (double.TryParse(cadenaTelefono,out double telefono) && 
-                    double.TryParse(cadenaDni,out double dni) &&
-                    int.TryParse(cadenaId,out int id))
-                {
 
-                    AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
-                    LimpiarTexboxUsuario();
-                }
-                else
-                {
-                    MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                string tipoVolquete = this.txt_VolqueteTipoVolquete.Text;
+                string cadenaPrecio = this.txt_VolquetePrecio.Text;
+                string cadenaCapacidad = this.txt_VolqueteCapacidad.Text;
+                string observacion = this.txt_VolqueteObservacion.Text;
+                string cadenaIdVolquete = this.txt_VolqueteId.Text;
 
+                if (this.botonSeleccionado == "Usuario")
+                {
+                    if (double.TryParse(cadenaTelefono, out double telefono) &&
+                        double.TryParse(cadenaDni, out double dni) &&
+                        int.TryParse(cadenaId, out int id))
+                    {
+                        AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                        ControlApp.ControlAgregarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                        RefrezcarDTG_Usuario();
+                        LimpiarTexboxUsuario();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (this.botonSeleccionado == "Volquete")
+                {
+                    bool banderaPrecio = float.TryParse(cadenaPrecio, out float precio);
+                    bool banderaCapacidad = float.TryParse(cadenaCapacidad, out float capacidad);
+                    bool banderaId = int.TryParse(cadenaIdVolquete, out int idVolquete);
+
+                    if (banderaPrecio &&
+                        banderaCapacidad && 
+                        banderaId)
+                    {
+                        AdminControl.AgrergarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
+                        ControlApp.ControlAgregarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
+                        RefrezcarDTG_Volquete();
+                        LimpiarTexboxVolquete();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error en agregar volquete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+        private void RefrezcarDTG_Volquete()
+        {
+            try
+            {
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = AdminControl.GetListaVolquete;
+                this.dtgv_Datos.DataSource = bindingSource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
 
 
+        private void RefrezcarDTG_Usuario()
+        {
+            try
+            {
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = AdminControl.GetListaUsuario;
+                this.dtgv_Datos.DataSource = bindingSource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
         }
     }
 }

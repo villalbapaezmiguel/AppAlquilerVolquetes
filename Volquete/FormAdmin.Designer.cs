@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel_InformacionDatos = new Panel();
+            btn_Agregar = new Button();
             panel_Compra = new Panel();
             txt_CompraHorario = new TextBox();
             txt_CompraVolquete = new TextBox();
@@ -66,7 +67,7 @@
             btn_Usuarios = new Button();
             btn_Volquetes = new Button();
             pic_Cerrar = new PictureBox();
-            btn_Agregar = new Button();
+            txt_VolqueteId = new TextBox();
             panel_InformacionDatos.SuspendLayout();
             panel_Compra.SuspendLayout();
             panel_Volquete.SuspendLayout();
@@ -80,7 +81,6 @@
             // 
             panel_InformacionDatos.BackColor = Color.FromArgb(39, 57, 70);
             panel_InformacionDatos.Controls.Add(btn_Agregar);
-            panel_InformacionDatos.Controls.Add(panel_Compra);
             panel_InformacionDatos.Controls.Add(panel_Volquete);
             panel_InformacionDatos.Controls.Add(panel_Usuario);
             panel_InformacionDatos.Controls.Add(btn_Guardar);
@@ -94,6 +94,20 @@
             panel_InformacionDatos.Name = "panel_InformacionDatos";
             panel_InformacionDatos.Size = new Size(895, 359);
             panel_InformacionDatos.TabIndex = 0;
+            // 
+            // btn_Agregar
+            // 
+            btn_Agregar.Cursor = Cursors.Hand;
+            btn_Agregar.FlatStyle = FlatStyle.Popup;
+            btn_Agregar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Agregar.ForeColor = Color.OliveDrab;
+            btn_Agregar.Location = new Point(203, 324);
+            btn_Agregar.Name = "btn_Agregar";
+            btn_Agregar.Size = new Size(75, 23);
+            btn_Agregar.TabIndex = 13;
+            btn_Agregar.Text = "AGREGAR";
+            btn_Agregar.UseVisualStyleBackColor = true;
+            btn_Agregar.Click += btn_Agregar_Click;
             // 
             // panel_Compra
             // 
@@ -110,7 +124,7 @@
             panel_Compra.Controls.Add(txt_CompraUsuario);
             panel_Compra.Controls.Add(txt_CompraPrecioCompra);
             panel_Compra.Controls.Add(txt_CompraDias);
-            panel_Compra.Location = new Point(592, 40);
+            panel_Compra.Location = new Point(0, 0);
             panel_Compra.Name = "panel_Compra";
             panel_Compra.Size = new Size(301, 278);
             panel_Compra.TabIndex = 12;
@@ -203,6 +217,8 @@
             panel_Volquete.BackgroundImage = (Image)resources.GetObject("panel_Volquete.BackgroundImage");
             panel_Volquete.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Volquete.BorderStyle = BorderStyle.FixedSingle;
+            panel_Volquete.Controls.Add(txt_VolqueteId);
+            panel_Volquete.Controls.Add(panel_Compra);
             panel_Volquete.Controls.Add(txt_VolqueteTipoVolquete);
             panel_Volquete.Controls.Add(txt_VolqueteObservacion);
             panel_Volquete.Controls.Add(txt_VolqueteCapacidad);
@@ -365,14 +381,14 @@
             dtgv_Datos.BorderStyle = BorderStyle.None;
             dtgv_Datos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dtgv_Datos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle7.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle7.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dtgv_Datos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgv_Datos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgv_Datos.ColumnHeadersHeight = 30;
             dtgv_Datos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgv_Datos.Cursor = Cursors.Hand;
@@ -382,21 +398,21 @@
             dtgv_Datos.Name = "dtgv_Datos";
             dtgv_Datos.ReadOnly = true;
             dtgv_Datos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dtgv_Datos.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgv_Datos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgv_Datos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle9.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle9.SelectionForeColor = Color.White;
-            dtgv_Datos.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle3.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dtgv_Datos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dtgv_Datos.RowTemplate.Height = 25;
             dtgv_Datos.Size = new Size(585, 247);
             dtgv_Datos.TabIndex = 4;
@@ -492,19 +508,14 @@
             pic_Cerrar.TabStop = false;
             pic_Cerrar.Click += pic_Cerrar_Click;
             // 
-            // btn_Agregar
+            // txt_VolqueteId
             // 
-            btn_Agregar.Cursor = Cursors.Hand;
-            btn_Agregar.FlatStyle = FlatStyle.Popup;
-            btn_Agregar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Agregar.ForeColor = Color.OliveDrab;
-            btn_Agregar.Location = new Point(203, 324);
-            btn_Agregar.Name = "btn_Agregar";
-            btn_Agregar.Size = new Size(75, 23);
-            btn_Agregar.TabIndex = 13;
-            btn_Agregar.Text = "AGREGAR";
-            btn_Agregar.UseVisualStyleBackColor = true;
-            btn_Agregar.Click += btn_Agregar_Click;
+            txt_VolqueteId.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_VolqueteId.Location = new Point(26, 163);
+            txt_VolqueteId.Name = "txt_VolqueteId";
+            txt_VolqueteId.PlaceholderText = "ID";
+            txt_VolqueteId.Size = new Size(239, 23);
+            txt_VolqueteId.TabIndex = 4;
             // 
             // FormAdmin
             // 
@@ -567,5 +578,6 @@
         private Panel panel_Volquete;
         private TextBox txt_CompraHorario;
         private Button btn_Agregar;
+        private TextBox txt_VolqueteId;
     }
 }

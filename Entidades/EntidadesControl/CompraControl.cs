@@ -12,9 +12,50 @@ namespace Entidades.EntidadesControl
     {
         private static List<Compra> listaCompras = new List<Compra>();
 
+        #region ABM de compras
+        /// <summary>
+        /// Retorna la posicion del id en la lista , caso contrario retorna -1
+        /// </summary>
+        /// <param name="idCompra"></param>
+        /// <returns></returns>
+        public static int BuscarPorIdUsuarioCompra(int idCompra)
+        {
+            if (idCompra != -1)
+            {
+                if (ExisteCompra(idCompra))
+                {
+                    for (int i = 0; i < listaCompras.Count; i++)
+                    {
+                        if (idCompra == listaCompras[i].IdCompra)
+                        {
+                            return i;
+                        }
+                    }
+                }
+            }
+            return -1;
+        }
+        public static bool EliminarCompra(int idCompra)
+        {
+            int posicion;
+            if (idCompra != -1)
+            {
+                posicion = BuscarPorIdUsuarioCompra(idCompra);
+                if (posicion != -1)
+                {
+                    listaCompras.RemoveAt(posicion);
+                    //usuarioActual.ListaDeCompra.RemoveAt(posicion);
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
         public static bool AgregarListaCompra(List<Compra> lista)
         {
-            if(lista is not null)
+            if (lista is not null)
             {
                 foreach (Compra item in lista)
                 {
@@ -42,15 +83,12 @@ namespace Entidades.EntidadesControl
         {
             foreach (Compra item in listaCompras)
             {
-                if(item.IdCompra == idCompra)
+                if (item.IdCompra == idCompra)
                 {
                     return true;
                 }
             }
             return false;
-            /*
-            bool existe = listaCompras.Any(compra => compra.IdCompra == idCompra);
-            return existe;*/
         }
         /// <summary>
         /// Retorna la posicion del id en la lista , caso contrario retorna -1
@@ -59,13 +97,13 @@ namespace Entidades.EntidadesControl
         /// <returns></returns>
         public static int BuscarPorId(int idCompra)
         {
-            if(idCompra != -1)
+            if (idCompra != -1)
             {
-                if(ExisteCompra(idCompra))
+                if (ExisteCompra(idCompra))
                 {
-                    for (int i = 0; i < listaCompras.Count; i++) 
+                    for (int i = 0; i < listaCompras.Count; i++)
                     {
-                        if(idCompra == listaCompras[i].IdCompra)
+                        if (idCompra == listaCompras[i].IdCompra)
                         {
                             return i;
                         }
@@ -76,19 +114,19 @@ namespace Entidades.EntidadesControl
         }
 
 
-        public static bool ModificarPorId(Compra? compra) 
+        public static bool ModificarPorId(Compra? compra)
         {
             int posicion;
-            if(compra is not null )
+            if (compra is not null)
             {
                 posicion = BuscarPorId(compra.IdCompra);
-                if(posicion != -1)
+                if (posicion != -1)
                 {
                     listaCompras[posicion] = compra;
                     return true;
                 }
 
-            }        
+            }
             return false;
         }
 
@@ -115,15 +153,102 @@ namespace Entidades.EntidadesControl
             get
             {
                 List<Compra> nuevaLista = new();
-              
+
                 foreach (Compra item in listaCompras)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete , item.NombreDeUsuario,item.CantidadVolquetes,item.CantidadDias,item.FechaDeEntraga,item.HoraDeEntrega,item.Direccion,item.Precio, item.IdCompra);
+                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
             }
         }
+        #endregion
+
+        #region Sobrecarga de ABM
+
+        public static int BuscarPorIdUsuarioCompra(int idCompra , List<Compra> listaAux)
+        {
+            if (idCompra != -1)
+            {
+                if (ExisteCompra(idCompra,listaAux))
+                {
+                    for (int i = 0; i < listaAux.Count; i++)
+                    {
+                        if (idCompra == listaAux[i].IdCompra)
+                        {
+                            return i;
+                        }
+                    }
+                }
+            }
+            return -1;
+        }
+        public static bool EliminarCompra(int idCompra, List<Compra> listaAux)
+        {
+            int posicion;
+            if (idCompra != -1)
+            {
+                posicion = BuscarPorIdUsuarioCompra(idCompra, listaAux);
+                if (posicion != -1)
+                {
+                    listaAux.RemoveAt(posicion);
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool ModificarPorId(Compra? compra, List<Compra> listaAux)
+        {
+            int posicion;
+            if (compra is not null)
+            {
+                posicion = BuscarPorId(compra.IdCompra, listaAux);
+                if (posicion != -1)
+                {
+                    listaAux[posicion] = compra;
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        public static int BuscarPorId(int idCompra, List<Compra> listaAux)
+        {
+            if (idCompra != -1)
+            {
+                if (ExisteCompra(idCompra, listaAux))
+                {
+                    for (int i = 0; i < listaAux.Count; i++)
+                    {
+                        if (idCompra == listaAux[i].IdCompra)
+                        {
+                            return i;
+                        }
+                    }
+                }
+            }
+            return -1;
+        }
+
+        public static bool ExisteCompra(int idCompra, List<Compra> listaAux)
+        {
+            foreach (Compra item in listaAux)
+            {
+                if (item.IdCompra == idCompra)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        #endregion
+
+
 
 
     }

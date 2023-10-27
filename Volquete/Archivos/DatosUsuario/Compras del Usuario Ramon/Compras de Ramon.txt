@@ -1,0 +1,25 @@
+Nombre Ramon | Apellido Argento | DNI 22211112
+Usuario Pepe | Id 11 | Telefono 1234
+Lista de compra : Nombre de Usuario : Ramon
+Tipo del volquete : Grande
+Fecha de entrega : 28/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : dddddd
+Precio : 3100
+ID : 2
+
+Nombre de Usuario : Ramon
+Tipo del volquete : Super Grande
+Fecha de entrega : 30/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 2
+Horario de entrega : 09:00
+Direccion  : qqqq
+Precio : 7800
+ID : 3
+
+
+-----------------------------------
+

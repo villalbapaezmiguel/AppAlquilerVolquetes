@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPerfilUsuario));
             panel_PefilUsuario = new Panel();
+            dtgv_Compra = new DataGridView();
             lbl_TituloListaDeCompras = new Label();
             panel_DatosUsuario = new Panel();
             lbl_Id = new Label();
@@ -41,28 +45,19 @@
             lbl_TituloPerfil = new Label();
             pictureBox1 = new PictureBox();
             pic_CerrarFormulario = new PictureBox();
-            dtgv_ListasCompras = new DataGridView();
-            TipoProducto = new DataGridViewTextBoxColumn();
-            IdCompra = new DataGridViewTextBoxColumn();
-            PrecioVolquete = new DataGridViewTextBoxColumn();
-            CantidadDias = new DataGridViewTextBoxColumn();
-            CantidadVolquete = new DataGridViewTextBoxColumn();
-            FechaDeEntraga = new DataGridViewTextBoxColumn();
-            HorarioDeEntrga = new DataGridViewTextBoxColumn();
-            DireccionUsuario = new DataGridViewTextBoxColumn();
             panel_PefilUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
             panel_DatosUsuario.SuspendLayout();
             panel_ContenedorVolquetes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtgv_ListasCompras).BeginInit();
             SuspendLayout();
             // 
             // panel_PefilUsuario
             // 
-            panel_PefilUsuario.BackColor = SystemColors.HotTrack;
+            panel_PefilUsuario.BackColor = Color.SteelBlue;
             panel_PefilUsuario.BackgroundImageLayout = ImageLayout.Zoom;
-            panel_PefilUsuario.Controls.Add(dtgv_ListasCompras);
+            panel_PefilUsuario.Controls.Add(dtgv_Compra);
             panel_PefilUsuario.Controls.Add(lbl_TituloListaDeCompras);
             panel_PefilUsuario.Controls.Add(panel_DatosUsuario);
             panel_PefilUsuario.Controls.Add(panel_ContenedorVolquetes);
@@ -73,19 +68,61 @@
             panel_PefilUsuario.TabIndex = 0;
             panel_PefilUsuario.Paint += panel_PefilUsuario_Paint;
             // 
+            // dtgv_Compra
+            // 
+            dtgv_Compra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtgv_Compra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgv_Compra.BackgroundColor = Color.FromArgb(31, 97, 141);
+            dtgv_Compra.BorderStyle = BorderStyle.None;
+            dtgv_Compra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtgv_Compra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgv_Compra.ColumnHeadersHeight = 30;
+            dtgv_Compra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dtgv_Compra.EnableHeadersVisualStyles = false;
+            dtgv_Compra.GridColor = Color.SteelBlue;
+            dtgv_Compra.Location = new Point(155, 84);
+            dtgv_Compra.Name = "dtgv_Compra";
+            dtgv_Compra.ReadOnly = true;
+            dtgv_Compra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
+            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dtgv_Compra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dtgv_Compra.RowTemplate.Height = 25;
+            dtgv_Compra.Size = new Size(517, 286);
+            dtgv_Compra.TabIndex = 54;
+            // 
             // lbl_TituloListaDeCompras
             // 
             lbl_TituloListaDeCompras.AutoSize = true;
-            lbl_TituloListaDeCompras.Font = new Font("Comfortaa", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_TituloListaDeCompras.Location = new Point(334, 45);
+            lbl_TituloListaDeCompras.Font = new Font("Cambria", 15.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            lbl_TituloListaDeCompras.Location = new Point(292, 49);
             lbl_TituloListaDeCompras.Name = "lbl_TituloListaDeCompras";
-            lbl_TituloListaDeCompras.Size = new Size(185, 29);
+            lbl_TituloListaDeCompras.Size = new Size(253, 25);
             lbl_TituloListaDeCompras.TabIndex = 35;
-            lbl_TituloListaDeCompras.Text = "Lista de compras";
+            lbl_TituloListaDeCompras.Text = "HISTORIAL DE COMPRAS";
             // 
             // panel_DatosUsuario
             // 
-            panel_DatosUsuario.BackColor = Color.DodgerBlue;
+            panel_DatosUsuario.BackColor = Color.FromArgb(41, 128, 185);
             panel_DatosUsuario.Controls.Add(lbl_Id);
             panel_DatosUsuario.Controls.Add(lbl_Telefono);
             panel_DatosUsuario.Controls.Add(lbl_Usuario);
@@ -148,7 +185,7 @@
             // 
             // panel_ContenedorVolquetes
             // 
-            panel_ContenedorVolquetes.BackColor = Color.DodgerBlue;
+            panel_ContenedorVolquetes.BackColor = Color.FromArgb(41, 128, 185);
             panel_ContenedorVolquetes.BackgroundImageLayout = ImageLayout.Zoom;
             panel_ContenedorVolquetes.Controls.Add(lbl_TituloPerfil);
             panel_ContenedorVolquetes.Controls.Add(pictureBox1);
@@ -198,66 +235,6 @@
             pic_CerrarFormulario.TabStop = false;
             pic_CerrarFormulario.Click += pic_CerrarFormulario_Click;
             // 
-            // dtgv_ListasCompras
-            // 
-            dtgv_ListasCompras.BackgroundColor = SystemColors.ActiveCaption;
-            dtgv_ListasCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgv_ListasCompras.Columns.AddRange(new DataGridViewColumn[] { TipoProducto, IdCompra, PrecioVolquete, CantidadDias, CantidadVolquete, FechaDeEntraga, HorarioDeEntrga, DireccionUsuario });
-            dtgv_ListasCompras.Location = new Point(155, 77);
-            dtgv_ListasCompras.Name = "dtgv_ListasCompras";
-            dtgv_ListasCompras.ReadOnly = true;
-            dtgv_ListasCompras.RowTemplate.Height = 25;
-            dtgv_ListasCompras.Size = new Size(517, 316);
-            dtgv_ListasCompras.TabIndex = 53;
-            // 
-            // TipoProducto
-            // 
-            TipoProducto.HeaderText = "Tipo";
-            TipoProducto.Name = "TipoProducto";
-            TipoProducto.ReadOnly = true;
-            // 
-            // IdCompra
-            // 
-            IdCompra.HeaderText = "Id";
-            IdCompra.Name = "IdCompra";
-            IdCompra.ReadOnly = true;
-            // 
-            // PrecioVolquete
-            // 
-            PrecioVolquete.HeaderText = "Precio";
-            PrecioVolquete.Name = "PrecioVolquete";
-            PrecioVolquete.ReadOnly = true;
-            // 
-            // CantidadDias
-            // 
-            CantidadDias.HeaderText = "Dias";
-            CantidadDias.Name = "CantidadDias";
-            CantidadDias.ReadOnly = true;
-            // 
-            // CantidadVolquete
-            // 
-            CantidadVolquete.HeaderText = "Cantidad";
-            CantidadVolquete.Name = "CantidadVolquete";
-            CantidadVolquete.ReadOnly = true;
-            // 
-            // FechaDeEntraga
-            // 
-            FechaDeEntraga.HeaderText = "Entrega";
-            FechaDeEntraga.Name = "FechaDeEntraga";
-            FechaDeEntraga.ReadOnly = true;
-            // 
-            // HorarioDeEntrga
-            // 
-            HorarioDeEntrga.HeaderText = "Horario";
-            HorarioDeEntrga.Name = "HorarioDeEntrga";
-            HorarioDeEntrga.ReadOnly = true;
-            // 
-            // DireccionUsuario
-            // 
-            DireccionUsuario.HeaderText = "Direccion";
-            DireccionUsuario.Name = "DireccionUsuario";
-            DireccionUsuario.ReadOnly = true;
-            // 
             // FormPerfilUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -271,13 +248,13 @@
             Load += FormPerfilUsuario_Load;
             panel_PefilUsuario.ResumeLayout(false);
             panel_PefilUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgv_Compra).EndInit();
             panel_DatosUsuario.ResumeLayout(false);
             panel_DatosUsuario.PerformLayout();
             panel_ContenedorVolquetes.ResumeLayout(false);
             panel_ContenedorVolquetes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtgv_ListasCompras).EndInit();
             ResumeLayout(false);
         }
 
@@ -295,14 +272,6 @@
         private Label lbl_Telefono;
         private Label lbl_Id;
         private Label lbl_TituloListaDeCompras;
-        private DataGridView dtgv_ListasCompras;
-        private DataGridViewTextBoxColumn TipoProducto;
-        private DataGridViewTextBoxColumn IdCompra;
-        private DataGridViewTextBoxColumn PrecioVolquete;
-        private DataGridViewTextBoxColumn CantidadDias;
-        private DataGridViewTextBoxColumn CantidadVolquete;
-        private DataGridViewTextBoxColumn FechaDeEntraga;
-        private DataGridViewTextBoxColumn HorarioDeEntrga;
-        private DataGridViewTextBoxColumn DireccionUsuario;
+        private DataGridView dtgv_Compra;
     }
 }

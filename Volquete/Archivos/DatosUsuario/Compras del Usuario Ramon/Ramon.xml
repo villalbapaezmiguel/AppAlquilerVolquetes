@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Nombre>Ramon</Nombre>
+  <Apellido>Argento</Apellido>
+  <Dni>22211112</Dni>
+  <NombreUsuario>Pepe</NombreUsuario>
+  <Clave>123</Clave>
+  <ListaDeCompra>
+    <Compra>
+      <NombreDeUsuario>Ramon</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2023-12-28T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>13:00</HoraDeEntrega>
+      <Direccion>dddddd</Direccion>
+      <Precio>3100</Precio>
+      <TipoVolquete>Grande</TipoVolquete>
+      <IdCompra>2</IdCompra>
+    </Compra>
+    <Compra>
+      <NombreDeUsuario>Ramon</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>2</CantidadDias>
+      <FechaDeEntraga>2023-12-30T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>09:00</HoraDeEntrega>
+      <Direccion>qqqq</Direccion>
+      <Precio>7800</Precio>
+      <TipoVolquete>Super Grande</TipoVolquete>
+      <IdCompra>3</IdCompra>
+    </Compra>
+  </ListaDeCompra>
+  <Telefono>1234</Telefono>
+  <IdUsuario>11</IdUsuario>
+</Usuario>

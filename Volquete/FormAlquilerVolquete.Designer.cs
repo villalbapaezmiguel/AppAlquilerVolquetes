@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlquilerVolquete));
             panel_Datos = new Panel();
             label6 = new Label();
@@ -68,7 +68,7 @@
             // 
             // panel_Datos
             // 
-            panel_Datos.BackColor = Color.FromArgb(26, 82, 118);
+            panel_Datos.BackColor = Color.FromArgb(41, 128, 185);
             panel_Datos.Controls.Add(label6);
             panel_Datos.Controls.Add(numUD_Dias);
             panel_Datos.Controls.Add(lbl_Id);
@@ -148,7 +148,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Candara", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(18, 224);
+            label3.Location = new Point(23, 224);
             label3.Name = "label3";
             label3.Size = new Size(119, 15);
             label3.TabIndex = 11;
@@ -263,14 +263,14 @@
             dtgv_Compra.BorderStyle = BorderStyle.None;
             dtgv_Compra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dtgv_Compra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
-            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgv_Compra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle4.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgv_Compra.ColumnHeadersHeight = 30;
             dtgv_Compra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgv_Compra.Dock = DockStyle.Bottom;
@@ -278,21 +278,22 @@
             dtgv_Compra.GridColor = Color.SteelBlue;
             dtgv_Compra.Location = new Point(188, 255);
             dtgv_Compra.Name = "dtgv_Compra";
+            dtgv_Compra.ReadOnly = true;
             dtgv_Compra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgv_Compra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
-            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dtgv_Compra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(31, 97, 141);
+            dataGridViewCellStyle6.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dtgv_Compra.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dtgv_Compra.RowTemplate.Height = 25;
             dtgv_Compra.Size = new Size(492, 126);
             dtgv_Compra.TabIndex = 2;
@@ -304,7 +305,7 @@
             btn_Agregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
             btn_Agregar.FlatStyle = FlatStyle.Flat;
             btn_Agregar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Agregar.Location = new Point(215, 226);
+            btn_Agregar.Location = new Point(584, 45);
             btn_Agregar.Name = "btn_Agregar";
             btn_Agregar.Size = new Size(93, 23);
             btn_Agregar.TabIndex = 3;
@@ -315,10 +316,11 @@
             // btn_Modificar
             // 
             btn_Modificar.Cursor = Cursors.Hand;
+            btn_Modificar.Enabled = false;
             btn_Modificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
             btn_Modificar.FlatStyle = FlatStyle.Flat;
             btn_Modificar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Modificar.Location = new Point(320, 226);
+            btn_Modificar.Location = new Point(584, 74);
             btn_Modificar.Name = "btn_Modificar";
             btn_Modificar.Size = new Size(93, 23);
             btn_Modificar.TabIndex = 4;
@@ -329,10 +331,11 @@
             // btn_Eliminar
             // 
             btn_Eliminar.Cursor = Cursors.Hand;
+            btn_Eliminar.Enabled = false;
             btn_Eliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(146, 43, 33);
             btn_Eliminar.FlatStyle = FlatStyle.Flat;
             btn_Eliminar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Eliminar.Location = new Point(419, 226);
+            btn_Eliminar.Location = new Point(584, 106);
             btn_Eliminar.Name = "btn_Eliminar";
             btn_Eliminar.Size = new Size(93, 23);
             btn_Eliminar.TabIndex = 5;
@@ -356,7 +359,7 @@
             // 
             // panel_Contenedor
             // 
-            panel_Contenedor.BackColor = Color.FromArgb(31, 97, 141);
+            panel_Contenedor.BackColor = Color.SteelBlue;
             panel_Contenedor.Controls.Add(btn_Comprar);
             panel_Contenedor.Controls.Add(btn_SeleccionarFecha);
             panel_Contenedor.Controls.Add(mthCalendar_FechaDeEntrega);
@@ -375,10 +378,11 @@
             // btn_Comprar
             // 
             btn_Comprar.Cursor = Cursors.Hand;
+            btn_Comprar.Enabled = false;
             btn_Comprar.FlatAppearance.MouseOverBackColor = Color.FromArgb(146, 43, 33);
             btn_Comprar.FlatStyle = FlatStyle.Flat;
             btn_Comprar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Comprar.Location = new Point(575, 224);
+            btn_Comprar.Location = new Point(584, 135);
             btn_Comprar.Name = "btn_Comprar";
             btn_Comprar.Size = new Size(93, 23);
             btn_Comprar.TabIndex = 9;
@@ -392,7 +396,7 @@
             btn_SeleccionarFecha.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
             btn_SeleccionarFecha.FlatStyle = FlatStyle.Flat;
             btn_SeleccionarFecha.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_SeleccionarFecha.Location = new Point(268, 182);
+            btn_SeleccionarFecha.Location = new Point(259, 196);
             btn_SeleccionarFecha.Name = "btn_SeleccionarFecha";
             btn_SeleccionarFecha.Size = new Size(135, 23);
             btn_SeleccionarFecha.TabIndex = 8;
@@ -402,9 +406,9 @@
             // 
             // mthCalendar_FechaDeEntrega
             // 
-            mthCalendar_FechaDeEntrega.BackColor = Color.Teal;
+            mthCalendar_FechaDeEntrega.BackColor = Color.DarkOrchid;
             mthCalendar_FechaDeEntrega.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            mthCalendar_FechaDeEntrega.Location = new Point(223, 9);
+            mthCalendar_FechaDeEntrega.Location = new Point(200, 22);
             mthCalendar_FechaDeEntrega.MaxDate = new DateTime(2025, 12, 25, 0, 0, 0, 0);
             mthCalendar_FechaDeEntrega.MaxSelectionCount = 1;
             mthCalendar_FechaDeEntrega.MinDate = new DateTime(2023, 12, 25, 23, 59, 59, 0);

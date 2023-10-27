@@ -36,23 +36,24 @@ namespace Formulario
         {
             try
             {
+                this.dtgv_Compra.DataSource = listaCompra;
+                /*
                 if (listaCompra.Count >= 1)
                 {
                     foreach (Compra item in listaCompra)
                     {
-                        int posicion = this.dtgv_ListasCompras.Rows.Add();
-
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[0].Value = item.TipoVolquete.ToString();
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[1].Value = item.IdCompra.ToString();
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[2].Value = item.Precio.ToString();
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[3].Value = item.CantidadDias.ToString();
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[4].Value = item.CantidadVolquetes.ToString();
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[5].Value = item.FechaDeEntraga.ToString("d");
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[6].Value = item.HoraDeEntrega.ToString();
-                        this.dtgv_ListasCompras.Rows[posicion].Cells[7].Value = item.Direccion.ToString();
-
+                        int posicion = this.dtgv_Compra.Rows.Add();
+                        this.dtgv_Compra.Rows[posicion].Cells[0].Value = UsuarioControl.GetUsuario.NombreUsuario;
+                        this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.CantidadVolquetes.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[2].Value = item.CantidadDias.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[3].Value = item.FechaDeEntraga.ToString("d");
+                        this.dtgv_Compra.Rows[posicion].Cells[4].Value = item.HoraDeEntrega.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[5].Value = item.Direccion.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.Precio.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.TipoVolquete.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[8].Value = item.IdCompra.ToString();
                     }
-                }
+                }*/
 
             }
             catch (Exception ex)

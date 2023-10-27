@@ -14,17 +14,19 @@ namespace Entidades.EntidadesControl
 
         public static void AgregarAdministrador(Admin nuevoAdmin)
         {
-            if(adminActual is not null) 
+            if (adminActual is not null)
             {
                 ControlApp.listaAdministradores.Add(nuevoAdmin);
             }
         }
+        
+        #region Usuario
 
         public static void GuardarDatosUsuario(Usuario usuario)
         {
-            if (adminActual is not null) 
+            if (adminActual is not null)
             {
-                for (int i = 0; i < adminActual.ListaUsuarios.Count; i ++)
+                for (int i = 0; i < adminActual.ListaUsuarios.Count; i++)
                 {
                     if (adminActual.ListaUsuarios[i].IdUsuario == usuario.IdUsuario)
                     {
@@ -37,18 +39,18 @@ namespace Entidades.EntidadesControl
 
         public static void AgregarListaDeCompraUsuario(List<Compra> listaCompraUsuario)
         {
-            if(listaCompraUsuario  is not null)
+            if (listaCompraUsuario is not null)
             {
-                foreach(Compra item in listaCompraUsuario) 
+                foreach (Compra item in listaCompraUsuario)
                 {
-                    adminActual.ListaCompra.Add(item); 
+                    adminActual.ListaCompra.Add(item);
                 }
             }
         }
 
         public static void AgrergarUsuario(Usuario nuevoUsuario)
         {
-            if(nuevoUsuario is not null)
+            if (nuevoUsuario is not null)
             {
                 adminActual.ListaUsuarios.Add(nuevoUsuario);
                 ControlApp.listaUsuarios.Add(nuevoUsuario);
@@ -58,7 +60,7 @@ namespace Entidades.EntidadesControl
         public static bool EliminarUsuario(int idUsuario)
         {
             int posicion = BuscarPorIdUsuario(idUsuario);
-            if(posicion != -1)
+            if (posicion != -1)
             {
                 adminActual.ListaUsuarios.RemoveAt(posicion);
                 return true;
@@ -68,10 +70,10 @@ namespace Entidades.EntidadesControl
 
         public static bool ModificarUsuario(Usuario usuario)
         {
-            if(usuario is not null)
+            if (usuario is not null)
             {
                 int posicion = BuscarPorIdUsuario(usuario.IdUsuario);
-                if( posicion != -1)
+                if (posicion != -1)
                 {
                     adminActual.ListaUsuarios[posicion] = usuario;
                     return true;
@@ -110,6 +112,94 @@ namespace Entidades.EntidadesControl
             }
             return false;
         }
+        #endregion
+
+        #region Volquete
+
+        public static void AgrergarVolquete(Volquete nuevoVolquete)
+        {
+            if (nuevoVolquete is not null)
+            {
+                adminActual.ListaVolquete.Add(nuevoVolquete);
+                ControlApp.listaVolquetes.Add(nuevoVolquete);
+            }
+        }
+
+        public static bool EliminarVolquete(int idVolquete)
+        {
+            int posicion = BuscarPorIdVolquete(idVolquete);
+            if (posicion != -1)
+            {
+                adminActual.ListaVolquete.RemoveAt(posicion);
+                return true;
+            }
+            return false;
+        }
+
+        public static bool ModificarVolquete(Volquete volquete)
+        {
+            if (volquete is not null)
+            {
+                int posicion = BuscarPorIdVolquete(volquete.Id);
+                if (posicion != -1)
+                {
+                    adminActual.ListaVolquete[posicion] = volquete;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static int BuscarPorIdVolquete(int idCompra)
+        {
+            if (idCompra != -1)
+            {
+                if (ExisteVolquete(idCompra))
+                {
+                    for (int i = 0; i < adminActual.ListaVolquete.Count; i++)
+                    {
+                        if (idCompra == adminActual.ListaVolquete[i].Id)
+                        {
+                            return i;
+                        }
+                    }
+                }
+            }
+            return -1;
+        }
+
+        public static bool ExisteVolquete(int idVolquete)
+        {
+            foreach (Volquete item in adminActual.ListaVolquete)
+            {
+                if (item.Id == idVolquete)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region Geters y Seters
+
+        public static List<Volquete> GetListaVolquete
+        {
+            get
+            {
+                return adminActual.ListaVolquete;
+            }
+        }
+        public static List<Volquete> SetListaVolquete
+        {
+            set
+            {
+                adminActual.ListaVolquete = value;
+            }
+        }
+
 
         public static List<Usuario> GetListaUsuario
         {
@@ -125,33 +215,19 @@ namespace Entidades.EntidadesControl
                 adminActual.ListaUsuarios = value;
             }
         }
-
-
-
         public static List<Compra> GetListaComprasUsuario
         {
             get
             {
                 return adminActual.ListaCompra;
-
-                /*
-                List<Usuario> nuevaLista = new();
-                foreach (Usuario item in adminActual.ListaUsuarios)
-                {
-                    Usuario AuxUsuario = new(item.NombreUsuario,item.Clave,item.Telefono,item.Nombre,item.Apellido,item.Dni,item.IdUsuario);
-                    nuevaLista.Add(AuxUsuario);
-                }
-                return nuevaLista;*/
             }
             set
             {
                 adminActual.ListaCompra = value;
             }
-
-
         }
 
-
+        #endregion
 
     }
 }

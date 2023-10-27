@@ -52,6 +52,7 @@ namespace Entidades.EntidadesControl
                 {
                     listaVolquetes.Add(volquete);
                     ControlApp.ControlAgregarVolquete(volquete);
+                    AdminControl.AgrergarVolquete(volquete);
                     return true;
                 }
             }
@@ -76,7 +77,7 @@ namespace Entidades.EntidadesControl
                 List<Volquete> nuevaLista = new();
                 foreach(Volquete item in listaVolquetes) 
                 { 
-                    Volquete nuevo = new Volquete(item.TipoVolquete , item.Precio, item.Capacidad,item.Observacion);
+                    Volquete nuevo = new Volquete(item.TipoVolquete , item.Precio, item.Capacidad,item.Observacion, item.Id);
                     nuevaLista.Add(nuevo);
                 }            
                 return nuevaLista;

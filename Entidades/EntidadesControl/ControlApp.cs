@@ -18,8 +18,13 @@ namespace Entidades
         
         private static int idCompra = 0;
         private static int idUsuario = 0;
-        
+        private static int idVolquete = 0;
 
+
+        public static int NuevoIdVolquete()
+        {
+            return idVolquete++;
+        }
         public static int NuevoIdUsuario()
         {
             return idUsuario++;
@@ -33,12 +38,18 @@ namespace Entidades
         {
             ControlAgregarUsuario(new Usuario("a", "a", 1234, "Miguel", "Villalba", 23451, ControlApp.NuevoIdUsuario()));
             AdminControl.AgregarAdministrador(new Admin("Migue", "Villalba", (double)1234,"a"));
-            
-            VolqueteControl.AgregarVolquete(new Volquete("Pequeño",(float)1700,(float)1.5,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Mediano",(float)2000, (float)3,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Estandar", (float)2500, (float)6,"Todo tipo de materiales"));
-            VolqueteControl.AgregarVolquete(new Volquete("Grande", (float)3100, (float)10, "Solo materiales livianos"));
-            VolqueteControl.AgregarVolquete(new Volquete("Super Grande", (float)3900, (float)12,"Solo materiales livianos"));
+            /*
+            AdminControl.AgrergarVolquete(new Volquete("Pequeño", (float)1700, (float)1.5, "Todo tipo de materiales", NuevoIdVolquete())); 
+            AdminControl.AgrergarVolquete(new Volquete("Mediano", (float)2000, (float)3, "Todo tipo de materiales", NuevoIdVolquete()));
+            AdminControl.AgrergarVolquete(new Volquete("Estandar", (float)2500, (float)6, "Todo tipo de materiales", NuevoIdVolquete()));
+            AdminControl.AgrergarVolquete(new Volquete("Grande", (float)3100, (float)10, "Solo materiales livianos", NuevoIdVolquete()));
+            AdminControl.AgrergarVolquete(new Volquete("Super Grande", (float)3900, (float)12, "Solo materiales livianos", NuevoIdVolquete()));
+            */
+            VolqueteControl.AgregarVolquete(new Volquete("Pequeño",(float)1700,(float)1.5,"Todo tipo de materiales", NuevoIdVolquete()));
+            VolqueteControl.AgregarVolquete(new Volquete("Mediano",(float)2000, (float)3,"Todo tipo de materiales", NuevoIdVolquete()));
+            VolqueteControl.AgregarVolquete(new Volquete("Estandar", (float)2500, (float)6,"Todo tipo de materiales", NuevoIdVolquete()));
+            VolqueteControl.AgregarVolquete(new Volquete("Grande", (float)3100, (float)10, "Solo materiales livianos", NuevoIdVolquete()));
+            VolqueteControl.AgregarVolquete(new Volquete("Super Grande", (float)3900, (float)12,"Solo materiales livianos", NuevoIdVolquete()));
         }
 
 

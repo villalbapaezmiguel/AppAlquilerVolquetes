@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Design;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,7 +35,12 @@ namespace Vista
             {
                 CargarCmBoxTiposDeVolquetes();
                 CargarCmBoxHorariosDeEntrega();
+               
                 this.lbl_Precio.Text = precioActual.ToString("C");
+                if (this.listaCompra.Count >= 1)
+                {
+                    this.btn_Comprar.Enabled = true;
+                }
 
             }
             catch (Exception ex)
@@ -64,18 +70,18 @@ namespace Vista
                 if (listaCompra.Count >= 1)
                 {
                     //this.dtgv_Compra.DataSource = listaCompra;
-                
+
                     foreach (Compra item in listaCompra)
                     {
                         int posicion = this.dtgv_Compra.Rows.Add();
 
                         this.dtgv_Compra.Rows[posicion].Cells[0].Value = UsuarioControl.GetUsuario.NombreUsuario;
-                        this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.CantidadVolquetes.ToString(); 
+                        this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.CantidadVolquetes.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[2].Value = item.CantidadDias.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[3].Value = item.FechaDeEntraga.ToString("d");
                         this.dtgv_Compra.Rows[posicion].Cells[4].Value = item.HoraDeEntrega.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[5].Value = item.Direccion.ToString();
-                        this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.Precio.ToString(); 
+                        this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.Precio.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.TipoVolquete.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[8].Value = item.IdCompra.ToString();
 
@@ -141,7 +147,7 @@ namespace Vista
         {
             try
             {
-                foreach (Volquete item in VolqueteControl.GetListaVolquetes)
+                foreach (Volquete item in AdminControl.GetListaVolquete)
                 {
                     this.cmbox_Tipo.Items.Add(item.TipoVolquete);
                 }
@@ -176,7 +182,7 @@ namespace Vista
         {
             try
             {
-                
+
                 string? horaDeEntrega;
                 string direccion;
                 string? tipoVolquete;
@@ -196,9 +202,9 @@ namespace Vista
                     this.dtgv_Compra.DataSource = this.listaCompra;
                     RefrezcarDTG();
                     LimpiarFormularioAlquiler();
-
+                    this.btn_Comprar.Enabled = true;
                     MessageBox.Show("Agregado con exitooo", "Excelente", MessageBoxButtons.OK);
-                    
+
                 }
                 else
                 {
@@ -232,11 +238,12 @@ namespace Vista
         {
             try
             {
-                if(this.posicionDTG != -1)
+                if (this.posicionDTG != -1)
                 {
                     this.btn_Agregar.Enabled = true;
                     this.btn_Comprar.Enabled = true;
                     this.btn_Eliminar.Enabled = true;
+                    this.btn_Modificar.Enabled = false;
 
                     try
                     {
@@ -266,7 +273,8 @@ namespace Vista
                                 int cantidad = int.Parse(cadenaCantidad);
                                 int dias = int.Parse(cadenaDias);
                                 cadenaPrecio = cadenaPrecio.Replace("$", "");
-                                float precio;//el problema esta aca , no se parsea bien 
+                                float precio;
+                                //el problema esta aca , no se parsea bien 
 
                                 if (float.TryParse(cadenaPrecio, out precio))
                                 {
@@ -274,35 +282,33 @@ namespace Vista
                                 }
 
                                 int idCompra = int.Parse(cadenaId);
-
                                 nuevaCompra = new(cadenaTipo, UsuarioControl.GetUsuario.Nombre, cantidad, dias,
                                     nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra);
 
+
+                                if (nuevaCompra is not null)
+                                {
+                                    if (CompraControl.ModificarPorId(nuevaCompra, this.listaCompra))
+                                    {
+                                        CargarListaModificadaDTGV(this.posicionDTG, nuevaCompra);
+                                        LimpiarFormularioAlquiler();
+                                        MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se encontro el id del la compra ");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El objeto es null");
+                                }
 
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show("Error con el objeto : " + ex.Message);
 
-                            }
-
-
-                            if (nuevaCompra is not null)
-                            {
-                                if (CompraControl.ModificarPorId(nuevaCompra) && UsuarioControl.ModificarPorId(nuevaCompra))
-                                {
-                                    CargarListaModificadaDTGV(this.posicionDTG, nuevaCompra);
-                                    LimpiarFormularioAlquiler();
-                                    MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se encontro el id del la compra ");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("El objeto es null");
                             }
                         }
                     }
@@ -317,8 +323,8 @@ namespace Vista
             }
             catch (Exception ex)
             {
-                
-                MessageBox.Show($"Error : {ex.Message}","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -343,10 +349,33 @@ namespace Vista
             }
 
         }
+
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int posicionCompra;
+                LimpiarFormularioAlquiler();
+                posicionCompra = int.Parse(this.lbl_Id.Text);
 
+                if (CompraControl.EliminarCompra(posicionCompra,this.listaCompra))//verificar como lo elimina
+                {
+                    RefrezcarDTG();
+                    MessageBox.Show("Se elimino con exito!!!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("NO se pudo eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error : " + ex);
+            }
         }
+
 
 
         private void dtgv_Compra_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -410,7 +439,7 @@ namespace Vista
             catch (Exception ex)
             {
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
 
         }
@@ -448,7 +477,7 @@ namespace Vista
             catch (Exception ex)
             {
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
 
         }
@@ -457,6 +486,10 @@ namespace Vista
         {
             try
             {
+                this.btn_Comprar.Enabled = false;
+                this.btn_Eliminar.Enabled = false;
+                this.btn_Modificar.Enabled = false;
+
                 string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
                 string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
                 string path = rutaCarpeta + nombreDeCarpeta;
@@ -467,15 +500,16 @@ namespace Vista
                     {
 
 
-                        this.dtgv_Compra.DataSource = this.listaCompra;
+                        //this.dtgv_Compra.DataSource = this.listaCompra;
                         MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                         LimpiarFormularioAlquiler();
-
+                        
                         Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
                         path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
                         Serializar.SerializarComprasAUsuario(path, UsuarioControl.GetUsuario);
                         AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
-
+                        this.listaCompra.Clear();
+                        RefrezcarDTG();
                     }
                     else
                     {
