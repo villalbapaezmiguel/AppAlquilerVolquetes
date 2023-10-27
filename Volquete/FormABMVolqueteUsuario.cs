@@ -43,8 +43,15 @@ namespace Formulario
         }
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
         }
 
         private void CargarComboBoxVolquete()
@@ -66,20 +73,27 @@ namespace Formulario
 
         private void cmBox_TiposVolquetes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string tipo;
-            if (this.cmBox_Volquete.SelectedIndex != -1)
+
+            try
             {
-                tipo = this.cmBox_Volquete.SelectedItem.ToString();
-                Volquete? aux = VolqueteControl.EncontrarVolquetePorTipo(tipo);
-                if (aux is not null)
+                string tipo;
+                if (this.cmBox_Volquete.SelectedIndex != -1)
                 {
-                    this.lbl_Capacidad.Text = aux.Capacidad.ToString() + " m3";
-                    this.lbl_Obeservaciones.Text = aux.Observacion.ToString();
-                    this.lbl_Precio.Text = aux.Precio.ToString("C");
+                    tipo = this.cmBox_Volquete.SelectedItem.ToString();
+                    Volquete? aux = VolqueteControl.EncontrarVolquetePorTipo(tipo);
+                    if (aux is not null)
+                    {
+                        this.lbl_Capacidad.Text = aux.Capacidad.ToString() + " m3";
+                        this.lbl_Obeservaciones.Text = aux.Observacion.ToString();
+                        this.lbl_Precio.Text = aux.Precio.ToString("C");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
+            }
 
         }
     }

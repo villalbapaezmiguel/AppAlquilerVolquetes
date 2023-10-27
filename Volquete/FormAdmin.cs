@@ -25,40 +25,70 @@ namespace Vista
 
         private void pic_Cerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FormLogin formLogin = new FormLogin();
-            formLogin.ShowDialog();
+            try
+            {
+                this.Close();
+                FormLogin formLogin = new FormLogin();
+                formLogin.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
 
         private void btn_Volquetes_Click(object sender, EventArgs e)
         {
-            this.dtgv_Datos.DataSource = ControlApp.listaVolquetes;
-            this.panel_Volquete.Visible = true;
-            this.panel_Compra.Visible = false;
-            this.panel_Usuario.Visible = false;
-            this.botonSeleccionado = "Volquete";
+            try
+            {
+                this.dtgv_Datos.DataSource = ControlApp.listaVolquetes;
+                this.panel_Volquete.Visible = true;
+                this.panel_Compra.Visible = false;
+                this.panel_Usuario.Visible = false;
+                this.botonSeleccionado = "Volquete";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
 
         private void btn_Usuarios_Click(object sender, EventArgs e)
         {
-            this.dtgv_Datos.DataSource = AdminControl.GetListaUsuario;//cambiar por admin
-            this.panel_Volquete.Visible = false;
-            this.panel_Compra.Visible = false;
-            this.panel_Usuario.Visible = true;
-            this.botonSeleccionado = "Usuario";
+            try
+            {
+                this.dtgv_Datos.DataSource = AdminControl.GetListaUsuario;//cambiar por admin
+                this.panel_Volquete.Visible = false;
+                this.panel_Compra.Visible = false;
+                this.panel_Usuario.Visible = true;
+                this.botonSeleccionado = "Usuario";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
         }
 
         private void btn_Compras_Click(object sender, EventArgs e)
         {
-            this.panel_Volquete.Visible = false;
-            this.panel_Compra.Visible = true;
-            this.panel_Usuario.Visible = false;
-            this.botonSeleccionado = "Compra";
-            this.dtgv_Datos.DataSource = AdminControl.GetListaComprasUsuario;
+            try
+            {
+                this.panel_Volquete.Visible = false;
+                this.panel_Compra.Visible = true;
+                this.panel_Usuario.Visible = false;
+                this.botonSeleccionado = "Compra";
+                this.dtgv_Datos.DataSource = AdminControl.GetListaComprasUsuario;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
 
 
         }
@@ -74,8 +104,16 @@ namespace Vista
         }
         private void FormAdmin_Load(object sender, EventArgs e)
         {
-            this.btn_Editar.Enabled = false;
-            this.btn_Eliminar.Enabled = false;
+            try
+            {
+                this.btn_Editar.Enabled = false;
+                this.btn_Eliminar.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void CargarTexbox(string seleccion, int posicionDTG)
@@ -167,39 +205,55 @@ namespace Vista
 
         private void LimpiarTexboxUsuario()
         {
-            this.txt_UsuarioNombreUsuario.Text = string.Empty;
-            this.txt_UsuarioClave.Text = string.Empty;
-            this.txt_UsuarioTelefono.Text = string.Empty;
-            this.txt_UsuarioNombre.Text = string.Empty;
-            this.txt_UsuarioApellido.Text = string.Empty;
-            this.txt_UsuarioDni.Text = string.Empty;
-            this.txt_UsuarioId.Text = string.Empty;
+            try
+            {
+                this.txt_UsuarioNombreUsuario.Text = string.Empty;
+                this.txt_UsuarioClave.Text = string.Empty;
+                this.txt_UsuarioTelefono.Text = string.Empty;
+                this.txt_UsuarioNombre.Text = string.Empty;
+                this.txt_UsuarioApellido.Text = string.Empty;
+                this.txt_UsuarioDni.Text = string.Empty;
+                this.txt_UsuarioId.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-            string nombreUsuario = this.txt_UsuarioNombreUsuario.Text;
-            string clave = this.txt_UsuarioClave.Text;
-            string cadenaTelefono = this.txt_UsuarioTelefono.Text;
-            string nombre = this.txt_UsuarioNombre.Text;
-            string apellido = this.txt_UsuarioApellido.Text;
-            string cadenaDni = this.txt_UsuarioDni.Text;
-            string cadenaId = this.txt_UsuarioId.Text;
 
-            if (double.TryParse(cadenaTelefono,out double telefono) && 
-                double.TryParse(cadenaDni,out double dni) &&
-                int.TryParse(cadenaId,out int id))
+            try
             {
+                string nombreUsuario = this.txt_UsuarioNombreUsuario.Text;
+                string clave = this.txt_UsuarioClave.Text;
+                string cadenaTelefono = this.txt_UsuarioTelefono.Text;
+                string nombre = this.txt_UsuarioNombre.Text;
+                string apellido = this.txt_UsuarioApellido.Text;
+                string cadenaDni = this.txt_UsuarioDni.Text;
+                string cadenaId = this.txt_UsuarioId.Text;
 
-                AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
-                LimpiarTexboxUsuario();
+                if (double.TryParse(cadenaTelefono,out double telefono) && 
+                    double.TryParse(cadenaDni,out double dni) &&
+                    int.TryParse(cadenaId,out int id))
+                {
+
+                    AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                    LimpiarTexboxUsuario();
+                }
+                else
+                {
+                    MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
-
-
 
 
 

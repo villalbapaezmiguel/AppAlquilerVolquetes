@@ -11,6 +11,20 @@ namespace Entidades.EntidadesControl
     public sealed class CompraControl
     {
         private static List<Compra> listaCompras = new List<Compra>();
+
+        public static bool AgregarListaCompra(List<Compra> lista)
+        {
+            if(lista is not null)
+            {
+                foreach (Compra item in lista)
+                {
+                    listaCompras.Add(item);
+                }
+                return true;
+            }
+            return false;
+        }
+
         public static bool AgregarCompra(ref Compra compra)
         {
             if (compra is not null)

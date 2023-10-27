@@ -10,14 +10,44 @@ namespace Entidades.EntidadesControl
 {
     public class Serializar
     {
-        public static void EscribirXMLCompras(string ruta, List<Compra> lista)
+        public static void EscribirXMLListaCompras(string ruta, List<Compra> lista)
         {
-            using (StreamWriter streamWriter = new StreamWriter(ruta))
+            try
             {
-                XmlSerializer serializar = new XmlSerializer(typeof(List<Compra>));
-                serializar.Serialize(streamWriter, lista);
+                        using (StreamWriter streamWriter = new StreamWriter(ruta))
+                        {
+                            XmlSerializer serializar = new XmlSerializer(typeof(List<Compra>));
+                            serializar.Serialize(streamWriter, lista);
+                        }
+
+            }
+            catch (Exception )
+            {
+
+                throw;
             }
         }
+
+        public static void SerializarComprasAUsuario(string rutaArchivo , Usuario usuario)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Usuario));
+
+            using (StreamWriter writer = new StreamWriter(rutaArchivo))
+            {
+                serializer.Serialize(writer, usuario);
+            }
+        }
+
+        public static Usuario DeserializarUsuarioDeArchivo(string rutaArchivo)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Usuario));
+
+            using (StreamReader reader = new StreamReader(rutaArchivo))
+            {
+                return (Usuario)serializer.Deserialize(reader);
+            }
+        }
+
 
         public static List<Compra> LeerXMLCompras(string path)
         {

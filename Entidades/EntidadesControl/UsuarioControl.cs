@@ -125,6 +125,18 @@ namespace Entidades.EntidadesControl
             }
         }
 
+        public static bool AgregarListaCompra(List<Compra> lista)
+        {
+            if (lista is not null)
+            {
+                foreach (Compra item in lista)
+                {
+                    usuarioActual.ListaDeCompra.Add(item);
+                }
+                return true;
+            }
+            return false;
+        }
         public static bool AgregarCompra(ref Compra compra)
         {
             if(compra is not null)

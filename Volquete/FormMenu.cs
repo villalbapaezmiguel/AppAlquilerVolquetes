@@ -18,98 +18,178 @@ namespace Formulario
 
         private void pic_Menu_Click(object sender, EventArgs e)
         {
-            AgrandarYAchicarMenu();
+            try
+            {
+                AgrandarYAchicarMenu();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void AgrandarYAchicarMenu()
         {
-            if (this.panel_MenuVertical.Width == 180)
+            try
             {
-                this.panel_MenuVertical.Width = 70;
+                if (this.panel_MenuVertical.Width == 180)
+                {
+                    this.panel_MenuVertical.Width = 70;
+                }
+                else
+                {
+                    this.panel_MenuVertical.Width = 180;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                this.panel_MenuVertical.Width = 180;
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void pic_Cerrar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            try
             {
-                if (ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
+                if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-                else
-                {
-                    MessageBox.Show($"Error al guardar datos del Usuario {UsuarioControl.GetUsuario.NombreUsuario}....", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    if (ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
+                    {
+                        MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al guardar datos del Usuario {UsuarioControl.GetUsuario.NombreUsuario}....", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                this.Close();
-                FormLogin formLogin = new FormLogin();
-                formLogin.ShowDialog();
+                    this.Close();
+                    FormLogin formLogin = new FormLogin();
+                    formLogin.ShowDialog();
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void pic_Agrandar_Click(object sender, EventArgs e)
         {
-            posicionX = this.Location.X;
-            posicionY = this.Location.Y;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-            this.pic_Agrandar.Visible = false;
-            this.pic_Restaurar.Visible = true;
+            try
+            {
+                posicionX = this.Location.X;
+                posicionY = this.Location.Y;
+                this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+                this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+                this.pic_Agrandar.Visible = false;
+                this.pic_Restaurar.Visible = true;
 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void pic_Minizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            try
+            {
+                this.WindowState = FormWindowState.Minimized;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pic_Restaurar_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(870, 440);
-            this.Location = new Point(posicionX, posicionY);
-            this.pic_Agrandar.Visible = true;
-            this.pic_Minizar.Visible = true;
-            this.pic_Restaurar.Visible = false;
+            try
+            {
+                this.Size = new Size(870, 440);
+                this.Location = new Point(posicionX, posicionY);
+                this.pic_Agrandar.Visible = true;
+                this.pic_Minizar.Visible = true;
+                this.pic_Restaurar.Visible = false;
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
         }
 
         private void AbrirFormEnPanelContenedor(object formHijo)
         {
-            if (this.panel_Contenedor.Controls.Count > 0)
+            try
             {
-                this.panel_Contenedor.Controls.RemoveAt(0);
+                if (this.panel_Contenedor.Controls.Count > 0)
+                {
+                    this.panel_Contenedor.Controls.RemoveAt(0);
+                }
+                Form? fh = formHijo as Form;
+                fh.TopLevel = false;
+                fh.Dock = DockStyle.Fill;
+                this.panel_Contenedor.Controls.Add(fh);
+                this.panel_Contenedor.Tag = fh;
+                fh.Show();
+
             }
-            Form? fh = formHijo as Form;
-            fh.TopLevel = false;
-            fh.Dock = DockStyle.Fill;
-            this.panel_Contenedor.Controls.Add(fh);
-            this.panel_Contenedor.Tag = fh;
-            fh.Show();
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void btn_Usuario_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormAlquilerVolquete());
-            //AbrirFormEnPanelContenedor(new FormAlquilarVolquete());
-            //cambie usuario
+
+            try
+            {
+                AbrirFormEnPanelContenedor(new FormAlquilerVolquete());
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormEnPanelContenedor(new FormPerfilUsuario(UsuarioControl.GetUsuario));
-            //cambie usuario
+            try
+            {
+                AbrirFormEnPanelContenedor(new FormPerfilUsuario(UsuarioControl.GetUsuario));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_Alquilar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(UsuarioControl.GetUsuario));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(UsuarioControl.GetUsuario));
-            //cambie usuario
         }
 
         private void FormMenu_Load(object sender, EventArgs e)

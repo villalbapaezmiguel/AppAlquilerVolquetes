@@ -23,10 +23,19 @@ namespace Formulario
 
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro desea cerrar??", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            try
             {
-                Application.Exit();
+                if (MessageBox.Show("Seguro desea cerrar??", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+
         }
 
         private void btn_Ingresar_Click(object sender, EventArgs e)
@@ -49,21 +58,45 @@ namespace Formulario
                 MessageBox.Show("Falto rellenar el correo", "Advertencia", MessageBoxButtons.OK);
             }
 
+            try
+            {
+                Usuario? auxUsuario = UsuarioControl.BuscarUsuarioPorClaveYNombreUsuario(txt_Correo.Text, txt_Clave.Text);
+                if (auxUsuario is not null)
+                {
+                    UsuarioControl.SetUsuario = auxUsuario;
+                    string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+                    string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
+                    string path = rutaCarpeta + nombreDeCarpeta;
+                    path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
+                    if (File.Exists(path))
+                    {
+                        MessageBox.Show("Tiene datos guardados");
+                        UsuarioControl.SetUsuario = Serializar.DeserializarUsuarioDeArchivo(path);
+                    }
+                    else
+                    {
+                        MessageBox.Show("NO TIENE DATOS GUARDADOS");
 
-            Usuario? auxUsuario = UsuarioControl.BuscarUsuarioPorClaveYNombreUsuario(txt_Correo.Text, txt_Clave.Text);
-            if (auxUsuario is not null)
-            {
-                UsuarioControl.SetUsuario = auxUsuario;
-                MessageBox.Show($"Bienvenido {UsuarioControl.GetUsuario.Nombre} ", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                FormMenu formMenu = new FormMenu();
-                formMenu.Show();
-                this.Hide();
+                    }
+
+
+                    MessageBox.Show($"Bienvenido {UsuarioControl.GetUsuario.Nombre} ", "Bienvenido !!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    FormMenu formMenu = new FormMenu();
+                    formMenu.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontro el usuario");
+                    this.txt_Correo.Focus();
+                    VaciarTxtLogin();
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se encontro el usuario");
-                this.txt_Correo.Focus();
-                VaciarTxtLogin();
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
 
         }
@@ -76,17 +109,33 @@ namespace Formulario
 
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
-            FormRegistrar formRegistrar = new FormRegistrar();
-            formRegistrar.Show();
-            this.Hide();
+            try
+            {
+                FormRegistrar formRegistrar = new FormRegistrar();
+                formRegistrar.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_Admin_Click(object sender, EventArgs e)
         {
-            FormAdmin formAdmin = new FormAdmin();
-            formAdmin.Show();
-            this.Hide();
+            try
+            {
+                FormAdmin formAdmin = new FormAdmin();
+                formAdmin.Show();
+                this.Hide();
 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

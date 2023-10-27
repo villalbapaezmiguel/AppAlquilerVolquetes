@@ -16,6 +16,11 @@ namespace Entidades.EntidadesUsuarios
         private double telefono;
         private int idUsuario;
 
+        public Usuario()
+        {
+
+        }
+
         public Usuario(string nombreUsuario , string clave , double telefono, string nombre , string apellido, double dni , int id)
             :base(nombre,apellido,dni)
         {
@@ -44,7 +49,7 @@ namespace Entidades.EntidadesUsuarios
         public string Clave { get => clave; set => clave = value; }
         public List<Compra> ListaDeCompra { get => listaDeCompra; set => listaDeCompra = value; }
         public double Telefono { get => telefono; set => telefono = value; }
-        public int IdUsuario { get => idUsuario; private set => idUsuario = value; }
+        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
 
         private string ComprasHechas()
         {

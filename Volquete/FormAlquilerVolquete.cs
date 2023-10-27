@@ -20,64 +20,101 @@ namespace Vista
         private int posicionDTG;
         private float precioActual = 0;
         private DateTime fecha;
+        private List<Compra> listaCompra = new List<Compra>();
+        Compra? nuevaCompra = null;
         public FormAlquilerVolquete()
         {
             InitializeComponent();
-            CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
+            CargarDTGListaCompra(listaCompra);
         }
 
         private void FormAlquilerVolquete_Load(object sender, EventArgs e)
         {
-            CargarCmBoxTiposDeVolquetes();
-            CargarCmBoxHorariosDeEntrega();
-            this.lbl_Precio.Text = precioActual.ToString("C");
+            try
+            {
+                CargarCmBoxTiposDeVolquetes();
+                CargarCmBoxHorariosDeEntrega();
+                this.lbl_Precio.Text = precioActual.ToString("C");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
 
         }
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
-            this.Close();
-            DialogResult = DialogResult.OK;
+            try
+            {
+                this.Close();
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
         private void CargarDTGListaCompra(List<Compra> listaCompra)
         {
-            if (listaCompra.Count >= 1)
+            try
             {
-                this.dtgv_Compra.DataSource = listaCompra;
-                /*
-                foreach (Compra item in listaCompra)
+                if (listaCompra.Count >= 1)
                 {
-                    int posicion = this.dtgv_Compra.Rows.Add();
+                    //this.dtgv_Compra.DataSource = listaCompra;
+                
+                    foreach (Compra item in listaCompra)
+                    {
+                        int posicion = this.dtgv_Compra.Rows.Add();
 
+                        this.dtgv_Compra.Rows[posicion].Cells[0].Value = UsuarioControl.GetUsuario.NombreUsuario;
+                        this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.CantidadVolquetes.ToString(); 
+                        this.dtgv_Compra.Rows[posicion].Cells[2].Value = item.CantidadDias.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[3].Value = item.FechaDeEntraga.ToString("d");
+                        this.dtgv_Compra.Rows[posicion].Cells[4].Value = item.HoraDeEntrega.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[5].Value = item.Direccion.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.Precio.ToString(); 
+                        this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.TipoVolquete.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[8].Value = item.IdCompra.ToString();
 
-                    this.dtgv_Compra.Rows[posicion].Cells[0].Value = item.TipoVolquete.ToString();
-                    this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.IdCompra.ToString();
-                    this.dtgv_Compra.Rows[posicion].Cells[2].Value = item.Precio.ToString();
-                    this.dtgv_Compra.Rows[posicion].Cells[3].Value = item.CantidadDias.ToString();
-                    this.dtgv_Compra.Rows[posicion].Cells[4].Value = item.CantidadVolquetes.ToString();
-                    this.dtgv_Compra.Rows[posicion].Cells[5].Value = item.FechaDeEntraga.ToString("d");
-                    this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.HoraDeEntrega.ToString();
-                    this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.Direccion.ToString();
+                    }
+                }
 
-                }*/
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         private bool CargarDTGV(Compra nuevaCompra)
         {
-            if (nuevaCompra is not null)
+            try
             {
-                int posicionParaAgregar = this.dtgv_Compra.Rows.Add();
+                if (nuevaCompra is not null)
+                {
+                    int posicionParaAgregar = this.dtgv_Compra.Rows.Add();
 
 
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[0].Value = nuevaCompra.TipoVolquete.ToString();
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.IdCompra.ToString();
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[2].Value = nuevaCompra.Precio.ToString();
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[3].Value = nuevaCompra.CantidadDias.ToString();
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[4].Value = nuevaCompra.CantidadVolquetes.ToString();
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[5].Value = nuevaCompra.FechaDeEntraga.ToString("d");
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[6].Value = nuevaCompra.HoraDeEntrega.ToString();
-                this.dtgv_Compra.Rows[posicionParaAgregar].Cells[7].Value = nuevaCompra.Direccion.ToString();
-                return true;
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[0].Value = UsuarioControl.GetUsuario.NombreUsuario;
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.CantidadVolquetes.ToString();
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[2].Value = nuevaCompra.CantidadDias.ToString();
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[3].Value = nuevaCompra.FechaDeEntraga.ToString("d");
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[4].Value = nuevaCompra.HoraDeEntrega.ToString();
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[5].Value = nuevaCompra.Direccion.ToString();
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[6].Value = nuevaCompra.Precio.ToString();
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[7].Value = nuevaCompra.TipoVolquete.ToString();
+                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[8].Value = nuevaCompra.IdCompra.ToString();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             return false;
         }
@@ -119,19 +156,27 @@ namespace Vista
         }
         private void LimpiarFormularioAlquiler()
         {
-            this.cmbox_Tipo.SelectedIndex = -1;
-            this.cmbox_Horario.SelectedIndex = -1;
-            this.numUD_Dias.Text = (1).ToString();
-            this.numUD_Cantidad.Text = (1).ToString();
-            this.txt_Direccion.Text = string.Empty;
-            this.lbl_Precio.Text = (0).ToString("C");
-            this.txt_FechaDeEntrga.Text = string.Empty;
+            try
+            {
+                this.cmbox_Tipo.SelectedIndex = -1;
+                this.cmbox_Horario.SelectedIndex = -1;
+                this.numUD_Dias.Text = (1).ToString();
+                this.numUD_Cantidad.Text = (1).ToString();
+                this.txt_Direccion.Text = string.Empty;
+                this.lbl_Precio.Text = (0).ToString("C");
+                this.txt_FechaDeEntrga.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
             try
             {
-                Compra? nuevaCompra = null;
+                
                 string? horaDeEntrega;
                 string direccion;
                 string? tipoVolquete;
@@ -146,27 +191,14 @@ namespace Vista
                     direccion = txt_Direccion.Text;
                     tipoVolquete = this.cmbox_Tipo.SelectedItem.ToString();
 
-                    nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra());
-                    if (CompraControl.AgregarCompra(ref nuevaCompra))
-                    {
-                        bool compraExitosa = UsuarioControl.AgregarCompra(ref nuevaCompra);
-                        if (compraExitosa)
-                        {
-                            this.dtgv_Compra.DataSource = UsuarioControl.GetListaComprasUsuario;
-                            //CargarDTGV(nuevaCompra);
-                            MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
-                            LimpiarFormularioAlquiler();
+                    this.nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra());
+                    this.listaCompra.Add(nuevaCompra);
+                    this.dtgv_Compra.DataSource = this.listaCompra;
+                    RefrezcarDTG();
+                    LimpiarFormularioAlquiler();
 
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error, no se pudo agregar la compra al usuario");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error, no se pudo agregar la compra");
-                    }
+                    MessageBox.Show("Agregado con exitooo", "Excelente", MessageBoxButtons.OK);
+                    
                 }
                 else
                 {
@@ -182,6 +214,20 @@ namespace Vista
 
         }
 
+        private void RefrezcarDTG()
+        {
+            try
+            {
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = this.listaCompra;
+                this.dtgv_Compra.DataSource = bindingSource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
             try
@@ -279,15 +325,23 @@ namespace Vista
         }
         private void CargarListaModificadaDTGV(int posicionDTGV, Compra auxCompra)
         {
+            try
+            {
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[1].Value = auxCompra.CantidadVolquetes;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[2].Value = auxCompra.CantidadDias;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[3].Value = auxCompra.FechaDeEntraga;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[4].Value = auxCompra.HoraDeEntrega;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[5].Value = auxCompra.Direccion;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[6].Value = auxCompra.Precio;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[7].Value = auxCompra.TipoVolquete;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[8].Value = auxCompra.IdCompra;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[1].Value = auxCompra.CantidadVolquetes;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[2].Value = auxCompra.CantidadDias;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[3].Value = auxCompra.FechaDeEntraga;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[4].Value = auxCompra.HoraDeEntrega;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[5].Value = auxCompra.Direccion;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[6].Value = auxCompra.Precio;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[7].Value = auxCompra.TipoVolquete;
-            this.dtgv_Compra.Rows[posicionDTGV].Cells[8].Value = auxCompra.IdCompra;
+            }
+
         }
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
@@ -335,54 +389,112 @@ namespace Vista
             }
         }
 
-        private void pic_FechaDeEntrega_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private float ActulizarPrecioActual(float precioActual, int cantidadVolquetes, int cantidadDias)
         {
             return (float)(precioActual * cantidadDias * cantidadVolquetes);
+
         }
         private void numUD_Dias_Click(object sender, EventArgs e)
         {
-            float precio;
-            if ((int)numUD_Cantidad.Value >= 1 || (int)numUD_Dias.Value >= 1)
+
+            try
             {
-                precio = ActulizarPrecioActual(this.precioActual, (int)numUD_Cantidad.Value, (int)numUD_Dias.Value);
-                this.lbl_Precio.Text = precio.ToString("C");
+                float precio;
+                if ((int)numUD_Cantidad.Value >= 1 || (int)numUD_Dias.Value >= 1)
+                {
+                    precio = ActulizarPrecioActual(this.precioActual, (int)numUD_Cantidad.Value, (int)numUD_Dias.Value);
+                    this.lbl_Precio.Text = precio.ToString("C");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+
         }
 
         private void cmbox_Tipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Volquete? auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(this.cmbox_Tipo.Text);
-            if (auxVolquete is not null)
+            try
             {
-                this.lbl_Precio.Text = auxVolquete.Precio.ToString("C");
-                this.precioActual = (float)auxVolquete.Precio;
+                Volquete? auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(this.cmbox_Tipo.Text);
+                if (auxVolquete is not null)
+                {
+                    this.lbl_Precio.Text = auxVolquete.Precio.ToString("C");
+                    this.precioActual = (float)auxVolquete.Precio;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btn_SeleccionarFecha_Click(object sender, EventArgs e)
         {
-            int dia = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Day;
-            int mes = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Month;
-            int anio = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Year;
-            this.fecha = new DateTime(anio, mes, dia);
+            try
+            {
+                int dia = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Day;
+                int mes = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Month;
+                int anio = (int)this.mthCalendar_FechaDeEntrega.SelectionStart.Year;
+                this.fecha = new DateTime(anio, mes, dia);
 
-            this.txt_FechaDeEntrga.Text = this.fecha.ToString("d");
+                this.txt_FechaDeEntrga.Text = this.fecha.ToString("d");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+
         }
 
         private void btn_Comprar_Click(object sender, EventArgs e)
         {
-            //generar un ticket , json y XML
-            string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
-            string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
-            string path = rutaCarpeta + nombreDeCarpeta;
+            try
+            {
+                string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+                string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
+                string path = rutaCarpeta + nombreDeCarpeta;
 
-            Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
-            AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
+                if (CompraControl.AgregarListaCompra(this.listaCompra))
+                {
+                    if (UsuarioControl.AgregarListaCompra(this.listaCompra))
+                    {
+
+
+                        this.dtgv_Compra.DataSource = this.listaCompra;
+                        MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
+                        LimpiarFormularioAlquiler();
+
+                        Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
+                        path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
+                        Serializar.SerializarComprasAUsuario(path, UsuarioControl.GetUsuario);
+                        AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error, no se pudo agregar la compra al usuario");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error, no se pudo agregar la compra");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR : {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
     }
 }
