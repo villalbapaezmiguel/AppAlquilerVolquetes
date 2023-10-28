@@ -10,7 +10,7 @@ namespace Entidades.EntidadesControl
 {
     public sealed class AdminControl
     {
-        private static Admin adminActual = new Admin();
+        public static Admin adminActual = new Admin();
 
         public static void AgregarAdministrador(Admin nuevoAdmin)
         {

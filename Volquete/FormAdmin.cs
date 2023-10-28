@@ -108,6 +108,7 @@ namespace Vista
         {
             try
             {
+                 
                 this.btn_Editar.Enabled = false;
                 this.btn_Eliminar.Enabled = false;
             }

@@ -56,6 +56,7 @@ namespace Vista
             {
                 this.Close();
                 DialogResult = DialogResult.OK;
+                
             }
             catch (Exception ex)
             {
@@ -498,15 +499,19 @@ namespace Vista
                 {
                     if (UsuarioControl.AgregarListaCompra(this.listaCompra))
                     {
-
+                        string rutaXML = path + @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
+                        string rutaJSON = path + @$"\{UsuarioControl.GetUsuario.Nombre}.json";
 
                         //this.dtgv_Compra.DataSource = this.listaCompra;
                         MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                         LimpiarFormularioAlquiler();
                         
                         Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
-                        path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
-                        Serializar.SerializarComprasAUsuario(path, UsuarioControl.GetUsuario);
+                        //path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
+                        
+                        Serializar.SerializarComprasAUsuario(rutaXML, UsuarioControl.GetUsuario);
+                        Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
+
                         AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
                         this.listaCompra.Clear();
                         RefrezcarDTG();

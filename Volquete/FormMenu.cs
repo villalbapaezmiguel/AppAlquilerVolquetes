@@ -1,6 +1,7 @@
 using Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using System.IO;
 using System.Text;
 using Vista;
 
@@ -55,10 +56,16 @@ namespace Formulario
         {
             try
             {
+                string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
+                string nombreDeCarpeta = @$"\Carpeta del admin {AdminControl.adminActual.Nombre}";
+                string path = rutaCarpeta + nombreDeCarpeta;
                 if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     if (ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
                     {
+                        /*NO reconoce el nombre del administrador 
+                         ver el motivo y solucionarlo para poder crear archivos txt , xml y json para el administrador*/
+                        Archivo.CrearDirectorioYArchivo(path, $"{AdminControl.adminActual.Nombre}" + ".txt", AdminControl.adminActual.ToString());
                         MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else

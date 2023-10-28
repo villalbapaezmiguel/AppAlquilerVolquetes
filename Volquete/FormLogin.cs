@@ -64,17 +64,31 @@ namespace Formulario
                 if (auxUsuario is not null)
                 {
                     UsuarioControl.SetUsuario = auxUsuario;
-                    string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+                    string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario";
                     string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
                     string path = rutaCarpeta + nombreDeCarpeta;
-                    path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
-                    if (File.Exists(path))
+
+
+                    if (Directory.Exists(path))
                     {
                         MessageBox.Show("Tiene datos guardados");
-                        UsuarioControl.SetUsuario = Serializar.DeserializarUsuarioDeArchivo(path);
+                        string rutaXML = path +@$"\{UsuarioControl.GetUsuario.Nombre}.xml";
+                        string rutaJSON = path + @$"\{UsuarioControl.GetUsuario.Nombre}.json";
+                        
+                        if(File.Exists(rutaXML) && File.Exists(rutaJSON)) 
+                        {
+                            UsuarioControl.SetUsuario = Serializar.DeserializarXML_UsuarioDeArchivo(rutaXML);
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tenes carpeta pero no archivos json y xml", "Advertencia");
+                        }
                     }
                     else
                     {
+
+
                         MessageBox.Show("NO TIENE DATOS GUARDADOS");
 
                     }

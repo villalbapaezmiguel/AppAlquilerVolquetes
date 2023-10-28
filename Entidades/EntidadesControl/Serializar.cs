@@ -1,24 +1,27 @@
 ﻿using Entidades.EntidadesUsuarios;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Entidades.EntidadesControl
 {
-    public class Serializar
+    public sealed class Serializar
     {
+
         public static void EscribirXMLListaCompras(string ruta, List<Compra> lista)
         {
             try
             {
-                        using (StreamWriter streamWriter = new StreamWriter(ruta))
-                        {
-                            XmlSerializer serializar = new XmlSerializer(typeof(List<Compra>));
-                            serializar.Serialize(streamWriter, lista);
-                        }
+                using (StreamWriter streamWriter = new StreamWriter(ruta))
+                {
+                    XmlSerializer serializar = new XmlSerializer(typeof(List<Compra>));
+                    serializar.Serialize(streamWriter, lista);
+                }
 
             }
             catch (Exception )
@@ -38,14 +41,50 @@ namespace Entidades.EntidadesControl
             }
         }
 
-        public static Usuario DeserializarUsuarioDeArchivo(string rutaArchivo)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Usuario));
 
-            using (StreamReader reader = new StreamReader(rutaArchivo))
+        public static void SerializarJSON_Usuario(string rutaArchivo ,Usuario usuario)
+        {
+            try
             {
-                return (Usuario)serializer.Deserialize(reader);
+                string json = JsonSerializer.Serialize(usuario);
+                File.WriteAllText(rutaArchivo, json);
+
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static Usuario DeserializarJSON_Usuario(string rutaArchivo)
+        {
+            string json = File.ReadAllText(rutaArchivo);
+
+            return JsonSerializer.Deserialize<Usuario>(json);
+        }
+
+
+
+
+        public static Usuario DeserializarXML_UsuarioDeArchivo(string rutaArchivo)
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(Usuario));
+
+                using (StreamReader reader = new StreamReader(rutaArchivo))
+                {
+                    return (Usuario)serializer.Deserialize(reader);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
         }
 
 
@@ -61,118 +100,8 @@ namespace Entidades.EntidadesControl
             return lista;
         }
 
-        public static bool CrearDirectorioParaUsuario(string ruta)
-        {
-            if (!Directory.Exists(ruta))
-            {
-                Directory.CreateDirectory(ruta);
-                Console.WriteLine("Se creo un nuevo directorio...");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Ese directorio ya existe...");
-            }
-            return false;
-        }
-
-        public static bool SobrescribirTodoElArchivo(string ruta, string contenido)
-        {
-            if (ruta != string.Empty && contenido != string.Empty)
-            {
-                try
-                {
-                    using (StreamWriter streamWriter = new StreamWriter(ruta))
-                    {
-                        streamWriter.WriteLine("-----------Se sobrescribio..");
-                        streamWriter.WriteLine(contenido);
-
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            return false;
-        }
 
 
-        public static bool EscribirArchivo(string ruta, string contenido)
-        {
-            if (ruta != string.Empty && contenido != string.Empty)
-            {
-                try
-                {
-                    using (StreamWriter streamWriter = new StreamWriter(ruta, true))
-                    {
-                        streamWriter.WriteLine("-----------");
-                        streamWriter.WriteLine(contenido);
-
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-            }
-
-            return false;
-        }
-
-
-        public static bool CrearArchivo(string ruta, string contenido)
-        {
-            if (ruta != string.Empty && contenido != string.Empty)
-            {
-                try
-                {
-                    using (StreamWriter streamWriter = new StreamWriter(ruta))
-                    {
-                        streamWriter.WriteLine(contenido);
-                        streamWriter.Close();//cierra el archivo
-                        streamWriter.Dispose();//libera la memoria para la cual fue usada
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-
-            }
-            return false;
-        }
-
-
-        public static string LeerArchivo(string ruta)
-        {
-            string lecturaReader;
-            if (ruta != string.Empty)
-            {
-                try
-                {
-                    using (StreamReader streamReader = new StreamReader(ruta))
-                    {
-                        lecturaReader = streamReader.ReadToEnd();//lee todo el archivo que existe
-                        return lecturaReader;
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    Console.WriteLine(ex.Message);
-                }
-
-            }
-            return string.Empty;
-        }
 
 
     }

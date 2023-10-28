@@ -10,8 +10,8 @@
       <NombreDeUsuario>Miguel</NombreDeUsuario>
       <CantidadVolquetes>1</CantidadVolquetes>
       <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>10:00</HoraDeEntrega>
+      <FechaDeEntraga>2023-12-25T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>13:00</HoraDeEntrega>
       <Direccion>ssss</Direccion>
       <Precio>3100</Precio>
       <TipoVolquete>Grande</TipoVolquete>
@@ -21,64 +21,20 @@
       <NombreDeUsuario>Miguel</NombreDeUsuario>
       <CantidadVolquetes>1</CantidadVolquetes>
       <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>10:00</HoraDeEntrega>
+      <Direccion>ccccc</Direccion>
+      <Precio>3100</Precio>
+      <TipoVolquete>Grande</TipoVolquete>
+      <IdCompra>0</IdCompra>
+    </Compra>
+    <Compra>
+      <NombreDeUsuario>Miguel</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
       <FechaDeEntraga>2023-12-25T00:00:00</FechaDeEntraga>
       <HoraDeEntrega>10:00</HoraDeEntrega>
-      <Direccion>xxxxx</Direccion>
-      <Precio>2000</Precio>
-      <TipoVolquete>Mediano</TipoVolquete>
-      <IdCompra>1</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-25T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>09:00</HoraDeEntrega>
-      <Direccion>holaaaa</Direccion>
-      <Precio>3900</Precio>
-      <TipoVolquete>Super Grande</TipoVolquete>
-      <IdCompra>0</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-25T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>14:00</HoraDeEntrega>
-      <Direccion>kkkkk</Direccion>
-      <Precio>2500</Precio>
-      <TipoVolquete>Estandar</TipoVolquete>
-      <IdCompra>0</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2024-01-04T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>08:00</HoraDeEntrega>
-      <Direccion>xxxx</Direccion>
-      <Precio>2000</Precio>
-      <TipoVolquete>Mediano</TipoVolquete>
-      <IdCompra>1</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>16:00</HoraDeEntrega>
-      <Direccion>xxxxx</Direccion>
-      <Precio>3900</Precio>
-      <TipoVolquete>Super Grande</TipoVolquete>
-      <IdCompra>0</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>15:00</HoraDeEntrega>
-      <Direccion>Copihue</Direccion>
+      <Direccion>cccc</Direccion>
       <Precio>3100</Precio>
       <TipoVolquete>Grande</TipoVolquete>
       <IdCompra>0</IdCompra>
@@ -88,30 +44,8 @@
       <CantidadVolquetes>1</CantidadVolquetes>
       <CantidadDias>1</CantidadDias>
       <FechaDeEntraga>2023-12-28T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>15:00</HoraDeEntrega>
-      <Direccion>xxxx</Direccion>
-      <Precio>2500</Precio>
-      <TipoVolquete>Estandar</TipoVolquete>
-      <IdCompra>0</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-30T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>11:00</HoraDeEntrega>
-      <Direccion>ddddd</Direccion>
-      <Precio>1700</Precio>
-      <TipoVolquete>Pequeño</TipoVolquete>
-      <IdCompra>1</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>1</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>15:00</HoraDeEntrega>
-      <Direccion>xxxx</Direccion>
+      <HoraDeEntrega>13:00</HoraDeEntrega>
+      <Direccion>ccccc</Direccion>
       <Precio>3100</Precio>
       <TipoVolquete>Grande</TipoVolquete>
       <IdCompra>0</IdCompra>
@@ -120,33 +54,22 @@
       <NombreDeUsuario>Miguel</NombreDeUsuario>
       <CantidadVolquetes>1</CantidadVolquetes>
       <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-25T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>09:00</HoraDeEntrega>
-      <Direccion>zzzzzz</Direccion>
-      <Precio>1700</Precio>
-      <TipoVolquete>Pequeño</TipoVolquete>
-      <IdCompra>1</IdCompra>
-    </Compra>
-    <Compra>
-      <NombreDeUsuario>Miguel</NombreDeUsuario>
-      <CantidadVolquetes>2</CantidadVolquetes>
-      <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-31T00:00:00</FechaDeEntraga>
+      <FechaDeEntraga>2024-01-17T00:00:00</FechaDeEntraga>
       <HoraDeEntrega>13:00</HoraDeEntrega>
-      <Direccion>miguel</Direccion>
-      <Precio>5000</Precio>
-      <TipoVolquete>Estandar</TipoVolquete>
+      <Direccion>xxxxx</Direccion>
+      <Precio>3100</Precio>
+      <TipoVolquete>Grande</TipoVolquete>
       <IdCompra>0</IdCompra>
     </Compra>
     <Compra>
       <NombreDeUsuario>Miguel</NombreDeUsuario>
       <CantidadVolquetes>1</CantidadVolquetes>
       <CantidadDias>1</CantidadDias>
-      <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
-      <HoraDeEntrega>12:00</HoraDeEntrega>
-      <Direccion>Maquinola</Direccion>
-      <Precio>0</Precio>
-      <TipoVolquete>chiquito</TipoVolquete>
+      <FechaDeEntraga>2023-12-28T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>14:00</HoraDeEntrega>
+      <Direccion>ssss</Direccion>
+      <Precio>2500</Precio>
+      <TipoVolquete>Estandar</TipoVolquete>
       <IdCompra>0</IdCompra>
     </Compra>
   </ListaDeCompra>

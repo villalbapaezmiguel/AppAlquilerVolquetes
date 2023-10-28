@@ -10,666 +10,6 @@ Direccion  : ssss
 Precio : 3100
 ID : 0
 
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 16:00
-Direccion  : xxxxx
-Precio : 3900
-ID : 0
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 16:00
-Direccion  : xxxxx
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : Copihue
-Precio : 3100
-ID : 0
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 16:00
-Direccion  : xxxxx
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : Copihue
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 28/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : xxxx
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Pequeño
-Fecha de entrega : 30/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 11:00
-Direccion  : ddddd
-Precio : 1700
-ID : 1
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 16:00
-Direccion  : xxxxx
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : Copihue
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 28/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : xxxx
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Pequeño
-Fecha de entrega : 30/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 11:00
-Direccion  : ddddd
-Precio : 1700
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : xxxx
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Pequeño
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : zzzzzz
-Precio : 1700
-ID : 1
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : xxxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : holaaaa
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 14:00
-Direccion  : kkkkk
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Mediano
-Fecha de entrega : 04/01/2024 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 08:00
-Direccion  : xxxx
-Precio : 2000
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Super Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 16:00
-Direccion  : xxxxx
-Precio : 3900
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : Copihue
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 28/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : xxxx
-Precio : 2500
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Pequeño
-Fecha de entrega : 30/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 11:00
-Direccion  : ddddd
-Precio : 1700
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 15:00
-Direccion  : xxxx
-Precio : 3100
-ID : 0
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Pequeño
-Fecha de entrega : 25/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 09:00
-Direccion  : zzzzzz
-Precio : 1700
-ID : 1
-
-Nombre de Usuario : Miguel
-Tipo del volquete : Estandar
-Fecha de entrega : 31/12/2023 12:00:00 a. m.
-Cantidad : 2
-Dias alquilados : 1
-Horario de entrega : 13:00
-Direccion  : miguel
-Precio : 5000
-ID : 0
-
-
------------------------------------
-
-Nombre Miguel | Apellido Villalba | DNI 23451
-Usuario a | Id 0 | Telefono 1234
-Lista de compra : Nombre de Usuario : Miguel
-Tipo del volquete : Grande
-Fecha de entrega : 29/12/2023 12:00:00 a. m.
-Cantidad : 1
-Dias alquilados : 1
-Horario de entrega : 10:00
-Direccion  : ssss
-Precio : 3100
-ID : 0
-
 Nombre de Usuario : Miguel
 Tipo del volquete : Mediano
 Fecha de entrega : 25/12/2023 12:00:00 a. m.
@@ -788,6 +128,281 @@ Dias alquilados : 1
 Horario de entrega : 12:00
 Direccion  : Maquinola
 Precio : 0
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Estandar
+Fecha de entrega : 04/01/2024 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 14:00
+Direccion  : sssss
+Precio : 2500
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 28/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 14:00
+Direccion  : xxxxx
+Precio : 3100
+ID : 1
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 29/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 29/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : cccc
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 29/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : cccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 28/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 29/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : cccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 28/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 17/01/2024 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : xxxxx
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 0 | Telefono 1234
+Lista de compra : Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ssss
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 29/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 25/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 10:00
+Direccion  : cccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 28/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : ccccc
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Grande
+Fecha de entrega : 17/01/2024 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 13:00
+Direccion  : xxxxx
+Precio : 3100
+ID : 0
+
+Nombre de Usuario : Miguel
+Tipo del volquete : Estandar
+Fecha de entrega : 28/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 14:00
+Direccion  : ssss
+Precio : 2500
 ID : 0
 
 
