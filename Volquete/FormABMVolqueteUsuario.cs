@@ -16,7 +16,7 @@ namespace Formulario
     public partial class FormABMVolqueteUsuario : Form
     {
         public Usuario usuarioAuxiliar;
-        
+
         public FormABMVolqueteUsuario()
         {
             InitializeComponent();

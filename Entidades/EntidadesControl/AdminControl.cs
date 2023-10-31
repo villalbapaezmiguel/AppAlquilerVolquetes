@@ -12,6 +12,11 @@ namespace Entidades.EntidadesControl
     {
         public static Admin adminActual = new Admin();
 
+
+
+
+
+
         public static void AgregarAdministrador(Admin nuevoAdmin)
         {
             if (adminActual is not null)
@@ -226,6 +231,23 @@ namespace Entidades.EntidadesControl
                 adminActual.ListaCompra = value;
             }
         }
+
+        public static Admin SetAdmin
+        {
+            set
+            {
+                adminActual = value;
+            }
+        }
+
+        public static Admin GetAdmin
+        {
+            get
+            {
+                return adminActual;
+            }
+        }
+
 
         #endregion
 

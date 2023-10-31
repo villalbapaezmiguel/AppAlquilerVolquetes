@@ -28,24 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormABMVolqueteUsuario));
             cmBox_Volquete = new ComboBox();
             pic_CerrarFormulario = new PictureBox();
             panel_ContenedorVolquetes = new Panel();
             lbl_Titulo = new Label();
-            imgList_FotosTiposVolquetes = new ImageList(components);
             panel_ContenedorPreciosYCapacidades = new Panel();
             lbl_Obeservaciones = new Label();
             lbl_Capacidad = new Label();
             lbl_Precio = new Label();
-            panel_FotoVolquete = new Panel();
-            label6 = new Label();
             label5 = new Label();
-            label4 = new Label();
             label3 = new Label();
+            label6 = new Label();
+            label7 = new Label();
             label2 = new Label();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
             panel_ContenedorVolquetes.SuspendLayout();
             panel_ContenedorPreciosYCapacidades.SuspendLayout();
@@ -57,7 +53,7 @@
             cmBox_Volquete.DropDownStyle = ComboBoxStyle.Simple;
             cmBox_Volquete.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             cmBox_Volquete.FormattingEnabled = true;
-            cmBox_Volquete.Location = new Point(519, 25);
+            cmBox_Volquete.Location = new Point(200, 19);
             cmBox_Volquete.Name = "cmBox_Volquete";
             cmBox_Volquete.Size = new Size(145, 25);
             cmBox_Volquete.TabIndex = 37;
@@ -79,7 +75,7 @@
             // 
             // panel_ContenedorVolquetes
             // 
-            panel_ContenedorVolquetes.BackColor = Color.DodgerBlue;
+            panel_ContenedorVolquetes.BackColor = Color.FromArgb(41, 128, 185);
             panel_ContenedorVolquetes.BackgroundImageLayout = ImageLayout.Zoom;
             panel_ContenedorVolquetes.Controls.Add(lbl_Titulo);
             panel_ContenedorVolquetes.Controls.Add(pic_CerrarFormulario);
@@ -101,28 +97,19 @@
             lbl_Titulo.TabIndex = 8;
             lbl_Titulo.Text = "Precios y Capacidades";
             // 
-            // imgList_FotosTiposVolquetes
-            // 
-            imgList_FotosTiposVolquetes.ColorDepth = ColorDepth.Depth8Bit;
-            imgList_FotosTiposVolquetes.ImageSize = new Size(16, 16);
-            imgList_FotosTiposVolquetes.TransparentColor = Color.Transparent;
-            // 
             // panel_ContenedorPreciosYCapacidades
             // 
-            panel_ContenedorPreciosYCapacidades.BackColor = SystemColors.Highlight;
-            panel_ContenedorPreciosYCapacidades.BackgroundImage = (Image)resources.GetObject("panel_ContenedorPreciosYCapacidades.BackgroundImage");
+            panel_ContenedorPreciosYCapacidades.BackColor = Color.SteelBlue;
             panel_ContenedorPreciosYCapacidades.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_ContenedorPreciosYCapacidades.Controls.Add(label2);
+            panel_ContenedorPreciosYCapacidades.Controls.Add(label7);
+            panel_ContenedorPreciosYCapacidades.Controls.Add(label6);
             panel_ContenedorPreciosYCapacidades.Controls.Add(lbl_Obeservaciones);
             panel_ContenedorPreciosYCapacidades.Controls.Add(lbl_Capacidad);
             panel_ContenedorPreciosYCapacidades.Controls.Add(lbl_Precio);
-            panel_ContenedorPreciosYCapacidades.Controls.Add(panel_FotoVolquete);
-            panel_ContenedorPreciosYCapacidades.Controls.Add(label6);
             panel_ContenedorPreciosYCapacidades.Controls.Add(cmBox_Volquete);
             panel_ContenedorPreciosYCapacidades.Controls.Add(label5);
-            panel_ContenedorPreciosYCapacidades.Controls.Add(label4);
             panel_ContenedorPreciosYCapacidades.Controls.Add(label3);
-            panel_ContenedorPreciosYCapacidades.Controls.Add(label2);
-            panel_ContenedorPreciosYCapacidades.Controls.Add(label1);
             panel_ContenedorPreciosYCapacidades.Dock = DockStyle.Fill;
             panel_ContenedorPreciosYCapacidades.Location = new Point(0, 40);
             panel_ContenedorPreciosYCapacidades.Name = "panel_ContenedorPreciosYCapacidades";
@@ -133,7 +120,7 @@
             // 
             lbl_Obeservaciones.AutoSize = true;
             lbl_Obeservaciones.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Obeservaciones.Location = new Point(412, 71);
+            lbl_Obeservaciones.Location = new Point(155, 173);
             lbl_Obeservaciones.Name = "lbl_Obeservaciones";
             lbl_Obeservaciones.Size = new Size(40, 25);
             lbl_Obeservaciones.TabIndex = 42;
@@ -143,7 +130,7 @@
             // 
             lbl_Capacidad.AutoSize = true;
             lbl_Capacidad.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Capacidad.Location = new Point(301, 66);
+            lbl_Capacidad.Location = new Point(136, 125);
             lbl_Capacidad.Name = "lbl_Capacidad";
             lbl_Capacidad.Size = new Size(40, 25);
             lbl_Capacidad.TabIndex = 41;
@@ -153,76 +140,60 @@
             // 
             lbl_Precio.AutoSize = true;
             lbl_Precio.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_Precio.Location = new Point(202, 68);
+            lbl_Precio.Location = new Point(87, 79);
             lbl_Precio.Name = "lbl_Precio";
             lbl_Precio.Size = new Size(40, 25);
             lbl_Precio.TabIndex = 40;
             lbl_Precio.Text = ".......";
             // 
-            // panel_FotoVolquete
-            // 
-            panel_FotoVolquete.Location = new Point(3, 71);
-            panel_FotoVolquete.Name = "panel_FotoVolquete";
-            panel_FotoVolquete.Size = new Size(193, 169);
-            panel_FotoVolquete.TabIndex = 39;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(195, 91);
-            label6.Name = "label6";
-            label6.Size = new Size(482, 15);
-            label6.TabIndex = 38;
-            label6.Text = "-----------------------------------------------------------------------------------------------";
-            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(0, 53);
+            label5.Location = new Point(3, 44);
             label5.Name = "label5";
             label5.Size = new Size(677, 15);
             label5.TabIndex = 4;
             label5.Text = "--------------------------------------------------------------------------------------------------------------------------------------";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(372, 19);
-            label4.Name = "label4";
-            label4.Size = new Size(141, 25);
-            label4.TabIndex = 3;
-            label4.Text = "Observaciones";
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(191, 19);
+            label3.Font = new Font("Cambria", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(12, 82);
             label3.Name = "label3";
-            label3.Size = new Size(65, 25);
+            label3.Size = new Size(73, 22);
             label3.TabIndex = 2;
-            label3.Text = "Precio";
+            label3.Text = "PRECIO";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Cambria", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(12, 18);
+            label6.Name = "label6";
+            label6.Size = new Size(161, 22);
+            label6.TabIndex = 43;
+            label6.Text = "TIPOS VOLQUETES";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Cambria", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(12, 128);
+            label7.Name = "label7";
+            label7.Size = new Size(109, 22);
+            label7.TabIndex = 44;
+            label7.Text = "CAPACIDAD";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(262, 19);
+            label2.Font = new Font("Cambria", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(12, 176);
             label2.Name = "label2";
-            label2.Size = new Size(104, 25);
-            label2.TabIndex = 1;
-            label2.Text = "Capacidad";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Comfortaa", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(173, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Tipos de Volquetes";
+            label2.Size = new Size(128, 22);
+            label2.TabIndex = 45;
+            label2.Text = "OBSERVACION";
             // 
             // FormABMVolqueteUsuario
             // 
@@ -248,18 +219,15 @@
         private PictureBox pic_CerrarFormulario;
         private Panel panel_ContenedorVolquetes;
         private Label lbl_Titulo;
-        private ImageList imgList_FotosTiposVolquetes;
         private Panel panel_ContenedorPreciosYCapacidades;
-        private Label label1;
-        private Label label2;
         private Label label3;
-        private Label label4;
         private Label label5;
         private ComboBox cmBox_Volquete;
-        private Label label6;
-        private Panel panel_FotoVolquete;
         private Label lbl_Precio;
         private Label lbl_Capacidad;
         private Label lbl_Obeservaciones;
+        private Label label6;
+        private Label label7;
+        private Label label2;
     }
 }

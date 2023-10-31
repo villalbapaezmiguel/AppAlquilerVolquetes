@@ -44,7 +44,7 @@
             // 
             txt_Correo.BackColor = SystemColors.ButtonHighlight;
             txt_Correo.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_Correo.Location = new Point(87, 124);
+            txt_Correo.Location = new Point(87, 123);
             txt_Correo.Name = "txt_Correo";
             txt_Correo.PlaceholderText = "Ingrese Correo";
             txt_Correo.Size = new Size(219, 22);
@@ -54,7 +54,7 @@
             // 
             txt_Clave.BackColor = SystemColors.ButtonHighlight;
             txt_Clave.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_Clave.Location = new Point(87, 163);
+            txt_Clave.Location = new Point(87, 162);
             txt_Clave.Name = "txt_Clave";
             txt_Clave.PasswordChar = '*';
             txt_Clave.PlaceholderText = "Ingrese Clave";
@@ -63,25 +63,25 @@
             // 
             // btn_Ingresar
             // 
-            btn_Ingresar.BackColor = SystemColors.ActiveCaption;
+            btn_Ingresar.BackColor = Color.YellowGreen;
             btn_Ingresar.Cursor = Cursors.Hand;
             btn_Ingresar.FlatAppearance.BorderSize = 0;
-            btn_Ingresar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_Ingresar.FlatStyle = FlatStyle.Flat;
+            btn_Ingresar.FlatAppearance.MouseOverBackColor = Color.SeaGreen;
+            btn_Ingresar.FlatStyle = FlatStyle.Popup;
             btn_Ingresar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Ingresar.ForeColor = Color.Black;
             btn_Ingresar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Ingresar.Location = new Point(99, 227);
+            btn_Ingresar.Location = new Point(99, 218);
             btn_Ingresar.Name = "btn_Ingresar";
             btn_Ingresar.Size = new Size(180, 30);
             btn_Ingresar.TabIndex = 2;
-            btn_Ingresar.Text = "Ingresar";
+            btn_Ingresar.Text = "INGRESAR";
             btn_Ingresar.UseVisualStyleBackColor = false;
             btn_Ingresar.Click += btn_Ingresar_Click;
             // 
             // panel_Login
             // 
-            panel_Login.BackColor = SystemColors.Highlight;
+            panel_Login.BackColor = Color.FromArgb(44, 65, 91);
             panel_Login.BackgroundImage = (Image)resources.GetObject("panel_Login.BackgroundImage");
             panel_Login.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Login.Controls.Add(btn_Admin);
@@ -102,13 +102,13 @@
             btn_Admin.Cursor = Cursors.Hand;
             btn_Admin.FlatAppearance.BorderSize = 0;
             btn_Admin.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_Admin.FlatStyle = FlatStyle.Flat;
+            btn_Admin.FlatStyle = FlatStyle.Popup;
             btn_Admin.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Admin.ForeColor = Color.Black;
             btn_Admin.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Admin.Location = new Point(3, 285);
+            btn_Admin.Location = new Point(152, 290);
             btn_Admin.Name = "btn_Admin";
-            btn_Admin.Size = new Size(79, 30);
+            btn_Admin.Size = new Size(65, 30);
             btn_Admin.TabIndex = 6;
             btn_Admin.Text = "Admin";
             btn_Admin.UseVisualStyleBackColor = false;
@@ -116,17 +116,17 @@
             // 
             // btn_Registrar
             // 
-            btn_Registrar.BackColor = SystemColors.ActiveCaption;
+            btn_Registrar.BackColor = Color.FromArgb(130, 224, 170);
             btn_Registrar.Cursor = Cursors.Hand;
             btn_Registrar.FlatAppearance.BorderSize = 0;
             btn_Registrar.FlatAppearance.MouseOverBackColor = Color.DarkGray;
-            btn_Registrar.FlatStyle = FlatStyle.Flat;
+            btn_Registrar.FlatStyle = FlatStyle.Popup;
             btn_Registrar.Font = new Font("Calibri", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_Registrar.ForeColor = Color.Black;
             btn_Registrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Registrar.Location = new Point(1, 4);
+            btn_Registrar.Location = new Point(99, 254);
             btn_Registrar.Name = "btn_Registrar";
-            btn_Registrar.Size = new Size(79, 30);
+            btn_Registrar.Size = new Size(180, 30);
             btn_Registrar.TabIndex = 5;
             btn_Registrar.Text = "Registrar";
             btn_Registrar.UseVisualStyleBackColor = false;

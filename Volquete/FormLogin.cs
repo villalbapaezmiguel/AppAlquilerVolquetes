@@ -18,7 +18,7 @@ namespace Formulario
     {
         public FormLogin()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace Formulario
             catch (Exception ex)
             {
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
 
         }
@@ -72,13 +72,13 @@ namespace Formulario
                     if (Directory.Exists(path))
                     {
                         MessageBox.Show("Tiene datos guardados");
-                        string rutaXML = path +@$"\{UsuarioControl.GetUsuario.Nombre}.xml";
+                        string rutaXML = path + @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
                         string rutaJSON = path + @$"\{UsuarioControl.GetUsuario.Nombre}.json";
-                        
-                        if(File.Exists(rutaXML) && File.Exists(rutaJSON)) 
+
+                        if (File.Exists(rutaXML) && File.Exists(rutaJSON))
                         {
                             UsuarioControl.SetUsuario = Serializar.DeserializarXML_UsuarioDeArchivo(rutaXML);
-                            
+
                         }
                         else
                         {
@@ -87,8 +87,6 @@ namespace Formulario
                     }
                     else
                     {
-
-
                         MessageBox.Show("NO TIENE DATOS GUARDADOS");
 
                     }
@@ -98,6 +96,23 @@ namespace Formulario
                     FormMenu formMenu = new FormMenu();
                     formMenu.Show();
                     this.Hide();
+                }
+                else if (this.txt_Correo.Text == "admin" && this.txt_Clave.Text == "admin")//crar un if para validar el ingreso de un administrador
+                {
+
+                    try
+                    {
+                        FormAdmin formAdmin = new FormAdmin();
+                        formAdmin.Show();
+                        this.Hide();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {
@@ -140,9 +155,8 @@ namespace Formulario
         {
             try
             {
-                FormAdmin formAdmin = new FormAdmin();
-                formAdmin.Show();
-                this.Hide();
+                this.txt_Correo.Text = "admin";
+                this.txt_Clave.Text = "admin";
 
             }
             catch (Exception ex)
