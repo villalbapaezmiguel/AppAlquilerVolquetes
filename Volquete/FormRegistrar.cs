@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using System.IO;
 
 namespace Formulario
 {
@@ -96,46 +97,61 @@ namespace Formulario
 
         private void btn_Registrar_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos(txt_NombreUsuario.Text, txt_Clave.Text, txt_Nombre.Text, txt_Apellido.Text, txt_NumeroDeTelefono.Text, txt_DNI.Text))
+            try
             {
-
-                if (txt_Clave.Text == txt_ClaveRepita.Text)
+                if (ValidarCampos(txt_NombreUsuario.Text, txt_Clave.Text, txt_Nombre.Text, txt_Apellido.Text, txt_NumeroDeTelefono.Text, txt_DNI.Text))
                 {
-                    Usuario nuevo = new Usuario(txt_NombreUsuario.Text,
-                    txt_Clave.Text,
-                    double.Parse(txt_NumeroDeTelefono.Text),
-                    txt_Apellido.Text,
-                    txt_Nombre.Text,
-                    double.Parse(txt_DNI.Text),
-                    ControlApp.NuevoIdUsuario());
 
-                    if (!UsuarioControl.ExisteUsuario(txt_NombreUsuario.Text))
+                    if (txt_Clave.Text == txt_ClaveRepita.Text)
                     {
-                        if (UsuarioControl.AgregarUsuario(nuevo))
+                        Usuario nuevo = new Usuario(txt_NombreUsuario.Text,
+                        txt_Clave.Text,
+                        double.Parse(txt_NumeroDeTelefono.Text),
+                        txt_Apellido.Text,
+                        txt_Nombre.Text,
+                        double.Parse(txt_DNI.Text),
+                        ControlApp.NuevoIdUsuario());
+
+                        if (!UsuarioControl.ExisteUsuario(txt_NombreUsuario.Text))
                         {
-                            MessageBox.Show("Se agrego corrctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            //UsuarioControl.SetUsuario = nuevo;
-                            this.Close();
-                            FormLogin formLogin = new FormLogin();
-                            formLogin.Show();
+                            if (UsuarioControl.AgregarUsuario(nuevo))
+                            {
+                                string path = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Carpeta del admin";
+                                string rutaJSON = path + @$"\ListaUsuarios.json";
+                                AdminControl.adminActual.ListaUsuarios.Add(nuevo);
+                                Serializar.SerializarJSON_ListaUsuario(rutaJSON, AdminControl.adminActual.ListaUsuarios);
+
+                                MessageBox.Show("Se agrego corrctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //UsuarioControl.SetUsuario = nuevo;
+                                this.Close();
+                                FormLogin formLogin = new FormLogin();
+                                formLogin.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show("ERROR al agregar el Usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("ERROR al agregar el Usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("El nombre de usuario ya está en uso. Por favor, elige otro nombre de usuario. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_Clave.Focus();
+
+                        MessageBox.Show("Clave incorrecta...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
-                {
-                    txt_Clave.Focus();
 
-                    MessageBox.Show("Clave incorrecta...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
     }
 }

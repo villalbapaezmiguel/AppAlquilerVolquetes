@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Usuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Nombre>Lopez</Nombre>
+  <Apellido>Juan</Apellido>
+  <Dni>12345</Dni>
+  <NombreUsuario>12345</NombreUsuario>
+  <Clave>12345</Clave>
+  <ListaDeCompra>
+    <Compra>
+      <NombreDeUsuario>Lopez</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2023-12-30T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>14:00</HoraDeEntrega>
+      <Direccion>ffffff</Direccion>
+      <Precio>3100</Precio>
+      <TipoVolquete>Grande</TipoVolquete>
+      <IdCompra>0</IdCompra>
+    </Compra>
+  </ListaDeCompra>
+  <Telefono>12234</Telefono>
+  <IdUsuario>0</IdUsuario>
+</Usuario>

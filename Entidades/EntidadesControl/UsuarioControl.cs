@@ -77,9 +77,18 @@ namespace Entidades.EntidadesControl
         }
 
         public static bool ExisteUsuario( string nombreUsuario)
-        {            
-            bool exite = ControlApp.GetListaUsuarios.Any(usuario => usuario.NombreUsuario == nombreUsuario);
-            return exite;
+        {
+            try
+            {
+                bool exite = ControlApp.GetListaUsuarios.Any(usuario => usuario.NombreUsuario == nombreUsuario);
+                return exite;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public static Usuario GetUsuario
@@ -168,23 +177,32 @@ namespace Entidades.EntidadesControl
 
         public static Usuario? BuscarUsuarioPorClaveYNombreUsuario(string nombreUsuario,  string clave)
         {
-            if(nombreUsuario != string.Empty && clave != string.Empty)
+            try
             {
-                if(ExisteUsuario(nombreUsuario)) 
+                if (nombreUsuario != string.Empty && clave != string.Empty)
                 {
-                    foreach(Usuario auxItem in ControlApp.GetListaUsuarios)
+                    if (ExisteUsuario(nombreUsuario))
                     {
-                        if(auxItem.NombreUsuario == nombreUsuario && auxItem.Clave == clave) 
+                        foreach (Usuario auxItem in ControlApp.GetListaUsuarios)
                         {
-                            return auxItem;
+                            if (auxItem.NombreUsuario == nombreUsuario && auxItem.Clave == clave)
+                            {
+                                return auxItem;
+                            }
                         }
                     }
-                }
-                else
-                {
-                    return null;
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
 
             return null;
         }

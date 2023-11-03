@@ -44,5 +44,26 @@ namespace Entidades.EntidadesControl
             }
 
         }
+
+        public static bool TieneListaDeUsuarios_JSON(string rutaArchivo)
+        {
+            try
+            {
+                if (File.Exists(rutaArchivo))
+                {
+                    string json = File.ReadAllText(rutaArchivo);
+
+                    // Verificar si el JSON contiene una lista de usuarios
+                    return json.Contains("\"Usuarios\": [");
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

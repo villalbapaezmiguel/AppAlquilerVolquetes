@@ -502,8 +502,6 @@ namespace Vista
                         string rutaXML = path + @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
                         string rutaJSON = path + @$"\{UsuarioControl.GetUsuario.Nombre}.json";
 
-                        //this.dtgv_Compra.DataSource = this.listaCompra;
-                        MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                         LimpiarFormularioAlquiler();
                         
                         Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
@@ -515,6 +513,7 @@ namespace Vista
                         AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
                         this.listaCompra.Clear();
                         RefrezcarDTG();
+                        MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                     }
                     else
                     {

@@ -13,3 +13,18 @@ ID : 2
 
 -----------------------------------
 
+Nombre Lopez | Apellido Juan | DNI 12345
+Usuario 12345 | Id 0 | Telefono 12234
+Lista de compra : Nombre de Usuario : Lopez
+Tipo del volquete : Grande
+Fecha de entrega : 30/12/2023 12:00:00 a. m.
+Cantidad : 1
+Dias alquilados : 1
+Horario de entrega : 14:00
+Direccion  : ffffff
+Precio : 3100
+ID : 0
+
+
+-----------------------------------
+

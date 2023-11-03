@@ -88,7 +88,7 @@ namespace Vista
             {
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
+            }//problemas con la serializacion 
 
 
         }
@@ -111,6 +111,8 @@ namespace Vista
                  
                 this.btn_Editar.Enabled = false;
                 this.btn_Eliminar.Enabled = false;
+                AdminControl.adminActual.ListaUsuarios = ControlApp.GetListaUsuarios;
+
             }
             catch (Exception ex)
             {
@@ -196,6 +198,7 @@ namespace Vista
                 this.posicionDTG = e.RowIndex;
                 if (this.posicionDTG != -1)
                 {
+
                     CargarTexbox(this.botonSeleccionado, this.posicionDTG);
 
                 }

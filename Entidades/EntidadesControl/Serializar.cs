@@ -57,14 +57,74 @@ namespace Entidades.EntidadesControl
             }
         }
 
-        public static Usuario DeserializarJSON_Usuario(string rutaArchivo)
+        public static void  SerializarJSON_ListaUsuario(string rutaArchivo , List<Usuario> lista)
         {
-            string json = File.ReadAllText(rutaArchivo);
+            try
+            {
+                string json = JsonSerializer.Serialize(lista);
+                File.WriteAllText(rutaArchivo, json);
 
-            return JsonSerializer.Deserialize<Usuario>(json);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 
+        public static Usuario DeserializarJSON_Usuario(string rutaArchivo)
+        {
+            try
+            {
+                string json = File.ReadAllText(rutaArchivo);
+                if(!string.IsNullOrEmpty(json))
+                {
+                    List<Usuario> lista = JsonSerializer.Deserialize<List<Usuario>>(json);
+
+                    if(lista is not null)
+                    {
+                        return lista[0];
+                    }
+                    //Usuario usuarioAux = JsonSerializer.Deserialize<Usuario>(json);
+
+                }
+                return null;
+            }
+            catch (JsonException)
+            {
+
+                throw;
+            }
+        }
+
+        public static List<Usuario> DeserializarJSON_ListaUsuario(string rutaArchivo)
+        {
+            try
+            {
+                if(File.Exists(rutaArchivo))
+                {
+                    string json = File.ReadAllText(rutaArchivo);
+
+                    if(!string.IsNullOrEmpty(json))
+                    {
+                        List<Usuario> listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(json);
+                        if(listaUsuarios is not null)
+                        {
+                            return listaUsuarios;
+                        }
+                        
+                    }
+
+                }
+                return null;
+
+            }
+            catch (JsonException)
+            {
+                throw;
+            }
+        }
 
 
         public static Usuario DeserializarXML_UsuarioDeArchivo(string rutaArchivo)

@@ -1,0 +1,38 @@
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+Tipo de Volquete : Pequeño
+Precio : 1700
+Capacidad : 1.5
+Observacion : Todo tipo de materiales
+Observacion : 0
+
+Tipo de Volquete : Mediano
+Precio : 2000
+Capacidad : 3
+Observacion : Todo tipo de materiales
+Observacion : 1
+
+Tipo de Volquete : Estandar
+Precio : 2500
+Capacidad : 6
+Observacion : Todo tipo de materiales
+Observacion : 2
+
+Tipo de Volquete : Grande
+Precio : 3100
+Capacidad : 10
+Observacion : Solo materiales livianos
+Observacion : 3
+
+Tipo de Volquete : Super Grande
+Precio : 3900
+Capacidad : 12
+Observacion : Solo materiales livianos
+Observacion : 4
+
+
+
