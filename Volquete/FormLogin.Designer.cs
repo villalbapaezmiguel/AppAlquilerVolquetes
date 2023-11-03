@@ -157,6 +157,7 @@
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FormLogin";
+            Load += FormLogin_Load;
             panel_Login.ResumeLayout(false);
             panel_Login.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();

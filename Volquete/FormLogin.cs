@@ -19,6 +19,7 @@ namespace Formulario
         public FormLogin()
         {
             InitializeComponent();
+
         }
 
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
@@ -164,6 +165,11 @@ namespace Formulario
 
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

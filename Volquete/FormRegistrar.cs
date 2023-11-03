@@ -119,6 +119,7 @@ namespace Formulario
                                 string path = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Carpeta del admin";
                                 string rutaJSON = path + @$"\ListaUsuarios.json";
                                 AdminControl.adminActual.ListaUsuarios.Add(nuevo);
+                                UsuarioBD.GuardarDB(nuevo);
                                 Serializar.SerializarJSON_ListaUsuario(rutaJSON, AdminControl.adminActual.ListaUsuarios);
 
                                 MessageBox.Show("Se agrego corrctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);

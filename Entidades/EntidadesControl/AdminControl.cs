@@ -194,7 +194,7 @@ namespace Entidades.EntidadesControl
         {
             get
             {
-                return adminActual.ListaVolquete;
+                return VolqueteBD.LeerDB();
             }
         }
         public static List<Volquete> SetListaVolquete

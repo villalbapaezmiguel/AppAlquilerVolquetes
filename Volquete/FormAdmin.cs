@@ -43,7 +43,7 @@ namespace Vista
         {
             try
             {
-                this.dtgv_Datos.DataSource = AdminControl.GetListaVolquete;
+                this.dtgv_Datos.DataSource = VolqueteBD.LeerDB();
                 this.panel_Volquete.Visible = true;
                 this.panel_Compra.Visible = false;
                 this.panel_Usuario.Visible = false;
@@ -314,7 +314,7 @@ namespace Vista
             try
             {
                 BindingSource bindingSource = new BindingSource();
-                bindingSource.DataSource = AdminControl.GetListaVolquete;
+                bindingSource.DataSource = VolqueteBD.LeerDB();
                 this.dtgv_Datos.DataSource = bindingSource;
             }
             catch (Exception ex)
@@ -330,7 +330,7 @@ namespace Vista
             try
             {
                 BindingSource bindingSource = new BindingSource();
-                bindingSource.DataSource = AdminControl.GetListaUsuario;
+                bindingSource.DataSource = UsuarioBD.LeerDB();
                 this.dtgv_Datos.DataSource = bindingSource;
             }
             catch (Exception ex)
