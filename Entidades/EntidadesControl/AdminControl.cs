@@ -1,4 +1,5 @@
-﻿using Entidades.EntidadesUsuarios;
+﻿using Entidades.EntidadesBD;
+using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,7 @@ namespace Entidades.EntidadesControl
             if (posicion != -1)
             {
                 adminActual.ListaUsuarios.RemoveAt(posicion);
+                UsuarioBD.EliminarDB(idUsuario);
                 return true;
             }
             return false;

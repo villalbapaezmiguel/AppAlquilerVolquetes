@@ -116,6 +116,17 @@
       <TipoVolquete>Grande</TipoVolquete>
       <IdCompra>0</IdCompra>
     </Compra>
+    <Compra>
+      <NombreDeUsuario>Miguel</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2024-01-05T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>13:00</HoraDeEntrega>
+      <Direccion>nueva direccion</Direccion>
+      <Precio>0</Precio>
+      <TipoVolquete>Pequeño</TipoVolquete>
+      <IdCompra>0</IdCompra>
+    </Compra>
   </ListaDeCompra>
   <Telefono>1234</Telefono>
   <IdUsuario>0</IdUsuario>

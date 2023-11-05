@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 
@@ -41,8 +42,7 @@ namespace Entidades
         {
             if (nuevoUsuario is not null)
             {
-                UsuarioBD.GuardarDB(nuevoUsuario);
-                
+                UsuarioBD.GuardarDB(nuevoUsuario);                
             }
         }
 
@@ -66,7 +66,6 @@ namespace Entidades
                 try
                 {
                     List<Usuario> nuevaLista = UsuarioBD.LeerDB();
-
                     return nuevaLista;
                 }
                 catch (Exception)
@@ -83,12 +82,23 @@ namespace Entidades
             if(usuario is not null)
             {
                 UsuarioBD.ModificarDB(usuario);
+                ControlGuardarListaCompraUsuarioBD(usuario.ListaDeCompra);
                 return true;
             }
 
             return false;
         }
 
+        private static void ControlGuardarListaCompraUsuarioBD(List<Compra> lista)
+        {
+            if(lista is not null)
+            {
+                foreach(Compra compra in lista)
+                {
+                    CompraBD.GuardarDB(compra);
+                }
+            }
+        }
 
     }
 }

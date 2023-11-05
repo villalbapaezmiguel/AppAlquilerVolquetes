@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System;

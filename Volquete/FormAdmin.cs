@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using Formulario;
@@ -82,7 +83,7 @@ namespace Vista
                 this.panel_Compra.Visible = true;
                 this.panel_Usuario.Visible = false;
                 this.botonSeleccionado = "Compra";
-                this.dtgv_Datos.DataSource = AdminControl.GetListaComprasUsuario;
+                this.dtgv_Datos.DataSource = CompraBD.LeerDB();
             }
             catch (Exception ex)
             {
@@ -100,9 +101,25 @@ namespace Vista
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
+            switch(this.botonSeleccionado)
+            {
+                case "Usuario":
 
+                    string cadenaId = this.txt_UsuarioId.Text;
+                    if(int.TryParse(cadenaId, out int idEliminar))
+                    {
+                        if(AdminControl.EliminarUsuario(idEliminar))
+                        {
+                            RefrezcarDTG_Usuario();
+                            MessageBox.Show("Se elimino con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
 
-
+                    break;
+                case "Volquete":
+                    break;
+            }
+    
         }
         private void FormAdmin_Load(object sender, EventArgs e)
         {
@@ -120,7 +137,6 @@ namespace Vista
 
             }
         }
-
         private void CargarTexbox(string seleccion, int posicionDTG)
         {
             switch (seleccion)
@@ -200,7 +216,8 @@ namespace Vista
                 {
 
                     CargarTexbox(this.botonSeleccionado, this.posicionDTG);
-
+                    this.btn_Eliminar.Enabled = true;
+                    this.btn_Editar.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -226,7 +243,6 @@ namespace Vista
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
         }
         private void LimpiarTexboxVolquete()
         {

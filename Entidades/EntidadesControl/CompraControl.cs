@@ -1,4 +1,5 @@
-﻿using Entidades.EntidadesUsuarios;
+﻿using Entidades.EntidadesBD;
+using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,7 @@ namespace Entidades.EntidadesControl
                 foreach (Compra item in lista)
                 {
                     listaCompras.Add(item);
+                    CompraBD.GuardarDB(item);
                 }
                 return true;
             }

@@ -65,12 +65,8 @@ namespace Formulario
                 {
                     if (ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
                     {
-                        /*NO reconoce el nombre del administrador 
-                         ver el motivo y solucionarlo para poder crear archivos txt , xml y json para el administrador*/
                         Archivo.CrearDirectorioYArchivo(path, $"Admin.txt", AdminControl.adminActual.ToString());
                         Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
-                        
-                        
                         MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
