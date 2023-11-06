@@ -96,27 +96,90 @@ namespace Vista
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btn_Eliminar_Click(object sender, EventArgs e)
-        {
-            switch(this.botonSeleccionado)
+            string cadenaId;
+            switch (this.botonSeleccionado)
             {
                 case "Usuario":
+                    string nombreUsuario = this.txt_UsuarioNombreUsuario.Text;
+                    string clave = this.txt_UsuarioClave.Text;
+                    string nombre = this.txt_UsuarioNombre.Text;
+                    string apellido = this.txt_UsuarioApellido.Text;
+                    string cadenaTelefono = this.txt_UsuarioTelefono.Text;
+                    string cadenaDni = this.txt_UsuarioDni.Text;
 
-                    string cadenaId = this.txt_UsuarioId.Text;
-                    if(int.TryParse(cadenaId, out int idEliminar))
+                    cadenaId = this.txt_UsuarioId.Text;
+                    if (int.TryParse(cadenaId, out int idUsuario) && 
+                        double.TryParse(cadenaTelefono,out double telefono) &&
+                        double.TryParse(cadenaDni, out double dni))
                     {
-                        if(AdminControl.EliminarUsuario(idEliminar))
+
+                        Usuario aux = new Usuario(nombreUsuario,clave,telefono,nombre,apellido,dni,idUsuario); 
+                            //AdminControl.BuscarPorIdUsuario(idUsuario);
+
+                        if (AdminControl.ModificarUsuario(aux))
                         {
                             RefrezcarDTG_Usuario();
-                            MessageBox.Show("Se elimino con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Se MODIFICO el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("NO SE PUDO MODIFICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
                     break;
                 case "Volquete":
+                    cadenaId = this.txt_VolqueteId.Text;
+                    if (int.TryParse(cadenaId, out int idVolquete))
+                    {
+                        if (AdminControl.EliminarVolquete(idVolquete))
+                        {
+                            MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            string cadenaId;
+            switch (this.botonSeleccionado)
+            {
+                case "Usuario":
+
+                    cadenaId = this.txt_UsuarioId.Text;
+                    if(int.TryParse(cadenaId, out int idUsuario))
+                    {
+                        if(AdminControl.EliminarUsuario(idUsuario))
+                        {
+                            RefrezcarDTG_Usuario();
+                            MessageBox.Show("Se elimino el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                    break;
+                case "Volquete":
+                    cadenaId = this.txt_VolqueteId.Text;
+                    if(int.TryParse(cadenaId,out int idVolquete))
+                    {
+                        if (AdminControl.EliminarVolquete(idVolquete))
+                        {
+                            MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                     break;
             }
     
@@ -166,11 +229,13 @@ namespace Vista
                     string tipoVolquete = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value;
                     float capacidad = (float)this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value;
                     string observacion = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value;
+                    int idVolquete = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value;
 
                     this.txt_VolquetePrecio.Text = precio.ToString();
                     this.txt_VolqueteTipoVolquete.Text = tipoVolquete.ToString();
                     this.txt_VolqueteCapacidad.Text = capacidad.ToString();
                     this.txt_VolqueteObservacion.Text = observacion.ToString();
+                    this.txt_VolqueteId.Text = idVolquete.ToString();
 
 
                     break;

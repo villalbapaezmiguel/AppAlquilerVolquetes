@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.EntidadesBD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -74,12 +75,8 @@ namespace Entidades.EntidadesControl
         {
             get
             {
-                List<Volquete> nuevaLista = new();
-                foreach(Volquete item in listaVolquetes) 
-                { 
-                    Volquete nuevo = new Volquete(item.TipoVolquete , item.Precio, item.Capacidad,item.Observacion, item.Id);
-                    nuevaLista.Add(nuevo);
-                }            
+                List<Volquete> nuevaLista = VolqueteBD.LeerDB();
+
                 return nuevaLista;
             }
         }

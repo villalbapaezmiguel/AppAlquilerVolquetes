@@ -65,7 +65,7 @@ namespace Entidades.EntidadesControl
 
         public static bool EliminarUsuario(int idUsuario)
         {
-            int posicion = BuscarPorIdUsuario(idUsuario);
+            int posicion = BuscarPorIdLaPosiconDelUsuario(idUsuario);
             if (posicion != -1)
             {
                 adminActual.ListaUsuarios.RemoveAt(posicion);
@@ -79,18 +79,23 @@ namespace Entidades.EntidadesControl
         {
             if (usuario is not null)
             {
-                int posicion = BuscarPorIdUsuario(usuario.IdUsuario);
+                int posicion = BuscarPorIdLaPosiconDelUsuario(usuario.IdUsuario);
                 if (posicion != -1)
                 {
                     adminActual.ListaUsuarios[posicion] = usuario;
+                    UsuarioBD.ModificarDB(usuario);
                     return true;
                 }
             }
 
             return false;
         }
-
-        public static int BuscarPorIdUsuario(int idCompra)
+        /// <summary>
+        /// Busca por el ID del usuario y devuelve su posicion en la lista
+        /// </summary>
+        /// <param name="idCompra"></param>
+        /// <returns></returns>
+        public static int BuscarPorIdLaPosiconDelUsuario(int idCompra)
         {
             if (idCompra != -1)
             {
@@ -107,6 +112,26 @@ namespace Entidades.EntidadesControl
             }
             return -1;
         }
+
+        public static Usuario BuscarPorIdUsuario(int idUsuario)
+        {
+            
+            if(idUsuario != -1)
+            {
+                if(ExisteUsuario(idUsuario))
+                {
+                    foreach(Usuario item in adminActual.ListaUsuarios)
+                    {
+                        if(item.IdUsuario == idUsuario)
+                        {
+                            return item;        
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
 
         public static bool ExisteUsuario(int idUsuario)
         {
@@ -138,6 +163,7 @@ namespace Entidades.EntidadesControl
             if (posicion != -1)
             {
                 adminActual.ListaVolquete.RemoveAt(posicion);
+                VolqueteBD.EliminarDB(idVolquete);
                 return true;
             }
             return false;
@@ -212,7 +238,7 @@ namespace Entidades.EntidadesControl
         {
             get
             {
-                return adminActual.ListaUsuarios;
+                return UsuarioBD.LeerDB();
             }
         }
         public static List<Usuario> SetUsuario
@@ -231,22 +257,6 @@ namespace Entidades.EntidadesControl
             set
             {
                 adminActual.ListaCompra = value;
-            }
-        }
-
-        public static Admin SetAdmin
-        {
-            set
-            {
-                adminActual = value;
-            }
-        }
-
-        public static Admin GetAdmin
-        {
-            get
-            {
-                return adminActual;
             }
         }
 

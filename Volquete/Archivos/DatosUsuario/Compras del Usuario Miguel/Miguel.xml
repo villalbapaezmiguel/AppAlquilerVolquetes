@@ -127,6 +127,17 @@
       <TipoVolquete>Pequeño</TipoVolquete>
       <IdCompra>0</IdCompra>
     </Compra>
+    <Compra>
+      <NombreDeUsuario>Miguel</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2023-12-28T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>17:00</HoraDeEntrega>
+      <Direccion>Avenida Tavano</Direccion>
+      <Precio>3100</Precio>
+      <TipoVolquete>Grande</TipoVolquete>
+      <IdCompra>0</IdCompra>
+    </Compra>
   </ListaDeCompra>
   <Telefono>1234</Telefono>
   <IdUsuario>0</IdUsuario>

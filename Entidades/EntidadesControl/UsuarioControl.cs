@@ -12,7 +12,7 @@ namespace Entidades.EntidadesControl
     {
         private static Usuario usuarioActual;       
 
-        public static bool ExisteCompra(int idCompra)
+        public static bool ExisteCompra_del_Usuario(int idCompra)
         {
             foreach (Compra item in usuarioActual.ListaDeCompra)
             {
@@ -29,11 +29,11 @@ namespace Entidades.EntidadesControl
         /// </summary>
         /// <param name="idCompra"></param>
         /// <returns></returns>
-        public static int BuscarPorIdUsuarioCompra(int idCompra)
+        public static int BuscarPorId_la_CompraDelUsuario(int idCompra)
         {
             if (idCompra != -1)
             {
-                if (ExisteCompra(idCompra))
+                if (ExisteCompra_del_Usuario(idCompra))
                 {
                     for (int i = 0; i < usuarioActual.ListaDeCompra.Count; i++)
                     {
@@ -47,12 +47,12 @@ namespace Entidades.EntidadesControl
             return -1;
         }
 
-        public static bool ModificarPorId(Compra? compra)
+        public static bool ModificarPorId_CompraDelUsuario(Compra? compra)
         {
             int posicion;
             if (compra is not null)
             {
-                posicion = BuscarPorIdUsuarioCompra(compra.IdCompra);
+                posicion = BuscarPorId_la_CompraDelUsuario(compra.IdCompra);
                 if (posicion != -1)
                 {
                     usuarioActual.ListaDeCompra[posicion] = compra;
@@ -90,6 +90,8 @@ namespace Entidades.EntidadesControl
                 throw;
             }
         }
+
+        #region Geters y Seters
 
         public static Usuario GetUsuario
         {
@@ -134,6 +136,7 @@ namespace Entidades.EntidadesControl
             }
         }
 
+        #endregion
         public static bool AgregarListaCompra(List<Compra> lista)
         {
             if (lista is not null)
@@ -146,34 +149,6 @@ namespace Entidades.EntidadesControl
             }
             return false;
         }
-        public static bool AgregarCompra(ref Compra compra)
-        {
-            if(compra is not null)
-            {
-                usuarioActual.ListaDeCompra.Add(compra);
-                return true;
-            }
-            return false;
-        }
-
-        public static bool EliminarCompra(int idCompra)
-        {
-            int posicion;
-            if(idCompra != -1)
-            {
-                posicion = BuscarPorIdUsuarioCompra(idCompra);
-                if(posicion != -1)
-                {
-                    usuarioActual.ListaDeCompra.RemoveAt(posicion);
-                   
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
-
 
         public static Usuario? BuscarUsuarioPorClaveYNombreUsuario(string nombreUsuario,  string clave)
         {
