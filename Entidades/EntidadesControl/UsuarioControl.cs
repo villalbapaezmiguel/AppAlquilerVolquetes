@@ -10,7 +10,8 @@ namespace Entidades.EntidadesControl
 {
     public sealed class UsuarioControl 
     {
-        private static Usuario usuarioActual;       
+        private static Usuario usuarioActual;
+        private static Func<int,bool> delegadoExiteCompraDelUsuario = ExisteCompra_del_Usuario;
 
         public static bool ExisteCompra_del_Usuario(int idCompra)
         {
@@ -33,7 +34,8 @@ namespace Entidades.EntidadesControl
         {
             if (idCompra != -1)
             {
-                if (ExisteCompra_del_Usuario(idCompra))
+                //Uso de delegados
+                if (delegadoExiteCompraDelUsuario(idCompra))
                 {
                     for (int i = 0; i < usuarioActual.ListaDeCompra.Count; i++)
                     {

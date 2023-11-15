@@ -13,10 +13,8 @@ namespace Entidades.EntidadesControl
     {
         public static Admin adminActual = new Admin();
 
-
-
-
-
+        //AGREGAMOS DELEGADOS
+        public static Action<List<Compra>> delegado_AgregarCompraAUsuario = AgregarListaDeCompraUsuario;
 
         public static void AgregarAdministrador(Admin nuevoAdmin)
         {

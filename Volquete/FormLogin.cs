@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using ConsolaGenericos.Serializadores;
+using Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System;
@@ -16,6 +17,8 @@ namespace Formulario
 {
     public partial class FormLogin : Form
     {
+        
+
         public FormLogin()
         {
             InitializeComponent();
@@ -33,6 +36,13 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.Nombre,
+                DateTime.Now,
+                "Al querer cerrar la app",
+                "FormLogin",
+                "private void pic_CerrarFormulario_Click(object sender, EventArgs e)");
+
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -78,6 +88,8 @@ namespace Formulario
 
                         if (File.Exists(rutaXML) && File.Exists(rutaJSON))
                         {
+
+
                             UsuarioControl.SetUsuario = Serializar.DeserializarXML_UsuarioDeArchivo(rutaXML);
                             //Los datos del usuario cuando serializamos permancen , por lo tanto si modificamos algo del usaurio en admnistracion
                             //tenemos que tener encuenta que tambien los damos se van a "restaurar" con los archivos json y xml que hemos guardado
@@ -118,6 +130,14 @@ namespace Formulario
                 }
                 else
                 {
+                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                    "Desconocido...",
+                    DateTime.Now,
+                    "Al querer logearse",
+                    "FormLogin",
+                    "private void btn_Ingresar_Click(object sender, EventArgs e)");
+
+
                     MessageBox.Show("No se encontro el usuario");
                     this.txt_Correo.Focus();
                     VaciarTxtLogin();
@@ -148,7 +168,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Desconocido...",
+                DateTime.Now,
+                "Al querer registrarse",
+                "FormLogin",
+                "private void btn_Registrar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -163,6 +188,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Desconocido...",
+                DateTime.Now,
+                "Al querer ingresar como admin",
+                "FormLogin",
+                "private void btn_Admin_Click(object sender, EventArgs e)");
 
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

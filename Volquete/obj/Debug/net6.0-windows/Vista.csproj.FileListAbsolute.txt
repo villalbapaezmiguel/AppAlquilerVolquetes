@@ -6,7 +6,6 @@ C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\n
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\net6.0-windows\Entidades.dll
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\net6.0-windows\Entidades.pdb
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Vista.csproj.AssemblyReference.cache
-C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Formulario.FormABMVolqueteUsuario.resources
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Formulario.FormLogin.resources
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Formulario.FormMenu.resources
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Formulario.FormPerfilUsuario.resources
@@ -31,3 +30,4 @@ C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\n
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\obj\Debug\net6.0-windows\Formulario.FormPrecioCapacidades.resources

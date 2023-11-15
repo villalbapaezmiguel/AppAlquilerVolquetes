@@ -1,0 +1,12 @@
+Fecha y hora del incidente : 14/11/2023 10:59:42 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 14/11/2023 11:00:37 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Lopez
+

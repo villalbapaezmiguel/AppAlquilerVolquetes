@@ -26,7 +26,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void pic_Menu_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -47,7 +52,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void AgrandarYAchicarMenu()");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -56,14 +66,17 @@ namespace Formulario
         {
             try
             {
-                string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
+
+                //string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
+                string rutaCarpeta = ControlApp.rutaCarpetaArchivos;
                 string nombreDeCarpeta = @$"\Carpeta del admin";
                 string path = rutaCarpeta + nombreDeCarpeta;
-                //string rutaXML = path + @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
                 string rutaJSON = path + @$"\ListaUsuarios.json";
+                
+
                 if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (ControlApp.ControlGuardarDatosUsuaurio(UsuarioControl.GetUsuario))
+                    if (ControlApp.ControlGuardarDatosUsuario(UsuarioControl.GetUsuario))
                     {
                         Archivo.CrearDirectorioYArchivo(path, $"Admin.txt", AdminControl.adminActual.ToString());
                         Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
@@ -81,7 +94,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void pic_Cerrar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -101,7 +119,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void pic_Agrandar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -114,6 +137,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void pic_Minizar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -131,6 +160,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void pic_Restaurar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
@@ -154,7 +189,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void AbrirFormEnPanelContenedor(object formHijo)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -170,6 +210,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void btn_Usuario_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 
             }
@@ -183,6 +229,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void button1_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -191,10 +243,16 @@ namespace Formulario
         {
             try
             {
-                AbrirFormEnPanelContenedor(new FormABMVolqueteUsuario(UsuarioControl.GetUsuario));
+                AbrirFormEnPanelContenedor(new FormPrecioCapacidades(UsuarioControl.GetUsuario));
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                " private void btn_Alquilar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -202,7 +260,20 @@ namespace Formulario
 
         private void FormMenu_Load(object sender, EventArgs e)
         {
-            lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
+            try
+            {
+                lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
+
+            }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormMenu",
+                "private void FormMenu_Load(object sender, EventArgs e)");
+            }
         }
     }
 }

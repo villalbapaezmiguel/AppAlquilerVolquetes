@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -46,6 +47,13 @@ namespace Vista
             }
             catch (Exception ex)
             {
+
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                $"{ex.Message}",
+                "FormAlquilerVolquete",
+                "private void FormAlquilerVolquete_Load(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -61,6 +69,13 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                $"{ex.Message}",
+                "FormAlquilerVolquete",
+                "private void pic_CerrarFormulario_Click(object sender, EventArgs e)");
+
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -93,38 +108,16 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                $"{ex.Message}",
+                "FormAlquilerVolquete",
+                "private void CargarDTGListaCompra(List<Compra> listaCompra)");
+
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-        }
-
-        private bool CargarDTGV(Compra nuevaCompra)
-        {
-            try
-            {
-                if (nuevaCompra is not null)
-                {
-                    int posicionParaAgregar = this.dtgv_Compra.Rows.Add();
-
-
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[0].Value = UsuarioControl.GetUsuario.NombreUsuario;
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[1].Value = nuevaCompra.CantidadVolquetes.ToString();
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[2].Value = nuevaCompra.CantidadDias.ToString();
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[3].Value = nuevaCompra.FechaDeEntraga.ToString("d");
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[4].Value = nuevaCompra.HoraDeEntrega.ToString();
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[5].Value = nuevaCompra.Direccion.ToString();
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[6].Value = nuevaCompra.Precio.ToString();
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[7].Value = nuevaCompra.TipoVolquete.ToString();
-                    this.dtgv_Compra.Rows[posicionParaAgregar].Cells[8].Value = nuevaCompra.IdCompra.ToString();
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            return false;
         }
 
         private void CargarCmBoxHorariosDeEntrega()
@@ -139,6 +132,14 @@ namespace Vista
             }
             catch (Exception ex)
             {
+
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                "Al querer cargar el comboBox de los todos los horarios de entrega",
+                "FormAlquilerVolquete",
+                "private void CargarCmBoxHorariosDeEntrega()");
+
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -157,7 +158,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
-
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                "Al querer cargar el comboBox de los todos los tipos de volquetes",
+                "FormAlquilerVolquete",
+                "private void CargarCmBoxTiposDeVolquetes()");
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -210,11 +216,25 @@ namespace Vista
                 }
                 else
                 {
+                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                    UsuarioControl.GetUsuario.Nombre,
+                    DateTime.Now,
+                    "al agregar un volquete a la lista de compras del usuario",
+                    "FormAlquilerVolquete",
+                    "private void btn_Agregar_Click(object sender, EventArgs e)");
+
+
                     MessageBox.Show("ocurio un error, hay campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                $"{ex.Message}",
+                "FormAlquilerVolquete",
+                "private void btn_Modificar_Click(object sender, EventArgs e)");
 
                 MessageBox.Show(ex.Message);
             }
@@ -298,17 +318,38 @@ namespace Vista
                                     }
                                     else
                                     {
+                                        ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                        UsuarioControl.GetUsuario.NombreUsuario,
+                                        DateTime.Now,
+                                        "No se encontro el id de la compra",
+                                        "FormAlquilerVolquete",
+                                        "private void btn_Modificar_Click(object sender, EventArgs e)");
+
                                         MessageBox.Show("No se encontro el id del la compra ");
                                     }
                                 }
                                 else
                                 {
+                                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                    UsuarioControl.GetUsuario.NombreUsuario,
+                                    DateTime.Now,
+                                    "El objeto es null",
+                                    "FormAlquilerVolquete",
+                                    "private void btn_Modificar_Click(object sender, EventArgs e)");
+
                                     MessageBox.Show("El objeto es null");
                                 }
 
                             }
                             catch (Exception ex)
                             {
+                                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                UsuarioControl.GetUsuario.NombreUsuario,
+                                DateTime.Now,
+                                "Error con el objeto",
+                                "FormAlquilerVolquete",
+                                "private void btn_Modificar_Click(object sender, EventArgs e)");
+
                                 MessageBox.Show("Error con el objeto : " + ex.Message);
 
                             }
@@ -316,7 +357,12 @@ namespace Vista
                     }
                     catch (Exception ex)
                     {
-
+                        ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                        UsuarioControl.GetUsuario.NombreUsuario,
+                        DateTime.Now,
+                        $"{ex.Message}",
+                        "FormAlquilerVolquete",
+                        "private void btn_Modificar_Click(object sender, EventArgs e)");
                         MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
@@ -492,9 +538,11 @@ namespace Vista
                 this.btn_Eliminar.Enabled = false;
                 this.btn_Modificar.Enabled = false;
 
-                string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+                //string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+                string rutaCarpeta = ControlApp.rutaCarpetaArchivoUsuario;
                 string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
                 string path = rutaCarpeta + nombreDeCarpeta;
+                StringBuilder informacionError = new StringBuilder();   
 
                 if (CompraControl.AgregarListaCompra(this.listaCompra))
                 {
@@ -505,24 +553,42 @@ namespace Vista
 
                         LimpiarFormularioAlquiler();
                         
-                        Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString());
-                        //path += @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
-                        
+                        Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString()); 
                         Serializar.SerializarComprasAUsuario(rutaXML, UsuarioControl.GetUsuario);
                         Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
 
-                        AdminControl.AgregarListaDeCompraUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
+                        AdminControl.delegado_AgregarCompraAUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
                         this.listaCompra.Clear();
                         RefrezcarDTG();
                         MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                     }
                     else
                     {
+                        /*
+                        informacionError.AppendLine($"Error , al agregar un nueva compra al usuario : {UsuarioControl.GetUsuario.NombreUsuario}");
+                        informacionError.AppendLine($"Fecha y Hora : {DateTime.Now}");
+                        informacionError.AppendLine($"Metodo private void btn_Comprar_Click(object sender, EventArgs e)");
+                        
+                        Archivo.CrearDirectorioYArchivo(path, $"Errores de {UsuarioControl.GetUsuario.Nombre}.txt", informacionError.ToString());
+                        */
+                        ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores, 
+                            UsuarioControl.GetUsuario.Nombre, 
+                            DateTime.Now, 
+                            "al agregar un nueva compra al usuario", 
+                            "FormAlquilerVolquete", 
+                            "private void btn_Comprar_Click(object sender, EventArgs e)");
+
                         MessageBox.Show("Error, no se pudo agregar la compra al usuario");
                     }
                 }
                 else
                 {
+                    ControlApp.ControlGuardarError(path,
+                        UsuarioControl.GetUsuario.Nombre,
+                        DateTime.Now,
+                        "al agregar un nueva compra al usuario",
+                        "FormAlquilerVolquete",
+                        "private void btn_Comprar_Click(object sender, EventArgs e)");
                     MessageBox.Show("Error, no se pudo agregar la compra");
                 }
 

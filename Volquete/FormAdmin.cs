@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                    "Admin",
+                    DateTime.Now,
+                    ex.Message,
+                    "FormAdmin",
+                    "private void pic_Cerrar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -52,6 +59,13 @@ namespace Vista
             }
             catch (Exception ex)
             {
+
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_Volquetes_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -70,6 +84,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_Usuarios_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -87,6 +107,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                $"{ex.Message}",
+                "FormAdmin",
+                "private void btn_Compras_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }//problemas con la serializacion 
@@ -96,34 +122,91 @@ namespace Vista
 
         private void btn_Editar_Click(object sender, EventArgs e)
         {
-            string cadenaId;
-            switch (this.botonSeleccionado)
+            try
             {
-                case "Usuario":
-                    string nombreUsuario = this.txt_UsuarioNombreUsuario.Text;
-                    string clave = this.txt_UsuarioClave.Text;
-                    string nombre = this.txt_UsuarioNombre.Text;
-                    string apellido = this.txt_UsuarioApellido.Text;
-                    string cadenaTelefono = this.txt_UsuarioTelefono.Text;
-                    string cadenaDni = this.txt_UsuarioDni.Text;
+                string cadenaId;
+                switch (this.botonSeleccionado)
+                {
+                    case "Usuario":
+                        string nombreUsuario = this.txt_UsuarioNombreUsuario.Text;
+                        string clave = this.txt_UsuarioClave.Text;
+                        string nombre = this.txt_UsuarioNombre.Text;
+                        string apellido = this.txt_UsuarioApellido.Text;
+                        string cadenaTelefono = this.txt_UsuarioTelefono.Text;
+                        string cadenaDni = this.txt_UsuarioDni.Text;
 
-                    cadenaId = this.txt_UsuarioId.Text;
-                    if (int.TryParse(cadenaId, out int idUsuario) && 
-                        double.TryParse(cadenaTelefono,out double telefono) &&
-                        double.TryParse(cadenaDni, out double dni))
-                    {
+                        cadenaId = this.txt_UsuarioId.Text;
+                        if (int.TryParse(cadenaId, out int idUsuario) &&
+                            double.TryParse(cadenaTelefono, out double telefono) &&
+                            double.TryParse(cadenaDni, out double dni))
+                        {
 
-                        Usuario aux = new Usuario(nombreUsuario,clave,telefono,nombre,apellido,dni,idUsuario); 
+                            Usuario aux = new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, idUsuario);
                             //AdminControl.BuscarPorIdUsuario(idUsuario);
 
-                        if (AdminControl.ModificarUsuario(aux))
+                            if (AdminControl.ModificarUsuario(aux))
+                            {
+                                RefrezcarDTG_Usuario();
+                                MessageBox.Show("Se MODIFICO el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("NO SE PUDO MODIFICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                        break;
+                    case "Volquete":
+                        cadenaId = this.txt_VolqueteId.Text;
+                        if (int.TryParse(cadenaId, out int idVolquete))
+                        {
+                            if (AdminControl.EliminarVolquete(idVolquete))
+                            {
+                                MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        break;
+                }
+
+            }
+            catch (Exception ex )
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_Usuarios_Click(object sender, EventArgs e)");
+                MessageBox.Show("NO SE PUDO MODIFICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+
+            try 
+            {
+                string cadenaId;
+                switch (this.botonSeleccionado)
+            {
+                case "Usuario":
+
+                    cadenaId = this.txt_UsuarioId.Text;
+                    if (int.TryParse(cadenaId, out int idUsuario))
+                    {
+                        if (AdminControl.EliminarUsuario(idUsuario))
                         {
                             RefrezcarDTG_Usuario();
-                            MessageBox.Show("Se MODIFICO el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Se elimino el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("NO SE PUDO MODIFICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
@@ -143,52 +226,26 @@ namespace Vista
                     }
                     break;
             }
-        }
-
-        private void btn_Eliminar_Click(object sender, EventArgs e)
-        {
-            string cadenaId;
-            switch (this.botonSeleccionado)
+            
+            } 
+            catch (Exception ex)
             {
-                case "Usuario":
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_Eliminar_Click(object sender, EventArgs e)");
+                MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    cadenaId = this.txt_UsuarioId.Text;
-                    if(int.TryParse(cadenaId, out int idUsuario))
-                    {
-                        if(AdminControl.EliminarUsuario(idUsuario))
-                        {
-                            RefrezcarDTG_Usuario();
-                            MessageBox.Show("Se elimino el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-                    break;
-                case "Volquete":
-                    cadenaId = this.txt_VolqueteId.Text;
-                    if(int.TryParse(cadenaId,out int idVolquete))
-                    {
-                        if (AdminControl.EliminarVolquete(idVolquete))
-                        {
-                            MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    break;
             }
-    
+
         }
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             try
             {
-                 
+
                 this.btn_Editar.Enabled = false;
                 this.btn_Eliminar.Enabled = false;
                 AdminControl.adminActual.ListaUsuarios = ControlApp.GetListaUsuarios;
@@ -196,13 +253,22 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void FormAdmin_Load(object sender, EventArgs e)");
+
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
         private void CargarTexbox(string seleccion, int posicionDTG)
         {
-            switch (seleccion)
+            try
+            {
+                switch (seleccion)
             {
                 case "Usuario":
                     string nombreUsuario = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value;
@@ -267,6 +333,18 @@ namespace Vista
 
             }
 
+            }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void CargarTexbox(string seleccion, int posicionDTG)");
+                MessageBox.Show($"Error {ex.Message} ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
 
@@ -287,6 +365,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void dtgv_Datos_CellClick(object sender, DataGridViewCellEventArgs e)");
                 MessageBox.Show($"Error {ex.Message} ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -305,6 +389,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAlquilerVolquete",
+                "private void LimpiarTexboxUsuario()");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -321,6 +411,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void LimpiarTexboxVolquete()");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -368,7 +464,7 @@ namespace Vista
                     bool banderaId = int.TryParse(cadenaIdVolquete, out int idVolquete);
 
                     if (banderaPrecio &&
-                        banderaCapacidad && 
+                        banderaCapacidad &&
                         banderaId)
                     {
                         AdminControl.AgrergarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
@@ -386,6 +482,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_Agregar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -400,6 +502,12 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void RefrezcarDTG_Volquete()");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -416,7 +524,32 @@ namespace Vista
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void RefrezcarDTG_Usuario()");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btn_Imprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+            }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_Imprimir_Click(object sender, EventArgs e)");
 
             }
         }

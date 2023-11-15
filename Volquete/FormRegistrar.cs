@@ -50,9 +50,14 @@ namespace Formulario
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex )
                 {
-
+                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                    "Desconocido...",
+                    DateTime.Now,
+                    ex.Message,
+                    "FormRegistrar",
+                    "private bool ValidarCampos(string nombreUsuario, string clave, string nombre, string apellido, string cadenaTelefono, string cadenaDNI)");
                     MessageBox.Show("Hay campos vacios...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -70,26 +75,56 @@ namespace Formulario
 
         private bool ValidarMayusculaEnCadena(string cadena , char mayuscula)
         {
-            if (cadena is not null)
+            try
             {
-                if (cadena[0] == mayuscula)
+                if (cadena is not null)
                 {
-                    return true;
+                    if (cadena[0] == mayuscula)
+                    {
+                        return true;
+                    }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Desconocido...",
+                DateTime.Now,
+                ex.Message,
+                "FormRegistrar",
+                "private bool ValidarMayusculaEnCadena(string cadena , char mayuscula)");
+                MessageBox.Show("Hay campos vacios","ERROR",MessageBoxButtons.OK, MessageBoxIcon.Error);    
             }
 
-            return false;
+                return false;
+
         }
 
         private bool ValidarCantidadCaracter(string cadena, int largo)
         {
-            if(cadena is not null )
+            try
             {
-                if(cadena.Length >= largo )
+                if(cadena is not null )
                 {
-                    return true;
+                    if(cadena.Length >= largo )
+                    {
+                        return true;
+                    }
                 }
+
             }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Desconocido...",
+                DateTime.Now,
+                ex.Message,
+                "FormRegistrar",
+                "private bool ValidarCantidadCaracter(string cadena, int largo)");
+
+            }
+
 
             return false;
         }
@@ -149,6 +184,13 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Desconocido...",
+                DateTime.Now,
+                ex.Message,
+                "FormRegistrar",
+                "private void btn_Registrar_Click(object sender, EventArgs e)");
+
                 MessageBox.Show(ex.Message);
 
             }

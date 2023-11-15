@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using Microsoft.VisualBasic;
 
 namespace Entidades
 {
@@ -17,7 +18,9 @@ namespace Entidades
         public static List<Volquete> listaVolquetes = new List<Volquete>();
         public static List<Compra> listaDeCompras = new List<Compra>();//cada vez que el usuaurio termine de usar la app guardar todas sus compras aca
         public static List<Admin> listaAdministradores = new List<Admin>();
-        
+        public const string rutaCarpetaArchivos = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
+        public const string rutaCarpetaArchivoUsuario = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+        public const string rutaCarpetaArchivoErrores = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\ERRORES\";
 
         private static int idCompra = 0;
         private static int idUsuario = 0;
@@ -38,6 +41,30 @@ namespace Entidades
             return idCompra++;
         }
 
+        public static void ControlGuardarError(string path , string nombreUsuario, DateTime fechaHora , string descripcion , string clase, string metodo)
+        {
+            try
+            {
+                StringBuilder informacionError = new StringBuilder();
+
+                informacionError.AppendLine($"Fecha y hora del incidente : {fechaHora}");
+                informacionError.AppendLine($"Descripcion : {descripcion}");
+                informacionError.AppendLine($"Clase : {clase}");
+                informacionError.AppendLine($"Metodo : {metodo}");
+                informacionError.AppendLine($"Usuario : {nombreUsuario}");
+
+                Archivo.CrearDirectorioYArchivo(path, $"Error.txt", informacionError.ToString());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        /*s, documentando fecha y hora
+        del incidente, descripción, clase y método en donde ocurri*/
         public static void ControlAgregarUsuario(Usuario nuevoUsuario)
         {
             if (nuevoUsuario is not null)
@@ -77,7 +104,7 @@ namespace Entidades
             }
         }
 
-        public static bool ControlGuardarDatosUsuaurio(Usuario usuario)
+        public static bool ControlGuardarDatosUsuario(Usuario usuario)
         {
             if(usuario is not null)
             {

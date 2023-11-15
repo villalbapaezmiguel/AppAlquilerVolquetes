@@ -138,6 +138,28 @@
       <TipoVolquete>Grande</TipoVolquete>
       <IdCompra>0</IdCompra>
     </Compra>
+    <Compra>
+      <NombreDeUsuario>Miguel</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2023-12-25T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>12:00</HoraDeEntrega>
+      <Direccion>Compra piola</Direccion>
+      <Precio>2500</Precio>
+      <TipoVolquete>Estandar</TipoVolquete>
+      <IdCompra>0</IdCompra>
+    </Compra>
+    <Compra>
+      <NombreDeUsuario>Miguel</NombreDeUsuario>
+      <CantidadVolquetes>1</CantidadVolquetes>
+      <CantidadDias>1</CantidadDias>
+      <FechaDeEntraga>2023-12-26T00:00:00</FechaDeEntraga>
+      <HoraDeEntrega>14:00</HoraDeEntrega>
+      <Direccion>nuevo lugar</Direccion>
+      <Precio>2500</Precio>
+      <TipoVolquete>Estandar</TipoVolquete>
+      <IdCompra>0</IdCompra>
+    </Compra>
   </ListaDeCompra>
   <Telefono>1234</Telefono>
   <IdUsuario>0</IdUsuario>

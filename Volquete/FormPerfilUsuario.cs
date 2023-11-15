@@ -1,4 +1,5 @@
-﻿using Entidades.EntidadesControl;
+﻿using Entidades;
+using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormPerfilUsuario",
+                "private void CargarDTGListaCompra(List<Compra> listaCompra)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -59,6 +66,12 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                UsuarioControl.GetUsuario.NombreUsuario,
+                DateTime.Now,
+                ex.Message,
+                "FormPerfilUsuario",
+                "private void FormPerfilUsuario_Load(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }

@@ -1,4 +1,5 @@
-﻿using Entidades.EntidadesUsuarios;
+﻿using ConsolaGenericos.Serializadores;
+using Entidades.EntidadesUsuarios;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,24 +13,7 @@ namespace Entidades.EntidadesControl
 {
     public sealed class Serializar
     {
-
-        public static void EscribirXMLListaCompras(string ruta, List<Compra> lista)
-        {
-            try
-            {
-                using (StreamWriter streamWriter = new StreamWriter(ruta))
-                {
-                    XmlSerializer serializar = new XmlSerializer(typeof(List<Compra>));
-                    serializar.Serialize(streamWriter, lista);
-                }
-
-            }
-            catch (Exception )
-            {
-
-                throw;
-            }
-        }
+        
 
         public static void SerializarComprasAUsuario(string rutaArchivo , Usuario usuario)
         {
@@ -73,59 +57,6 @@ namespace Entidades.EntidadesControl
         }
 
 
-        public static Usuario DeserializarJSON_Usuario(string rutaArchivo)
-        {
-            try
-            {
-                string json = File.ReadAllText(rutaArchivo);
-                if(!string.IsNullOrEmpty(json))
-                {
-                    List<Usuario> lista = JsonSerializer.Deserialize<List<Usuario>>(json);
-
-                    if(lista is not null)
-                    {
-                        return lista[0];
-                    }
-                    //Usuario usuarioAux = JsonSerializer.Deserialize<Usuario>(json);
-
-                }
-                return null;
-            }
-            catch (JsonException)
-            {
-
-                throw;
-            }
-        }
-
-        public static List<Usuario> DeserializarJSON_ListaUsuario(string rutaArchivo)
-        {
-            try
-            {
-                if(File.Exists(rutaArchivo))
-                {
-                    string json = File.ReadAllText(rutaArchivo);
-
-                    if(!string.IsNullOrEmpty(json))
-                    {
-                        List<Usuario> listaUsuarios = JsonSerializer.Deserialize<List<Usuario>>(json);
-                        if(listaUsuarios is not null)
-                        {
-                            return listaUsuarios;
-                        }
-                        
-                    }
-
-                }
-                return null;
-
-            }
-            catch (JsonException)
-            {
-                throw;
-            }
-        }
-
 
         public static Usuario DeserializarXML_UsuarioDeArchivo(string rutaArchivo)
         {
@@ -146,20 +77,6 @@ namespace Entidades.EntidadesControl
 
 
         }
-
-
-        public static List<Compra> LeerXMLCompras(string path)
-        {
-            List<Compra> lista = null;
-            using (StreamReader streamReader = new StreamReader(path))
-            {
-                XmlSerializer deSerializar = new XmlSerializer(typeof(List<Compra>));
-
-                lista = (List<Compra>)deSerializar.Deserialize(streamReader);
-            }
-            return lista;
-        }
-
 
 
 

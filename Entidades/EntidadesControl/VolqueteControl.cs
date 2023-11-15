@@ -10,9 +10,6 @@ namespace Entidades.EntidadesControl
 {
     public sealed class VolqueteControl
     {
-        private static List<Volquete> listaVolquetes = new List<Volquete>();
-
-
 
         private static string[] listaHorarios = new string[]
         {
@@ -43,29 +40,6 @@ namespace Entidades.EntidadesControl
             }
             return null;
         }
-
-
-        public static bool AgregarVolquete(Volquete volquete)
-        {
-            if(volquete is not null)
-            {
-                if(!ExistePorTipoDeVolquete(volquete.TipoVolquete))
-                {
-                    listaVolquetes.Add(volquete);
-                    ControlApp.ControlAgregarVolquete(volquete);
-                    AdminControl.AgrergarVolquete(volquete);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static bool ExistePorTipoDeVolquete(string marca)
-        {
-            bool existe = listaVolquetes.Exists(volquete => volquete.TipoVolquete == marca);
-            return existe;
-        }
-
 
 
         /// <summary>
