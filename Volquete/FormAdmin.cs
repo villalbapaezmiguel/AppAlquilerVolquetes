@@ -160,16 +160,20 @@ namespace Vista
                         cadenaId = this.txt_VolqueteId.Text;
                         if (int.TryParse(cadenaId, out int idVolquete))
                         {
-                            if (AdminControl.EliminarVolquete(idVolquete))
+                            Volquete auxVolquete = VolqueteControl.EncontrarPorId(idVolquete);
+                            /*moficar todos los campos de este volquete , tomarlos de los texbox*/
+
+                            if (AdminControl.ModificarVolquete(auxVolquete))
                             {
-                                MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Se MODIFICO el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("NO SE PUDO MODIFICICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         break;
+                    
                 }
 
             }
@@ -441,43 +445,83 @@ namespace Vista
                 string observacion = this.txt_VolqueteObservacion.Text;
                 string cadenaIdVolquete = this.txt_VolqueteId.Text;
 
-                if (this.botonSeleccionado == "Usuario")
+                switch(this.botonSeleccionado)
                 {
-                    if (double.TryParse(cadenaTelefono, out double telefono) &&
-                        double.TryParse(cadenaDni, out double dni) &&
-                        int.TryParse(cadenaId, out int id))
-                    {
-                        AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
-                        ControlApp.ControlAgregarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
-                        RefrezcarDTG_Usuario();
-                        LimpiarTexboxUsuario();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else if (this.botonSeleccionado == "Volquete")
-                {
-                    bool banderaPrecio = float.TryParse(cadenaPrecio, out float precio);
-                    bool banderaCapacidad = float.TryParse(cadenaCapacidad, out float capacidad);
-                    bool banderaId = int.TryParse(cadenaIdVolquete, out int idVolquete);
+                    case "Usuario":
+                        try
+                        {
+                            if (double.TryParse(cadenaTelefono, out double telefono) &&
+                                double.TryParse(cadenaDni, out double dni) &&
+                                int.TryParse(cadenaId, out int id))
+                            {
+                                AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                                ControlApp.ControlAgregarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                                RefrezcarDTG_Usuario();
+                                LimpiarTexboxUsuario();
+                            }
+                            else
+                            {
+                                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                "Admin",
+                                DateTime.Now,
+                                "Al agregar un Usuario",
+                                "FormAdmin",
+                                "private void btn_Agregar_Click(object sender, EventArgs e)");
+                                MessageBox.Show($"Error en agregar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                "Admin",
+                                DateTime.Now,
+                                ex.Message,
+                                "FormAdmin",
+                                "private void btn_Agregar_Click(object sender, EventArgs e)");
 
-                    if (banderaPrecio &&
-                        banderaCapacidad &&
-                        banderaId)
-                    {
-                        AdminControl.AgrergarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
-                        ControlApp.ControlAgregarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
-                        RefrezcarDTG_Volquete();
-                        LimpiarTexboxVolquete();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error en agregar volquete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        }
 
 
+                        break;
+                    case "Volquete":
+                        try
+                        {
+                            bool banderaPrecio = float.TryParse(cadenaPrecio, out float precio);
+                            bool banderaCapacidad = float.TryParse(cadenaCapacidad, out float capacidad);
+                            bool banderaId = int.TryParse(cadenaIdVolquete, out int idVolquete);
+
+                            if (banderaPrecio &&
+                                banderaCapacidad &&
+                                banderaId)
+                            {
+                                AdminControl.AgrergarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
+                                ControlApp.ControlAgregarVolquete(new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete));
+                                RefrezcarDTG_Volquete();
+                                LimpiarTexboxVolquete();
+                            }
+                            else
+                            {
+                                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                "Admin",
+                                DateTime.Now,
+                                "Al agregar un volquete",
+                                "FormAdmin",
+                                "private void btn_Agregar_Click(object sender, EventArgs e)");
+                                MessageBox.Show($"Error en agregar volquete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            ex.Message,
+                            "FormAdmin",
+                            "private void btn_Agregar_Click(object sender, EventArgs e)");
+                        }
+
+                        
+                        break;
                 }
             }
             catch (Exception ex)

@@ -84,6 +84,28 @@ namespace Entidades
 
 
 
+        public static List<Volquete> GetListaVolquetes
+        {
+
+            get
+            {
+                try
+                {
+                    List<Volquete> nuevaLista = VolqueteBD.LeerDB();
+                    return nuevaLista;
+                }
+                catch (Exception ex)
+                {
+                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                    "ControlAPP",
+                    DateTime.Now,
+                    ex.Message,
+                    "ControlApp",
+                    "public static List<Volquete> GetListaVolquetes");
+                }
+                return null;
+            }
+        }
 
         public static List<Usuario> GetListaUsuarios
         {

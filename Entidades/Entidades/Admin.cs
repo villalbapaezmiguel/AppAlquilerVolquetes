@@ -28,7 +28,7 @@ namespace Entidades.EntidadesUsuarios
         }
         public List<Compra> ListaCompra { get => listaCompra; set => listaCompra = value; }
         public List<Usuario> ListaUsuarios { get => listaUsuarios; set => listaUsuarios = value; }
-        public List<Volquete> ListaVolquete { get => listaVolquete; set => listaVolquete = value; }
+        public List<Volquete> ListaVolquete { get => ControlApp.GetListaVolquetes; set => listaVolquete = value; }
         public string Clave { get => clave; set => clave = value; }
 
         private string ComprasHechas()

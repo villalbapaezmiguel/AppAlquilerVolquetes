@@ -10,3 +10,9 @@ Clase : FormAlquilerVolquete
 Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
 Usuario : Lopez
 
+Fecha y hora del incidente : 16/11/2023 09:39:57 a. m.
+Descripcion : Al agregar un volquete
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+

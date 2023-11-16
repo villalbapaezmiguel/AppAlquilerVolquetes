@@ -15,31 +15,9 @@ namespace Entidades.EntidadesControl
 
         //AGREGAMOS DELEGADOS
         public static Action<List<Compra>> delegado_AgregarCompraAUsuario = AgregarListaDeCompraUsuario;
-
-        public static void AgregarAdministrador(Admin nuevoAdmin)
-        {
-            if (adminActual is not null)
-            {
-                ControlApp.listaAdministradores.Add(nuevoAdmin);
-            }
-        }
         
         #region Usuario
 
-        public static void GuardarDatosUsuario(Usuario usuario)
-        {
-            if (adminActual is not null)
-            {
-                for (int i = 0; i < adminActual.ListaUsuarios.Count; i++)
-                {
-                    if (adminActual.ListaUsuarios[i].IdUsuario == usuario.IdUsuario)
-                    {
-                        adminActual.ListaUsuarios[i] = usuario;
-                        break;
-                    }
-                }
-            }
-        }
 
         public static void AgregarListaDeCompraUsuario(List<Compra> listaCompraUsuario)
         {
@@ -175,6 +153,7 @@ namespace Entidades.EntidadesControl
                 if (posicion != -1)
                 {
                     adminActual.ListaVolquete[posicion] = volquete;
+                    VolqueteBD.ModificarDB(volquete);
                     return true;
                 }
             }

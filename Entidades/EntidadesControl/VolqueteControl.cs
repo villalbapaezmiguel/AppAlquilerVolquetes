@@ -26,6 +26,21 @@ namespace Entidades.EntidadesControl
             "18:00",
         };
 
+        public static Volquete EncontrarPorId(int idVolquete)
+        {
+            if(idVolquete != -1)
+            {
+                foreach(Volquete item in ControlApp.GetListaVolquetes)
+                {
+                    if(item.Id == idVolquete)
+                    {
+                        return item;
+                    }
+                }
+            }
+            return null;
+        }
+
         public static Volquete? EncontrarVolquetePorTipo(string volquetePorTipo)
         {
             if(!(volquetePorTipo == string.Empty)) 
