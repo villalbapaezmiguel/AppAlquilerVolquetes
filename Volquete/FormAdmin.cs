@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,6 +57,8 @@ namespace Vista
                 this.panel_Compra.Visible = false;
                 this.panel_Usuario.Visible = false;
                 this.botonSeleccionado = "Volquete";
+                this.btn_Agregar.Enabled = true;
+                LimpiarTexboxVolquete();
             }
             catch (Exception ex)
             {
@@ -76,11 +79,13 @@ namespace Vista
         {
             try
             {
-                this.dtgv_Datos.DataSource = AdminControl.GetListaUsuario;//cambiar por admin
+                this.dtgv_Datos.DataSource = UsuarioBD.LeerDB();
                 this.panel_Volquete.Visible = false;
                 this.panel_Compra.Visible = false;
                 this.panel_Usuario.Visible = true;
                 this.botonSeleccionado = "Usuario";
+                this.btn_Agregar.Enabled = true;
+                LimpiarTexboxUsuario();
             }
             catch (Exception ex)
             {
@@ -104,6 +109,8 @@ namespace Vista
                 this.panel_Usuario.Visible = false;
                 this.botonSeleccionado = "Compra";
                 this.dtgv_Datos.DataSource = CompraBD.LeerDB();
+                this.btn_Agregar.Enabled = false;
+                LimpiarTexBoxCompra();
             }
             catch (Exception ex)
             {
@@ -134,15 +141,18 @@ namespace Vista
                         string apellido = this.txt_UsuarioApellido.Text;
                         string cadenaTelefono = this.txt_UsuarioTelefono.Text;
                         string cadenaDni = this.txt_UsuarioDni.Text;
-
+                        string cadenaModoOscuor = this.lbl_FondoColorUsuario.Text;
+                        string cadenaIdCompra = this.txt_UsuarioIdCompra.Text;
                         cadenaId = this.txt_UsuarioId.Text;
+
+                        
                         if (int.TryParse(cadenaId, out int idUsuario) &&
                             double.TryParse(cadenaTelefono, out double telefono) &&
-                            double.TryParse(cadenaDni, out double dni))
+                            double.TryParse(cadenaDni, out double dni) &&
+                            bool.TryParse(cadenaModoOscuor, out bool modoOscuro) &&
+                            int.TryParse(cadenaIdCompra, out int idCompra))
                         {
-
-                            Usuario aux = new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, idUsuario);
-                            //AdminControl.BuscarPorIdUsuario(idUsuario);
+                            Usuario aux = new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, idUsuario, modoOscuro, idCompra);
 
                             if (AdminControl.ModificarUsuario(aux))
                             {
@@ -160,24 +170,32 @@ namespace Vista
                         cadenaId = this.txt_VolqueteId.Text;
                         if (int.TryParse(cadenaId, out int idVolquete))
                         {
-                            Volquete auxVolquete = VolqueteControl.EncontrarPorId(idVolquete);
-                            /*moficar todos los campos de este volquete , tomarlos de los texbox*/
+                            //string tipoVolquete , float precio , float capacidad , string observacion, int id
+                            string tipoVolquete = this.txt_VolqueteTipoVolquete.Text;
+                            string cadenaPrecio = this.txt_VolquetePrecio.Text;
+                            string cadenaCapacidad = this.txt_VolqueteCapacidad.Text;
+                            string observacion = this.txt_VolqueteObservacion.Text;
+                            if (float.TryParse(cadenaPrecio, out float precio) &&
+                                float.TryParse(cadenaCapacidad, out float capacidad))
+                            {
+                                Volquete auxVolquete = new Volquete(tipoVolquete, precio, capacidad, observacion, idVolquete);
+                                if (AdminControl.ModificarVolquete(auxVolquete))
+                                {
+                                    MessageBox.Show("Se MODIFICO el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("NO SE PUDO MODIFICICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
 
-                            if (AdminControl.ModificarVolquete(auxVolquete))
-                            {
-                                MessageBox.Show("Se MODIFICO el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("NO SE PUDO MODIFICICAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         break;
-                    
+
                 }
 
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
                 "Admin",
@@ -193,45 +211,45 @@ namespace Vista
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
 
-            try 
+            try
             {
                 string cadenaId;
                 switch (this.botonSeleccionado)
-            {
-                case "Usuario":
+                {
+                    case "Usuario":
 
-                    cadenaId = this.txt_UsuarioId.Text;
-                    if (int.TryParse(cadenaId, out int idUsuario))
-                    {
-                        if (AdminControl.EliminarUsuario(idUsuario))
+                        cadenaId = this.txt_UsuarioId.Text;
+                        if (int.TryParse(cadenaId, out int idUsuario))
                         {
-                            RefrezcarDTG_Usuario();
-                            MessageBox.Show("Se elimino el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (AdminControl.EliminarUsuario(idUsuario))
+                            {
+                                RefrezcarDTG_Usuario();
+                                MessageBox.Show("Se elimino el Usuario con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
 
-                    break;
-                case "Volquete":
-                    cadenaId = this.txt_VolqueteId.Text;
-                    if (int.TryParse(cadenaId, out int idVolquete))
-                    {
-                        if (AdminControl.EliminarVolquete(idVolquete))
+                        break;
+                    case "Volquete":
+                        cadenaId = this.txt_VolqueteId.Text;
+                        if (int.TryParse(cadenaId, out int idVolquete))
                         {
-                            MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (AdminControl.EliminarVolquete(idVolquete))
+                            {
+                                MessageBox.Show("Se elimino el Volquete con exito..", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("NO SE PUDO ELIMINAR", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    break;
+                        break;
+                }
+
             }
-            
-            } 
             catch (Exception ex)
             {
                 ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
@@ -273,69 +291,64 @@ namespace Vista
             try
             {
                 switch (seleccion)
-            {
-                case "Usuario":
-                    string nombreUsuario = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value;
-                    string clave = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value;
-                    double telefono = (double)this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value;
-                    int id = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value;
-                    string nombre = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value;
-                    string apellido = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[5].Value;
-                    double dni = (double)this.dtgv_Datos.Rows[posicionDTG].Cells[6].Value;
+                {
+                    case "Usuario":
+                        this.btn_Agregar.Enabled = true;
+                        //bool modoOscuro;
+                        this.txt_UsuarioNombreUsuario.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value.ToString();
+                        this.txt_UsuarioClave.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value.ToString();
+                        this.txt_UsuarioTelefono.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value.ToString();
+                        this.txt_UsuarioId.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value.ToString();
+                        this.lbl_FondoColorUsuario.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value.ToString();
+                        this.txt_UsuarioIdCompra.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[5].Value.ToString();
+                        this.txt_UsuarioNombre.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[6].Value.ToString();
+                        this.txt_UsuarioApellido.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[7].Value.ToString();
+                        this.txt_UsuarioDni.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[8].Value.ToString();
+                        this.btn_Editar.Enabled = true;
+                        this.btn_Eliminar.Enabled = true;
+                        break;
 
-                    this.txt_UsuarioNombreUsuario.Text = nombreUsuario;
-                    this.txt_UsuarioClave.Text = clave;
-                    this.txt_UsuarioTelefono.Text = telefono.ToString();
-                    this.txt_UsuarioNombre.Text = nombre;
-                    this.txt_UsuarioApellido.Text = apellido;
-                    this.txt_UsuarioDni.Text = dni.ToString();
-                    this.txt_UsuarioId.Text = id.ToString();
+                    case "Volquete":
+                        this.btn_Agregar.Enabled = true;
+                    
+                        this.txt_VolquetePrecio.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value.ToString();
+                        this.txt_VolqueteTipoVolquete.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value.ToString();
+                        this.txt_VolqueteCapacidad.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value.ToString();
+                        this.txt_VolqueteObservacion.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value.ToString();
+                        this.txt_VolqueteId.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value.ToString();
 
-                    break;
+                        this.btn_Editar.Enabled = true;
+                        this.btn_Eliminar.Enabled = true;
+                        break;
 
-                case "Volquete":
+                    case "Compra":
+                        this.btn_Agregar.Enabled = true;
+                        string nombreDeUsuario = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value;
+                        int cantidadVolquetes = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value;
+                        int cantidadDias = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value;
+                        DateTime fechaDeEntraga = (DateTime)this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value;
+                        string horaDeEntrega = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value;
+                        string direccion = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[5].Value;
+                        float precio_Compra = (float)this.dtgv_Datos.Rows[posicionDTG].Cells[6].Value;
+                        string volquete = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[7].Value;
+                        int id_compra = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[8].Value;
 
-                    float precio = (float)this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value;
-                    string tipoVolquete = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value;
-                    float capacidad = (float)this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value;
-                    string observacion = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value;
-                    int idVolquete = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value;
-
-                    this.txt_VolquetePrecio.Text = precio.ToString();
-                    this.txt_VolqueteTipoVolquete.Text = tipoVolquete.ToString();
-                    this.txt_VolqueteCapacidad.Text = capacidad.ToString();
-                    this.txt_VolqueteObservacion.Text = observacion.ToString();
-                    this.txt_VolqueteId.Text = idVolquete.ToString();
-
-
-                    break;
-
-                case "Compra":
-                    string nombreDeUsuario = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value;
-                    int cantidadVolquetes = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value;
-                    int cantidadDias = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value;
-                    DateTime fechaDeEntraga = (DateTime)this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value;
-                    string horaDeEntrega = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value;
-                    string direccion = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[5].Value;
-                    float precio_Compra = (float)this.dtgv_Datos.Rows[posicionDTG].Cells[6].Value;
-                    string volquete = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[7].Value;
-                    int id_compra = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[8].Value;
-
-                    this.txt_CompraVolquete.Text = volquete;
-                    this.txt_CompraUsuario.Text = nombreDeUsuario;
-                    this.txt_CompraCantidad.Text = cantidadVolquetes.ToString();
-                    this.txt_CompraDias.Text = cantidadDias.ToString();
-                    this.txt_CompraFechaDeEntrga.Text = fechaDeEntraga.ToString("D");
-                    this.txt_CompraHorario.Text = horaDeEntrega;
-                    this.txt_CompraDIreccion.Text = direccion;
-                    this.txt_CompraPrecioCompra.Text = precio_Compra.ToString();
-                    this.txt_CompraIdCompra.Text = id_compra.ToString();
+                        this.txt_CompraVolquete.Text = volquete;
+                        this.txt_CompraUsuario.Text = nombreDeUsuario;
+                        this.txt_CompraCantidad.Text = cantidadVolquetes.ToString();
+                        this.txt_CompraDias.Text = cantidadDias.ToString();
+                        this.txt_CompraFechaDeEntrga.Text = fechaDeEntraga.ToString("D");
+                        this.txt_CompraHorario.Text = horaDeEntrega;
+                        this.txt_CompraDIreccion.Text = direccion;
+                        this.txt_CompraPrecioCompra.Text = precio_Compra.ToString();
+                        this.txt_CompraIdCompra.Text = id_compra.ToString();
+                        this.btn_Editar.Enabled = false;
+                        this.btn_Eliminar.Enabled = false;
+                        this.btn_Agregar.Enabled = false;
 
 
-
-                    break;
-
-            }
+                        break;
+                }
 
             }
             catch (Exception ex)
@@ -350,8 +363,18 @@ namespace Vista
 
             }
         }
-
-
+        private void LimpiarTexBoxCompra()
+        {
+            this.txt_CompraVolquete.Text = string.Empty;
+            this.txt_CompraUsuario.Text = string.Empty;
+            this.txt_CompraCantidad.Text = string.Empty;
+            this.txt_CompraDias.Text = string.Empty;
+            this.txt_CompraFechaDeEntrga.Text = string.Empty;
+            this.txt_CompraHorario.Text = string.Empty;
+            this.txt_CompraDIreccion.Text = string.Empty;
+            this.txt_CompraPrecioCompra.Text = string.Empty;
+            this.txt_CompraIdCompra.Text = string.Empty;
+        }
 
 
         private void dtgv_Datos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -361,10 +384,7 @@ namespace Vista
                 this.posicionDTG = e.RowIndex;
                 if (this.posicionDTG != -1)
                 {
-
                     CargarTexbox(this.botonSeleccionado, this.posicionDTG);
-                    this.btn_Eliminar.Enabled = true;
-                    this.btn_Editar.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -437,6 +457,7 @@ namespace Vista
                 string apellido = this.txt_UsuarioApellido.Text;
                 string cadenaDni = this.txt_UsuarioDni.Text;
                 string cadenaId = this.txt_UsuarioId.Text;
+                string cadenaIdCompra = this.txt_UsuarioIdCompra.Text;
 
 
                 string tipoVolquete = this.txt_VolqueteTipoVolquete.Text;
@@ -445,17 +466,17 @@ namespace Vista
                 string observacion = this.txt_VolqueteObservacion.Text;
                 string cadenaIdVolquete = this.txt_VolqueteId.Text;
 
-                switch(this.botonSeleccionado)
+                switch (this.botonSeleccionado)
                 {
                     case "Usuario":
                         try
                         {
                             if (double.TryParse(cadenaTelefono, out double telefono) &&
-                                double.TryParse(cadenaDni, out double dni) &&
-                                int.TryParse(cadenaId, out int id))
+                                double.TryParse(cadenaDni, out double dni)
+                                )
                             {
-                                AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
-                                ControlApp.ControlAgregarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, id));
+                                AdminControl.AgrergarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, UsuarioBD.NuevoIdDB(), false));
+                                ControlApp.ControlAgregarUsuario(new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, UsuarioBD.NuevoIdDB(), false));
                                 RefrezcarDTG_Usuario();
                                 LimpiarTexboxUsuario();
                             }
@@ -520,7 +541,7 @@ namespace Vista
                             "private void btn_Agregar_Click(object sender, EventArgs e)");
                         }
 
-                        
+
                         break;
                 }
             }

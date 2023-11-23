@@ -54,7 +54,7 @@ namespace Entidades.EntidadesControl
         }
 
 
-        public static bool AgregarListaCompra(List<Compra> lista)
+        public static bool AgregarListaDeComprasBD(List<Compra> lista)
         {
             if (lista is not null)
             {
@@ -158,7 +158,7 @@ namespace Entidades.EntidadesControl
 
                 foreach (Compra item in listaCompras)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra);
+                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra, item.IdUsuario);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;

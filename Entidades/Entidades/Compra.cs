@@ -19,11 +19,12 @@ namespace Entidades.EntidadesUsuarios
         private string direccion;
         private float precio;
         private int idCompra ;
+        private int idUsuario ;
         public Compra()
         {
 
         }
-        public Compra(string volquete, string nombreDeUsuario, int cantidadVolquetes, int cantidadDias, DateTime fechaDeEntraga, string horaDeEntrega, string direccion, float precio, int id) : this()
+        public Compra(string volquete, string nombreDeUsuario, int cantidadVolquetes, int cantidadDias, DateTime fechaDeEntraga, string horaDeEntrega, string direccion, float precio, int id, int idUsuario) : this()
         {
             this.tipoVolquete = volquete;
             this.nombreDeUsuario = nombreDeUsuario;
@@ -34,6 +35,7 @@ namespace Entidades.EntidadesUsuarios
             this.direccion = direccion;
             this.precio = precio;
             this.idCompra = id;
+            this.idUsuario = idUsuario;
         }
 
         public string NombreDeUsuario { get => nombreDeUsuario; set => nombreDeUsuario = value; }
@@ -45,6 +47,7 @@ namespace Entidades.EntidadesUsuarios
         public float Precio { get => precio; set => precio = value; }
         public string TipoVolquete { get => tipoVolquete; set => tipoVolquete = value; }
         public int IdCompra { get => idCompra; set => idCompra = value; }
+        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
 
         public override string ToString()
         {
@@ -59,6 +62,7 @@ namespace Entidades.EntidadesUsuarios
             informacionCompra.AppendLine($"Direccion  : {Direccion}");
             informacionCompra.AppendLine($"Precio : {Precio}");
             informacionCompra.AppendLine($"ID : {IdCompra}");
+            informacionCompra.AppendLine($"ID Usuario: {IdUsuario}");
 
             return informacionCompra.ToString();
         }

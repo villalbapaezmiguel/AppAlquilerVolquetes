@@ -34,6 +34,7 @@
             btn_TiposVolquetes = new Button();
             btn_AlquilarVolquete = new Button();
             pic_LogoMarca = new PictureBox();
+            lbl_Hora = new Label();
             panel_Titulo = new Panel();
             lbl_TituloSaludo = new Label();
             pic_Agrandar = new PictureBox();
@@ -55,6 +56,7 @@
             // panel_MenuVertical
             // 
             panel_MenuVertical.BackColor = Color.FromArgb(40, 116, 166);
+            panel_MenuVertical.Controls.Add(lbl_Hora);
             panel_MenuVertical.Controls.Add(btn_Perfil);
             panel_MenuVertical.Controls.Add(btn_TiposVolquetes);
             panel_MenuVertical.Controls.Add(btn_AlquilarVolquete);
@@ -131,6 +133,16 @@
             pic_LogoMarca.SizeMode = PictureBoxSizeMode.Zoom;
             pic_LogoMarca.TabIndex = 0;
             pic_LogoMarca.TabStop = false;
+            // 
+            // lbl_Hora
+            // 
+            lbl_Hora.AutoSize = true;
+            lbl_Hora.Font = new Font("Cambria", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Hora.Location = new Point(12, 388);
+            lbl_Hora.Name = "lbl_Hora";
+            lbl_Hora.Size = new Size(29, 34);
+            lbl_Hora.TabIndex = 6;
+            lbl_Hora.Text = "..";
             // 
             // panel_Titulo
             // 
@@ -251,6 +263,7 @@
             Text = "Form1";
             Load += FormMenu_Load;
             panel_MenuVertical.ResumeLayout(false);
+            panel_MenuVertical.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pic_LogoMarca).EndInit();
             panel_Titulo.ResumeLayout(false);
             panel_Titulo.PerformLayout();
@@ -277,5 +290,6 @@
         private Button btn_TiposVolquetes;
         private Button btn_Perfil;
         private Label lbl_TituloSaludo;
+        private Label lbl_Hora;
     }
 }

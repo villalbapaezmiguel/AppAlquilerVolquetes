@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.EntidadesBD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,18 +19,9 @@ namespace Entidades.EntidadesUsuarios
         {
             
         }
-        public Admin(string nombre, string apellido, double dni, string clave) : base(nombre, apellido, dni)
-        {
-            listaCompra = ControlApp.listaDeCompras;
-            listaUsuarios = ControlApp.listaUsuarios;
-            listaVolquete = ControlApp.listaVolquetes;
-            this.clave = clave;
-            
-        }
-        public List<Compra> ListaCompra { get => listaCompra; set => listaCompra = value; }
+        public List<Compra> ListaCompra { get => CompraBD.LeerDB(); set => listaCompra = value; }
         public List<Usuario> ListaUsuarios { get => listaUsuarios; set => listaUsuarios = value; }
         public List<Volquete> ListaVolquete { get => ControlApp.GetListaVolquetes; set => listaVolquete = value; }
-        public string Clave { get => clave; set => clave = value; }
 
         private string ComprasHechas()
         {

@@ -16,3 +16,532 @@ Clase : FormAdmin
 Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
 Usuario : Admin
 
+Fecha y hora del incidente : 17/11/2023 06:32:28 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 17/11/2023 07:24:43 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 17/11/2023 08:32:25 p. m.
+Descripcion : Al agregar un Usuario
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 17/11/2023 08:33:26 p. m.
+Descripcion : Unable to cast object of type 'System.Boolean' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 17/11/2023 08:38:52 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 17/11/2023 08:39:17 p. m.
+Descripcion : Unable to cast object of type 'System.Boolean' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 17/11/2023 08:39:34 p. m.
+Descripcion : Unable to cast object of type 'System.Boolean' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 17/11/2023 08:39:40 p. m.
+Descripcion : Unable to cast object of type 'System.Boolean' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 19/11/2023 02:34:38 p. m.
+Descripcion : String 'DataGridViewCheckBoxCell { ColumnIndex=4, RowIndex=0 }' was not recognized as a valid Boolean.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 19/11/2023 02:34:42 p. m.
+Descripcion : String 'DataGridViewCheckBoxCell { ColumnIndex=4, RowIndex=0 }' was not recognized as a valid Boolean.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 19/11/2023 02:34:45 p. m.
+Descripcion : String 'DataGridViewCheckBoxCell { ColumnIndex=4, RowIndex=0 }' was not recognized as a valid Boolean.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 19/11/2023 02:49:01 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 11:00:13 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 11:04:25 a. m.
+Descripcion : Al agregar un volquete
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 11:07:49 a. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel Antono
+
+Fecha y hora del incidente : 20/11/2023 11:45:46 a. m.
+Descripcion : ID_USUARIO
+Clase : FormAdmin
+Metodo : private void btn_Compras_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 11:52:09 a. m.
+Descripcion : Al agregar un Usuario
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 11:54:10 a. m.
+Descripcion : ID_COMPRA
+Clase : FormAdmin
+Metodo : private void RefrezcarDTG_Usuario()
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 12:05:02 p. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 12:15:22 p. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 12:15:25 p. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 12:15:39 p. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 12:21:53 p. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:00:27 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 02:02:05 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 02:03:16 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 02:31:34 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel Antonio
+
+Fecha y hora del incidente : 20/11/2023 02:33:53 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 02:34:25 p. m.
+Descripcion : Al agregar un Usuario
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:34:34 p. m.
+Descripcion : Al agregar un Usuario
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:54:10 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 20/11/2023 02:54:31 p. m.
+Descripcion : Al agregar un Usuario
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:01 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:03 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:04 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:05 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:05 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:05 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:05 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:05 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:05 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:06 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:06 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:06 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:06 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:07 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:07 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:57:07 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_COMPRA', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:59:41 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_USUARIO', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 20/11/2023 02:59:42 p. m.
+Descripcion : Cannot insert the value NULL into column 'ID_USUARIO', table 'APP_VOLQUETES.dbo.USUARIO'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 22/11/2023 02:09:59 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 22/11/2023 03:13:58 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 22/11/2023 03:17:49 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 22/11/2023 03:25:06 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 22/11/2023 03:30:48 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : d
+
+Fecha y hora del incidente : 22/11/2023 04:46:07 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : d
+
+Fecha y hora del incidente : 22/11/2023 05:21:36 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : d
+
+Fecha y hora del incidente : 23/11/2023 12:45:41 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 23/11/2023 12:45:58 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:02 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:03 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:03 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:03 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:03 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:04 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:04 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:04 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:04 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:46:04 a. m.
+Descripcion : Cannot insert explicit value for identity column in table 'USUARIO' when IDENTITY_INSERT is set to OFF.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:15 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:16 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:16 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:17 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:17 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:17 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 12:49:17 a. m.
+Descripcion : The INSERT statement conflicted with the FOREIGN KEY constraint "FK_USUARIO_COMPRA". The conflict occurred in database "APP_VOLQUETES", table "dbo.COMPRA", column 'ID_COMPRA'.
+The statement has been terminated.
+Clase : FormAdmin
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 01:02:01 a. m.
+Descripcion : Input string was not in a correct format.
+Clase : FormAdmin
+Metodo : private void RefrezcarDTG_Usuario()
+Usuario : Admin
+

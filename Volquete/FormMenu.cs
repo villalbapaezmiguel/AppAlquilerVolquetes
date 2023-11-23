@@ -1,6 +1,8 @@
 using Entidades;
+using Entidades.ClasesEventos;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using Entidades.Interfaz;
 using System.IO;
 using System.Text;
 using Vista;
@@ -72,13 +74,15 @@ namespace Formulario
                 string nombreDeCarpeta = @$"\Carpeta del admin";
                 string path = rutaCarpeta + nombreDeCarpeta;
                 string rutaJSON = path + @$"\ListaUsuarios.json";
-                
+
 
                 if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
+                    /*
                     if (ControlApp.ControlGuardarDatosUsuario(UsuarioControl.GetUsuario))
                     {
-                        Archivo.CrearDirectorioYArchivo(path, $"Admin.txt", AdminControl.adminActual.ToString());
+                        
+                        /*Archivo.CrearDirectorioYArchivo(path, $"Admin.txt", AdminControl.adminActual.ToString());
                         Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
                         MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
@@ -86,6 +90,7 @@ namespace Formulario
                     {
                         MessageBox.Show($"Error al guardar datos del Usuario {UsuarioControl.GetUsuario.NombreUsuario}....", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    */
 
                     this.Close();
                     FormLogin formLogin = new FormLogin();
@@ -167,7 +172,7 @@ namespace Formulario
                 "FormMenu",
                 "private void pic_Restaurar_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
         }
 
@@ -217,7 +222,7 @@ namespace Formulario
                 "FormMenu",
                 "private void btn_Usuario_Click(object sender, EventArgs e)");
                 MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
         }
 
@@ -263,6 +268,11 @@ namespace Formulario
             try
             {
                 lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
+                FondoColor(sender, e);
+                Reloj reloj = new Reloj();
+
+                reloj.segundoCambio += ActualizarHora;
+                reloj.Iniciar();
 
             }
             catch (Exception ex)
@@ -275,5 +285,37 @@ namespace Formulario
                 "private void FormMenu_Load(object sender, EventArgs e)");
             }
         }
+        private void FondoColor(object sender, EventArgs e)
+        {
+            if (UsuarioControl.GetUsuario.ModoOscuro == true)
+            {
+                this.panel_Contenedor.BackColor = System.Drawing.Color.FromArgb(39, 55, 70);
+                this.panel_Titulo.BackColor = System.Drawing.Color.FromArgb(52, 73, 94);
+                this.panel_MenuVertical.BackColor = System.Drawing.Color.FromArgb(52, 73, 94);
+            }
+            else
+            {
+                this.panel_Contenedor.BackColor = System.Drawing.Color.FromArgb(31, 97, 141);
+                this.panel_Titulo.BackColor = System.Drawing.Color.FromArgb(40, 116, 166);
+                this.panel_MenuVertical.BackColor = System.Drawing.Color.FromArgb(40, 116, 166);
+            }
+
+        }
+
+        public void ActualizarHora(Reloj reloj)
+        {
+            if (lbl_Hora.InvokeRequired)
+            {
+                Action<Reloj> delegadoReloj = ActualizarHora;
+
+                lbl_Hora.Invoke(delegadoReloj, reloj);
+            }
+            else
+            {
+                lbl_Hora.Text = reloj.ToString();
+            }
+        }
+
+
     }
 }

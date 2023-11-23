@@ -22,7 +22,7 @@ namespace Entidades
         public const string rutaCarpetaArchivoUsuario = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
         public const string rutaCarpetaArchivoErrores = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\ERRORES\";
 
-        private static int idCompra = 0;
+        private static int idCompra = CompraBD.IdActual;
         private static int idUsuario = 0;
         private static int idVolquete = 0;
 

@@ -756,3 +756,133 @@ Usuarios inscriptos :
 Lista de Volquetes agregados :
 
 
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+Nombre Miguel | Apellido Villalba | DNI 23451
+Usuario a | Id 1 | Telefono 1234
+Lista de compra : 
+-----------------------------------
+
+Nombre Lopez | Apellido German | DNI 12345
+Usuario xxxxx | Id 6 | Telefono 12345
+Lista de compra : 
+-----------------------------------
+
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+
+Nombre  | Apellido  | DNI 0
+Lista de compras :
+
+Usuarios inscriptos : 
+
+Lista de Volquetes agregados :
+
+

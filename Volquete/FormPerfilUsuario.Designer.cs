@@ -36,6 +36,8 @@
             dtgv_Compra = new DataGridView();
             lbl_TituloListaDeCompras = new Label();
             panel_DatosUsuario = new Panel();
+            pic_ModoOscuro = new PictureBox();
+            pic_ModoPredetermiado = new PictureBox();
             lbl_Id = new Label();
             lbl_Telefono = new Label();
             lbl_Usuario = new Label();
@@ -48,6 +50,8 @@
             panel_PefilUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
             panel_DatosUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pic_ModoOscuro).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_ModoPredetermiado).BeginInit();
             panel_ContenedorVolquetes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
@@ -123,6 +127,8 @@
             // panel_DatosUsuario
             // 
             panel_DatosUsuario.BackColor = Color.FromArgb(41, 128, 185);
+            panel_DatosUsuario.Controls.Add(pic_ModoOscuro);
+            panel_DatosUsuario.Controls.Add(pic_ModoPredetermiado);
             panel_DatosUsuario.Controls.Add(lbl_Id);
             panel_DatosUsuario.Controls.Add(lbl_Telefono);
             panel_DatosUsuario.Controls.Add(lbl_Usuario);
@@ -132,6 +138,37 @@
             panel_DatosUsuario.Name = "panel_DatosUsuario";
             panel_DatosUsuario.Size = new Size(152, 362);
             panel_DatosUsuario.TabIndex = 33;
+            // 
+            // pic_ModoOscuro
+            // 
+            pic_ModoOscuro.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pic_ModoOscuro.BackgroundImage = (Image)resources.GetObject("pic_ModoOscuro.BackgroundImage");
+            pic_ModoOscuro.BackgroundImageLayout = ImageLayout.Stretch;
+            pic_ModoOscuro.Cursor = Cursors.Hand;
+            pic_ModoOscuro.ErrorImage = (Image)resources.GetObject("pic_ModoOscuro.ErrorImage");
+            pic_ModoOscuro.Location = new Point(81, 300);
+            pic_ModoOscuro.Name = "pic_ModoOscuro";
+            pic_ModoOscuro.Size = new Size(68, 59);
+            pic_ModoOscuro.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_ModoOscuro.TabIndex = 10;
+            pic_ModoOscuro.TabStop = false;
+            pic_ModoOscuro.Visible = false;
+            pic_ModoOscuro.Click += pic_ModoOscuro_Click;
+            // 
+            // pic_ModoPredetermiado
+            // 
+            pic_ModoPredetermiado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pic_ModoPredetermiado.BackgroundImage = (Image)resources.GetObject("pic_ModoPredetermiado.BackgroundImage");
+            pic_ModoPredetermiado.BackgroundImageLayout = ImageLayout.Stretch;
+            pic_ModoPredetermiado.Cursor = Cursors.Hand;
+            pic_ModoPredetermiado.ErrorImage = (Image)resources.GetObject("pic_ModoPredetermiado.ErrorImage");
+            pic_ModoPredetermiado.Location = new Point(81, 300);
+            pic_ModoPredetermiado.Name = "pic_ModoPredetermiado";
+            pic_ModoPredetermiado.Size = new Size(68, 59);
+            pic_ModoPredetermiado.SizeMode = PictureBoxSizeMode.Zoom;
+            pic_ModoPredetermiado.TabIndex = 9;
+            pic_ModoPredetermiado.TabStop = false;
+            pic_ModoPredetermiado.Click += pic_ModoPredetermiado_Click;
             // 
             // lbl_Id
             // 
@@ -251,6 +288,8 @@
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).EndInit();
             panel_DatosUsuario.ResumeLayout(false);
             panel_DatosUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pic_ModoOscuro).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_ModoPredetermiado).EndInit();
             panel_ContenedorVolquetes.ResumeLayout(false);
             panel_ContenedorVolquetes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -273,5 +312,7 @@
         private Label lbl_Id;
         private Label lbl_TituloListaDeCompras;
         private DataGridView dtgv_Compra;
+        private PictureBox pic_ModoPredetermiado;
+        private PictureBox pic_ModoOscuro;
     }
 }

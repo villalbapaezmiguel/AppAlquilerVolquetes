@@ -145,7 +145,8 @@ namespace Formulario
                         txt_Apellido.Text,
                         txt_Nombre.Text,
                         double.Parse(txt_DNI.Text),
-                        ControlApp.NuevoIdUsuario());
+                        ControlApp.NuevoIdUsuario()
+                        );
 
                         if (!UsuarioControl.ExisteUsuario(txt_NombreUsuario.Text))
                         {

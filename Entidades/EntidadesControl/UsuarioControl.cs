@@ -117,7 +117,7 @@ namespace Entidades.EntidadesControl
                 List<Usuario> nuevaLista = new();
                 foreach(Usuario usuario in ControlApp.GetListaUsuarios) 
                 {
-                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario);
+                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario, usuario.ModoOscuro, usuario.IdCompra);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
@@ -131,7 +131,7 @@ namespace Entidades.EntidadesControl
                 List<Compra> nuevaLista = new();
                 foreach (Compra item in usuarioActual.ListaDeCompra)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra);
+                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra, item.IdUsuario);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
@@ -160,11 +160,18 @@ namespace Entidades.EntidadesControl
                 {
                     if (ExisteUsuario(nombreUsuario))
                     {
-                        foreach (Usuario auxItem in ControlApp.GetListaUsuarios)
+                        foreach (Usuario itemUsuario in ControlApp.GetListaUsuarios)
                         {
-                            if (auxItem.NombreUsuario == nombreUsuario && auxItem.Clave == clave)
+                            if (itemUsuario.NombreUsuario == nombreUsuario && itemUsuario.Clave == clave)
                             {
-                                return auxItem;
+                                foreach (Compra itemCompra in AdminControl.GetListaComprasUsuario)
+                                {
+                                    if (itemCompra.IdCompra == itemUsuario.IdCompra)
+                                    {
+                                        itemUsuario.ListaDeCompra.Add(itemCompra);
+                                    }
+                                }
+                                return itemUsuario;
                             }
                         }
                     }

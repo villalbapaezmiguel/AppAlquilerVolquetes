@@ -15,6 +15,15 @@ namespace Entidades.EntidadesControl
         static string conxionString;
         static SqlCommand command;
         static SqlConnection connection;
+        static int id;
+
+        public static int IdActual { get => id; set => id = value; }
+
+        public static int NuevoIdDB()
+        {
+            return IdActual + 1;
+        }
+
 
         static UsuarioBD()
         {
@@ -32,7 +41,7 @@ namespace Entidades.EntidadesControl
             {
                 command.Parameters.Clear();
                 connection.Open();
-                command.CommandText = $"UPDATE USUARIO SET NOMBRE_USUARIO = @nombreUsuario ,CLAVE = @clave, TELEFONO = @telefono,NOMBRE = @nombre,APELLIDO = @apellido ,DNI = @dni  WHERE ID_USUARIO = @idUsuario";
+                command.CommandText = $"UPDATE USUARIO SET NOMBRE_USUARIO = @nombreUsuario ,CLAVE = @clave, TELEFONO = @telefono,NOMBRE = @nombre,APELLIDO = @apellido ,DNI = @dni , COLOR = @ModoOscuro WHERE ID_USUARIO = @idUsuario";
                 command.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
                 command.Parameters.AddWithValue("@clave", usuario.Clave);
                 command.Parameters.AddWithValue("@telefono", usuario.Telefono);
@@ -40,6 +49,7 @@ namespace Entidades.EntidadesControl
                 command.Parameters.AddWithValue("@apellido", usuario.Apellido);
                 command.Parameters.AddWithValue("@dni", usuario.Dni);
                 command.Parameters.AddWithValue("@idUsuario", usuario.IdUsuario);
+                command.Parameters.AddWithValue("@ModoOscuro", usuario.ModoOscuro);
                 command.ExecuteNonQuery();
             }
             catch (Exception)
@@ -60,7 +70,7 @@ namespace Entidades.EntidadesControl
             {
                 command.Parameters.Clear();
                 connection.Open();
-                command.CommandText = $"INSERT INTO USUARIO (NOMBRE_USUARIO,CLAVE, TELEFONO,NOMBRE,APELLIDO,DNI) VALUES (@nombreUsuario,@clave,@telefono,@nombre,@apellido,@dni)";
+                command.CommandText = $"INSERT INTO USUARIO (NOMBRE_USUARIO,CLAVE, TELEFONO,NOMBRE,APELLIDO,DNI,COLOR) VALUES (@nombreUsuario,@clave,@telefono,@nombre,@apellido,@dni,@modoOscuro)";
                 command.Parameters.AddWithValue("@nombreUsuario", usuario.NombreUsuario);
                 command.Parameters.AddWithValue("@clave", usuario.Clave);
                 command.Parameters.AddWithValue("@telefono", usuario.Telefono);
@@ -68,6 +78,8 @@ namespace Entidades.EntidadesControl
                 command.Parameters.AddWithValue("@apellido", usuario.Apellido);
                 command.Parameters.AddWithValue("@dni", usuario.Dni);
                 //command.Parameters.AddWithValue("@idUsuario", usuario.IdUsuario);
+                command.Parameters.AddWithValue("@modoOscuro", usuario.ModoOscuro);
+                //command.Parameters.AddWithValue("@idCompra", usuario.IdCompra);
                 command.ExecuteNonQuery();
             }
             catch (Exception)
@@ -112,17 +124,24 @@ namespace Entidades.EntidadesControl
                 connection.Open();
                 command.CommandText = "SELECT * FROM USUARIO ";
                 SqlDataReader reader = command.ExecuteReader();
+                
                 while (reader.Read()) 
                 {
+                    IdActual = int.Parse(reader["ID_USUARIO"].ToString());
+
+                    
+
                     listaUsuario.Add(new Usuario(
-                        reader["NOMBRE_USUARIO"].ToString(), 
-                        reader["CLAVE"].ToString(), 
-                        int.Parse(reader["TELEFONO"].ToString()), 
-                        reader["NOMBRE"].ToString(), 
-                        reader["APELLIDO"].ToString(), 
-                        double.Parse(reader["DNI"].ToString()),
-                        int.Parse(reader["ID_USUARIO"].ToString())));
-                
+                    reader["NOMBRE_USUARIO"].ToString(),
+                    reader["CLAVE"].ToString(),
+                    int.Parse(reader["TELEFONO"].ToString()),
+                    reader["NOMBRE"].ToString(),
+                    reader["APELLIDO"].ToString(),
+                    double.Parse(reader["DNI"].ToString()),
+                    int.Parse(reader["ID_USUARIO"].ToString()),
+                    reader.GetBoolean(7),
+                    int.Parse(reader["ID_COMPRA"].ToString())
+                    ));
                 }
 
                 return listaUsuario;

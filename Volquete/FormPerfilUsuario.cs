@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using Entidades.Interfaz;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,10 @@ using System.Windows.Forms;
 
 namespace Formulario
 {
-    public partial class FormPerfilUsuario : Form
+    public partial class FormPerfilUsuario : Form 
     {
         private Usuario usuario;
+        
         public FormPerfilUsuario(Usuario usuario)
         {
             InitializeComponent();
@@ -60,6 +62,7 @@ namespace Formulario
                 this.lbl_Telefono.Text += $"{UsuarioControl.GetUsuario.Telefono}";
                 this.lbl_Usuario.Text += $"{UsuarioControl.GetUsuario.NombreUsuario}";
                 this.lbl_Id.Text += $"{UsuarioControl.GetUsuario.IdUsuario}";
+                FondoColor(sender, e);
 
                 CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
 
@@ -78,5 +81,40 @@ namespace Formulario
 
 
         }
+
+        private void pic_ModoPredetermiado_Click(object sender, EventArgs e)
+        {
+            this.pic_ModoOscuro.Visible = true;
+            this.pic_ModoPredetermiado.Visible = false;
+            this.panel_DatosUsuario.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
+            this.panel_ContenedorVolquetes.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
+            this.panel_PefilUsuario.BackColor = System.Drawing.Color.SteelBlue;
+            UsuarioControl.GetUsuario.ModoOscuro = false;
+        }
+
+        private void FondoColor(object sender, EventArgs e)
+        {
+            if(UsuarioControl.GetUsuario.ModoOscuro == true)
+            {
+                pic_ModoOscuro_Click(sender, e);
+            }
+            else
+            {
+                pic_ModoPredetermiado_Click(sender, e); 
+            }
+        }
+
+        private void pic_ModoOscuro_Click(object sender, EventArgs e)
+        {
+            this.pic_ModoOscuro.Visible = false;
+            this.pic_ModoPredetermiado.Visible = true;
+
+            this.panel_DatosUsuario.BackColor = System.Drawing.Color.FromArgb(33, 47, 61);
+            this.panel_ContenedorVolquetes.BackColor = System.Drawing.Color.FromArgb(33, 47, 61);
+            this.panel_PefilUsuario.BackColor = System.Drawing.Color.FromArgb(33, 47, 61);
+            UsuarioControl.GetUsuario.ModoOscuro = true;
+
+        }
+
     }
 }

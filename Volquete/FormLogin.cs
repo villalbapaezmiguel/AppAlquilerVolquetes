@@ -88,11 +88,7 @@ namespace Formulario
 
                         if (File.Exists(rutaXML) && File.Exists(rutaJSON))
                         {
-
-
                             UsuarioControl.SetUsuario = Serializar.DeserializarXML_UsuarioDeArchivo(rutaXML);
-                            //Los datos del usuario cuando serializamos permancen , por lo tanto si modificamos algo del usaurio en admnistracion
-                            //tenemos que tener encuenta que tambien los damos se van a "restaurar" con los archivos json y xml que hemos guardado
                         }
                         else
                         {

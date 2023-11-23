@@ -12,6 +12,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -204,8 +205,9 @@ namespace Vista
                     horaDeEntrega = this.cmbox_Horario.SelectedItem.ToString();
                     direccion = txt_Direccion.Text;
                     tipoVolquete = this.cmbox_Tipo.SelectedItem.ToString();
+                   
 
-                    this.nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra());
+                    this.nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra(), UsuarioControl.GetUsuario.IdUsuario );
                     this.listaCompra.Add(nuevaCompra);
                     this.dtgv_Compra.DataSource = this.listaCompra;
                     RefrezcarDTG();
@@ -285,6 +287,7 @@ namespace Vista
                             string cadenaHoraDeEntrega = this.cmbox_Horario.Text;
                             string cadenaDireccion = this.txt_Direccion.Text;
                             string cadenaId = this.dtgv_Compra.Rows[this.posicionDTG].Cells[8].Value.ToString();
+                            string cadenaIdUsuario = this.dtgv_Compra.Rows[this.posicionDTG].Cells[9].Value.ToString();
 
 
                             string formato = "dd/MM/yyyy";
@@ -304,8 +307,9 @@ namespace Vista
                                 }
 
                                 int idCompra = int.Parse(cadenaId);
+                                int idUsuario = int.Parse(cadenaIdUsuario);
                                 nuevaCompra = new(cadenaTipo, UsuarioControl.GetUsuario.Nombre, cantidad, dias,
-                                    nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra);
+                                    nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra,idUsuario);
 
 
                                 if (nuevaCompra is not null)
@@ -409,6 +413,9 @@ namespace Vista
                 if (CompraControl.EliminarCompra(posicionCompra,this.listaCompra))//verificar como lo elimina
                 {
                     RefrezcarDTG();
+                    this.btn_Eliminar.Enabled = false;
+                    this.btn_Modificar.Enabled = false;
+                    this.btn_Agregar.Enabled = true;
                     MessageBox.Show("Se elimino con exito!!!", "Excelente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
@@ -537,40 +544,25 @@ namespace Vista
                 this.btn_Comprar.Enabled = false;
                 this.btn_Eliminar.Enabled = false;
                 this.btn_Modificar.Enabled = false;
-
-                //string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
+ 
                 string rutaCarpeta = ControlApp.rutaCarpetaArchivoUsuario;
                 string nombreDeCarpeta = @$"\Compras del Usuario {UsuarioControl.GetUsuario.Nombre}";
                 string path = rutaCarpeta + nombreDeCarpeta;
                 StringBuilder informacionError = new StringBuilder();   
 
-                if (CompraControl.AgregarListaCompra(this.listaCompra))
+                if (CompraControl.AgregarListaDeComprasBD(this.listaCompra))
                 {
                     if (UsuarioControl.AgregarListaCompra(this.listaCompra))
                     {
-                        string rutaXML = path + @$"\{UsuarioControl.GetUsuario.Nombre}.xml";
-                        string rutaJSON = path + @$"\{UsuarioControl.GetUsuario.Nombre}.json";
-
-                        LimpiarFormularioAlquiler();
-                        
-                        Archivo.CrearDirectorioYArchivo(path, $"Compras de {UsuarioControl.GetUsuario.Nombre}" + ".txt", UsuarioControl.GetUsuario.ToString()); 
-                        Serializar.SerializarComprasAUsuario(rutaXML, UsuarioControl.GetUsuario);
-                        Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
-
                         AdminControl.delegado_AgregarCompraAUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
+                        
+                        LimpiarFormularioAlquiler();
                         this.listaCompra.Clear();
                         RefrezcarDTG();
                         MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        /*
-                        informacionError.AppendLine($"Error , al agregar un nueva compra al usuario : {UsuarioControl.GetUsuario.NombreUsuario}");
-                        informacionError.AppendLine($"Fecha y Hora : {DateTime.Now}");
-                        informacionError.AppendLine($"Metodo private void btn_Comprar_Click(object sender, EventArgs e)");
-                        
-                        Archivo.CrearDirectorioYArchivo(path, $"Errores de {UsuarioControl.GetUsuario.Nombre}.txt", informacionError.ToString());
-                        */
                         ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores, 
                             UsuarioControl.GetUsuario.Nombre, 
                             DateTime.Now, 

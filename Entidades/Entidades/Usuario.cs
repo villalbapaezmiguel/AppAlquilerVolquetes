@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades.EntidadesBD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.AccessControl;
@@ -15,7 +16,8 @@ namespace Entidades.EntidadesUsuarios
         private List<Compra> listaDeCompra;
         private double telefono;
         private int idUsuario;
-
+        private bool modoOscuro;
+        private int idCompra;
         public Usuario()
         {
 
@@ -29,6 +31,20 @@ namespace Entidades.EntidadesUsuarios
             this.telefono = telefono;
             this.listaDeCompra = new List<Compra>();
             this.idUsuario = id;
+            this.modoOscuro = false;
+            
+        }
+
+        public Usuario(string nombreUsuario, string clave, double telefono, string nombre, string apellido, double dni, int id, bool modoOscuro, int idCompra)
+        :this(nombreUsuario, clave, telefono, nombre, apellido, dni, id)
+        {
+            this.idCompra = idCompra;
+            this.modoOscuro = modoOscuro;
+        }
+        public Usuario(string nombreUsuario, string clave, double telefono, string nombre, string apellido, double dni, int id,bool modoOscuro)
+        :this(nombreUsuario,clave,telefono,nombre,apellido,dni,id)
+        {
+            this.modoOscuro = modoOscuro;
         }
 
         public static bool operator ==(Usuario a, Usuario b)
@@ -47,9 +63,11 @@ namespace Entidades.EntidadesUsuarios
 
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
         public string Clave { get => clave; set => clave = value; }
-        public List<Compra> ListaDeCompra { get => listaDeCompra; set => listaDeCompra = value; }
+        public List<Compra> ListaDeCompra { get => CompraBD.LeerPorIdUsuario(idUsuario); set => listaDeCompra = value; }
         public double Telefono { get => telefono; set => telefono = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+        public bool ModoOscuro { get => modoOscuro; set => modoOscuro = value; }
+        public int IdCompra { get => idCompra; set => idCompra = value; }
 
         private string ComprasHechas()
         {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,14 @@ namespace Entidades.EntidadesBD
         static string conxionString;
         static SqlCommand command;
         static SqlConnection connection;
+        static int id;
+
+        public static int IdActual { get => id; set => id = value; }
+
+        public static int ActualId()
+        {
+            return IdActual;
+        }
 
         static CompraBD()
         {
@@ -24,6 +33,48 @@ namespace Entidades.EntidadesBD
             command.CommandType = System.Data.CommandType.Text;
 
         }
+
+        public static List<Compra> LeerPorIdUsuario(int id)
+        {
+            List<Compra> listaCompra = null;
+            try
+            {
+                command.Parameters.Clear();
+                connection.Open();
+                command.CommandText = $"SELECT * FROM COMPRA WHERE ID_USUARIO = {id} ";
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (DateTime.TryParse(reader["FECHA_DE_ENTREGA"].ToString(), out DateTime fecha))
+                        {
+                            listaCompra = new List<Compra>();
+                            listaCompra.Add(new Compra(
+                            reader["VOLQUETE"].ToString(),
+                            reader["NOMBRE_USUARIO"].ToString(),
+                            int.Parse(reader["CANTIDAD"].ToString()),
+                            int.Parse(reader["DIAS"].ToString()),
+                            fecha,
+                            reader["HORA_ENTREGA"].ToString(),
+                            reader["DIRECCION"].ToString(),
+                            float.Parse(reader["PRECIO"].ToString()),
+                            int.Parse(reader["ID_COMPRA"].ToString()),
+                            int.Parse(reader["ID_USUARIO"].ToString())
+                            ));
+
+                        }
+
+                    }
+                }
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return listaCompra;
+        }
+
 
         public static void ModificarDB(Compra compra)
         {
@@ -61,7 +112,7 @@ namespace Entidades.EntidadesBD
             {
                 command.Parameters.Clear();
                 connection.Open();
-                command.CommandText = $"INSERT INTO COMPRA (VOLQUETE,NOMBRE_USUARIO, CANTIDAD,DIAS,FECHA_DE_ENTREGA,HORA_ENTREGA,DIRECCION,PRECIO) VALUES (@volquete,@nombreUsuario,@cantidad,@dias,@fechaDeEntrega,@horaDeEntrega,@direccion,@precio)";
+                command.CommandText = $"INSERT INTO COMPRA (VOLQUETE,NOMBRE_USUARIO, CANTIDAD,DIAS,FECHA_DE_ENTREGA,HORA_ENTREGA,DIRECCION,PRECIO,ID_USUARIO) VALUES (@volquete,@nombreUsuario,@cantidad,@dias,@fechaDeEntrega,@horaDeEntrega,@direccion,@precio,@idUsuario)";
             
                 command.Parameters.AddWithValue("@volquete", compra.TipoVolquete);
                 command.Parameters.AddWithValue("@nombreUsuario", compra.NombreDeUsuario);
@@ -71,7 +122,7 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@horaDeEntrega", compra.HoraDeEntrega);
                 command.Parameters.AddWithValue("@direccion", compra.Direccion);
                 command.Parameters.AddWithValue("@precio", compra.Precio);
-                //command.Parameters.AddWithValue("@id", compra.IdCompra);
+                command.Parameters.AddWithValue("@idUsuario", compra.IdUsuario);
                 command.ExecuteNonQuery();
             }
             catch (Exception)
@@ -118,7 +169,8 @@ namespace Entidades.EntidadesBD
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    if(DateTime.TryParse(reader["FECHA_DE_ENTREGA"].ToString() , out DateTime fecha))
+                    IdActual = int.Parse(reader["ID_COMPRA"].ToString());
+                    if (DateTime.TryParse(reader["FECHA_DE_ENTREGA"].ToString() , out DateTime fecha))
                     {
                         listaCompra.Add(new Compra
                             (
@@ -130,7 +182,8 @@ namespace Entidades.EntidadesBD
                             reader["HORA_ENTREGA"].ToString(),
                             reader["DIRECCION"].ToString(),
                             float.Parse(reader["PRECIO"].ToString()),
-                            int.Parse(reader["ID_COMPRA"].ToString())
+                            int.Parse(reader["ID_COMPRA"].ToString()),
+                            int.Parse(reader["ID_USUARIO"].ToString())
                             ));
                     }
                 }
