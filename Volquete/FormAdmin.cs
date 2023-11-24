@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using ConsolaGenericos.Serializadores;
+using Entidades;
 using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
@@ -145,7 +146,7 @@ namespace Vista
                         string cadenaIdCompra = this.txt_UsuarioIdCompra.Text;
                         cadenaId = this.txt_UsuarioId.Text;
 
-                        
+
                         if (int.TryParse(cadenaId, out int idUsuario) &&
                             double.TryParse(cadenaTelefono, out double telefono) &&
                             double.TryParse(cadenaDni, out double dni) &&
@@ -270,6 +271,8 @@ namespace Vista
 
                 this.btn_Editar.Enabled = false;
                 this.btn_Eliminar.Enabled = false;
+                this.txt_UsuarioId.ReadOnly = true;
+                this.txt_UsuarioIdCompra.ReadOnly = true;
                 AdminControl.adminActual.ListaUsuarios = ControlApp.GetListaUsuarios;
 
             }
@@ -310,7 +313,7 @@ namespace Vista
 
                     case "Volquete":
                         this.btn_Agregar.Enabled = true;
-                    
+
                         this.txt_VolquetePrecio.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value.ToString();
                         this.txt_VolqueteTipoVolquete.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value.ToString();
                         this.txt_VolqueteCapacidad.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value.ToString();
@@ -604,7 +607,76 @@ namespace Vista
         {
             try
             {
+                string rutaVolqueteXML = ControlApp.rutaCapetaArchivoImprido + "Volquete.xml";
+                string rutaUsuarioXML = ControlApp.rutaCapetaArchivoImprido + "Usuario.xml";
+                string rutaCompraXML = ControlApp.rutaCapetaArchivoImprido + "Compra.xml";
 
+
+                switch (this.botonSeleccionado)
+                {
+                    case "Volquete":
+                        var xmlSerializadorVolquete = new SerializadorXML<Volquete>(rutaVolqueteXML);
+
+                        if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
+                        {
+                            xmlSerializadorVolquete.Serializar(ControlApp.GetListaVolquetes);
+                            MessageBox.Show("El archivo XML fue un exito!!!","Exitoso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            "ERROR al generar el archivo XML del objeto Volquete",
+                            "FormAdmin",
+                            "private void btn_Imprimir_Click(object sender, EventArgs e)");
+                            MessageBox.Show($"Error : ERROR al generar el archivo XML del objeto Volquete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        break;
+                    case "Usuario":
+
+                        var xmlSerializadorUsuario = new SerializadorXML<Usuario>(rutaUsuarioXML);
+
+                        if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
+                        {
+                            xmlSerializadorUsuario.Serializar(ControlApp.GetListaUsuarios);
+                            MessageBox.Show("El archivo XML fue un exito!!!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            "ERROR al generar el archivo XML del objeto Usuario",
+                            "FormAdmin",
+                            "private void btn_Imprimir_Click(object sender, EventArgs e)");
+                            MessageBox.Show($"Error : ERROR al generar el archivo XML del objeto Usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        break;
+                    case "Compra":
+                        var xmlSerializadorCompra = new SerializadorXML<Compra>(rutaCompraXML);
+
+                        if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
+                        {
+                            xmlSerializadorCompra.Serializar(CompraBD.LeerDB());
+                            MessageBox.Show("El archivo XML fue un exito!!!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            "ERROR al generar el archivo XML del objeto Compra",
+                            "FormAdmin",
+                            "private void btn_Imprimir_Click(object sender, EventArgs e)");
+                            MessageBox.Show($"Error : ERROR al generar el archivo XML del objeto Compra", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        break;
+
+                }
 
             }
             catch (Exception ex)
@@ -615,6 +687,94 @@ namespace Vista
                 ex.Message,
                 "FormAdmin",
                 "private void btn_Imprimir_Click(object sender, EventArgs e)");
+
+            }
+        }
+
+        private void btn_ImprimirJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rutaVolqueteJSON = ControlApp.rutaCapetaArchivoImprido + "Volquete.json";
+                string rutaUsuarioJSON = ControlApp.rutaCapetaArchivoImprido + "Usuario.json";
+                string rutaCompraJSON = ControlApp.rutaCapetaArchivoImprido + "Compra.json";
+
+
+                switch (this.botonSeleccionado)
+                {
+                    case "Volquete":
+                        var jsonSerializadorVolquete = new SerializadorJSON<Volquete>(rutaVolqueteJSON);
+
+                        if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
+                        {
+                            jsonSerializadorVolquete.Serializar(ControlApp.GetListaVolquetes);
+                            MessageBox.Show("El archivo JSON fue un exito!!!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            "ERROR al generar el archivo JSON del objeto Volquete",
+                            "FormAdmin",
+                            "private void btn_ImprimirJson_Click(object sender, EventArgs e)");
+                            MessageBox.Show($"Error : ERROR al generar el archivo JSON del objeto Volquete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        break;
+                    case "Usuario":
+
+                        var jsonSerializadorUsuario = new SerializadorJSON<Usuario>(rutaUsuarioJSON);
+
+                        if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
+                        {
+                            jsonSerializadorUsuario.Serializar(ControlApp.GetListaUsuarios);
+                            MessageBox.Show("El archivo JSON fue un exito!!!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            "ERROR al generar el archivo JSON del objeto Usuario",
+                            "FormAdmin",
+                            "private void btn_ImprimirJson_Click(object sender, EventArgs e)");
+                            MessageBox.Show($"Error : ERROR al generar el archivo JSON del objeto Usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        break;
+                    case "Compra":
+                        var jsonSerializadorCompra = new SerializadorJSON<Compra>(rutaCompraJSON);
+
+                        if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
+                        {
+                            jsonSerializadorCompra.Serializar(CompraBD.LeerDB());
+                            MessageBox.Show("El archivo JSON fue un exito!!!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                            "Admin",
+                            DateTime.Now,
+                            "ERROR al generar el archivo XML del objeto Compra",
+                            "FormAdmin",
+                            "private void btn_ImprimirJson_Click(object sender, EventArgs e)");
+                            MessageBox.Show($"Error : ERROR al generar el archivo JSON del objeto Compra", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        break;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "private void btn_ImprimirJson_Click(object sender, EventArgs e)");
 
             }
         }

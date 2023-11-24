@@ -36,7 +36,7 @@ namespace Entidades.EntidadesBD
 
         public static List<Compra> LeerPorIdUsuario(int id)
         {
-            List<Compra> listaCompra = null;
+            List<Compra> listaCompra = new List<Compra>(); ;
             try
             {
                 command.Parameters.Clear();
@@ -47,9 +47,9 @@ namespace Entidades.EntidadesBD
                 {
                     while (reader.Read())
                     {
+                         
                         if (DateTime.TryParse(reader["FECHA_DE_ENTREGA"].ToString(), out DateTime fecha))
                         {
-                            listaCompra = new List<Compra>();
                             listaCompra.Add(new Compra(
                             reader["VOLQUETE"].ToString(),
                             reader["NOMBRE_USUARIO"].ToString(),
@@ -62,7 +62,6 @@ namespace Entidades.EntidadesBD
                             int.Parse(reader["ID_COMPRA"].ToString()),
                             int.Parse(reader["ID_USUARIO"].ToString())
                             ));
-
                         }
 
                     }

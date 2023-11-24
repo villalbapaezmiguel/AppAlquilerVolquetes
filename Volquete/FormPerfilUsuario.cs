@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using Entidades.Interfaz;
@@ -64,7 +65,10 @@ namespace Formulario
                 this.lbl_Id.Text += $"{UsuarioControl.GetUsuario.IdUsuario}";
                 FondoColor(sender, e);
 
-                CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
+
+                //CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
+
+                CargarDTGListaCompra(CompraBD.LeerPorIdUsuario(UsuarioControl.GetUsuario.IdUsuario));
 
             }
             catch (Exception ex)

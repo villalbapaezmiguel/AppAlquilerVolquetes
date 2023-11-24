@@ -139,8 +139,8 @@ namespace Entidades.EntidadesControl
                     reader["APELLIDO"].ToString(),
                     double.Parse(reader["DNI"].ToString()),
                     int.Parse(reader["ID_USUARIO"].ToString()),
-                    reader.GetBoolean(7),
-                    int.Parse(reader["ID_COMPRA"].ToString())
+                    reader.GetBoolean(7)
+                    
                     ));
                 }
 

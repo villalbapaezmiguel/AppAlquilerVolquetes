@@ -12,7 +12,7 @@ namespace Entidades
         private string observacion;
         private int id;
 
-        private Volquete()
+        public Volquete()
         {
 
         }

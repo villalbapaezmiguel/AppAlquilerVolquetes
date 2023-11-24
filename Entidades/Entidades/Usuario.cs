@@ -63,7 +63,7 @@ namespace Entidades.EntidadesUsuarios
 
         public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
         public string Clave { get => clave; set => clave = value; }
-        public List<Compra> ListaDeCompra { get => CompraBD.LeerPorIdUsuario(idUsuario); set => listaDeCompra = value; }
+        public List<Compra> ListaDeCompra { get { return listaDeCompra; } set => listaDeCompra = value; }
         public double Telefono { get => telefono; set => telefono = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         public bool ModoOscuro { get => modoOscuro; set => modoOscuro = value; }

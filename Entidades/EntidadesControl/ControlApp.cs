@@ -21,6 +21,8 @@ namespace Entidades
         public const string rutaCarpetaArchivos = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
         public const string rutaCarpetaArchivoUsuario = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
         public const string rutaCarpetaArchivoErrores = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\ERRORES\";
+        public const string rutaCapetaArchivoImprido = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\";
+
 
         private static int idCompra = CompraBD.IdActual;
         private static int idUsuario = 0;

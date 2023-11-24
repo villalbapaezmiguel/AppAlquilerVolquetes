@@ -545,3 +545,57 @@ Clase : FormAdmin
 Metodo : private void RefrezcarDTG_Usuario()
 Usuario : Admin
 
+Fecha y hora del incidente : 23/11/2023 11:18:43 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 23/11/2023 11:43:55 p. m.
+Descripcion : El nombre de archivo, el nombre de directorio o la sintaxis de la etiqueta del volumen no son correctos. : 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\IMPRIMIDOS\'
+Clase : FormAdmin
+Metodo : private void btn_Imprimir_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 11:45:52 p. m.
+Descripcion : Could not find a part of the path 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\'.
+Clase : FormAdmin
+Metodo : private void btn_Imprimir_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 11:46:10 p. m.
+Descripcion : Could not find a part of the path 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\'.
+Clase : FormAdmin
+Metodo : private void btn_Imprimir_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 11:49:09 p. m.
+Descripcion : Could not find a part of the path 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\'.
+Clase : FormAdmin
+Metodo : private void btn_Imprimir_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 23/11/2023 11:49:11 p. m.
+Descripcion : Could not find a part of the path 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\'.
+Clase : FormAdmin
+Metodo : private void btn_Imprimir_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 24/11/2023 12:17:57 a. m.
+Descripcion : Serialization and deserialization of 'System.Type' instances are not supported. Path: $.
+Clase : FormAdmin
+Metodo : private void btn_ImprimirJson_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 24/11/2023 12:24:04 a. m.
+Descripcion : The process cannot access the file 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\Usuario.json' because it is being used by another process.
+Clase : FormAdmin
+Metodo : private void btn_ImprimirJson_Click(object sender, EventArgs e)
+Usuario : Admin
+
+Fecha y hora del incidente : 24/11/2023 12:33:46 a. m.
+Descripcion : The process cannot access the file 'C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\Usuarios.json' because it is being used by another process.
+Clase : FormAdmin
+Metodo : private void btn_ImprimirJson_Click(object sender, EventArgs e)
+Usuario : Admin
+

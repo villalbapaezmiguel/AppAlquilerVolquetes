@@ -1,4 +1,6 @@
-﻿using Entidades.EntidadesUsuarios;
+﻿using Entidades.EntidadesBD;
+using Entidades.EntidadesUsuarios;
+using Entidades.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,21 +49,6 @@ namespace Entidades.EntidadesControl
                 }
             }
             return -1;
-        }
-
-        public static bool ModificarPorId_CompraDelUsuario(Compra? compra)
-        {
-            int posicion;
-            if (compra is not null)
-            {
-                posicion = BuscarPorId_la_CompraDelUsuario(compra.IdCompra);
-                if (posicion != -1)
-                {
-                    usuarioActual.ListaDeCompra[posicion] = compra;
-                    return true;
-                }
-            }
-            return false;
         }
 
         //
@@ -164,7 +151,7 @@ namespace Entidades.EntidadesControl
                         {
                             if (itemUsuario.NombreUsuario == nombreUsuario && itemUsuario.Clave == clave)
                             {
-                                foreach (Compra itemCompra in AdminControl.GetListaComprasUsuario)
+                                foreach (Compra itemCompra in CompraBD.LeerDB())
                                 {
                                     if (itemCompra.IdCompra == itemUsuario.IdCompra)
                                     {

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel_InformacionDatos = new Panel();
             lbl_FondoColorUsuario = new Label();
             panel_Compra = new Panel();
@@ -45,7 +45,7 @@
             txt_CompraUsuario = new TextBox();
             txt_CompraPrecioCompra = new TextBox();
             txt_CompraDias = new TextBox();
-            btn_Imprimir = new Button();
+            btn_ImprimirXml = new Button();
             btn_Agregar = new Button();
             panel_Volquete = new Panel();
             txt_VolqueteId = new TextBox();
@@ -62,7 +62,6 @@
             txt_UsuarioId = new TextBox();
             txt_UsuarioNombre = new TextBox();
             txt_UsuarioApellido = new TextBox();
-            btn_Guardar = new Button();
             btn_Eliminar = new Button();
             dtgv_Datos = new DataGridView();
             btn_Editar = new Button();
@@ -72,6 +71,7 @@
             btn_Usuarios = new Button();
             btn_Volquetes = new Button();
             pic_Cerrar = new PictureBox();
+            btn_ImprimirJson = new Button();
             panel_InformacionDatos.SuspendLayout();
             panel_Compra.SuspendLayout();
             panel_Volquete.SuspendLayout();
@@ -84,13 +84,13 @@
             // panel_InformacionDatos
             // 
             panel_InformacionDatos.BackColor = Color.FromArgb(39, 57, 70);
+            panel_InformacionDatos.Controls.Add(btn_ImprimirJson);
             panel_InformacionDatos.Controls.Add(lbl_FondoColorUsuario);
             panel_InformacionDatos.Controls.Add(panel_Compra);
-            panel_InformacionDatos.Controls.Add(btn_Imprimir);
+            panel_InformacionDatos.Controls.Add(btn_ImprimirXml);
             panel_InformacionDatos.Controls.Add(btn_Agregar);
             panel_InformacionDatos.Controls.Add(panel_Volquete);
             panel_InformacionDatos.Controls.Add(panel_Usuario);
-            panel_InformacionDatos.Controls.Add(btn_Guardar);
             panel_InformacionDatos.Controls.Add(btn_Eliminar);
             panel_InformacionDatos.Controls.Add(dtgv_Datos);
             panel_InformacionDatos.Controls.Add(btn_Editar);
@@ -224,19 +224,19 @@
             txt_CompraDias.Size = new Size(239, 23);
             txt_CompraDias.TabIndex = 20;
             // 
-            // btn_Imprimir
+            // btn_ImprimirXml
             // 
-            btn_Imprimir.Cursor = Cursors.Hand;
-            btn_Imprimir.FlatStyle = FlatStyle.Popup;
-            btn_Imprimir.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Imprimir.ForeColor = Color.RosyBrown;
-            btn_Imprimir.Location = new Point(485, 324);
-            btn_Imprimir.Name = "btn_Imprimir";
-            btn_Imprimir.Size = new Size(83, 23);
-            btn_Imprimir.TabIndex = 14;
-            btn_Imprimir.Text = "IMPRIMIR";
-            btn_Imprimir.UseVisualStyleBackColor = true;
-            btn_Imprimir.Click += btn_Imprimir_Click;
+            btn_ImprimirXml.Cursor = Cursors.Hand;
+            btn_ImprimirXml.FlatStyle = FlatStyle.Popup;
+            btn_ImprimirXml.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_ImprimirXml.ForeColor = Color.RosyBrown;
+            btn_ImprimirXml.Location = new Point(604, 325);
+            btn_ImprimirXml.Name = "btn_ImprimirXml";
+            btn_ImprimirXml.Size = new Size(119, 23);
+            btn_ImprimirXml.TabIndex = 14;
+            btn_ImprimirXml.Text = "IMPRIMIR XML";
+            btn_ImprimirXml.UseVisualStyleBackColor = true;
+            btn_ImprimirXml.Click += btn_Imprimir_Click;
             // 
             // btn_Agregar
             // 
@@ -406,20 +406,6 @@
             txt_UsuarioApellido.Size = new Size(239, 23);
             txt_UsuarioApellido.TabIndex = 14;
             // 
-            // btn_Guardar
-            // 
-            btn_Guardar.Cursor = Cursors.Hand;
-            btn_Guardar.FlatAppearance.BorderColor = Color.Lime;
-            btn_Guardar.FlatStyle = FlatStyle.Popup;
-            btn_Guardar.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_Guardar.ForeColor = Color.LightGreen;
-            btn_Guardar.Location = new Point(621, 325);
-            btn_Guardar.Name = "btn_Guardar";
-            btn_Guardar.Size = new Size(239, 31);
-            btn_Guardar.TabIndex = 9;
-            btn_Guardar.Text = "GUARDAR";
-            btn_Guardar.UseVisualStyleBackColor = true;
-            // 
             // btn_Eliminar
             // 
             btn_Eliminar.Cursor = Cursors.Hand;
@@ -440,14 +426,14 @@
             dtgv_Datos.BorderStyle = BorderStyle.None;
             dtgv_Datos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dtgv_Datos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgv_Datos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle4.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgv_Datos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgv_Datos.ColumnHeadersHeight = 30;
             dtgv_Datos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgv_Datos.Cursor = Cursors.Hand;
@@ -457,21 +443,21 @@
             dtgv_Datos.Name = "dtgv_Datos";
             dtgv_Datos.ReadOnly = true;
             dtgv_Datos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgv_Datos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dtgv_Datos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dtgv_Datos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle3.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dtgv_Datos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle6.Font = new Font("Candara", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dtgv_Datos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dtgv_Datos.RowTemplate.Height = 25;
             dtgv_Datos.Size = new Size(585, 247);
             dtgv_Datos.TabIndex = 4;
@@ -567,6 +553,20 @@
             pic_Cerrar.TabStop = false;
             pic_Cerrar.Click += pic_Cerrar_Click;
             // 
+            // btn_ImprimirJson
+            // 
+            btn_ImprimirJson.Cursor = Cursors.Hand;
+            btn_ImprimirJson.FlatStyle = FlatStyle.Popup;
+            btn_ImprimirJson.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_ImprimirJson.ForeColor = Color.RosyBrown;
+            btn_ImprimirJson.Location = new Point(764, 325);
+            btn_ImprimirJson.Name = "btn_ImprimirJson";
+            btn_ImprimirJson.Size = new Size(119, 23);
+            btn_ImprimirJson.TabIndex = 16;
+            btn_ImprimirJson.Text = "IMPRIMIR JSON";
+            btn_ImprimirJson.UseVisualStyleBackColor = true;
+            btn_ImprimirJson.Click += btn_ImprimirJson_Click;
+            // 
             // FormAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -608,7 +608,6 @@
         private TextBox txt_VolqueteObservacion;
         private TextBox txt_VolqueteCapacidad;
         private TextBox txt_VolquetePrecio;
-        private Button btn_Guardar;
         private TextBox txt_UsuarioNombreUsuario;
         private TextBox txt_UsuarioClave;
         private TextBox txt_UsuarioTelefono;
@@ -630,9 +629,10 @@
         private TextBox txt_CompraHorario;
         private Button btn_Agregar;
         private TextBox txt_VolqueteId;
-        private Button btn_Imprimir;
+        private Button btn_ImprimirXml;
         private Label lbl_FondoColorUsuario;
         private TextBox txt_UsuarioIdCompra;
         private TextBox txt_CompraIdUsuario;
+        private Button btn_ImprimirJson;
     }
 }
