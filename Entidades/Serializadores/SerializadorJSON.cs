@@ -49,7 +49,32 @@ namespace ConsolaGenericos.Serializadores
                 return new List<T>();
             }
         }
+        public bool Serializar(T datos)
+        {
+            try
+            {
+                // Serializar la lista a formato JSON
+                string json = JsonSerializer.Serialize(datos);
 
+                // Usar StreamWriter para escribir en el archivo
+                using (var sw = new StreamWriter(Path))
+                {
+                    sw.WriteLine(json);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                "Admin",
+                DateTime.Now,
+                ex.Message,
+                "FormAdmin",
+                "public bool Serializar(List<T> datos)");
+                return false;
+            }
+        }
         public bool Serializar(List<T> datos)
         {
             try

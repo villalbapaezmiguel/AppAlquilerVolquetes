@@ -1,4 +1,6 @@
-﻿using Entidades;
+﻿using ConsolaGenericos.Serializadores;
+using Entidades;
+using Entidades.Entidades;
 using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
@@ -26,6 +28,10 @@ namespace Vista
         private DateTime fecha;
         private List<Compra> listaCompra = new List<Compra>();
         Compra? nuevaCompra = null;
+        
+        
+        private PaqueteCompra paquete = new PaqueteCompra();
+
         public FormAlquilerVolquete()
         {
             InitializeComponent();
@@ -554,12 +560,27 @@ namespace Vista
                 {
                     if (UsuarioControl.AgregarListaCompra(this.listaCompra))
                     {
-                        AdminControl.delegado_AgregarCompraAUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
-                        
-                        LimpiarFormularioAlquiler();
-                        this.listaCompra.Clear();
-                        RefrezcarDTG();
-                        MessageBox.Show("La compra fue un exitooo", "Excelente", MessageBoxButtons.OK);
+                        try
+                        {
+                            string rutaJsonPaqueteCompra = $"{ControlApp.rutaCarpetaArchivoPaqueteCompras}{UsuarioControl.GetUsuario.NombreUsuario}.json";
+                            var jsonListaCompra = new SerializadorJSON<PaqueteCompra>(rutaJsonPaqueteCompra);                        
+                            jsonListaCompra.Serializar(paquete.ObtenerPaquete(this.listaCompra,paquete.ObtenerPrecioTotal(this.listaCompra)));
+                            MessageBox.Show($"La compra fue un exitooo \n El precio total es de : {paquete.ObtenerPrecioTotal(this.listaCompra)}", "Excelente", MessageBoxButtons.OK);
+
+
+
+                            AdminControl.delegado_AgregarCompraAUsuario(UsuarioControl.GetUsuario.ListaDeCompra);
+                            LimpiarFormularioAlquiler();
+                            this.listaCompra.Clear();
+                            RefrezcarDTG();
+
+                        }
+                        catch (IndexOutOfRangeException ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+                        }
+
                     }
                     else
                     {

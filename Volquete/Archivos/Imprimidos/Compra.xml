@@ -108,4 +108,28 @@
     <IdCompra>38</IdCompra>
     <IdUsuario>4</IdUsuario>
   </Compra>
+  <Compra>
+    <NombreDeUsuario>Miguel</NombreDeUsuario>
+    <CantidadVolquetes>1</CantidadVolquetes>
+    <CantidadDias>1</CantidadDias>
+    <FechaDeEntraga>2023-12-30T00:00:00</FechaDeEntraga>
+    <HoraDeEntrega>13:00</HoraDeEntrega>
+    <Direccion>hhhh</Direccion>
+    <Precio>2000</Precio>
+    <TipoVolquete>Mediano</TipoVolquete>
+    <IdCompra>39</IdCompra>
+    <IdUsuario>0</IdUsuario>
+  </Compra>
+  <Compra>
+    <NombreDeUsuario>Lopez</NombreDeUsuario>
+    <CantidadVolquetes>1</CantidadVolquetes>
+    <CantidadDias>1</CantidadDias>
+    <FechaDeEntraga>2023-12-29T00:00:00</FechaDeEntraga>
+    <HoraDeEntrega>15:00</HoraDeEntrega>
+    <Direccion>soy Raul</Direccion>
+    <Precio>2500</Precio>
+    <TipoVolquete>Estandar</TipoVolquete>
+    <IdCompra>40</IdCompra>
+    <IdUsuario>6</IdUsuario>
+  </Compra>
 </ArrayOfCompra>

@@ -70,7 +70,6 @@
             panel_PefilUsuario.Name = "panel_PefilUsuario";
             panel_PefilUsuario.Size = new Size(675, 405);
             panel_PefilUsuario.TabIndex = 0;
-            panel_PefilUsuario.Paint += panel_PefilUsuario_Paint;
             // 
             // dtgv_Compra
             // 

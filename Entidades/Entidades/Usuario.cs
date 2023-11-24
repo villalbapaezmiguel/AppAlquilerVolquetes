@@ -1,4 +1,5 @@
 ﻿using Entidades.EntidadesBD;
+using Entidades.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace Entidades.EntidadesUsuarios
 {
     [Serializable]
-    public class Usuario : Persona
+    public class Usuario : Persona , IUsuario
     {
         private string nombreUsuario;
         private string clave;
@@ -69,18 +70,6 @@ namespace Entidades.EntidadesUsuarios
         public bool ModoOscuro { get => modoOscuro; set => modoOscuro = value; }
         public int IdCompra { get => idCompra; set => idCompra = value; }
 
-        private string ComprasHechas()
-        {
-            StringBuilder informacionCompra = new StringBuilder();
-            foreach(Compra item in listaDeCompra)
-            {
-                informacionCompra.AppendLine(item.ToString());
-            }
-
-            return informacionCompra.ToString();
-        }
-
-
         public override string ToString()
         {
             StringBuilder infoUsuario = new StringBuilder();
@@ -93,6 +82,15 @@ namespace Entidades.EntidadesUsuarios
             return infoUsuario.ToString();  
         }
 
+        public string ComprasHechas()
+        {
+            StringBuilder informacionCompra = new StringBuilder();
+            foreach (Compra item in listaDeCompra)
+            {
+                informacionCompra.AppendLine(item.ToString());
+            }
 
+            return informacionCompra.ToString();
+        }
     }
 }

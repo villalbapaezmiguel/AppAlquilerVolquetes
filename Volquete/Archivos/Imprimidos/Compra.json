@@ -1,1 +1,110 @@
-[{"NombreDeUsuario":"xxx","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2023-12-29T00:00:00","HoraDeEntrega":"13:00","Direccion":"sss","Precio":3100,"TipoVolquete":"Grande","IdCompra":30,"IdUsuario":2},{"NombreDeUsuario":"xxx","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2023-12-29T00:00:00","HoraDeEntrega":"15:00","Direccion":"dddd","Precio":3100,"TipoVolquete":"Grande","IdCompra":31,"IdUsuario":2},{"NombreDeUsuario":"xxx","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2023-12-27T00:00:00","HoraDeEntrega":"09:00","Direccion":"xxxx","Precio":3900,"TipoVolquete":"Super Grande","IdCompra":32,"IdUsuario":2},{"NombreDeUsuario":"Miguel","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2024-01-18T00:00:00","HoraDeEntrega":"11:00","Direccion":"vvvv","Precio":2500,"TipoVolquete":"Estandar","IdCompra":33,"IdUsuario":0},{"NombreDeUsuario":"Miguel","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2023-12-29T00:00:00","HoraDeEntrega":"14:00","Direccion":"ggg","Precio":3100,"TipoVolquete":"Grande","IdCompra":34,"IdUsuario":0},{"NombreDeUsuario":"Miguel","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2024-01-12T00:00:00","HoraDeEntrega":"10:00","Direccion":"bbbb","Precio":2500,"TipoVolquete":"Estandar","IdCompra":35,"IdUsuario":0},{"NombreDeUsuario":"Miguel","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2023-12-27T00:00:00","HoraDeEntrega":"12:00","Direccion":"ccc","Precio":3100,"TipoVolquete":"Grande","IdCompra":36,"IdUsuario":0},{"NombreDeUsuario":"Miguel","CantidadVolquetes":2,"CantidadDias":3,"FechaDeEntraga":"2024-01-24T00:00:00","HoraDeEntrega":"09:00","Direccion":"vvvv","Precio":15000,"TipoVolquete":"Estandar","IdCompra":37,"IdUsuario":0},{"NombreDeUsuario":"Gomez","CantidadVolquetes":1,"CantidadDias":1,"FechaDeEntraga":"2023-12-29T00:00:00","HoraDeEntrega":"14:00","Direccion":"hhhh","Precio":2500,"TipoVolquete":"Estandar","IdCompra":38,"IdUsuario":4}]
+[
+    {
+        "NombreDeUsuario": "xxx",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2023-12-29T00:00:00",
+        "HoraDeEntrega": "13:00",
+        "Direccion": "sss",
+        "Precio": 3100,
+        "TipoVolquete": "Grande",
+        "IdCompra": 30,
+        "IdUsuario": 2
+    },
+    {
+        "NombreDeUsuario": "xxx",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2023-12-29T00:00:00",
+        "HoraDeEntrega": "15:00",
+        "Direccion": "dddd",
+        "Precio": 3100,
+        "TipoVolquete": "Grande",
+        "IdCompra": 31,
+        "IdUsuario": 2
+    },
+    {
+        "NombreDeUsuario": "xxx",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2023-12-27T00:00:00",
+        "HoraDeEntrega": "09:00",
+        "Direccion": "xxxx",
+        "Precio": 3900,
+        "TipoVolquete": "Super Grande",
+        "IdCompra": 32,
+        "IdUsuario": 2
+    },
+    {
+        "NombreDeUsuario": "Miguel",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2024-01-18T00:00:00",
+        "HoraDeEntrega": "11:00",
+        "Direccion": "vvvv",
+        "Precio": 2500,
+        "TipoVolquete": "Estandar",
+        "IdCompra": 33,
+        "IdUsuario": 0
+    },
+    {
+        "NombreDeUsuario": "Miguel",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2023-12-29T00:00:00",
+        "HoraDeEntrega": "14:00",
+        "Direccion": "ggg",
+        "Precio": 3100,
+        "TipoVolquete": "Grande",
+        "IdCompra": 34,
+        "IdUsuario": 0
+    },
+    {
+        "NombreDeUsuario": "Miguel",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2024-01-12T00:00:00",
+        "HoraDeEntrega": "10:00",
+        "Direccion": "bbbb",
+        "Precio": 2500,
+        "TipoVolquete": "Estandar",
+        "IdCompra": 35,
+        "IdUsuario": 0
+    },
+    {
+        "NombreDeUsuario": "Miguel",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2023-12-27T00:00:00",
+        "HoraDeEntrega": "12:00",
+        "Direccion": "ccc",
+        "Precio": 3100,
+        "TipoVolquete": "Grande",
+        "IdCompra": 36,
+        "IdUsuario": 0
+    },
+    {
+        "NombreDeUsuario": "Miguel",
+        "CantidadVolquetes": 2,
+        "CantidadDias": 3,
+        "FechaDeEntraga": "2024-01-24T00:00:00",
+        "HoraDeEntrega": "09:00",
+        "Direccion": "vvvv",
+        "Precio": 15000,
+        "TipoVolquete": "Estandar",
+        "IdCompra": 37,
+        "IdUsuario": 0
+    },
+    {
+        "NombreDeUsuario": "Gomez",
+        "CantidadVolquetes": 1,
+        "CantidadDias": 1,
+        "FechaDeEntraga": "2023-12-29T00:00:00",
+        "HoraDeEntrega": "14:00",
+        "Direccion": "hhhh",
+        "Precio": 2500,
+        "TipoVolquete": "Estandar",
+        "IdCompra": 38,
+        "IdUsuario": 4
+    }
+]

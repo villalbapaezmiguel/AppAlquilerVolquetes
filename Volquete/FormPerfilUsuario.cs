@@ -25,11 +25,6 @@ namespace Formulario
             this.usuario = usuario;
         }
 
-        private void panel_PefilUsuario_Paint(object sender, PaintEventArgs e)
-        {
-
-
-        }
 
         private void pic_CerrarFormulario_Click(object sender, EventArgs e)
         {
@@ -73,6 +68,7 @@ namespace Formulario
             }
             catch (Exception ex)
             {
+
                 ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
                 UsuarioControl.GetUsuario.NombreUsuario,
                 DateTime.Now,

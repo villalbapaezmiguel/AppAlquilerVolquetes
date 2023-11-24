@@ -1,4 +1,5 @@
 ﻿using Entidades.EntidadesBD;
+using Entidades.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +9,11 @@ using System.Threading.Tasks;
 namespace Entidades.EntidadesUsuarios
 {
     [Serializable]
-    public class Admin : Persona
+    public class Admin : Persona  , IAdmin
     {
         private List<Compra> listaCompra = new List<Compra>();
         private List<Usuario> listaUsuarios = new List<Usuario>();
         private List<Volquete> listaVolquete = new List<Volquete>();
-        private string clave;
-
         public Admin() 
         {
             
@@ -23,35 +22,24 @@ namespace Entidades.EntidadesUsuarios
         public List<Usuario> ListaUsuarios { get => listaUsuarios; set => listaUsuarios = value; }
         public List<Volquete> ListaVolquete { get => ControlApp.GetListaVolquetes; set => listaVolquete = value; }
 
-        private string ComprasHechas()
+        public string ComprasHechas()
         {
-            StringBuilder informacionCompra = new StringBuilder();
-            foreach (Compra item in listaCompra)
+            try
             {
-                informacionCompra.AppendLine(item.ToString());
+                StringBuilder informacionCompra = new StringBuilder();
+                foreach (Compra item in listaCompra)
+                {
+                    informacionCompra.AppendLine(item.ToString());
+                }
+
+                return informacionCompra.ToString();
+
             }
-
-            return informacionCompra.ToString();
-        }
-
-        private string UsuariosInscriptos()
-        {
-            StringBuilder informacionUsuario = new StringBuilder();
-            foreach (Usuario item in listaUsuarios)
+            catch (Exception)
             {
-                informacionUsuario.AppendLine(item.ToString());
-            }
-            return informacionUsuario.ToString();
-        }
-        private string VolquetesAgregados()
-        {
-            StringBuilder informacionVolquete = new StringBuilder();
-            foreach (Volquete item in listaVolquete)
-            {
-                informacionVolquete.AppendLine(item.ToString());
-            }
 
-            return informacionVolquete.ToString();
+                throw;
+            }
         }
 
         public override string ToString()
@@ -69,5 +57,41 @@ namespace Entidades.EntidadesUsuarios
             return informacion.ToString();
         }
 
+        public string UsuariosInscriptos()
+        {
+            try
+            {
+                StringBuilder informacionUsuario = new StringBuilder();
+                foreach (Usuario item in listaUsuarios)
+                {
+                    informacionUsuario.AppendLine(item.ToString());
+                }
+                return informacionUsuario.ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public string VolquetesAgregados()
+        {
+            try
+            {
+                StringBuilder informacionVolquete = new StringBuilder();
+                foreach (Volquete item in listaVolquete)
+                {
+                    informacionVolquete.AppendLine(item.ToString());
+                }
+
+                return informacionVolquete.ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

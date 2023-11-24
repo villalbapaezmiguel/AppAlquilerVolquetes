@@ -68,8 +68,6 @@ namespace Formulario
         {
             try
             {
-
-                //string rutaCarpeta = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
                 string rutaCarpeta = ControlApp.rutaCarpetaArchivos;
                 string nombreDeCarpeta = @$"\Carpeta del admin";
                 string path = rutaCarpeta + nombreDeCarpeta;
@@ -78,20 +76,6 @@ namespace Formulario
 
                 if (MessageBox.Show("Desea cerrar la aplicacion??", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    /*
-                    if (ControlApp.ControlGuardarDatosUsuario(UsuarioControl.GetUsuario))
-                    {
-                        
-                        /*Archivo.CrearDirectorioYArchivo(path, $"Admin.txt", AdminControl.adminActual.ToString());
-                        Serializar.SerializarJSON_Usuario(rutaJSON, UsuarioControl.GetUsuario);
-                        MessageBox.Show($"Se guardaron los cambios del Usuario {UsuarioControl.GetUsuario.NombreUsuario} Correctamente", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error al guardar datos del Usuario {UsuarioControl.GetUsuario.NombreUsuario}....", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    */
-
                     this.Close();
                     FormLogin formLogin = new FormLogin();
                     formLogin.ShowDialog();
@@ -269,10 +253,11 @@ namespace Formulario
             {
                 lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
                 FondoColor(sender, e);
+                /*
                 Reloj reloj = new Reloj();
 
                 reloj.segundoCambio += ActualizarHora;
-                reloj.Iniciar();
+                reloj.Iniciar();*/
 
             }
             catch (Exception ex)
@@ -302,6 +287,7 @@ namespace Formulario
 
         }
 
+        /*
         public void ActualizarHora(Reloj reloj)
         {
             if (lbl_Hora.InvokeRequired)
@@ -314,7 +300,7 @@ namespace Formulario
             {
                 lbl_Hora.Text = reloj.ToString();
             }
-        }
+        }*/
 
 
     }

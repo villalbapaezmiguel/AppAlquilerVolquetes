@@ -599,3 +599,27 @@ Clase : FormAdmin
 Metodo : private void btn_ImprimirJson_Click(object sender, EventArgs e)
 Usuario : Admin
 
+Fecha y hora del incidente : 24/11/2023 02:53:02 p. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 24/11/2023 03:19:50 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 24/11/2023 03:20:37 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 24/11/2023 06:39:05 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
