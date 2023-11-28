@@ -623,3 +623,27 @@ Clase : FormAlquilerVolquete
 Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
 Usuario : Miguel
 
+Fecha y hora del incidente : 28/11/2023 09:51:03 a. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Prueba
+
+Fecha y hora del incidente : 28/11/2023 09:58:50 a. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 28/11/2023 10:03:46 a. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+
+Fecha y hora del incidente : 28/11/2023 10:03:49 a. m.
+Descripcion : Unable to cast object of type 'System.Int32' to type 'System.String'.
+Clase : FormAdmin
+Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
+Usuario : Admin
+

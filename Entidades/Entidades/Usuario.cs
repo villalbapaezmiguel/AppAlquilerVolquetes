@@ -36,14 +36,8 @@ namespace Entidades.EntidadesUsuarios
             
         }
 
-        public Usuario(string nombreUsuario, string clave, double telefono, string nombre, string apellido, double dni, int id, bool modoOscuro, int idCompra)
+        public Usuario(string nombreUsuario, string clave, double telefono, string nombre, string apellido, double dni, int id, bool modoOscuro)
         :this(nombreUsuario, clave, telefono, nombre, apellido, dni, id)
-        {
-            this.idCompra = idCompra;
-            this.modoOscuro = modoOscuro;
-        }
-        public Usuario(string nombreUsuario, string clave, double telefono, string nombre, string apellido, double dni, int id,bool modoOscuro)
-        :this(nombreUsuario,clave,telefono,nombre,apellido,dni,id)
         {
             this.modoOscuro = modoOscuro;
         }

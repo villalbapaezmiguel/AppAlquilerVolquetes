@@ -99,15 +99,13 @@ namespace Vista
                     {
                         int posicion = this.dtgv_Compra.Rows.Add();
 
-                        this.dtgv_Compra.Rows[posicion].Cells[0].Value = UsuarioControl.GetUsuario.NombreUsuario;
                         this.dtgv_Compra.Rows[posicion].Cells[1].Value = item.CantidadVolquetes.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[2].Value = item.CantidadDias.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[3].Value = item.FechaDeEntraga.ToString("d");
                         this.dtgv_Compra.Rows[posicion].Cells[4].Value = item.HoraDeEntrega.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[5].Value = item.Direccion.ToString();
                         this.dtgv_Compra.Rows[posicion].Cells[6].Value = item.Precio.ToString();
-                        this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.TipoVolquete.ToString();
-                        this.dtgv_Compra.Rows[posicion].Cells[8].Value = item.IdCompra.ToString();
+                        this.dtgv_Compra.Rows[posicion].Cells[7].Value = item.IdCompra.ToString();
 
                     }
                 }
@@ -211,15 +209,21 @@ namespace Vista
                     horaDeEntrega = this.cmbox_Horario.SelectedItem.ToString();
                     direccion = txt_Direccion.Text;
                     tipoVolquete = this.cmbox_Tipo.SelectedItem.ToString();
-                   
 
-                    this.nuevaCompra = new Compra(tipoVolquete, UsuarioControl.GetUsuario.Nombre, cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra(), UsuarioControl.GetUsuario.IdUsuario );
-                    this.listaCompra.Add(nuevaCompra);
-                    this.dtgv_Compra.DataSource = this.listaCompra;
-                    RefrezcarDTG();
-                    LimpiarFormularioAlquiler();
-                    this.btn_Comprar.Enabled = true;
-                    MessageBox.Show("Agregado con exitooo", "Excelente", MessageBoxButtons.OK);
+                    //nuevos cambios aca
+                    Volquete auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(tipoVolquete);
+                    if(auxVolquete is not null)
+                    {
+                        this.nuevaCompra = new Compra(cantidadVolquetes, cantidadDias, this.fecha, horaDeEntrega, direccion, precio, ControlApp.NuevoIdCompra(), UsuarioControl.GetUsuario.IdUsuario , auxVolquete.Id);
+                        this.listaCompra.Add(nuevaCompra);
+                        this.dtgv_Compra.DataSource = this.listaCompra;
+                        RefrezcarDTG();
+                        LimpiarFormularioAlquiler();
+                        this.btn_Comprar.Enabled = true;
+                        MessageBox.Show("Agregado con exitooo", "Excelente", MessageBoxButtons.OK);
+
+                    }
+
 
                 }
                 else
@@ -299,6 +303,7 @@ namespace Vista
                             string formato = "dd/MM/yyyy";
                             DateTime nuevaFecha = DateTime.ParseExact(cadenaFechaDeEntrega, formato, CultureInfo.InvariantCulture);
                             Compra nuevaCompra = null;
+                            Volquete auxVolquete = null;
                             try
                             {
                                 int cantidad = int.Parse(cadenaCantidad);
@@ -311,44 +316,52 @@ namespace Vista
                                 {
 
                                 }
-
-                                int idCompra = int.Parse(cadenaId);
-                                int idUsuario = int.Parse(cadenaIdUsuario);
-                                nuevaCompra = new(cadenaTipo, UsuarioControl.GetUsuario.Nombre, cantidad, dias,
-                                    nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra,idUsuario);
-
-
-                                if (nuevaCompra is not null)
+                                auxVolquete = VolqueteControl.EncontrarVolquetePorTipo(cadenaTipo);
+                                if(auxVolquete is not null)
                                 {
-                                    if (CompraControl.ModificarPorId(nuevaCompra, this.listaCompra))
+                                    int idCompra = int.Parse(cadenaId);
+                                    int idUsuario = int.Parse(cadenaIdUsuario);
+                                    nuevaCompra = new(cantidad, dias,
+                                        nuevaFecha, cadenaHoraDeEntrega, cadenaDireccion, precio, idCompra, idUsuario, auxVolquete.Id);
+
+
+                                    if (nuevaCompra is not null)
                                     {
-                                        CargarListaModificadaDTGV(this.posicionDTG, nuevaCompra);
-                                        LimpiarFormularioAlquiler();
-                                        MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        if (CompraControl.ModificarPorId(nuevaCompra, this.listaCompra))
+                                        {
+                                            CargarListaModificadaDTGV(this.posicionDTG, nuevaCompra);
+                                            LimpiarFormularioAlquiler();
+                                            MessageBox.Show("Se modifico con exito", "Operacion exitosa !!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                                            UsuarioControl.GetUsuario.NombreUsuario,
+                                            DateTime.Now,
+                                            "No se encontro el id de la compra",
+                                            "FormAlquilerVolquete",
+                                            "private void btn_Modificar_Click(object sender, EventArgs e)");
+
+                                            MessageBox.Show("No se encontro el id del la compra ");
+                                        }
                                     }
                                     else
                                     {
                                         ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
                                         UsuarioControl.GetUsuario.NombreUsuario,
                                         DateTime.Now,
-                                        "No se encontro el id de la compra",
+                                        "El objeto es null",
                                         "FormAlquilerVolquete",
                                         "private void btn_Modificar_Click(object sender, EventArgs e)");
 
-                                        MessageBox.Show("No se encontro el id del la compra ");
+                                        MessageBox.Show("El objeto es null");
                                     }
                                 }
                                 else
                                 {
-                                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
-                                    UsuarioControl.GetUsuario.NombreUsuario,
-                                    DateTime.Now,
-                                    "El objeto es null",
-                                    "FormAlquilerVolquete",
-                                    "private void btn_Modificar_Click(object sender, EventArgs e)");
-
-                                    MessageBox.Show("El objeto es null");
+                                    MessageBox.Show("Problemas con con el objeto volquete");
                                 }
+                                
 
                             }
                             catch (Exception ex)
@@ -397,8 +410,7 @@ namespace Vista
                 this.dtgv_Compra.Rows[posicionDTGV].Cells[4].Value = auxCompra.HoraDeEntrega;
                 this.dtgv_Compra.Rows[posicionDTGV].Cells[5].Value = auxCompra.Direccion;
                 this.dtgv_Compra.Rows[posicionDTGV].Cells[6].Value = auxCompra.Precio;
-                this.dtgv_Compra.Rows[posicionDTGV].Cells[7].Value = auxCompra.TipoVolquete;
-                this.dtgv_Compra.Rows[posicionDTGV].Cells[8].Value = auxCompra.IdCompra;
+                this.dtgv_Compra.Rows[posicionDTGV].Cells[7].Value = auxCompra.IdCompra;
             }
             catch (Exception ex)
             {

@@ -158,7 +158,7 @@ namespace Entidades.EntidadesControl
 
                 foreach (Compra item in listaCompras)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra, item.IdUsuario);
+                    Compra AuxUsuario = new(item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra, item.IdUsuario, item.IdVolquete);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;

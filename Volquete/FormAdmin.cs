@@ -153,7 +153,7 @@ namespace Vista
                             bool.TryParse(cadenaModoOscuor, out bool modoOscuro) &&
                             int.TryParse(cadenaIdCompra, out int idCompra))
                         {
-                            Usuario aux = new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, idUsuario, modoOscuro, idCompra);
+                            Usuario aux = new Usuario(nombreUsuario, clave, telefono, nombre, apellido, dni, idUsuario, modoOscuro);
 
                             if (AdminControl.ModificarUsuario(aux))
                             {
@@ -325,26 +325,18 @@ namespace Vista
                         break;
 
                     case "Compra":
-                        this.btn_Agregar.Enabled = true;
-                        string nombreDeUsuario = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value;
-                        int cantidadVolquetes = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value;
-                        int cantidadDias = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value;
-                        DateTime fechaDeEntraga = (DateTime)this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value;
-                        string horaDeEntrega = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value;
-                        string direccion = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[5].Value;
-                        float precio_Compra = (float)this.dtgv_Datos.Rows[posicionDTG].Cells[6].Value;
-                        string volquete = (string)this.dtgv_Datos.Rows[posicionDTG].Cells[7].Value;
-                        int id_compra = (int)this.dtgv_Datos.Rows[posicionDTG].Cells[8].Value;
 
-                        this.txt_CompraVolquete.Text = volquete;
-                        this.txt_CompraUsuario.Text = nombreDeUsuario;
-                        this.txt_CompraCantidad.Text = cantidadVolquetes.ToString();
-                        this.txt_CompraDias.Text = cantidadDias.ToString();
-                        this.txt_CompraFechaDeEntrga.Text = fechaDeEntraga.ToString("D");
-                        this.txt_CompraHorario.Text = horaDeEntrega;
-                        this.txt_CompraDIreccion.Text = direccion;
-                        this.txt_CompraPrecioCompra.Text = precio_Compra.ToString();
-                        this.txt_CompraIdCompra.Text = id_compra.ToString();
+                        this.txt_CompraCantidad.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[0].Value.ToString();
+                        this.txt_CompraDias.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[1].Value.ToString();
+                        this.txt_CompraFechaDeEntrga.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[2].Value.ToString();
+                        this.txt_CompraHorario.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[3].Value.ToString();
+                        this.txt_CompraDIreccion.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[4].Value.ToString();
+                        this.txt_CompraPrecioCompra.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[5].Value.ToString();
+                        this.txt_CompraIdVolquete.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[6].Value.ToString();
+                        this.txt_CompraIdUsuario.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[7].Value.ToString();
+                        this.txt_CompraIdCompra.Text = this.dtgv_Datos.Rows[posicionDTG].Cells[8].Value.ToString();
+
+
                         this.btn_Editar.Enabled = false;
                         this.btn_Eliminar.Enabled = false;
                         this.btn_Agregar.Enabled = false;
@@ -368,8 +360,8 @@ namespace Vista
         }
         private void LimpiarTexBoxCompra()
         {
-            this.txt_CompraVolquete.Text = string.Empty;
-            this.txt_CompraUsuario.Text = string.Empty;
+
+            this.txt_CompraIdVolquete.Text = string.Empty;
             this.txt_CompraCantidad.Text = string.Empty;
             this.txt_CompraDias.Text = string.Empty;
             this.txt_CompraFechaDeEntrga.Text = string.Empty;
@@ -377,6 +369,7 @@ namespace Vista
             this.txt_CompraDIreccion.Text = string.Empty;
             this.txt_CompraPrecioCompra.Text = string.Empty;
             this.txt_CompraIdCompra.Text = string.Empty;
+            this.txt_CompraIdUsuario.Text = string.Empty;
         }
 
 
@@ -620,7 +613,7 @@ namespace Vista
                         if (Directory.Exists(ControlApp.rutaCapetaArchivoImprido))
                         {
                             xmlSerializadorVolquete.Serializar(ControlApp.GetListaVolquetes);
-                            MessageBox.Show("El archivo XML fue un exito!!!","Exitoso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            MessageBox.Show("El archivo XML fue un exito!!!", "Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {

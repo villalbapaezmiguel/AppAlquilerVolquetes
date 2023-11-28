@@ -104,7 +104,7 @@ namespace Entidades.EntidadesControl
                 List<Usuario> nuevaLista = new();
                 foreach(Usuario usuario in ControlApp.GetListaUsuarios) 
                 {
-                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario, usuario.ModoOscuro, usuario.IdCompra);
+                    Usuario AuxUsuario = new(usuario.NombreUsuario, usuario.Clave, usuario.Telefono, usuario.Nombre, usuario.Apellido, usuario.Dni, usuario.IdUsuario, usuario.ModoOscuro);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;
@@ -118,7 +118,7 @@ namespace Entidades.EntidadesControl
                 List<Compra> nuevaLista = new();
                 foreach (Compra item in usuarioActual.ListaDeCompra)
                 {
-                    Compra AuxUsuario = new(item.TipoVolquete, item.NombreDeUsuario, item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra, item.IdUsuario);
+                    Compra AuxUsuario = new(item.CantidadVolquetes, item.CantidadDias, item.FechaDeEntraga, item.HoraDeEntrega, item.Direccion, item.Precio, item.IdCompra, item.IdUsuario, item.IdVolquete);
                     nuevaLista.Add(AuxUsuario);
                 }
                 return nuevaLista;

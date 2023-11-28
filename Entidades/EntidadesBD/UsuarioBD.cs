@@ -140,7 +140,6 @@ namespace Entidades.EntidadesControl
                     double.Parse(reader["DNI"].ToString()),
                     int.Parse(reader["ID_USUARIO"].ToString()),
                     reader.GetBoolean(7)
-                    
                     ));
                 }
 

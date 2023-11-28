@@ -33,16 +33,16 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel_InformacionDatos = new Panel();
+            btn_ImprimirJson = new Button();
             lbl_FondoColorUsuario = new Label();
             panel_Compra = new Panel();
+            txt_CompraIdVolquete = new TextBox();
             txt_CompraIdUsuario = new TextBox();
             txt_CompraHorario = new TextBox();
-            txt_CompraVolquete = new TextBox();
             txt_CompraIdCompra = new TextBox();
             txt_CompraCantidad = new TextBox();
             txt_CompraFechaDeEntrga = new TextBox();
             txt_CompraDIreccion = new TextBox();
-            txt_CompraUsuario = new TextBox();
             txt_CompraPrecioCompra = new TextBox();
             txt_CompraDias = new TextBox();
             btn_ImprimirXml = new Button();
@@ -71,7 +71,6 @@
             btn_Usuarios = new Button();
             btn_Volquetes = new Button();
             pic_Cerrar = new PictureBox();
-            btn_ImprimirJson = new Button();
             panel_InformacionDatos.SuspendLayout();
             panel_Compra.SuspendLayout();
             panel_Volquete.SuspendLayout();
@@ -102,6 +101,20 @@
             panel_InformacionDatos.Size = new Size(895, 359);
             panel_InformacionDatos.TabIndex = 0;
             // 
+            // btn_ImprimirJson
+            // 
+            btn_ImprimirJson.Cursor = Cursors.Hand;
+            btn_ImprimirJson.FlatStyle = FlatStyle.Popup;
+            btn_ImprimirJson.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_ImprimirJson.ForeColor = Color.RosyBrown;
+            btn_ImprimirJson.Location = new Point(764, 325);
+            btn_ImprimirJson.Name = "btn_ImprimirJson";
+            btn_ImprimirJson.Size = new Size(119, 23);
+            btn_ImprimirJson.TabIndex = 16;
+            btn_ImprimirJson.Text = "IMPRIMIR JSON";
+            btn_ImprimirJson.UseVisualStyleBackColor = true;
+            btn_ImprimirJson.Click += btn_ImprimirJson_Click;
+            // 
             // lbl_FondoColorUsuario
             // 
             lbl_FondoColorUsuario.AutoSize = true;
@@ -118,14 +131,13 @@
             panel_Compra.BackgroundImage = (Image)resources.GetObject("panel_Compra.BackgroundImage");
             panel_Compra.BackgroundImageLayout = ImageLayout.Zoom;
             panel_Compra.BorderStyle = BorderStyle.FixedSingle;
+            panel_Compra.Controls.Add(txt_CompraIdVolquete);
             panel_Compra.Controls.Add(txt_CompraIdUsuario);
             panel_Compra.Controls.Add(txt_CompraHorario);
-            panel_Compra.Controls.Add(txt_CompraVolquete);
             panel_Compra.Controls.Add(txt_CompraIdCompra);
             panel_Compra.Controls.Add(txt_CompraCantidad);
             panel_Compra.Controls.Add(txt_CompraFechaDeEntrga);
             panel_Compra.Controls.Add(txt_CompraDIreccion);
-            panel_Compra.Controls.Add(txt_CompraUsuario);
             panel_Compra.Controls.Add(txt_CompraPrecioCompra);
             panel_Compra.Controls.Add(txt_CompraDias);
             panel_Compra.Location = new Point(592, 41);
@@ -134,10 +146,19 @@
             panel_Compra.TabIndex = 12;
             panel_Compra.Visible = false;
             // 
+            // txt_CompraIdVolquete
+            // 
+            txt_CompraIdVolquete.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            txt_CompraIdVolquete.Location = new Point(28, 235);
+            txt_CompraIdVolquete.Name = "txt_CompraIdVolquete";
+            txt_CompraIdVolquete.PlaceholderText = "ID VOLQUETE";
+            txt_CompraIdVolquete.Size = new Size(239, 23);
+            txt_CompraIdVolquete.TabIndex = 27;
+            // 
             // txt_CompraIdUsuario
             // 
             txt_CompraIdUsuario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraIdUsuario.Location = new Point(28, 244);
+            txt_CompraIdUsuario.Location = new Point(28, 207);
             txt_CompraIdUsuario.Name = "txt_CompraIdUsuario";
             txt_CompraIdUsuario.PlaceholderText = "ID USUARIO";
             txt_CompraIdUsuario.Size = new Size(239, 23);
@@ -146,25 +167,16 @@
             // txt_CompraHorario
             // 
             txt_CompraHorario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraHorario.Location = new Point(29, 218);
+            txt_CompraHorario.Location = new Point(29, 181);
             txt_CompraHorario.Name = "txt_CompraHorario";
             txt_CompraHorario.PlaceholderText = "HORARIO DE ENTRGA";
             txt_CompraHorario.Size = new Size(239, 23);
             txt_CompraHorario.TabIndex = 25;
             // 
-            // txt_CompraVolquete
-            // 
-            txt_CompraVolquete.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraVolquete.Location = new Point(28, 3);
-            txt_CompraVolquete.Name = "txt_CompraVolquete";
-            txt_CompraVolquete.PlaceholderText = "VOLQUETE";
-            txt_CompraVolquete.Size = new Size(239, 23);
-            txt_CompraVolquete.TabIndex = 17;
-            // 
             // txt_CompraIdCompra
             // 
             txt_CompraIdCompra.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraIdCompra.Location = new Point(28, 193);
+            txt_CompraIdCompra.Location = new Point(28, 156);
             txt_CompraIdCompra.Name = "txt_CompraIdCompra";
             txt_CompraIdCompra.PlaceholderText = "ID COMPRA";
             txt_CompraIdCompra.Size = new Size(239, 23);
@@ -173,7 +185,7 @@
             // txt_CompraCantidad
             // 
             txt_CompraCantidad.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraCantidad.Location = new Point(28, 58);
+            txt_CompraCantidad.Location = new Point(28, 21);
             txt_CompraCantidad.Name = "txt_CompraCantidad";
             txt_CompraCantidad.PlaceholderText = "CANTIDAD ";
             txt_CompraCantidad.Size = new Size(239, 23);
@@ -182,7 +194,7 @@
             // txt_CompraFechaDeEntrga
             // 
             txt_CompraFechaDeEntrga.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraFechaDeEntrga.Location = new Point(28, 112);
+            txt_CompraFechaDeEntrga.Location = new Point(28, 75);
             txt_CompraFechaDeEntrga.Name = "txt_CompraFechaDeEntrga";
             txt_CompraFechaDeEntrga.PlaceholderText = "FECHA DE ENTRAGA";
             txt_CompraFechaDeEntrga.Size = new Size(239, 23);
@@ -191,25 +203,16 @@
             // txt_CompraDIreccion
             // 
             txt_CompraDIreccion.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraDIreccion.Location = new Point(28, 140);
+            txt_CompraDIreccion.Location = new Point(28, 103);
             txt_CompraDIreccion.Name = "txt_CompraDIreccion";
             txt_CompraDIreccion.PlaceholderText = "DIRECCION";
             txt_CompraDIreccion.Size = new Size(239, 23);
             txt_CompraDIreccion.TabIndex = 22;
             // 
-            // txt_CompraUsuario
-            // 
-            txt_CompraUsuario.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraUsuario.Location = new Point(28, 31);
-            txt_CompraUsuario.Name = "txt_CompraUsuario";
-            txt_CompraUsuario.PlaceholderText = "USUARIO";
-            txt_CompraUsuario.Size = new Size(239, 23);
-            txt_CompraUsuario.TabIndex = 18;
-            // 
             // txt_CompraPrecioCompra
             // 
             txt_CompraPrecioCompra.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraPrecioCompra.Location = new Point(28, 166);
+            txt_CompraPrecioCompra.Location = new Point(28, 129);
             txt_CompraPrecioCompra.Name = "txt_CompraPrecioCompra";
             txt_CompraPrecioCompra.PlaceholderText = "PRECIO";
             txt_CompraPrecioCompra.Size = new Size(239, 23);
@@ -218,7 +221,7 @@
             // txt_CompraDias
             // 
             txt_CompraDias.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_CompraDias.Location = new Point(28, 85);
+            txt_CompraDias.Location = new Point(28, 48);
             txt_CompraDias.Name = "txt_CompraDias";
             txt_CompraDias.PlaceholderText = "DIAS";
             txt_CompraDias.Size = new Size(239, 23);
@@ -553,20 +556,6 @@
             pic_Cerrar.TabStop = false;
             pic_Cerrar.Click += pic_Cerrar_Click;
             // 
-            // btn_ImprimirJson
-            // 
-            btn_ImprimirJson.Cursor = Cursors.Hand;
-            btn_ImprimirJson.FlatStyle = FlatStyle.Popup;
-            btn_ImprimirJson.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btn_ImprimirJson.ForeColor = Color.RosyBrown;
-            btn_ImprimirJson.Location = new Point(764, 325);
-            btn_ImprimirJson.Name = "btn_ImprimirJson";
-            btn_ImprimirJson.Size = new Size(119, 23);
-            btn_ImprimirJson.TabIndex = 16;
-            btn_ImprimirJson.Text = "IMPRIMIR JSON";
-            btn_ImprimirJson.UseVisualStyleBackColor = true;
-            btn_ImprimirJson.Click += btn_ImprimirJson_Click;
-            // 
             // FormAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -620,8 +609,6 @@
         private TextBox txt_CompraFechaDeEntrga;
         private TextBox txt_CompraDias;
         private TextBox txt_CompraCantidad;
-        private TextBox txt_CompraUsuario;
-        private TextBox txt_CompraVolquete;
         private TextBox txt_CompraIdCompra;
         private Panel panel_Usuario;
         private Panel panel_Compra;
@@ -634,5 +621,6 @@
         private TextBox txt_UsuarioIdCompra;
         private TextBox txt_CompraIdUsuario;
         private Button btn_ImprimirJson;
+        private TextBox txt_CompraIdVolquete;
     }
 }

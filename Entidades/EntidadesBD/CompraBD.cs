@@ -51,8 +51,6 @@ namespace Entidades.EntidadesBD
                         if (DateTime.TryParse(reader["FECHA_DE_ENTREGA"].ToString(), out DateTime fecha))
                         {
                             listaCompra.Add(new Compra(
-                            reader["VOLQUETE"].ToString(),
-                            reader["NOMBRE_USUARIO"].ToString(),
                             int.Parse(reader["CANTIDAD"].ToString()),
                             int.Parse(reader["DIAS"].ToString()),
                             fecha,
@@ -60,7 +58,8 @@ namespace Entidades.EntidadesBD
                             reader["DIRECCION"].ToString(),
                             float.Parse(reader["PRECIO"].ToString()),
                             int.Parse(reader["ID_COMPRA"].ToString()),
-                            int.Parse(reader["ID_USUARIO"].ToString())
+                            int.Parse(reader["ID_USUARIO"].ToString()),
+                            int.Parse(reader["ID_VOLQUETE"].ToString())
                             ));
                         }
 
@@ -81,9 +80,7 @@ namespace Entidades.EntidadesBD
             {
                 command.Parameters.Clear();
                 connection.Open();
-                command.CommandText = $"UPDATE COMPRA SET VOLQUETE = @volquete ,NOMBRE_USUARIO = @nombreUsuario, CANTIDAD = @cantidad,DIAS = @dias,FECHA_DE_ENTREGA = @fechaDeEntrega ,HORA_ENTREGA = @horaDeEntrega , DIRECCION = @direccion, PRECIO = @precio  WHERE ID:COMPRA = @id";
-                command.Parameters.AddWithValue("@volquete", compra.TipoVolquete);
-                command.Parameters.AddWithValue("@nombreUsuario", compra.NombreDeUsuario);
+                command.CommandText = $"UPDATE COMPRA SET CANTIDAD = @cantidad,DIAS = @dias,FECHA_DE_ENTREGA = @fechaDeEntrega ,HORA_ENTREGA = @horaDeEntrega , DIRECCION = @direccion, PRECIO = @precio  WHERE ID:COMPRA = @id";
                 command.Parameters.AddWithValue("@cantidad", compra.CantidadVolquetes);
                 command.Parameters.AddWithValue("@dias", compra.CantidadDias);
                 command.Parameters.AddWithValue("@fechaDeEntrega", compra.FechaDeEntraga);
@@ -111,10 +108,8 @@ namespace Entidades.EntidadesBD
             {
                 command.Parameters.Clear();
                 connection.Open();
-                command.CommandText = $"INSERT INTO COMPRA (VOLQUETE,NOMBRE_USUARIO, CANTIDAD,DIAS,FECHA_DE_ENTREGA,HORA_ENTREGA,DIRECCION,PRECIO,ID_USUARIO) VALUES (@volquete,@nombreUsuario,@cantidad,@dias,@fechaDeEntrega,@horaDeEntrega,@direccion,@precio,@idUsuario)";
-            
-                command.Parameters.AddWithValue("@volquete", compra.TipoVolquete);
-                command.Parameters.AddWithValue("@nombreUsuario", compra.NombreDeUsuario);
+                command.CommandText = $"INSERT INTO COMPRA (CANTIDAD,DIAS,FECHA_DE_ENTREGA,HORA_ENTREGA,DIRECCION,PRECIO,ID_USUARIO,ID_VOLQUETE) VALUES (@cantidad,@dias,@fechaDeEntrega,@horaDeEntrega,@direccion,@precio,@idUsuario,@idVolquete)";
+          
                 command.Parameters.AddWithValue("@cantidad", compra.CantidadVolquetes);
                 command.Parameters.AddWithValue("@dias", compra.CantidadDias);
                 command.Parameters.AddWithValue("@fechaDeEntrega", compra.FechaDeEntraga);
@@ -122,6 +117,7 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@direccion", compra.Direccion);
                 command.Parameters.AddWithValue("@precio", compra.Precio);
                 command.Parameters.AddWithValue("@idUsuario", compra.IdUsuario);
+                command.Parameters.AddWithValue("@idVolquete", compra.IdVolquete);
                 command.ExecuteNonQuery();
             }
             catch (Exception)
@@ -173,8 +169,6 @@ namespace Entidades.EntidadesBD
                     {
                         listaCompra.Add(new Compra
                             (
-                            reader["VOLQUETE"].ToString(),
-                            reader["NOMBRE_USUARIO"].ToString(),
                             int.Parse(reader["CANTIDAD"].ToString()),
                             int.Parse(reader["DIAS"].ToString()),
                             fecha,
@@ -182,7 +176,8 @@ namespace Entidades.EntidadesBD
                             reader["DIRECCION"].ToString(),
                             float.Parse(reader["PRECIO"].ToString()),
                             int.Parse(reader["ID_COMPRA"].ToString()),
-                            int.Parse(reader["ID_USUARIO"].ToString())
+                            int.Parse(reader["ID_USUARIO"].ToString()),
+                            int.Parse(reader["ID_VOLQUETE"].ToString())
                             ));
                     }
                 }
