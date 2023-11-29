@@ -647,3 +647,33 @@ Clase : FormAdmin
 Metodo : private void CargarTexbox(string seleccion, int posicionDTG)
 Usuario : Admin
 
+Fecha y hora del incidente : 28/11/2023 10:08:38 p. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 29/11/2023 01:49:07 a. m.
+Descripcion : The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+Clase : FormAdmin
+Metodo : public bool Serializar(List<T> datos)
+Usuario : Admin
+
+Fecha y hora del incidente : 29/11/2023 01:50:40 a. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 29/11/2023 01:50:47 a. m.
+Descripcion : The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+Clase : FormAdmin
+Metodo : public bool Serializar(List<T> datos)
+Usuario : Admin
+
+Fecha y hora del incidente : 29/11/2023 01:51:28 a. m.
+Descripcion : The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+Clase : FormAdmin
+Metodo : public bool Serializar(List<T> datos)
+Usuario : Admin
+

@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPerfilUsuario));
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPerfilUsuario));
             panel_PefilUsuario = new Panel();
+            btn_Atras = new Button();
+            btn_Siguiente = new Button();
             dtgv_Compra = new DataGridView();
             lbl_TituloListaDeCompras = new Label();
             panel_DatosUsuario = new Panel();
@@ -47,6 +52,7 @@
             lbl_TituloPerfil = new Label();
             pictureBox1 = new PictureBox();
             pic_CerrarFormulario = new PictureBox();
+            dtg_PaquetesDeCompra = new DataGridView();
             panel_PefilUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
             panel_DatosUsuario.SuspendLayout();
@@ -55,12 +61,16 @@
             panel_ContenedorVolquetes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtg_PaquetesDeCompra).BeginInit();
             SuspendLayout();
             // 
             // panel_PefilUsuario
             // 
             panel_PefilUsuario.BackColor = Color.SteelBlue;
             panel_PefilUsuario.BackgroundImageLayout = ImageLayout.Zoom;
+            panel_PefilUsuario.Controls.Add(dtg_PaquetesDeCompra);
+            panel_PefilUsuario.Controls.Add(btn_Atras);
+            panel_PefilUsuario.Controls.Add(btn_Siguiente);
             panel_PefilUsuario.Controls.Add(dtgv_Compra);
             panel_PefilUsuario.Controls.Add(lbl_TituloListaDeCompras);
             panel_PefilUsuario.Controls.Add(panel_DatosUsuario);
@@ -71,6 +81,37 @@
             panel_PefilUsuario.Size = new Size(675, 405);
             panel_PefilUsuario.TabIndex = 0;
             // 
+            // btn_Atras
+            // 
+            btn_Atras.BackgroundImage = (Image)resources.GetObject("btn_Atras.BackgroundImage");
+            btn_Atras.BackgroundImageLayout = ImageLayout.Zoom;
+            btn_Atras.Cursor = Cursors.Hand;
+            btn_Atras.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
+            btn_Atras.FlatStyle = FlatStyle.Flat;
+            btn_Atras.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Atras.Location = new Point(158, 51);
+            btn_Atras.Name = "btn_Atras";
+            btn_Atras.Size = new Size(43, 23);
+            btn_Atras.TabIndex = 55;
+            btn_Atras.UseVisualStyleBackColor = true;
+            btn_Atras.Visible = false;
+            btn_Atras.Click += btn_Atras_Click;
+            // 
+            // btn_Siguiente
+            // 
+            btn_Siguiente.BackgroundImage = (Image)resources.GetObject("btn_Siguiente.BackgroundImage");
+            btn_Siguiente.BackgroundImageLayout = ImageLayout.Zoom;
+            btn_Siguiente.Cursor = Cursors.Hand;
+            btn_Siguiente.FlatAppearance.MouseOverBackColor = Color.FromArgb(23, 165, 137);
+            btn_Siguiente.FlatStyle = FlatStyle.Flat;
+            btn_Siguiente.Font = new Font("Cambria", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_Siguiente.Location = new Point(158, 51);
+            btn_Siguiente.Name = "btn_Siguiente";
+            btn_Siguiente.Size = new Size(43, 23);
+            btn_Siguiente.TabIndex = 11;
+            btn_Siguiente.UseVisualStyleBackColor = true;
+            btn_Siguiente.Click += btn_Siguiente_Click;
+            // 
             // dtgv_Compra
             // 
             dtgv_Compra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -79,14 +120,14 @@
             dtgv_Compra.BorderStyle = BorderStyle.None;
             dtgv_Compra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dtgv_Compra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
-            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgv_Compra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle4.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgv_Compra.ColumnHeadersHeight = 30;
             dtgv_Compra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgv_Compra.EnableHeadersVisualStyles = false;
@@ -95,20 +136,20 @@
             dtgv_Compra.Name = "dtgv_Compra";
             dtgv_Compra.ReadOnly = true;
             dtgv_Compra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgv_Compra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
-            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dtgv_Compra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dtgv_Compra.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(31, 97, 141);
+            dataGridViewCellStyle6.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dtgv_Compra.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dtgv_Compra.RowTemplate.Height = 25;
             dtgv_Compra.Size = new Size(517, 286);
             dtgv_Compra.TabIndex = 54;
@@ -271,6 +312,49 @@
             pic_CerrarFormulario.TabStop = false;
             pic_CerrarFormulario.Click += pic_CerrarFormulario_Click;
             // 
+            // dtg_PaquetesDeCompra
+            // 
+            dtg_PaquetesDeCompra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtg_PaquetesDeCompra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtg_PaquetesDeCompra.BackgroundColor = Color.FromArgb(31, 97, 141);
+            dtg_PaquetesDeCompra.BorderStyle = BorderStyle.None;
+            dtg_PaquetesDeCompra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtg_PaquetesDeCompra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtg_PaquetesDeCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtg_PaquetesDeCompra.ColumnHeadersHeight = 30;
+            dtg_PaquetesDeCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dtg_PaquetesDeCompra.EnableHeadersVisualStyles = false;
+            dtg_PaquetesDeCompra.GridColor = Color.SteelBlue;
+            dtg_PaquetesDeCompra.Location = new Point(158, 84);
+            dtg_PaquetesDeCompra.Name = "dtg_PaquetesDeCompra";
+            dtg_PaquetesDeCompra.ReadOnly = true;
+            dtg_PaquetesDeCompra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtg_PaquetesDeCompra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
+            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dtg_PaquetesDeCompra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dtg_PaquetesDeCompra.RowTemplate.Height = 25;
+            dtg_PaquetesDeCompra.Size = new Size(517, 286);
+            dtg_PaquetesDeCompra.TabIndex = 56;
+            dtg_PaquetesDeCompra.Visible = false;
+            // 
             // FormPerfilUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -293,6 +377,7 @@
             panel_ContenedorVolquetes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtg_PaquetesDeCompra).EndInit();
             ResumeLayout(false);
         }
 
@@ -313,5 +398,8 @@
         private DataGridView dtgv_Compra;
         private PictureBox pic_ModoPredetermiado;
         private PictureBox pic_ModoOscuro;
+        private Button btn_Siguiente;
+        private Button btn_Atras;
+        private DataGridView dtg_PaquetesDeCompra;
     }
 }

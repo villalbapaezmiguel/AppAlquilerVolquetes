@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace Entidades.Entidades
 {
+    [Serializable]
     public class PaqueteCompra : IPaqueteCompras
     {
         private int idUsuario;
         private List<int> listaIdCompra;
         private float precioTotal;
+        //mostrar lo paquetes de compras que se fueron hacienod por el usuario
+
         public PaqueteCompra()
         {
             listaIdCompra = new List<int>();

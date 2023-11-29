@@ -15,10 +15,10 @@ using System.Windows.Forms;
 
 namespace Formulario
 {
-    public partial class FormPerfilUsuario : Form 
+    public partial class FormPerfilUsuario : Form
     {
         private Usuario usuario;
-        
+
         public FormPerfilUsuario(Usuario usuario)
         {
             InitializeComponent();
@@ -94,13 +94,13 @@ namespace Formulario
 
         private void FondoColor(object sender, EventArgs e)
         {
-            if(UsuarioControl.GetUsuario.ModoOscuro == true)
+            if (UsuarioControl.GetUsuario.ModoOscuro == true)
             {
                 pic_ModoOscuro_Click(sender, e);
             }
             else
             {
-                pic_ModoPredetermiado_Click(sender, e); 
+                pic_ModoPredetermiado_Click(sender, e);
             }
         }
 
@@ -116,5 +116,24 @@ namespace Formulario
 
         }
 
+
+        private void btn_Atras_Click(object sender, EventArgs e)
+        {
+            this.lbl_TituloListaDeCompras.Text = "HISTORIAL DE COMPRAS";
+            this.btn_Atras.Visible = false;
+            this.btn_Siguiente.Visible = true;
+            this.dtg_PaquetesDeCompra.Visible = false;
+        }
+
+        private void btn_Siguiente_Click(object sender, EventArgs e)
+        {
+            this.lbl_TituloListaDeCompras.Text = "HISTORIAL DE PACKS DE COMPRA";
+            this.btn_Atras.Visible = true;
+            this.btn_Siguiente.Visible = false;
+            this.dtg_PaquetesDeCompra.Visible =  true;
+            //this.dtg_PaquetesDeCompra.DataSource =  
+
+
+        }
     }
 }

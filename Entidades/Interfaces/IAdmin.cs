@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Interfaces
 {
-    interface IAdmin : IUsuario
+    interface IAdmin 
     {
         string UsuariosInscriptos();
         string VolquetesAgregados();

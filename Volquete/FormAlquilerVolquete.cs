@@ -575,8 +575,12 @@ namespace Vista
                         try
                         {
                             string rutaJsonPaqueteCompra = $"{ControlApp.rutaCarpetaArchivoPaqueteCompras}{UsuarioControl.GetUsuario.NombreUsuario}.json";
-                            var jsonListaCompra = new SerializadorJSON<PaqueteCompra>(rutaJsonPaqueteCompra);                        
-                            jsonListaCompra.Serializar(paquete.ObtenerPaquete(this.listaCompra,paquete.ObtenerPrecioTotal(this.listaCompra)));
+                            var jsonListaCompra = new SerializadorJSON<PaqueteCompra>(rutaJsonPaqueteCompra);
+                            PaqueteCompra paqueteCompra = paquete.ObtenerPaquete(this.listaCompra, paquete.ObtenerPrecioTotal(this.listaCompra));
+                            
+                            
+                            jsonListaCompra.Serializar(paqueteCompra);
+                            //jsonListaCompra.AgregarObjeto(paquete);
                             MessageBox.Show($"La compra fue un exitooo \n El precio total es de : {paquete.ObtenerPrecioTotal(this.listaCompra)}", "Excelente", MessageBoxButtons.OK);
 
 

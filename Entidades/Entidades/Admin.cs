@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Entidades.EntidadesUsuarios
 {
     [Serializable]
-    public class Admin : Persona  , IAdmin
+    public class Admin : Persona  , IAdmin , IUsuario
     {
         private List<Compra> listaCompra = new List<Compra>();
         private List<Usuario> listaUsuarios = new List<Usuario>();
