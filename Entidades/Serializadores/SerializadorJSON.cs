@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using Entidades.Excepciones;
 using Entidades.Interfaz;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,6 @@ namespace ConsolaGenericos.Serializadores
                     // Leer todo el contenido del archivo
                     string json = File.ReadAllText(Path);
 
-                    // Deserializar la cadena JSON a una lista de objetos
                     List<T> datosDeserializados = JsonSerializer.Deserialize<List<T>>(json);
 
                     return datosDeserializados;
@@ -38,15 +38,10 @@ namespace ConsolaGenericos.Serializadores
                     return new List<T>();
                 }
             }
-            catch (Exception ex)
+            catch (ExcepcionSerializacion ex)
             {
-                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
-                 "Admin",
-                 DateTime.Now,
-                 ex.Message,
-                 "SerializadorJSON",
-                 "public List<T> Deserializar()");
-                return new List<T>();
+                throw new ExcepcionSerializacion("Error durante la serializacion ", ex);
+               
             }
         }
         public bool Serializar(T datos)
@@ -87,15 +82,9 @@ namespace ConsolaGenericos.Serializadores
 
                 return true;
             }
-            catch (Exception ex)
+            catch (ExcepcionSerializacion ex)
             {
-                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
-                "Admin",
-                DateTime.Now,
-                ex.Message,
-                "FormAdmin",
-                "public bool Serializar(List<T> datos)");
-                return false;
+                throw new ExcepcionSerializacion("Error durante la serializacion ", ex);
             }
         }
 
@@ -181,15 +170,9 @@ namespace ConsolaGenericos.Serializadores
 
                 return true;
             }
-            catch (Exception ex)
+            catch (ExcepcionSerializacion ex)
             {
-                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
-                "Admin",
-                DateTime.Now,
-                ex.Message,
-                "FormAdmin",
-                "public bool Serializar(List<T> datos)");
-                return false;
+                throw new ExcepcionSerializacion("Error durante la serializacion ", ex);
             }
         }
     }
