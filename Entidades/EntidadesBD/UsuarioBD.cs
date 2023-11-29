@@ -1,4 +1,5 @@
 ﻿using Entidades.EntidadesUsuarios;
+using Entidades.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -52,10 +53,9 @@ namespace Entidades.EntidadesControl
                 command.Parameters.AddWithValue("@ModoOscuro", usuario.ModoOscuro);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al modificar la tabla USUARIO {ex.Error().ToString()}");
             }
             finally
             {
@@ -82,10 +82,9 @@ namespace Entidades.EntidadesControl
                 //command.Parameters.AddWithValue("@idCompra", usuario.IdCompra);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al guardar la tabla USUARIO {ex.Error().ToString()}");
             }
             finally
             {
@@ -103,10 +102,9 @@ namespace Entidades.EntidadesControl
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al eliminar la tabla USUARIO {ex.Error().ToString()}");
             }
             finally
             {
@@ -145,10 +143,9 @@ namespace Entidades.EntidadesControl
 
                 return listaUsuario;
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al leer la tabla USUARIO {ex.Error().ToString()}");
             }
             finally
             {

@@ -13,6 +13,7 @@ namespace Formulario
     {
         int posicionX;
         int posicionY;
+        bool modoOscuro = false;
 
         public FormMenu()
         {
@@ -214,7 +215,7 @@ namespace Formulario
         {
             try
             {
-                AbrirFormEnPanelContenedor(new FormPerfilUsuario(UsuarioControl.GetUsuario));
+                AbrirFormEnPanelContenedor(new FormPerfilUsuario(ref modoOscuro));
             }
             catch (Exception ex)
             {
@@ -252,12 +253,7 @@ namespace Formulario
             try
             {
                 lbl_TituloSaludo.Text = $"Hola {UsuarioControl.GetUsuario.Nombre} {UsuarioControl.GetUsuario.Apellido} !!!";
-                FondoColor(sender, e);
-                /*
-                Reloj reloj = new Reloj();
-
-                reloj.segundoCambio += ActualizarHora;
-                reloj.Iniciar();*/
+                ModoOscuro(sender, e);
 
             }
             catch (Exception ex)
@@ -270,9 +266,10 @@ namespace Formulario
                 "private void FormMenu_Load(object sender, EventArgs e)");
             }
         }
-        private void FondoColor(object sender, EventArgs e)
+        private void ModoOscuro(object sender, EventArgs e)
         {
-            if (UsuarioControl.GetUsuario.ModoOscuro == true)
+            
+            if (this.modoOscuro == true)
             {
                 this.panel_Contenedor.BackColor = System.Drawing.Color.FromArgb(39, 55, 70);
                 this.panel_Titulo.BackColor = System.Drawing.Color.FromArgb(52, 73, 94);
@@ -286,21 +283,6 @@ namespace Formulario
             }
 
         }
-
-        /*
-        public void ActualizarHora(Reloj reloj)
-        {
-            if (lbl_Hora.InvokeRequired)
-            {
-                Action<Reloj> delegadoReloj = ActualizarHora;
-
-                lbl_Hora.Invoke(delegadoReloj, reloj);
-            }
-            else
-            {
-                lbl_Hora.Text = reloj.ToString();
-            }
-        }*/
 
 
     }

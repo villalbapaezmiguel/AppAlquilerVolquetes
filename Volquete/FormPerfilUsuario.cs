@@ -2,6 +2,7 @@
 using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
+using Entidades.Excepciones;
 using Entidades.Interfaz;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,11 @@ namespace Formulario
 {
     public partial class FormPerfilUsuario : Form
     {
-        private Usuario usuario;
-
-        public FormPerfilUsuario(Usuario usuario)
+        bool modo ;
+        public FormPerfilUsuario(ref bool modoOscuro)
         {
             InitializeComponent();
-            this.usuario = usuario;
+            this.modo = modoOscuro;
         }
 
 
@@ -66,17 +66,19 @@ namespace Formulario
                 CargarDTGListaCompra(CompraBD.LeerPorIdUsuario(UsuarioControl.GetUsuario.IdUsuario));
 
             }
-            catch (Exception ex)
+            catch (ExceptionBaseDatos ex)
             {
+                if(MessageBox.Show("Desea notificar este inconveniente ??", "Error inesperado..", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
+                    UsuarioControl.GetUsuario.NombreUsuario,
+                    DateTime.Now,
+                    ex.Error().ToString(),
+                    "FormPerfilUsuario",
+                    "private void FormPerfilUsuario_Load(object sender, EventArgs e)");
+                    MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
-                UsuarioControl.GetUsuario.NombreUsuario,
-                DateTime.Now,
-                ex.Message,
-                "FormPerfilUsuario",
-                "private void FormPerfilUsuario_Load(object sender, EventArgs e)");
-                MessageBox.Show($"Error : {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                }
             }
 
 
@@ -90,6 +92,7 @@ namespace Formulario
             this.panel_ContenedorVolquetes.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
             this.panel_PefilUsuario.BackColor = System.Drawing.Color.SteelBlue;
             UsuarioControl.GetUsuario.ModoOscuro = false;
+            this.modo = false;
         }
 
         private void FondoColor(object sender, EventArgs e)
@@ -113,6 +116,7 @@ namespace Formulario
             this.panel_ContenedorVolquetes.BackColor = System.Drawing.Color.FromArgb(33, 47, 61);
             this.panel_PefilUsuario.BackColor = System.Drawing.Color.FromArgb(33, 47, 61);
             UsuarioControl.GetUsuario.ModoOscuro = true;
+            this.modo = true;
 
         }
 

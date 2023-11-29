@@ -1,4 +1,5 @@
 ﻿using Entidades.EntidadesUsuarios;
+using Entidades.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -18,11 +19,6 @@ namespace Entidades.EntidadesBD
         static int id;
 
         public static int IdActual { get => id; set => id = value; }
-
-        public static int ActualId()
-        {
-            return IdActual;
-        }
 
         static CompraBD()
         {
@@ -65,6 +61,9 @@ namespace Entidades.EntidadesBD
 
                     }
                 }
+            }catch(ExceptionBaseDatos ex)
+            {
+                throw new Exception($"Error al leer por id el la tabla COMPRA {ex.Error().ToString()}");
             }
             finally
             {
@@ -90,10 +89,9 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@id", compra.IdCompra);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al modificar la tabla COMPRA {ex.Error().ToString()}");
             }
             finally
             {
@@ -120,10 +118,9 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@idVolquete", compra.IdVolquete);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al guardar la tabla COMPRA {ex.Error().ToString()}");
             }
             finally
             {
@@ -141,10 +138,9 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al eliminar la tabla COMPRA {ex.Error().ToString()}");
             }
             finally
             {
@@ -184,10 +180,9 @@ namespace Entidades.EntidadesBD
 
                 return listaCompra;
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al leer la tabla COMPRA {ex.Error().ToString()}");
             }
             finally
             {

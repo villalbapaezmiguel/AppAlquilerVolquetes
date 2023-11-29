@@ -1,4 +1,5 @@
 ﻿using Entidades.EntidadesUsuarios;
+using Entidades.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -37,10 +38,9 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@observacion", volquete.Observacion);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al modificar la tabla VOLQUETE {ex.Error().ToString()}");
             }
             finally
             {
@@ -62,10 +62,9 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@observacion", volquete.Observacion);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al guardar la tabla VOLQUETE {ex.Error().ToString()}");
             }
             finally
             {
@@ -83,10 +82,9 @@ namespace Entidades.EntidadesBD
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al eliminar la tabla VOLQUETE {ex.Error().ToString()}");
             }
             finally
             {
@@ -116,10 +114,9 @@ namespace Entidades.EntidadesBD
 
                 return listaVolquete;
             }
-            catch (Exception)
+            catch (ExceptionBaseDatos ex)
             {
-
-                throw;
+                throw new Exception($"Error al leer la tabla VOLQUETE {ex.Error().ToString()}");
             }
             finally
             {

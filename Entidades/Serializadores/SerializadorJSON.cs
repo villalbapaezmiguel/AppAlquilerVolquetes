@@ -38,9 +38,9 @@ namespace ConsolaGenericos.Serializadores
                     return new List<T>();
                 }
             }
-            catch (ExcepcionSerializacion ex)
+            catch (ExceptionSerializacion ex)
             {
-                throw new ExcepcionSerializacion("Error durante la serializacion ", ex);
+                throw new ExceptionSerializacion("Error durante la serializacion ", ex);
                
             }
         }
@@ -82,9 +82,9 @@ namespace ConsolaGenericos.Serializadores
 
                 return true;
             }
-            catch (ExcepcionSerializacion ex)
+            catch (ExceptionSerializacion ex)
             {
-                throw new ExcepcionSerializacion("Error durante la serializacion ", ex);
+                throw new ExceptionSerializacion("Error durante la serializacion ", ex);
             }
         }
 
@@ -170,9 +170,9 @@ namespace ConsolaGenericos.Serializadores
 
                 return true;
             }
-            catch (ExcepcionSerializacion ex)
+            catch (ExceptionSerializacion ex)
             {
-                throw new ExcepcionSerializacion("Error durante la serializacion ", ex);
+                throw new ExceptionSerializacion("Error durante la serializacion ", ex);
             }
         }
     }
