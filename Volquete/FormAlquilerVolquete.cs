@@ -28,23 +28,27 @@ namespace Vista
         private DateTime fecha;
         private List<Compra> listaCompra = new List<Compra>();
         Compra? nuevaCompra = null;
-        
-        
+        Action<List<Compra>> delCargarCargarDTGListaCompra;
+
         private PaqueteCompra paquete = new PaqueteCompra();
 
         public FormAlquilerVolquete()
         {
             InitializeComponent();
-            CargarDTGListaCompra(listaCompra);
+
+            //CargarDTGListaCompra(listaCompra);
         }
 
         private void FormAlquilerVolquete_Load(object sender, EventArgs e)
         {
             try
             {
+                delCargarCargarDTGListaCompra = CargarDTGListaCompra;
                 CargarCmBoxTiposDeVolquetes();
                 CargarCmBoxHorariosDeEntrega();
-               
+
+                delCargarCargarDTGListaCompra(listaCompra);
+
                 this.lbl_Precio.Text = precioActual.ToString("C");
                 if (this.listaCompra.Count >= 1)
                 {
@@ -580,7 +584,7 @@ namespace Vista
                             
                             
                             jsonListaCompra.Serializar(paqueteCompra);
-                            //jsonListaCompra.AgregarObjeto(paquete);
+                    
                             MessageBox.Show($"La compra fue un exitooo \n El precio total es de : {paquete.ObtenerPrecioTotal(this.listaCompra)}", "Excelente", MessageBoxButtons.OK);
 
 

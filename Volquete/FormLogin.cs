@@ -18,11 +18,11 @@ namespace Formulario
     public partial class FormLogin : Form
     {
         
-
+        public Action? delVaciarTxtLogin;
         public FormLogin()
         {
             InitializeComponent();
-
+            
         }
         /// <summary>
         /// Maneja el evento de clic en el icono de cerrar formulario.
@@ -121,7 +121,7 @@ namespace Formulario
 
                     MessageBox.Show("No se encontro el usuario");
                     this.txt_Correo.Focus();
-                    VaciarTxtLogin();
+                    delVaciarTxtLogin();
                 }
 
             }
@@ -132,6 +132,7 @@ namespace Formulario
             }
 
         }
+
         /// <summary>
         /// Vacía los campos de correo y clave.
         /// </summary>
@@ -188,7 +189,7 @@ namespace Formulario
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            
+            delVaciarTxtLogin = VaciarTxtLogin;
         }
     }
 }

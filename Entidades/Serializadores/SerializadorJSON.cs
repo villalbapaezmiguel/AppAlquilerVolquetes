@@ -73,65 +73,12 @@ namespace ConsolaGenericos.Serializadores
 
                 // Serializar la lista a formato JSON
                 string jsonActualizado = JsonSerializer.Serialize(listaDeseriazado);
-
-                // Usar StreamWriter para escribir en el archivo
-                using (var sw = new StreamWriter(Path))
-                {
-                    sw.WriteLine(jsonActualizado);
-                }
-
+                File.WriteAllText(Path, jsonActualizado);
                 return true;
             }
             catch (ExceptionSerializacion ex)
             {
                 throw new ExceptionSerializacion("Error durante la serializacion ", ex);
-            }
-        }
-
-        public bool AgregarObjeto(T nuevoObjeto)
-        {
-            try
-            {
-                List<T> datosDeserializados;
-
-                // Si el archivo existe, leer su contenido
-                if (File.Exists(Path))
-                {
-                    // Leer todo el contenido del archivo
-                    string json = File.ReadAllText(Path);
-
-                    // Deserializar la cadena JSON a una lista de objetos
-                    datosDeserializados = JsonSerializer.Deserialize<List<T>>(json);
-                }
-                else
-                {
-                    // Si el archivo no existe, crear una nueva lista
-                    datosDeserializados = new List<T>();
-                }
-
-                // Agregar el nuevo objeto a la lista
-                datosDeserializados.Add(nuevoObjeto);
-
-                // Serializar la lista actualizada a formato JSON
-                string jsonActualizado = JsonSerializer.Serialize(datosDeserializados);
-
-                // Usar StreamWriter para escribir en el archivo
-                using (var sw = new StreamWriter(Path))
-                {
-                    sw.WriteLine(jsonActualizado);
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
-                    "Admin",
-                    DateTime.Now,
-                    ex.Message,
-                    "SerializadorJSON",
-                    "public bool AgregarObjeto(T nuevoObjeto)");
-                return false;
             }
         }
 
@@ -161,13 +108,7 @@ namespace ConsolaGenericos.Serializadores
 
                 // Serializar la lista a formato JSON
                 string jsonActualizado = JsonSerializer.Serialize(listaDeserializado);
-
-                // Usar StreamWriter para escribir en el archivo
-                using (var sw = new StreamWriter(Path))
-                {
-                    sw.WriteLine(jsonActualizado);
-                }
-
+                File.WriteAllText(Path, jsonActualizado);
                 return true;
             }
             catch (ExceptionSerializacion ex)

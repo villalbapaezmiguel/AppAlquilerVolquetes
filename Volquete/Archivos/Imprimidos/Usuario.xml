@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUsuario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Usuario>
+    <Nombre>Miguel</Nombre>
+    <Apellido>Villalba</Apellido>
+    <Dni>2332</Dni>
+    <NombreUsuario>a</NombreUsuario>
+    <Clave>a</Clave>
+    <ListaDeCompra />
+    <Telefono>232323</Telefono>
+    <IdUsuario>2</IdUsuario>
+    <ModoOscuro>false</ModoOscuro>
+    <IdCompra>0</IdCompra>
+  </Usuario>
+  <Usuario>
+    <Nombre>x</Nombre>
+    <Apellido>x</Apellido>
+    <Dni>323</Dni>
+    <NombreUsuario>x</NombreUsuario>
+    <Clave>x</Clave>
+    <ListaDeCompra />
+    <Telefono>2222</Telefono>
+    <IdUsuario>3</IdUsuario>
+    <ModoOscuro>false</ModoOscuro>
+    <IdCompra>0</IdCompra>
+  </Usuario>
+  <Usuario>
+    <Nombre>Gomez</Nombre>
+    <Apellido>German</Apellido>
+    <Dni>232434</Dni>
+    <NombreUsuario>fffff</NombreUsuario>
+    <Clave>fffff</Clave>
+    <ListaDeCompra />
+    <Telefono>3232323</Telefono>
+    <IdUsuario>4</IdUsuario>
+    <ModoOscuro>false</ModoOscuro>
+    <IdCompra>0</IdCompra>
+  </Usuario>
+  <Usuario>
+    <Nombre>Lopez</Nombre>
+    <Apellido>Raul</Apellido>
+    <Dni>32323</Dni>
+    <NombreUsuario>zzzzz</NombreUsuario>
+    <Clave>zzzzz</Clave>
+    <ListaDeCompra />
+    <Telefono>323232</Telefono>
+    <IdUsuario>6</IdUsuario>
+    <ModoOscuro>false</ModoOscuro>
+    <IdCompra>0</IdCompra>
+  </Usuario>
+  <Usuario>
+    <Nombre>Prueba</Nombre>
+    <Apellido>Lindo</Apellido>
+    <Dni>3232</Dni>
+    <NombreUsuario>d</NombreUsuario>
+    <Clave>d</Clave>
+    <ListaDeCompra />
+    <Telefono>323</Telefono>
+    <IdUsuario>8</IdUsuario>
+    <ModoOscuro>false</ModoOscuro>
+    <IdCompra>0</IdCompra>
+  </Usuario>
+</ArrayOfUsuario>

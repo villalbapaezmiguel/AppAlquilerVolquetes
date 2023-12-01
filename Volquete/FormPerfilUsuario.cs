@@ -1,4 +1,6 @@
-﻿using Entidades;
+﻿using ConsolaGenericos.Serializadores;
+using Entidades;
+using Entidades.Entidades;
 using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
@@ -19,6 +21,8 @@ namespace Formulario
     public partial class FormPerfilUsuario : Form
     {
         bool modo ;
+        Action delCargarPaquetesCompra;
+
         public FormPerfilUsuario(ref bool modoOscuro)
         {
             InitializeComponent();
@@ -59,12 +63,13 @@ namespace Formulario
                 this.lbl_Usuario.Text += $"{UsuarioControl.GetUsuario.NombreUsuario}";
                 this.lbl_Id.Text += $"{UsuarioControl.GetUsuario.IdUsuario}";
                 FondoColor(sender, e);
+                delCargarPaquetesCompra = CargarPaqueteCompras;
 
 
                 //CargarDTGListaCompra(UsuarioControl.GetUsuario.ListaDeCompra);
 
                 CargarDTGListaCompra(CompraBD.LeerPorIdUsuario(UsuarioControl.GetUsuario.IdUsuario));
-
+                delCargarPaquetesCompra();
             }
             catch (ExceptionBaseDatos ex)
             {
@@ -136,7 +141,29 @@ namespace Formulario
             this.btn_Siguiente.Visible = false;
             this.dtg_PaquetesDeCompra.Visible =  true;
             //this.dtg_PaquetesDeCompra.DataSource =  
+        }
 
+        public void CargarPaqueteCompras()
+        {
+            List<PaqueteCompra> listaGeneralDePaquetes = new List<PaqueteCompra>();
+            SerializadorJSON<PaqueteCompra> serializadorJSON = new SerializadorJSON<PaqueteCompra>(ControlApp.rutaCarpetaArchivoPaqueteCompras+ UsuarioControl.GetUsuario.NombreUsuario + ".json");
+            listaGeneralDePaquetes = serializadorJSON.Deserializar();            
+            List<int> listaIdCompras = new List<int>();
+
+            foreach(PaqueteCompra item in listaGeneralDePaquetes)
+            {
+                foreach(int itemIdCompra in item.ListaIdCompra)
+                {
+                    listaIdCompras.Add(itemIdCompra);
+                }
+            }
+            this.dtg_PaquetesDeCompra.DataSource = listaGeneralDePaquetes;
+            /*mostrar la lista de los parquetes en el dtg del perfil de usaurio 
+             usa delegados action , func y predicate*/
+            
+
+
+            
 
         }
     }

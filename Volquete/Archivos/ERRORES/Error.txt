@@ -677,3 +677,51 @@ Clase : FormAdmin
 Metodo : public bool Serializar(List<T> datos)
 Usuario : Admin
 
+Fecha y hora del incidente : 01/12/2023 12:06:17 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 01/12/2023 12:06:22 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 01/12/2023 12:09:29 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 01/12/2023 12:09:33 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 01/12/2023 12:09:57 a. m.
+Descripcion : Al querer logearse
+Clase : FormLogin
+Metodo : private void btn_Ingresar_Click(object sender, EventArgs e)
+Usuario : Desconocido...
+
+Fecha y hora del incidente : 01/12/2023 01:01:27 a. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 01/12/2023 01:03:32 a. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
+Fecha y hora del incidente : 01/12/2023 01:07:03 a. m.
+Descripcion : al agregar un volquete a la lista de compras del usuario
+Clase : FormAlquilerVolquete
+Metodo : private void btn_Agregar_Click(object sender, EventArgs e)
+Usuario : Miguel
+
