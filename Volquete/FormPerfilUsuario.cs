@@ -15,13 +15,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vista;
 
 namespace Formulario
 {
     public partial class FormPerfilUsuario : Form
     {
-        bool modo ;
+        bool modo;
         Action delCargarPaquetesCompra;
+        List<int> listaIdCompras = new List<int>();
 
         public FormPerfilUsuario(ref bool modoOscuro)
         {
@@ -73,7 +75,7 @@ namespace Formulario
             }
             catch (ExceptionBaseDatos ex)
             {
-                if(MessageBox.Show("Desea notificar este inconveniente ??", "Error inesperado..", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Desea notificar este inconveniente ??", "Error inesperado..", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     ControlApp.ControlGuardarError(ControlApp.rutaCarpetaArchivoErrores,
                     UsuarioControl.GetUsuario.NombreUsuario,
@@ -139,31 +141,50 @@ namespace Formulario
             this.lbl_TituloListaDeCompras.Text = "HISTORIAL DE PACKS DE COMPRA";
             this.btn_Atras.Visible = true;
             this.btn_Siguiente.Visible = false;
-            this.dtg_PaquetesDeCompra.Visible =  true;
+            this.dtg_PaquetesDeCompra.Visible = true;
             //this.dtg_PaquetesDeCompra.DataSource =  
         }
 
         public void CargarPaqueteCompras()
         {
             List<PaqueteCompra> listaGeneralDePaquetes = new List<PaqueteCompra>();
-            SerializadorJSON<PaqueteCompra> serializadorJSON = new SerializadorJSON<PaqueteCompra>(ControlApp.rutaCarpetaArchivoPaqueteCompras+ UsuarioControl.GetUsuario.NombreUsuario + ".json");
-            listaGeneralDePaquetes = serializadorJSON.Deserializar();            
-            List<int> listaIdCompras = new List<int>();
+            SerializadorJSON<PaqueteCompra> serializadorJSON = new SerializadorJSON<PaqueteCompra>(ControlApp.rutaCarpetaArchivoPaqueteCompras + UsuarioControl.GetUsuario.NombreUsuario + ".json");
+            listaGeneralDePaquetes = serializadorJSON.Deserializar();
 
-            foreach(PaqueteCompra item in listaGeneralDePaquetes)
+            foreach (PaqueteCompra item in listaGeneralDePaquetes)
             {
-                foreach(int itemIdCompra in item.ListaIdCompra)
+                foreach (int itemIdCompra in item.ListaIdCompra)
                 {
                     listaIdCompras.Add(itemIdCompra);
                 }
             }
+
+
             this.dtg_PaquetesDeCompra.DataSource = listaGeneralDePaquetes;
-            /*mostrar la lista de los parquetes en el dtg del perfil de usaurio 
-             usa delegados action , func y predicate*/
-            
+        }
+
+        private void dtg_PaquetesDeCompra_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                int indexClick = e.RowIndex;
+
+                if(indexClick != -1)
+                {
+                    int idPaquete = (int)this.dtg_PaquetesDeCompra.Rows[indexClick].Cells[0].Value;
+                    FormInformacionPaqueteCompra paqueteCompra = new FormInformacionPaqueteCompra(idPaquete);
+                    paqueteCompra.ShowDialog();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
-            
+
 
         }
     }

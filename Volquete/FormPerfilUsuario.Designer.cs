@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPerfilUsuario));
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel_PefilUsuario = new Panel();
+            dtg_PaquetesDeCompra = new DataGridView();
             btn_Atras = new Button();
             btn_Siguiente = new Button();
             dtgv_Compra = new DataGridView();
@@ -52,8 +53,8 @@
             lbl_TituloPerfil = new Label();
             pictureBox1 = new PictureBox();
             pic_CerrarFormulario = new PictureBox();
-            dtg_PaquetesDeCompra = new DataGridView();
             panel_PefilUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtg_PaquetesDeCompra).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).BeginInit();
             panel_DatosUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pic_ModoOscuro).BeginInit();
@@ -61,7 +62,6 @@
             panel_ContenedorVolquetes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtg_PaquetesDeCompra).BeginInit();
             SuspendLayout();
             // 
             // panel_PefilUsuario
@@ -80,6 +80,50 @@
             panel_PefilUsuario.Name = "panel_PefilUsuario";
             panel_PefilUsuario.Size = new Size(675, 405);
             panel_PefilUsuario.TabIndex = 0;
+            // 
+            // dtg_PaquetesDeCompra
+            // 
+            dtg_PaquetesDeCompra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dtg_PaquetesDeCompra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtg_PaquetesDeCompra.BackgroundColor = Color.FromArgb(31, 97, 141);
+            dtg_PaquetesDeCompra.BorderStyle = BorderStyle.None;
+            dtg_PaquetesDeCompra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dtg_PaquetesDeCompra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtg_PaquetesDeCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtg_PaquetesDeCompra.ColumnHeadersHeight = 30;
+            dtg_PaquetesDeCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dtg_PaquetesDeCompra.EnableHeadersVisualStyles = false;
+            dtg_PaquetesDeCompra.GridColor = Color.SteelBlue;
+            dtg_PaquetesDeCompra.Location = new Point(158, 84);
+            dtg_PaquetesDeCompra.Name = "dtg_PaquetesDeCompra";
+            dtg_PaquetesDeCompra.ReadOnly = true;
+            dtg_PaquetesDeCompra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtg_PaquetesDeCompra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
+            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = Color.White;
+            dtg_PaquetesDeCompra.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dtg_PaquetesDeCompra.RowTemplate.Height = 25;
+            dtg_PaquetesDeCompra.Size = new Size(517, 286);
+            dtg_PaquetesDeCompra.TabIndex = 56;
+            dtg_PaquetesDeCompra.Visible = false;
+            dtg_PaquetesDeCompra.CellClick += dtg_PaquetesDeCompra_CellClick;
             // 
             // btn_Atras
             // 
@@ -312,49 +356,6 @@
             pic_CerrarFormulario.TabStop = false;
             pic_CerrarFormulario.Click += pic_CerrarFormulario_Click;
             // 
-            // dtg_PaquetesDeCompra
-            // 
-            dtg_PaquetesDeCompra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dtg_PaquetesDeCompra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dtg_PaquetesDeCompra.BackgroundColor = Color.FromArgb(31, 97, 141);
-            dtg_PaquetesDeCompra.BorderStyle = BorderStyle.None;
-            dtg_PaquetesDeCompra.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dtg_PaquetesDeCompra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(11, 83, 69);
-            dataGridViewCellStyle1.Font = new Font("Cambria", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtg_PaquetesDeCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtg_PaquetesDeCompra.ColumnHeadersHeight = 30;
-            dtg_PaquetesDeCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtg_PaquetesDeCompra.EnableHeadersVisualStyles = false;
-            dtg_PaquetesDeCompra.GridColor = Color.SteelBlue;
-            dtg_PaquetesDeCompra.Location = new Point(158, 84);
-            dtg_PaquetesDeCompra.Name = "dtg_PaquetesDeCompra";
-            dtg_PaquetesDeCompra.ReadOnly = true;
-            dtg_PaquetesDeCompra.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(11, 83, 69);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtg_PaquetesDeCompra.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(31, 97, 141);
-            dataGridViewCellStyle3.Font = new Font("Constantia", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dtg_PaquetesDeCompra.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            dtg_PaquetesDeCompra.RowTemplate.Height = 25;
-            dtg_PaquetesDeCompra.Size = new Size(517, 286);
-            dtg_PaquetesDeCompra.TabIndex = 56;
-            dtg_PaquetesDeCompra.Visible = false;
-            // 
             // FormPerfilUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -368,6 +369,7 @@
             Load += FormPerfilUsuario_Load;
             panel_PefilUsuario.ResumeLayout(false);
             panel_PefilUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtg_PaquetesDeCompra).EndInit();
             ((System.ComponentModel.ISupportInitialize)dtgv_Compra).EndInit();
             panel_DatosUsuario.ResumeLayout(false);
             panel_DatosUsuario.PerformLayout();
@@ -377,7 +379,6 @@
             panel_ContenedorVolquetes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pic_CerrarFormulario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtg_PaquetesDeCompra).EndInit();
             ResumeLayout(false);
         }
 

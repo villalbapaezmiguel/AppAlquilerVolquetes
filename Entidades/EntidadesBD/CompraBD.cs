@@ -72,6 +72,48 @@ namespace Entidades.EntidadesBD
             return listaCompra;
         }
 
+        public static Compra LeerPorIdCompra(int id)
+        {
+            
+            try
+            {
+                command.Parameters.Clear();
+                connection.Open();
+                command.CommandText = $"SELECT * FROM COMPRA WHERE ID_COMPRA = {id} ";
+                Compra auxCompra;
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        if (DateTime.TryParse(reader["FECHA_DE_ENTREGA"].ToString(), out DateTime fecha))
+                        {
+                            auxCompra = new Compra(
+                            int.Parse(reader["CANTIDAD"].ToString()),
+                            int.Parse(reader["DIAS"].ToString()),
+                            fecha,
+                            reader["HORA_ENTREGA"].ToString(),
+                            reader["DIRECCION"].ToString(),
+                            float.Parse(reader["PRECIO"].ToString()),
+                            int.Parse(reader["ID_COMPRA"].ToString()),
+                            int.Parse(reader["ID_USUARIO"].ToString()),
+                            int.Parse(reader["ID_VOLQUETE"].ToString())
+                            );
+                            return auxCompra;
+                        }
+                    }
+                }
+            }
+            catch (ExceptionBaseDatos ex)
+            {
+                throw new Exception($"Error al leer por id el la tabla COMPRA {ex.Error().ToString()}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return null;
+        }
 
         public static void ModificarDB(Compra compra)
         {

@@ -29,6 +29,7 @@ namespace Vista
         private List<Compra> listaCompra = new List<Compra>();
         Compra? nuevaCompra = null;
         Action<List<Compra>> delCargarCargarDTGListaCompra;
+        Func<PaqueteCompra, bool> delegadoAgregarPaqueteCompra = ControlApp.AgregarPaqueteCompra;
 
         private PaqueteCompra paquete = new PaqueteCompra();
 
@@ -580,10 +581,17 @@ namespace Vista
                         {
                             string rutaJsonPaqueteCompra = $"{ControlApp.rutaCarpetaArchivoPaqueteCompras}{UsuarioControl.GetUsuario.NombreUsuario}.json";
                             var jsonListaCompra = new SerializadorJSON<PaqueteCompra>(rutaJsonPaqueteCompra);
-                            PaqueteCompra paqueteCompra = paquete.ObtenerPaquete(this.listaCompra, paquete.ObtenerPrecioTotal(this.listaCompra));
+
+
+
+                            delegadoAgregarPaqueteCompra(new PaqueteCompra(ControlApp.NuevoIdPaqueCompra(rutaJsonPaqueteCompra),
+                                ControlApp.ObtenerListaIdCompras(this.listaCompra),
+                                paquete.ObtenerPrecioTotal(this.listaCompra)));
+
+                            //PaqueteCompra paqueteCompra = paquete.ObtenerPaquete(this.listaCompra, paquete.ObtenerPrecioTotal(this.listaCompra));
+
                             
-                            
-                            jsonListaCompra.Serializar(paqueteCompra);
+                            jsonListaCompra.Serializar(ControlApp.listaPaqueteCompra);
                     
                             MessageBox.Show($"La compra fue un exitooo \n El precio total es de : {paquete.ObtenerPrecioTotal(this.listaCompra)}", "Excelente", MessageBoxButtons.OK);
 

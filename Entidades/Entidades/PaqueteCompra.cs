@@ -12,7 +12,7 @@ namespace Entidades.Entidades
     [Serializable]
     public class PaqueteCompra : IPaqueteCompras
     {
-        private int idUsuario;
+        private int idPaqueteCompra;
         private List<int> listaIdCompra;
         private float precioTotal;
         //mostrar lo paquetes de compras que se fueron hacienod por el usuario
@@ -21,15 +21,16 @@ namespace Entidades.Entidades
         {
             listaIdCompra = new List<int>();
         }
-        public PaqueteCompra(int idUsuario, List<int> listaIdCompra, float precioTotal):this()
+        public PaqueteCompra(int idPaqueteCompra, List<int> listaIdCompra, float precioTotal):this()
         {
-            this.idUsuario = idUsuario;
+            this.idPaqueteCompra = idPaqueteCompra;
             this.listaIdCompra = listaIdCompra;
             this.precioTotal = precioTotal;
         }
-        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
+        public int IdPaqueteCompra { get => idPaqueteCompra; set => idPaqueteCompra = value; }
         public List<int> ListaIdCompra { get => listaIdCompra; set => listaIdCompra = value; }
         public float PrecioTotal { get => precioTotal; set => precioTotal = value; }
+
 
         public PaqueteCompra ObtenerPaquete(List<Compra> lista , float precioTotal)
         {
@@ -44,7 +45,7 @@ namespace Entidades.Entidades
                         paquete.listaIdCompra.Add(itemCompra.IdCompra);
                                     
                     }
-                    paquete.idUsuario = UsuarioControl.GetUsuario.IdUsuario;
+                    paquete.idPaqueteCompra = UsuarioControl.GetUsuario.IdUsuario;
                     paquete.precioTotal = precioTotal;
                     return paquete;
                 }

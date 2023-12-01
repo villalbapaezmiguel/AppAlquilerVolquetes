@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using ConsolaGenericos.Serializadores;
+using Entidades.Entidades;
 using Entidades.EntidadesBD;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
@@ -18,16 +20,43 @@ namespace Entidades
         public static List<Volquete> listaVolquetes = new List<Volquete>();
         public static List<Compra> listaDeCompras = new List<Compra>();//cada vez que el usuaurio termine de usar la app guardar todas sus compras aca
         public static List<Admin> listaAdministradores = new List<Admin>();
+        public static List<PaqueteCompra> listaPaqueteCompra = new List<PaqueteCompra>();
+
         public const string rutaCarpetaArchivos = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\";
         public const string rutaCarpetaArchivoUsuario = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\DatosUsuario\";
         public const string rutaCarpetaArchivoErrores = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\ERRORES\";
         public const string rutaCapetaArchivoImprido = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Imprimidos\";
         public const string rutaCarpetaArchivoPaqueteCompras = @"C:\Users\villa\Desktop\PracticaLaboDos\AppAlquilerVolquetes\Volquete\Archivos\Lista de paquetes\";
-
+        
         private static int idCompra = CompraBD.IdActual;
         private static int idUsuario = 0;
         private static int idVolquete = 0;
 
+        public static int NuevoIdPaqueCompra(string path)
+        {
+            SerializadorJSON<PaqueteCompra> serializadorJSON = new SerializadorJSON<PaqueteCompra>(path);
+            List<PaqueteCompra> listAux = serializadorJSON.Deserializar();
+
+            if(listAux.Count >= 1)
+            {
+                return listAux[listAux.Count - 1].IdPaqueteCompra + 1;
+            }
+            return 0;
+        }
+        public static List<int> ObtenerListaIdCompras(List<Compra> listaCompras)
+        {
+            List<int> listaIdCompras = null;
+            if (listaCompras is not null)
+            {
+                listaIdCompras = new List<int>();
+
+                foreach (Compra item in listaCompras)
+                {
+                    listaIdCompras.Add(item.IdCompra);
+                }
+            }
+            return listaIdCompras;
+        }
 
         public static int NuevoIdVolquete()
         {
@@ -42,6 +71,26 @@ namespace Entidades
         {
             return idCompra++;
         }
+
+
+
+        public static bool AgregarPaqueteCompra(PaqueteCompra paquete)
+        {
+            try
+            {
+                if(paquete is not null)
+                {
+                    listaPaqueteCompra.Add(paquete);
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return false;
+        }
+        
 
         public static void ControlGuardarError(string path , string nombreUsuario, DateTime fechaHora , string descripcion , string clase, string metodo)
         {

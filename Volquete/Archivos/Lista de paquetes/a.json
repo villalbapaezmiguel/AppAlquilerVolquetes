@@ -1,1 +1,1 @@
-[{"IdUsuario":2,"ListaIdCompra":[31],"PrecioTotal":3100},{"IdUsuario":2,"ListaIdCompra":[32,33],"PrecioTotal":3700},{"IdUsuario":2,"ListaIdCompra":[34,35],"PrecioTotal":5000}]
+[{"IdPaqueteCompra":0,"ListaIdCompra":[40],"PrecioTotal":3100},{"IdPaqueteCompra":1,"ListaIdCompra":[45,46],"PrecioTotal":7000},{"IdPaqueteCompra":2,"ListaIdCompra":[47,48],"PrecioTotal":6400},{"IdPaqueteCompra":3,"ListaIdCompra":[49,50],"PrecioTotal":4800},{"IdPaqueteCompra":3,"ListaIdCompra":[49,50],"PrecioTotal":4800},{"IdPaqueteCompra":4,"ListaIdCompra":[51],"PrecioTotal":2500}]

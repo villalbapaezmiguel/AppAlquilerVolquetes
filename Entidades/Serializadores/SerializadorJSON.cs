@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Entidades.Entidades;
 using Entidades.EntidadesControl;
 using Entidades.EntidadesUsuarios;
 using Entidades.Excepciones;
@@ -44,6 +45,52 @@ namespace ConsolaGenericos.Serializadores
                
             }
         }
+        public bool Serializar(PaqueteCompra paquete)
+        {
+            try
+            {
+                List<PaqueteCompra> listaDeseriazado;
+
+                if (File.Exists(Path))
+                {
+                    string jsonDeserializado = File.ReadAllText(Path);
+
+                    // Verificar si el JSON es vacío
+                    if (!string.IsNullOrEmpty(jsonDeserializado))
+                    {
+                        listaDeseriazado = JsonSerializer.Deserialize<List<PaqueteCompra>>(jsonDeserializado);
+                    }
+                    else
+                    {
+                        listaDeseriazado = new List<PaqueteCompra>();
+                    }
+                }
+                else
+                {
+                    listaDeseriazado = new List<PaqueteCompra>();
+                }
+                
+                foreach(PaqueteCompra item in listaDeseriazado)
+                {
+                    foreach(int itemIdCompra in item.ListaIdCompra)
+                    {
+
+                    }
+                }
+
+                listaDeseriazado.Add(paquete);
+
+                // Serializar la lista a formato JSON
+                string jsonActualizado = JsonSerializer.Serialize(listaDeseriazado);
+                File.WriteAllText(Path, jsonActualizado);
+                return true;
+            }
+            catch (ExceptionSerializacion ex)
+            {
+                throw new ExceptionSerializacion("Error durante la serializacion ", ex);
+            }
+        }
+
         public bool Serializar(T datos)
         {
             try
@@ -70,7 +117,6 @@ namespace ConsolaGenericos.Serializadores
                 }
 
                 listaDeseriazado.Add(datos);
-
                 // Serializar la lista a formato JSON
                 string jsonActualizado = JsonSerializer.Serialize(listaDeseriazado);
                 File.WriteAllText(Path, jsonActualizado);
